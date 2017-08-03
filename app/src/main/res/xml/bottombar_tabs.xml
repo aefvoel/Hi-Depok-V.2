@@ -1,0 +1,23 @@
+<tabs>
+    <tab
+        id="@+id/tab_news"
+        icon="@drawable/newspaper"
+        title="News"/>
+    <!--barColorWhenSelected='#5B5A5A'-->
+    <tab
+        id="@+id/tab_lapor"
+        icon="@drawable/user_chat"
+        title="Report"/>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/home"
+        title="Home"/>
+    <tab
+        id="@+id/tab_notif"
+        icon="@drawable/alarm"
+        title="Notif"/>
+    <tab
+        id="@+id/tab_profile"
+        icon="@drawable/user"
+        title="Profile"/>
+</tabs>

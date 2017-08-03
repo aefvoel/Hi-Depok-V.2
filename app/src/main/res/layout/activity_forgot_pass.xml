@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_bg"
+    android:padding="20dp"
+    tools:context="tiregdev.hi_depok.forgot_pass">
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/txtForgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/fogotPass"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:font="@string/fontReguler" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtForgot"
+        android:focusableInTouchMode="false">
+
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimaryDark"
+            app:font="@string/fontReguler" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/emailLayout"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle_green"
+        android:text="@string/send"
+        app:font="@string/fontBold" />
+
+</RelativeLayout>
