@@ -1,3 +1,59 @@
 <resources>
     <string name="app_name">Hi-Depok</string>
+    <string name="app_tagline">we share we care</string>
+
+    <!--FONT START-->
+    <string name="fontReguler" translatable="false">font/Brandon_reg.otf</string>
+    <string name="fontRegulerItalic" translatable="false">font/Brandon_reg_it.otf</string>
+    <string name="fontBold" translatable="false">font/Brandon_bld.otf</string>
+    <string name="fontBoldItalic" translatable="false">font/Brandon_bld_it.otf</string>
+    <string name="fontBlack" translatable="false">font/Brandon_blk.otf</string>
+    <string name="fontBlackItalic" translatable="false">font/Brandon_blk_it.otf</string>
+    <string name="fontLight" translatable="false">font/Brandon_light.otf</string>
+    <string name="fontLightItalic" translatable="false">font/Brandon_light_it.otf</string>
+    <string name="fontMedium" translatable="false">font/Brandon_med.otf</string>
+    <string name="fontMediumItalic" translatable="false">font/Brandon_med_it.otf</string>
+    <string name="fontThin" translatable="false">font/Brandon_thin.otf</string>
+    <string name="fontThinItalic" translatable="false">font/Brandon_thin_it.otf</string>
+    <!--FONT FINISH-->
+
+    <string name="desc">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+        containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+        including versions of Lorem Ipsum.
+    </string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="email">Email</string>
+    <string name="emailJAR">fsandjujar@gmail.com</string>
+    <string name="username">Username</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="pass">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="signup">SIGN UP</string>
+    <string name="ttl">Tanggal Lahir</string>
+    <string name="bio">Bio</string>
+    <string name="nmrTlp">Nomor Telepon</string>
+    <string name="verify">
+        Kami telah mengirimkan Anda SMS dengan kode verifikasi,
+        silahkan masukkan 6 digit kode verifikasi yang dikirimkan ke nomor telepon anda</string>
+    <string name="verifyNum">5867734</string>
+    <string name="verifyBtn">Confirm</string>
+    <string name="send">SEND</string>
+    <string name="fogotPass">
+        Silahkan masukkan alamat email anda untuk menerima password Anda
+    </string>
+    <string name="validasi">
+        Dengan ini saya bersedia untuk bertanggung jawab dengan nama diatas
+        dan dengan segala aktivitas yang saya lakukan pada aplikasi ini</string>
+    <string name="alamat">Jl. Kembang Raya Beji no.71, Beji, Depok</string>
+    <string name="lupaPass"><u>Lupa Password?</u></string>
+    <string name="loginwithgoogle">Login dengan Google+</string>
+    <!--DESCRIPTION-->
+    <string name="ImgDesc">Hi-Depok Image Description</string>
+
 </resources>
