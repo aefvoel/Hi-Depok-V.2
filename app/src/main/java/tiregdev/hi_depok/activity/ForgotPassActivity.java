@@ -1,9 +1,11 @@
-package tiregdev.hi_depok;
+package tiregdev.hi_depok.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class forgot_pass extends AppCompatActivity {
+import tiregdev.hi_depok.R;
+
+public class ForgotPassActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

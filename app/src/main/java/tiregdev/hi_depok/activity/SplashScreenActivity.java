@@ -1,4 +1,4 @@
-package tiregdev.hi_depok;
+package tiregdev.hi_depok.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -11,7 +11,9 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class activity_splash_screen extends AppCompatActivity {
+import tiregdev.hi_depok.R;
+
+public class SplashScreenActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class activity_splash_screen extends AppCompatActivity {
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(activity_splash_screen.this,login.class);
+                    Intent intent = new Intent(SplashScreenActivity.this,LoginActivity.class);
                     startActivity(intent);
                 }
             }

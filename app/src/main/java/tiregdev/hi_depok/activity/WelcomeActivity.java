@@ -1,4 +1,4 @@
-package tiregdev.hi_depok;
+package tiregdev.hi_depok.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +19,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.utils.PreferenceManager;
 
-public class activity_welcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -28,14 +29,14 @@ public class activity_welcome extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private tiregdev.hi_depok.PreferenceManager prefManager;
+    private PreferenceManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Checking for first time launch - before calling setContentView()
-        prefManager = new tiregdev.hi_depok.PreferenceManager(this);
+        prefManager = new PreferenceManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();
@@ -120,7 +121,7 @@ public class activity_welcome extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(activity_welcome.this, activity_splash_screen.class));
+        startActivity(new Intent(WelcomeActivity.this, SplashScreenActivity.class));
         finish();
     }
 

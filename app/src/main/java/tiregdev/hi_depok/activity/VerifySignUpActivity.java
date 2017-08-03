@@ -1,14 +1,14 @@
-package tiregdev.hi_depok;
+package tiregdev.hi_depok.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class verify_signup extends AppCompatActivity {
+import tiregdev.hi_depok.R;
+
+public class VerifySignUpActivity extends AppCompatActivity {
 
     Button btnVerify;
 
@@ -20,7 +20,7 @@ public class verify_signup extends AppCompatActivity {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(verify_signup.this,activity_manu_utama.class);
+                Intent intent = new Intent(VerifySignUpActivity.this,MenuActivity.class);
                 startActivity(intent);
             }
         });

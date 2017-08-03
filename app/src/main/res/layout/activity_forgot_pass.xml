@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/screen_bg"
     android:padding="20dp"
-    tools:context="tiregdev.hi_depok.forgot_pass">
+    tools:context="tiregdev.hi_depok.activity.ForgotPassActivity">
 
     <fr.arnaudguyon.smartfontslib.FontTextView
         android:id="@+id/txtForgot"

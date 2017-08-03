@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tiregdev.hi_depok.activity_splash_screen"
+    tools:context="tiregdev.hi_depok.activity.SplashScreenActivity"
     android:background="@drawable/screen_bg">
 
     <ImageView

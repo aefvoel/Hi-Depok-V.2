@@ -1,23 +1,20 @@
-package tiregdev.hi_depok;
+package tiregdev.hi_depok.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class activity_signup extends AppCompatActivity {
+import tiregdev.hi_depok.R;
+
+public class SignUpActivity extends AppCompatActivity {
 
     Button signup, ttl;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -45,7 +42,7 @@ public class activity_signup extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity_signup.this,verify_signup.class);
+                Intent intent = new Intent(SignUpActivity.this,VerifySignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +61,7 @@ public class activity_signup extends AppCompatActivity {
     }
 
     private void settingTanggal(){
-        new DatePickerDialog(activity_signup.this, d,
+        new DatePickerDialog(SignUpActivity.this, d,
                 dateAndTime.get(Calendar.YEAR),
                 dateAndTime.get(Calendar.MONTH),
                 dateAndTime.get(Calendar.DAY_OF_MONTH)).show();

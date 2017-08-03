@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/screen_bg"
-    tools:context="tiregdev.hi_depok.activity_splash_screen">
+    tools:context="tiregdev.hi_depok.activity.SplashScreenActivity">
 
     <ScrollView
         android:layout_width="match_parent"

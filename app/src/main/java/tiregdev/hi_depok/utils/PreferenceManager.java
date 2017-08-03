@@ -1,4 +1,4 @@
-package tiregdev.hi_depok;
+package tiregdev.hi_depok.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity_welcome"
+            android:name=".activity.WelcomeActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,18 +19,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity_manu_utama">
+        <activity android:name=".activity.MenuActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity_splash_screen"
+            android:name=".activity.SplashScreenActivity"
             android:noHistory="true" />
-        <activity android:name=".login" />
-        <activity android:name=".activity_signup" />
-        <activity android:name=".verify_signup" />
-        <activity android:name=".forgot_pass"></activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.VerifySignUpActivity" />
+        <activity android:name=".activity.ForgotPassActivity"></activity>
     </application>
 
 </manifest>
