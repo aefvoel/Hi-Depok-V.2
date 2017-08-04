@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "657283490375",
+    "firebase_url": "https://hi-depok2-39129.firebaseio.com",
+    "project_id": "hi-depok2-39129",
+    "storage_bucket": "hi-depok2-39129.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657283490375:android:d06e2ba39d83fe91",
+        "android_client_info": {
+          "package_name": "tiregdev.hi_depok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657283490375-jtbk52908i231g8cce9dc5v450r7um3a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tiregdev.hi_depok",
+            "certificate_hash": "b627832bce86f1fc68c8f9a82f44698db0bf9cc8"
+          }
+        },
+        {
+          "client_id": "657283490375-4ijas8cte0nb5e9me2cs8i3apfvpd63e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGy9E6AK3VRnepvpmgTsa0qzUO6MzXfE8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657283490375-4ijas8cte0nb5e9me2cs8i3apfvpd63e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
