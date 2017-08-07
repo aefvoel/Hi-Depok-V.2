@@ -3,56 +3,215 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_centerInParent="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:background="@drawable/screen_bg"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
-            android:id="@+id/title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Layanan Gawat Darurat"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            app:font="@string/fontBold" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/callbtn"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="20dp"
-            android:layout_below="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/cari_data"
+                android:padding="20dp">
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
-            android:id="@+id/text112"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/callbtn"
-            android:gravity="center"
-            android:text="112"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            app:font="@string/fontBold" />
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/search"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"
+                    app:font="@string/fontReguler" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_below="@+id/text112"
-            android:gravity="bottom|center"
-            android:text="Tekan untuk menelepon"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:font="@string/fontBold" />
+                <ImageView
+                    android:id="@+id/iconSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="30dp"
+                    android:contentDescription="@string/ImgDesc"
+                    android:src="@drawable/map" />
 
-    </RelativeLayout>
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:layout_width="50dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/iconSearch"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle_green"
+                    android:text="@string/cari"
+                    android:textSize="6sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-50dp"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="2">
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/ensiklopedi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/ensiklopedi"
+                    android:padding="10dp"
+                    android:text="@string/ensiklo"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/diagnosa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/diagnosa"
+                    android:padding="10dp"
+                    android:text="@string/diag"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="2">
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/volunteer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1.025"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/volunteer"
+                    android:padding="10dp"
+                    android:text="@string/volunteer"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/usaha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="0.975"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/usaha"
+                    android:padding="10dp"
+                    android:text="@string/usaha"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="2">
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/daftarRSUD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/pendaftaran_rsud"
+                    android:padding="10dp"
+                    android:text="@string/rsud"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/sahabatkos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="0.8"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/sahabat_kos"
+                    android:padding="10dp"
+                    android:text="@string/sahabatkos"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="2">
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/spaceroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="0.94"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/peminjaman_space_room"
+                    android:padding="10dp"
+                    android:text="@string/ss"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:id="@+id/panicbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1.06"
+                    android:background="@drawable/rectangle_white"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/call"
+                    android:padding="10dp"
+                    android:text="@string/tomboldarurat"
+                    android:textColor="@color/colorStatusBar"
+                    android:textSize="14sp"
+                    app:font="@string/fontBold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
