@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/picNotif"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/report_macet" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/picNotif"
+            android:text="@string/nama"
+            android:textSize="20sp"
+            app:font="@string/fontBold" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/time"
+            app:font="@string/fontThin" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/notifTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/user"
+            android:layout_below="@+id/user"
+            android:text="@string/like"
+            app:font="@string/fontReguler" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/wrapper"
+        android:background="#d6d5d4" />
+
+</RelativeLayout>

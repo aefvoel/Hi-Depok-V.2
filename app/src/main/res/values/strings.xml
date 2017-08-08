@@ -26,10 +26,13 @@
         containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
         including versions of Lorem Ipsum.
     </string>
+    <string name="forHeader">HI-<b>DEPOK</b></string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="email">Email</string>
     <string name="emailJAR">fsandjujar@gmail.com</string>
+    <string name="nama">JAR</string>
+    <string name="isibio">IT Project Manager</string>
     <string name="username">Username</string>
     <string name="confirm_pass">Confirm Password</string>
     <string name="pass">Password</string>
@@ -53,6 +56,28 @@
     <string name="alamat">Jl. Kembang Raya Beji no.71, Beji, Depok</string>
     <string name="lupaPass"><u>Lupa Password?</u></string>
     <string name="loginwithgoogle">Login dengan Google+</string>
+    <string name="search">
+        Temukan semua data dan lokasi berbagai \n  tempat di Kota Depok
+        secara detail \n disini, hanya dengan satu kali <b>KLIK</b>
+        untuk \n mempermudah segala urusan Anda
+    </string>
+    <string name="cari">CARI <b>DATA</b></string>
+    <string name="diag">Diagnosa</string>
+    <string name="ensiklo">Ensiklopedi</string>
+    <string name="volunteer">Volunteer</string>
+    <string name="usaha">Usaha</string>
+    <string name="rsud">Pasien RSUD</string>
+    <string name="sahabatkos">Sahabat Kos</string>
+    <string name="ss">Smart Space</string>
+    <string name="about">About</string>
+    <string name="tomboldarurat">NTPD</string>
+    <string name="jointxt">Join pada</string>
+    <string name="jointgl">05/08/2017</string>
+    <string name="edtprofile">EDIT PROFILE</string>
+    <string name="viewprofile"><u>view detail profile</u></string>
+    <string name="time">2 jam lalu</string>
+    <string name="like">Menyukai postingan Anda</string>
+    <string name="comment">Menanggapi postingan Anda</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 
