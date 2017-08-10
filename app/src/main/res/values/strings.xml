@@ -55,7 +55,7 @@
         dan dengan segala aktivitas yang saya lakukan pada aplikasi ini</string>
     <string name="alamat">Jl. Kembang Raya Beji no.71, Beji, Depok</string>
     <string name="lupaPass"><u>Lupa Password?</u></string>
-    <string name="loginwithgoogle">Login dengan Google+</string>
+    <string name="loginwithgoogle">Login dengan G+</string>
     <string name="search">
         Temukan semua data dan lokasi berbagai \n  tempat di Kota Depok
         secara detail \n disini, hanya dengan satu kali <b>KLIK</b>
@@ -66,9 +66,9 @@
     <string name="ensiklo">Ensiklopedi</string>
     <string name="volunteer">Volunteer</string>
     <string name="usaha">Usaha</string>
-    <string name="rsud">Pasien RSUD</string>
+    <string name="rsud">RSUD</string>
     <string name="sahabatkos">Sahabat Kos</string>
-    <string name="ss">Smart Space</string>
+    <string name="ss">Space Room</string>
     <string name="about">About</string>
     <string name="tomboldarurat">NTPD</string>
     <string name="jointxt">Join pada</string>

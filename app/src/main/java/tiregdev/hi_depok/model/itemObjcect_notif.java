@@ -1,4 +1,4 @@
-package tiregdev.hi_depok.utils;
+package tiregdev.hi_depok.model;
 
 /**
  * Created by Muhammad63 on 8/7/2017.

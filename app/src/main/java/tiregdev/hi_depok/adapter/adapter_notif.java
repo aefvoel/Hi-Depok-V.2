@@ -1,4 +1,4 @@
-package tiregdev.hi_depok.utils;
+package tiregdev.hi_depok.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +11,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.model.itemObjcect_notif;
 
 /**
  * Created by Muhammad63 on 8/7/2017.
  */
 
-public class adapter_notif extends RecyclerView.Adapter<holder_notif> {
+public class adapter_notif extends RecyclerView.Adapter<adapter_notif.holder_notif> {
     private List<itemObjcect_notif> itemList;
     private Context context;
 
@@ -43,5 +44,21 @@ public class adapter_notif extends RecyclerView.Adapter<holder_notif> {
     @Override
     public int getItemCount(){
         return this.itemList.size();
+    }
+
+    public class holder_notif extends RecyclerView.ViewHolder {
+        public TextView list_user;
+        public TextView list_notifTxt;
+        public TextView list_time;
+        public ImageView list_picNotif;
+
+        public holder_notif(View itemView){
+            super(itemView);
+
+            list_user = (TextView)itemView.findViewById(R.id.user);
+            list_notifTxt = (TextView)itemView.findViewById(R.id.notifTxt);
+            list_time = (TextView)itemView.findViewById(R.id.time);
+            list_picNotif = (ImageView)itemView.findViewById(R.id.picNotif);
+        }
     }
 }
