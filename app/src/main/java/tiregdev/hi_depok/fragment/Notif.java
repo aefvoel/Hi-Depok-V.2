@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.adapter.adapter_notif;
 import tiregdev.hi_depok.model.itemObjcect_notif;
+
+import static tiregdev.hi_depok.activity.MenuActivity.results;
 
 /**
  * Created by Muhammad63 on 8/3/2017.
@@ -24,7 +27,8 @@ public class Notif extends Fragment {
 
     private LinearLayoutManager lLayout;
     RecyclerView rView;
-
+    ImageView ham;
+    View v;
 
     public static Notif newInstance(){
         Notif fragment = new Notif();
@@ -48,6 +52,16 @@ public class Notif extends Fragment {
 
         adapter_notif rcAdapter = new adapter_notif(getContext(), rowListItem);
         rView.setAdapter(rcAdapter);
+
+        ham = (ImageView) v.findViewById(R.id.menu);
+
+        ham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                results.openDrawer();
+            }
+        });
+
         return v;
     }
 
