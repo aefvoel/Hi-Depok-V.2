@@ -1,5 +1,6 @@
 package tiregdev.hi_depok.activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -106,8 +107,8 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //add the values which need to be saved from the drawer to the bundle
-        outState = result.saveInstanceState(outState);
-        super.onSaveInstanceState(outState);
+//        outState = result.saveInstanceState(outState);
+//        super.onSaveInstanceState(outState);
     }
 
 

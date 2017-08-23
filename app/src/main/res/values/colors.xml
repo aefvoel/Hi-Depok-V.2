@@ -8,6 +8,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000</color>
     <color name="colorBlueSoft">#2b7e9f</color>
+    <color name="colorRed">#dd4b39</color>
 
     <array name="array_dot_active">
         <item>@color/dot_active_screen1</item>

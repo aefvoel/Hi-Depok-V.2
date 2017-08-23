@@ -78,6 +78,16 @@
     <string name="time">2 jam lalu</string>
     <string name="like">Menyukai postingan Anda</string>
     <string name="comment">Menanggapi postingan Anda</string>
+    <string name="uname">Uname</string>
+    <string name="mail">Email</string>
+    <string name="almt">Alamat</string>
+    <string name="noTlp">No. Tlp</string>
+    <string name="tlp">087777139373</string>
+    <string name="TglLahir">Tanggal Lahir</string>
+    <string name="bio2">Bio</string>
+    <string name="mail2">fsandjujar@gmail.com</string>
+    <string name="close">CLOSE</string>
+    <string name="save">SAVE</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 
