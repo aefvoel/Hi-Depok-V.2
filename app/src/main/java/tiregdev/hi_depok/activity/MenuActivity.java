@@ -1,6 +1,5 @@
 package tiregdev.hi_depok.activity;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -36,7 +35,7 @@ import tiregdev.hi_depok.fragment.Home;
 import tiregdev.hi_depok.fragment.News;
 import tiregdev.hi_depok.fragment.Notif;
 import tiregdev.hi_depok.fragment.Profile;
-import tiregdev.hi_depok.fragment.Report;
+import tiregdev.hi_depok.fragment.Masterpiece;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -69,7 +68,7 @@ public class MenuActivity extends AppCompatActivity {
                         break;
                     case R.id.tab_lapor:
                         abc = 1;
-                        selectedFragment = Report.newInstance();
+                        selectedFragment = Masterpiece.newInstance();
                         break;
                     case R.id.tab_home:
                         abc = 2;

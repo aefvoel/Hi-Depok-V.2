@@ -33,7 +33,7 @@ public class News extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_report, container, false);
+        v = inflater.inflate(R.layout.fragment_news, container, false);
         ham = (ImageView) v.findViewById(R.id.menu);
 
         ham.setOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
+
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.MenuActivity;
 import tiregdev.hi_depok.activity.edit_profile;
@@ -44,12 +46,12 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_profile, container, false);
         ham = (ImageView) v.findViewById(R.id.menu);
-        final Button edt = (Button) v.findViewById(R.id.btnEdtProfile);
-        edt.setOnClickListener(new View.OnClickListener() {
+        final RippleView edt  = (RippleView) v.findViewById(R.id.btnEdtProfile);
+        edt.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(),edit_profile.class);
-                startActivity(i);
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), edit_profile.class);
+                startActivity(w);
             }
         });
 

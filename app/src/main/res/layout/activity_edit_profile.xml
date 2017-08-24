@@ -129,19 +129,29 @@
                     android:text="@string/TglLahir"
                     android:textColor="@color/colorRed" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <fr.arnaudguyon.smartfontslib.FontButton
                     android:id="@+id/tglLahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textAlignment="viewStart"
+                    android:layout_marginStart="5dp"
                     android:text="@string/jointgl"
                     android:textColor="@color/colorGray"
                     app:font="@string/fontReguler" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/colorGray"/>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/bio"
                     android:textColor="@color/colorRed" />
 
@@ -152,21 +162,32 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/rectangle_gray"
                     android:gravity="top"
-                    android:text="@string/isibio"
                     android:inputType="textMultiLine"
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
+                    android:text="@string/isibio"
                     android:textColor="@color/colorGray"
                     app:font="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontButton
+                <com.andexert.library.RippleView
+                    android:id="@+id/save"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/save"
-                    app:font="@string/fontBold"
-                    android:textColor="@color/colorWhite"
-                    android:background="@drawable/rectangle_blue"/>
+                    rv_centered="true"
+                    app:rv_centered="true"
+                    app:rv_color="@color/colorRipple"
+                    app:rv_rippleDuration="150">
+
+                    <fr.arnaudguyon.smartfontslib.FontButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rectangle_blue"
+                        android:text="@string/save"
+                        android:textColor="@color/colorWhite"
+                        app:font="@string/fontBold" />
+
+                </com.andexert.library.RippleView>
 
             </LinearLayout>
 

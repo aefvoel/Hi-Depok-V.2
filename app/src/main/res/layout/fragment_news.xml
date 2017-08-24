@@ -15,30 +15,41 @@
         <fr.arnaudguyon.smartfontslib.FontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
             android:text="@string/forHeader"
-            app:font="@string/fontReguler"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_centerVertical="true"/>
+            app:font="@string/fontReguler" />
 
         <ImageView
             android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
-            android:layout_alignParentEnd="true"/>
+            android:src="@drawable/menu" />
 
-        <ImageView
-            android:id="@+id/pesan"
+        <com.andexert.library.RippleView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/massege_icon"
-            android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
-            android:layout_toStartOf="@id/menu"/>
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/menu"
+            rv_centered="true"
+            app:rv_centered="true"
+            app:rv_color="@color/colorRipple"
+            app:rv_rippleDuration="150">
+
+            <ImageView
+                android:id="@+id/pesan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/ImgDesc"
+                android:src="@drawable/massege_icon" />
+
+        </com.andexert.library.RippleView>
 
     </RelativeLayout>
 

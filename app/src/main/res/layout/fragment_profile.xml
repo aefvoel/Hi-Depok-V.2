@@ -5,6 +5,55 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:text="@string/forHeader"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            app:font="@string/fontReguler" />
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/ImgDesc"
+            android:src="@drawable/menu" />
+
+        <com.andexert.library.RippleView
+            rv_centered="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@id/menu"
+            app:rv_centered="true"
+            app:rv_color="@color/colorRipple"
+            app:rv_rippleDuration="150">
+
+            <ImageView
+                android:id="@+id/pesan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/ImgDesc"
+                android:src="@drawable/massege_icon" />
+
+        </com.andexert.library.RippleView>
+
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,43 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <RelativeLayout
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize">
-
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/forHeader"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
-                    app:font="@string/fontReguler" />
-
-                <ImageView
-                    android:id="@+id/menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/menu" />
-
-                <ImageView
-                    android:id="@+id/pesan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toStartOf="@id/menu"
-                    android:src="@drawable/massege_icon" />
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/bgheader"
@@ -72,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/rectangle_gray"
+                    android:contentDescription="@string/ImgDesc"
                     android:padding="10dp"
                     android:src="@drawable/char_icon" />
 
@@ -105,18 +118,28 @@
                     android:text="@string/jointgl"
                     app:font="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontButton
+                <com.andexert.library.RippleView
                     android:id="@+id/btnEdtProfile"
+                    rv_centered="true"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@id/avatar"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="-35dp"
-                    android:background="@drawable/rectangle_gray_full"
-                    android:text="@string/edtprofile"
-                    android:textSize="10sp"
-                    app:font="@string/fontBold" />
+                    app:rv_centered="true"
+                    app:rv_color="@color/colorRipple"
+                    app:rv_rippleDuration="150">
+
+                    <fr.arnaudguyon.smartfontslib.FontButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_gray_full"
+                        android:text="@string/edtprofile"
+                        android:textSize="10sp"
+                        app:font="@string/fontBold" />
+
+                </com.andexert.library.RippleView>
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/bio"
@@ -128,7 +151,6 @@
                     android:maxLines="1"
                     android:paddingEnd="30dp"
                     android:paddingStart="30dp"
-                    android:singleLine="true"
                     android:text="@string/isibio"
                     android:textSize="14sp"
                     app:font="@string/fontReguler" />
@@ -139,14 +161,15 @@
                 android:id="@+id/wrap_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@color/colorWhite"
-                android:padding="10dp"
-                android:layout_marginTop="10dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/mail"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="3dp"
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/mail" />
 
@@ -154,72 +177,135 @@
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:font="@string/fontReguler"
-                    android:text="@string/emailJAR"
+                    android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/mail"
-                    android:layout_marginStart="10dp"/>
+                    android:text="@string/emailJAR"
+                    app:font="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/earth"
-                    android:contentDescription="@string/ImgDesc"
-                    android:layout_width="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_below="@id/mail"
-                    android:src="@drawable/world"/>
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/ImgDesc"
+                    android:src="@drawable/world" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/alamat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
-                    android:text="@string/alamat"
                     android:layout_below="@id/email"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/earth"
-                    android:layout_marginStart="10dp"/>
+                    android:text="@string/alamat"
+                    app:font="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/phone"
-                    android:contentDescription="@string/ImgDesc"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_below="@id/alamat"
-                    android:src="@drawable/phone"/>
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/ImgDesc"
+                    android:src="@drawable/phone" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/tlp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
-                    android:text="@string/tlp"
                     android:layout_below="@id/alamat"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/phone"
-                    android:layout_marginStart="10dp"/>
+                    android:text="@string/tlp"
+                    app:font="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/calender"
-                    android:contentDescription="@string/ImgDesc"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_below="@id/phone"
-                    android:src="@drawable/calender"/>
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/ImgDesc"
+                    android:src="@drawable/calender" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/ttl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
-                    android:text="@string/jointgl"
                     android:layout_below="@id/tlp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/calender"
-                    android:layout_marginStart="10dp"/>
+                    android:text="@string/jointgl"
+                    app:font="@string/fontReguler" />
 
             </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/tropy"
+                    android:textColor="@color/colorGrayOld"
+                    android:textSize="18sp"
+                    app:font="@string/fontBold" />
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/tropyKet"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    app:font="@string/fontReguler" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/post"
+                    android:textColor="@color/colorGrayOld"
+                    android:textSize="18sp"
+                    app:font="@string/fontBold" />
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/tropyKet"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    app:font="@string/fontReguler" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

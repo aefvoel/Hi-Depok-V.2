@@ -6,8 +6,8 @@
     <!--barColorWhenSelected='#5B5A5A'-->
     <tab
         id="@+id/tab_lapor"
-        icon="@drawable/user_chat"
-        title="Report"/>
+        icon="@drawable/trophy"
+        title="Masterpiece"/>
     <tab
         id="@+id/tab_home"
         icon="@drawable/home"

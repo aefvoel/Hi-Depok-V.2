@@ -88,6 +88,12 @@
     <string name="mail2">fsandjujar@gmail.com</string>
     <string name="close">CLOSE</string>
     <string name="save">SAVE</string>
+    <string name="post">KIRIMAN</string>
+    <string name="tropy">PENGHARGAAN</string>
+    <string name="tropyKet">Anda belum mempunyai riwayat penghargaan</string>
+    <string name="karya">KARYA</string>
+    <string name="modul">MODUL</string>
+    <string name="museum">MUSEUM</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 

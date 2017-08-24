@@ -4,11 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#46b5d3</color>
     <color name="colorGray">#807e7d</color>
+    <color name="colorGrayOld">#303030</color>
     <color name="colorBiruTua">#004270</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000</color>
     <color name="colorBlueSoft">#2b7e9f</color>
     <color name="colorRed">#dd4b39</color>
+    <color name="colorRipple">#77C3E0</color>
+    <color name="colorRippleGreen">#6FD39A</color>
+    <color name="colorRippleGray">#E4E4E4</color>
 
     <array name="array_dot_active">
         <item>@color/dot_active_screen1</item>

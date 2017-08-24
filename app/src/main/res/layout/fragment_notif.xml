@@ -28,17 +28,29 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:contentDescription="@string/ImgDesc"
                     android:layout_marginEnd="20dp"
                     android:src="@drawable/menu" />
 
-                <ImageView
-                    android:id="@+id/pesan"
+                <com.andexert.library.RippleView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_marginEnd="15dp"
+                    android:layout_centerVertical="true"
                     android:layout_toStartOf="@id/menu"
-                    android:src="@drawable/massege_icon" />
+                    rv_centered="true"
+                    app:rv_centered="true"
+                    app:rv_color="@color/colorRipple"
+                    app:rv_rippleDuration="150">
+
+                    <ImageView
+                        android:id="@+id/pesan"
+                        android:contentDescription="@string/ImgDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/massege_icon" />
+
+                </com.andexert.library.RippleView>
 
             </RelativeLayout>
 
