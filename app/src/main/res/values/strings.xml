@@ -94,6 +94,18 @@
     <string name="karya">KARYA</string>
     <string name="modul">MODUL</string>
     <string name="museum">MUSEUM</string>
+
+    <string name="news1">10 Tempat Wisata Keren di Kota Depok Yang Wajib Anda Kunjungi</string>
+    <string name="news2">Banjir Di Kecamatan Cilodong Bikin Macet Hingga 5 Jam</string>
+    <string name="news3">Kemacetan Kembali Terjadi Di Jalan Nusantara, SSA Jadi Solusi</string>
+    <string name="news5">Kecelakaan Beruntun Terjadi di Jalan Juanda, Kondisi Supir Sangat Mengenaskan</string>
+    <string name="news4">Water Park Di Kota Depok Semakin Banyak, Kini Giliran Fantasy Water Park di Pondok Petir</string>
+    <string name="portal1">depoknews.id</string>
+    <string name="portal2">beritadepok.id</string>
+    <string name="portal3">depok.go.id</string>
+    <string name="time1">20m ago</string>
+    <string name="time2">6h ago</string>
+    <string name="titik">"\u2022"</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 

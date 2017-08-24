@@ -27,8 +27,6 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
 public class Masterpiece extends Fragment {
 
     ViewPager pager;
-    View strip;
-    TextView karya, modul,museum;
     ImageView ham;
     View v;
     public static Masterpiece newInstance(){
@@ -61,10 +59,6 @@ public class Masterpiece extends Fragment {
         });
 
         pager = (ViewPager) v.findViewById(R.id.pager);
-//        strip = v.findViewById(R.id.strip);
-//        karya = (TextView) v.findViewById(R.id.karya);
-//        modul = (TextView) v.findViewById(R.id.modul);
-//        museum = (TextView) v.findViewById(R.id.museum);
 
         TabLayout tabs = (TabLayout) v.findViewById(R.id.tabs);
         tabs.setupWithViewPager(pager);
@@ -76,14 +70,11 @@ public class Masterpiece extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
 
-
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new Master_karya(), "KARYA");
         adapter.addFragment(new Master_modul(), "MODUL");
         adapter.addFragment(new Master_museum(), "MUSEUM");
         viewPager.setAdapter(adapter);
-
-
 
     }
 
