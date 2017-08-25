@@ -26,9 +26,7 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
 public class Notif extends Fragment {
 
     private LinearLayoutManager lLayout;
-    RecyclerView rView;
     ImageView ham;
-    View v;
 
     public static Notif newInstance(){
         Notif fragment = new Notif();
