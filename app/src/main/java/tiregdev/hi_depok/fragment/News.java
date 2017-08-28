@@ -63,7 +63,12 @@ public class News extends Fragment {
 
     private List<itemObject_news> getAllItemList(){
         List<itemObject_news> allItems = new ArrayList<>();
-//        allItems.add(new itemObject_news(R.string.news2, R.string.portal2,R.string.time2, R.drawable.report_banjir));
+        allItems.add(new itemObject_news(getResources().getString(R.string.news2), getResources().getString(R.string.portal2),getResources().getString(R.string.time1), R.drawable.report_banjir));
+        allItems.add(new itemObject_news(getResources().getString(R.string.news3), getResources().getString(R.string.portal3),getResources().getString(R.string.time1), R.drawable.report_macet));
+        allItems.add(new itemObject_news(getResources().getString(R.string.news4), getResources().getString(R.string.portal1),getResources().getString(R.string.time2), R.drawable.report_pohontumbang));
+        allItems.add(new itemObject_news(getResources().getString(R.string.news5), getResources().getString(R.string.portal2),getResources().getString(R.string.time1), R.drawable.report_banjir));
+        allItems.add(new itemObject_news(getResources().getString(R.string.news2), getResources().getString(R.string.portal3),getResources().getString(R.string.time1), R.drawable.report_macet));
+        allItems.add(new itemObject_news(getResources().getString(R.string.news1), getResources().getString(R.string.portal2),getResources().getString(R.string.time2), R.drawable.wisata));
 
         return allItems;
     }

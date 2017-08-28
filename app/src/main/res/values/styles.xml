@@ -9,4 +9,9 @@
         <item name="android:textColorPrimary">@color/colorWhite</item>
     </style>
 
+    <style name="tireg.menu" parent="AppTheme" >
+        <item name="android:windowBackground">@color/material_drawer_background</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+    </style>
+
 </resources>

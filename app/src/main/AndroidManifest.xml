@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tiregdev.hi_depok">
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -9,6 +25,9 @@
         android:roundIcon="@drawable/hi_depok"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity
             android:name=".activity.WelcomeActivity"
             android:noHistory="true">
@@ -31,10 +50,14 @@
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.VerifySignUpActivity" />
         <activity android:name=".activity.ForgotPassActivity" />
-        <activity android:name=".activity.edit_profile"
-            android:label="Edit Profile"
+        <activity
+            android:name=".activity.edit_profile"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Edit Profile"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
+        <activity android:name=".activity.maps"
+            android:theme="@style/tireg.menu"
+            android:label="Cari Data"/>
     </application>
 
 </manifest>
