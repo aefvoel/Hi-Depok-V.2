@@ -108,6 +108,50 @@
     <string name="titik">"\u2022"</string>
 
     <string name="menu">Mode List</string>
+    <string name="submit">Submit</string>
+    <string name="location">Gedung Perpustakaan, Balaikota Depok</string>
+    <string name="nama1">Pandu</string>
+    <string name="nama2">Toriq Aefvoel</string>
+    <string name="nama3">HVS 13</string>
+    <string name="likeTxt">125 Suka</string>
+    <string name="likeTxt1">12 Suka</string>
+    <string name="likeTxt2">15 Suka</string>
+    <string name="likeTxt3">150 Suka</string>
+    <string name="commentTxt">40 Komentar</string>
+    <string name="commentTxt1">4 Komentar</string>
+    <string name="commentTxt2">10 Komentar</string>
+    <string name="commentTxt3">34 Komentar</string>
+    <string name="share1">46 Share</string>
+    <string name="share2">22 Share</string>
+    <string name="share3">135 Share</string>
+    <string name="postTxt">
+        Robot line follower oleh tim ROBOFIGHTER dari SD Muhammadiyah Negeri 1 Depok
+    </string>
+    <string name="postTxt1">
+        Maha seni oleh seorang anak asal Cilodong
+    </string>
+    <string name="postTxt2">
+        ini nih baru yang namanya MASTERPIECE
+    </string>
+    <string name="postTxt3">
+        Robot line follower dari anak sd asal Beji\n
+        Robot rescue yang dibuat oleh tim ROBOFIGHTER tersebut berhasil meyingkirkan 60 tim lawan dari berbagai negara yang juga ikut serta dalam kompetisi tersebut. Robot karya anak bangsa tersebut juga mampu menjalankan berbagai perintah dan tugas yang diberikan panitia lomba, seperti berjalan sesuaio dengan line tracer atau garis lintasan yang telah ditetapkan, serta mendeteksi benda dan meletakan kembali di tempat yang telah ditentukan.
+    </string>
+    <string name="share">Share</string>
+    <string name="judul">5 jam langsung jago coding</string>
+    <string name="judul1">Kombinasi baru dari olahan Belimbing, dari komunitas UKM Depok</string>
+    <string name="judul2">Mengelola Data Warehouse dengan keamanan ganda</string>
+    <string name="judul3">Firebase Best Practise</string>
+    <string name="pengarang">Chairul Anwar</string>
+    <string name="pengarang1">Fajar Zakaria</string>
+    <string name="pengarang2">Muhamad Hafizh</string>
+    <string name="pengarang3">Tegar Hidayat</string>
+    <string name="page">75 Halaman</string>
+    <string name="page1">189 Halaman</string>
+    <string name="page2">223 Halaman</string>
+    <string name="viewer">10256 Viewer</string>
+    <string name="viewer1">253 Viewer</string>
+    <string name="viewer2">1138 Viewer</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 

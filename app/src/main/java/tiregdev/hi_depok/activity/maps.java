@@ -1,40 +1,22 @@
 package tiregdev.hi_depok.activity;
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.fragment.Map;
 
 public class maps extends AppCompatActivity{
-
-//    static final LatLng HAMBURG = new LatLng(53.558, 9.927);
-//    static final LatLng KIEL = new LatLng(53.551, 9.993);
-//    private GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

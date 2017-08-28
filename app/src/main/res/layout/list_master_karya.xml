@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="-10dp"
+                android:contentDescription="@string/ImgDesc"
+                android:src="@drawable/char_icon" />
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/avatar"
+                android:text="@string/nama"
+                app:font="@string/fontBold" />
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/avatar"
+                android:alpha="0.7"
+                android:text="@string/location"
+                android:textSize="12sp"
+                app:font="@string/fontReguler" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imagePost"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/toolbar"
+        android:src="@drawable/report_macet"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/ImgDesc"/>
+
+    <ImageView
+        android:id="@+id/likeIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/ImgDesc"
+        android:src="@drawable/like"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/imagePost"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/likeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:font="@string/fontReguler"
+        android:layout_below="@id/imagePost"
+        android:layout_toEndOf="@id/likeIcon"
+        android:text="@string/likeTxt"
+        android:textColor="@color/primary"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/commentIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/ImgDesc"
+        android:src="@drawable/comment"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="35dp"
+        android:layout_below="@id/imagePost"
+        android:layout_toEndOf="@id/likeText"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/commentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:font="@string/fontReguler"
+        android:layout_below="@id/imagePost"
+        android:layout_toEndOf="@id/commentIcon"
+        android:text="@string/commentTxt"
+        android:textColor="@color/primary"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/shareIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/ImgDesc"
+        android:src="@drawable/forward_gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="35dp"
+        android:layout_below="@id/imagePost"
+        android:layout_toEndOf="@id/commentText"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/shareText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:font="@string/fontReguler"
+        android:layout_below="@id/imagePost"
+        android:layout_toEndOf="@id/shareIcon"
+        android:text="@string/share1"
+        android:textColor="@color/primary"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"
+        android:layout_below="@id/likeIcon"
+        android:alpha="0.3"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/postTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:maxLines="4"
+        app:font="@string/fontReguler"
+        android:text="@string/postTxt"
+        android:layout_below="@id/line"
+        android:layout_marginTop="10dp"/>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#fafafa"
+        android:layout_below="@id/postTxt"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
