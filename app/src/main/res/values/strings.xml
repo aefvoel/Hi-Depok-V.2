@@ -76,8 +76,8 @@
     <string name="edtprofile">EDIT PROFILE</string>
     <string name="viewprofile"><u>view detail profile</u></string>
     <string name="time">2 jam lalu</string>
-    <string name="like">Menyukai postingan Anda</string>
-    <string name="comment">Menanggapi postingan Anda</string>
+    <string name="like">menyukai postingan Anda</string>
+    <string name="comment">menanggapi postingan Anda</string>
     <string name="uname">Uname</string>
     <string name="mail">Email</string>
     <string name="almt">Alamat</string>
@@ -137,6 +137,18 @@
         Robot line follower dari anak sd asal Beji\n
         Robot rescue yang dibuat oleh tim ROBOFIGHTER tersebut berhasil meyingkirkan 60 tim lawan dari berbagai negara yang juga ikut serta dalam kompetisi tersebut. Robot karya anak bangsa tersebut juga mampu menjalankan berbagai perintah dan tugas yang diberikan panitia lomba, seperti berjalan sesuaio dengan line tracer atau garis lintasan yang telah ditetapkan, serta mendeteksi benda dan meletakan kembali di tempat yang telah ditentukan.
     </string>
+    <string name="museum1">
+        Piala Adipura
+    </string>
+    <string name="museum2">
+        Robot Line Follower
+    </string>
+    <string name="museum3">
+        Olahan Belimbing Terbaik se-Jawa Barat
+    </string>
+    <string name="tahun">25/05/2016</string>
+    <string name="tahun1">15/06/2016</string>
+    <string name="tahun2">18/02/2016</string>
     <string name="share">Share</string>
     <string name="judul">5 jam langsung jago coding</string>
     <string name="judul1">Kombinasi baru dari olahan Belimbing, dari komunitas UKM Depok</string>
@@ -152,6 +164,20 @@
     <string name="viewer">10256 Viewer</string>
     <string name="viewer1">253 Viewer</string>
     <string name="viewer2">1138 Viewer</string>
+
+    <string name="jam">14:20</string>
+    <string name="jam1">Yesterday</string>
+    <string name="jam2">10/05/2017</string>
+    <string name="jam3">09:53</string>
+    <string name="pesan">Dateng aja, saya sedang meeting</string>
+    <string name="pesan2">Oke, tunggu sebentar. Saya OTW 5 menit lagi</string>
+    <string name="pesan3">Ini alamatnya ya. Jl. Raya Margonda no.41, Depok</string>
+    <string name="pesan4">Di gedung perpustakaan Kota Depok, lt.1 sebelah kiri, di ruang Space Room yaa!</string>
+    <string name="kategori">Komputer</string>
+    <string name="kategori1">Android</string>
+    <string name="kategori2">Robotic</string>
+    <string name="kategori3">Biologi</string>
+
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 

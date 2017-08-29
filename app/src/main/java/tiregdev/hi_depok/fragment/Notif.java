@@ -1,5 +1,6 @@
 package tiregdev.hi_depok.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.andexert.library.RippleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.pesan;
 import tiregdev.hi_depok.adapter.adapter_notif;
 import tiregdev.hi_depok.model.itemObjcect_notif;
 
@@ -27,6 +31,7 @@ public class Notif extends Fragment {
 
     private LinearLayoutManager lLayout;
     ImageView ham;
+    View v;
 
     public static Notif newInstance(){
         Notif fragment = new Notif();
@@ -41,7 +46,7 @@ public class Notif extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.fragment_notif, null);
+        v = inflater.inflate(R.layout.fragment_notif, null);
         List<itemObjcect_notif> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(getContext());
 
@@ -60,7 +65,19 @@ public class Notif extends Fragment {
             }
         });
 
+        setPesanLink();
         return v;
+    }
+
+    public void setPesanLink(){
+        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
+        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), pesan.class);
+                startActivity(w);
+            }
+        });
     }
 
     private List<itemObjcect_notif> getAllItemList(){

@@ -32,6 +32,7 @@
             android:src="@drawable/menu" />
 
         <com.andexert.library.RippleView
+            android:id="@+id/pesan"
             rv_centered="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +44,6 @@
             app:rv_rippleDuration="150">
 
             <ImageView
-                android:id="@+id/pesan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/ImgDesc"

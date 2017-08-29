@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="2.5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2.5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/char_icon" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/avatar"
+            android:text="@string/nama2"
+            android:textSize="16sp"
+            app:font="@string/fontBold" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:alpha="0.5"
+            android:text="@string/jam"
+            android:textSize="12sp"
+            app:font="@string/fontReguler" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/avatar"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/pesan4"
+            app:font="@string/fontReguler" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/chat"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.3"
+            android:background="@color/colorGray" />
+    </RelativeLayout>
+
+</LinearLayout>

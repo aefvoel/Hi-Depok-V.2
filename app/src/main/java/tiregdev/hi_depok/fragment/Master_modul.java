@@ -76,19 +76,19 @@ public class Master_modul extends Fragment {
     private List<itemObject_modul> getAllItemList(){
         List<itemObject_modul> allItems = new ArrayList<>();
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul), getResources().getString(R.string.pengarang),getResources().getString(R.string.page),
-                getResources().getString(R.string.viewer),R.drawable.header_bg));
+                getResources().getString(R.string.viewer),getResources().getString(R.string.kategori),R.drawable.header_bg));
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul1), getResources().getString(R.string.pengarang1),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer1),R.drawable.report_pohontumbang));
+                getResources().getString(R.string.viewer1),getResources().getString(R.string.kategori1),R.drawable.report_pohontumbang));
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul2), getResources().getString(R.string.pengarang2),getResources().getString(R.string.page2),
-                getResources().getString(R.string.viewer2),R.drawable.report_macet));
+                getResources().getString(R.string.viewer2),getResources().getString(R.string.kategori2),R.drawable.report_macet));
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul3), getResources().getString(R.string.pengarang),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer),R.drawable.report_banjir));
+                getResources().getString(R.string.viewer),getResources().getString(R.string.kategori3),R.drawable.report_banjir));
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul), getResources().getString(R.string.pengarang1),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer1),R.drawable.header_profile));
+                getResources().getString(R.string.viewer1),getResources().getString(R.string.kategori),R.drawable.header_profile));
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul1), getResources().getString(R.string.pengarang2),getResources().getString(R.string.page2),
-                getResources().getString(R.string.viewer2),R.drawable.report_banjir));
+                getResources().getString(R.string.viewer2),getResources().getString(R.string.kategori1),R.drawable.report_banjir));
         allItems.add(new itemObject_modul(getResources().getString(R.string.judul2), getResources().getString(R.string.pengarang),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer),R.drawable.header_bg));
+                getResources().getString(R.string.viewer),getResources().getString(R.string.kategori2),R.drawable.header_bg));
 
         return allItems;
     }

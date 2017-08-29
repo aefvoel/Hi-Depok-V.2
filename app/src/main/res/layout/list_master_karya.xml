@@ -87,7 +87,7 @@
         android:contentDescription="@string/ImgDesc"
         android:src="@drawable/comment"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="20dp"
         android:layout_below="@id/imagePost"
         android:layout_toEndOf="@id/likeText"/>
 
@@ -110,7 +110,7 @@
         android:contentDescription="@string/ImgDesc"
         android:src="@drawable/forward_gray"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="20dp"
         android:layout_below="@id/imagePost"
         android:layout_toEndOf="@id/commentText"/>
 

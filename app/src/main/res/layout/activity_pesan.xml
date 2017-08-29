@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="tiregdev.hi_depok.activity.pesan">
 
-    <com.jaredrummler.materialspinner.MaterialSpinner
-        android:id="@+id/spinner_seacrh"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ms_background_color="@color/colorWhite"
-        app:ms_text_color="@color/colorPrimary" />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/view_museum"
-        android:layout_marginTop="5dp"
+        android:id="@+id/view_pesan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />

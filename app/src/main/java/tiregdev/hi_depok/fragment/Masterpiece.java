@@ -1,5 +1,6 @@
 package tiregdev.hi_depok.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -13,10 +14,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.pesan;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -64,8 +68,20 @@ public class Masterpiece extends Fragment {
         tabs.setupWithViewPager(pager);
 
         setupViewPager(pager);
+        setPesanLink();
 
         return v;
+    }
+
+    public void setPesanLink(){
+        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
+        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), pesan.class);
+                startActivity(w);
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {

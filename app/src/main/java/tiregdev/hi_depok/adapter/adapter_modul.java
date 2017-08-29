@@ -39,6 +39,7 @@ public class adapter_modul extends RecyclerView.Adapter<adapter_modul.holder_mod
         holder.list_pengarang.setText(itemList.get(position).getPengarang());
         holder.list_page.setText(itemList.get(position).getPage());
         holder.list_viewer.setText(itemList.get(position).getViewer());
+        holder.list_kategori.setText(itemList.get(position).getKategori());
         holder.list_cover.setImageResource(itemList.get(position).getCover());
     }
 
@@ -48,7 +49,7 @@ public class adapter_modul extends RecyclerView.Adapter<adapter_modul.holder_mod
     }
 
     public class holder_modul extends RecyclerView.ViewHolder {
-        public TextView list_judul, list_pengarang, list_page, list_viewer;
+        public TextView list_judul, list_pengarang, list_page, list_viewer, list_kategori;
         public ImageView list_cover;
 
         public holder_modul(View itemView){
@@ -58,6 +59,7 @@ public class adapter_modul extends RecyclerView.Adapter<adapter_modul.holder_mod
             list_pengarang = (TextView)itemView.findViewById(R.id.pengarang);
             list_page = (TextView)itemView.findViewById(R.id.page);
             list_viewer = (TextView)itemView.findViewById(R.id.viewer);
+            list_kategori = (TextView)itemView.findViewById(R.id.kategori);
             list_cover = (ImageView)itemView.findViewById(R.id.cover);
 
         }

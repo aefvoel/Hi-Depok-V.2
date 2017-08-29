@@ -28,6 +28,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".activity.WelcomeActivity"
             android:noHistory="true">
@@ -55,9 +56,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Edit Profile"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.maps"
-            android:theme="@style/tireg.menu"
-            android:label="Cari Data"/>
+        <activity
+            android:name=".activity.maps"
+            android:label="Cari Data"
+            android:theme="@style/tireg.menu" />
+        <activity android:name=".activity.pesan"
+            android:label="Pesan"/>
     </application>
 
 </manifest>

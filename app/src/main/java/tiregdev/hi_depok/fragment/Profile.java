@@ -18,6 +18,7 @@ import com.andexert.library.RippleView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.MenuActivity;
 import tiregdev.hi_depok.activity.edit_profile;
+import tiregdev.hi_depok.activity.pesan;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -62,6 +63,18 @@ public class Profile extends Fragment {
             }
         });
 
+        setPesanLink();
         return v;
+    }
+
+    public void setPesanLink(){
+        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
+        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), pesan.class);
+                startActivity(w);
+            }
+        });
     }
 }

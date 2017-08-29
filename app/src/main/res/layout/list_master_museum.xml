@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="2.5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_white"
+        android:padding="2.5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/picMuseum"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/report_banjir" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/titleMuseum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/picMuseum"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/museum1"
+            android:textSize="18sp"
+            app:font="@string/fontBold" />
+
+        <LinearLayout
+            android:id="@+id/wrapperName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleMuseum"
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal">
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/nama1"
+                android:textColor="@color/primary"
+                app:font="@string/fontBold" />
+
+            <TextView
+                android:id="@+id/titik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:padding="5dp"
+                android:text="@string/titik"/>
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/tahun"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tahun"
+                app:font="@string/fontReguler" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rectangle_blue_primary"
+            android:layout_below="@id/wrapperName"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

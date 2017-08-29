@@ -6,14 +6,15 @@ package tiregdev.hi_depok.model;
 
 public class itemObject_modul {
 
-    private String judul, pengarang, page, viewer;
+    private String judul, pengarang, page, viewer, kategori;
     private int cover;
 
-    public itemObject_modul(String judul, String pengarang, String page, String viewer, int cover) {
+    public itemObject_modul(String judul, String pengarang, String page, String viewer, String kategori, int cover) {
         this.judul = judul;
         this.pengarang = pengarang;
         this.page = page;
         this.viewer = viewer;
+        this.kategori = kategori;
         this.cover = cover;
     }
 
@@ -47,6 +48,14 @@ public class itemObject_modul {
 
     public void setViewer(String viewer) {
         this.viewer = viewer;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
     }
 
     public int getCover() {

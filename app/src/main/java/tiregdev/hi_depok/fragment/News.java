@@ -1,5 +1,6 @@
 package tiregdev.hi_depok.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.andexert.library.RippleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.maps;
+import tiregdev.hi_depok.activity.pesan;
 import tiregdev.hi_depok.adapter.adapter_news;
 import tiregdev.hi_depok.model.itemObject_news;
 
@@ -24,7 +29,7 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
  */
 
 public class News extends Fragment {
-//    private LinearLayoutManager;
+    View v;
     ImageView ham;
     public static News newInstance(){
         News fragment = new News();
@@ -39,8 +44,26 @@ public class News extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_news, null);
+        v = inflater.inflate(R.layout.fragment_news, null);
+        setUpAdapter();
+        setMenuHamburger();
+        setPesanLink();
 
+        return v;
+    }
+
+    public void setPesanLink(){
+        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
+        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), pesan.class);
+                startActivity(w);
+            }
+        });
+    }
+
+    public void setMenuHamburger(){
         ham = (ImageView) v.findViewById(R.id.menu);
         ham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +71,9 @@ public class News extends Fragment {
                 results.openDrawer();
             }
         });
+    }
 
+    public void setUpAdapter(){
         List<itemObject_news> rowListItem = getAllItemList();
         LinearLayoutManager lLayout = new LinearLayoutManager(getContext());
 
@@ -57,8 +82,6 @@ public class News extends Fragment {
 
         adapter_news rcAdapter = new adapter_news(getContext(), rowListItem);
         rView.setAdapter(rcAdapter);
-
-        return v;
     }
 
     private List<itemObject_news> getAllItemList(){
