@@ -1,5 +1,6 @@
 package tiregdev.hi_depok.activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -80,7 +81,8 @@ public class maps extends AppCompatActivity{
                 return true;
 
             case R.id.more:
-                Toast.makeText(this, "Selamat datang di Hi Depok!", Toast.LENGTH_LONG).show();
+                Intent in = new Intent(maps.this, search_list.class);
+                startActivity(in);
                 return true;
 
             default:

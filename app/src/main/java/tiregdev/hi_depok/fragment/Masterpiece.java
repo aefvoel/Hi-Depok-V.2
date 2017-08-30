@@ -87,7 +87,7 @@ public class Masterpiece extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new Master_karya(), "KARYA");
+        adapter.addFragment(new Master_karya(),"KARYA");
         adapter.addFragment(new Master_modul(), "MODUL");
         adapter.addFragment(new Master_museum(), "MUSEUM");
         viewPager.setAdapter(adapter);

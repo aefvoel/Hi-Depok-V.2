@@ -27,8 +27,9 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.9.2@aar') {
         transitive = true
     }
-    compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'com.jaredrummler:material-spinner:1.1.0'
+    compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.makeramen:roundedimageview:2.3.0'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.3.0'
@@ -37,7 +38,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-places:10.0.1'
     compile 'com.google.android.gms:play-services-location:10.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.roughike:bottom-bar:2.3.1'
     compile 'com.github.smart-fun:SmartFonts:1.0.2'
     compile 'de.hdodenhof:circleimageview:2.1.0'
@@ -47,6 +47,7 @@ dependencies {
     compile 'com.ss.bannerslider:bannerslider:1.8.0'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 

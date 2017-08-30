@@ -60,8 +60,11 @@
             android:name=".activity.maps"
             android:label="Cari Data"
             android:theme="@style/tireg.menu" />
-        <activity android:name=".activity.pesan"
-            android:label="Pesan"/>
+        <activity
+            android:name=".activity.pesan"
+            android:label="Pesan" />
+        <activity android:name=".activity.search_list"
+            android:label="Cari Data"/>
     </application>
 
 </manifest>
