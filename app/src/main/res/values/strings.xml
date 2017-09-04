@@ -178,6 +178,15 @@
     <string name="kategori2">Robotic</string>
     <string name="kategori3">Biologi</string>
 
+    <string name="jarak">1024 meter dari sini</string>
+    <string name="jarak2"> >>> </string>
+    <string name="tempat1">Masjid Nurul Huda</string>
+
+    <string name="tentang">Tentang</string>
+    <string name="jadwal">Jam Operasional</string>
+    <string name="jadwal2">UGD : setiap hari 24 Jam\n
+        Rawat jalan : Senin-Jumat 09.00 s/d 16.00 WIB </string>
+    <string name="desk">Info Tambahan</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 

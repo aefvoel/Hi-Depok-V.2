@@ -63,8 +63,10 @@
         <activity
             android:name=".activity.pesan"
             android:label="Pesan" />
-        <activity android:name=".activity.search_list"
-            android:label="Cari Data"/>
+        <activity
+            android:name=".activity.search_list"
+            android:label="Cari Data" />
+        <activity android:name=".activity.detail_search"></activity>
     </application>
 
 </manifest>

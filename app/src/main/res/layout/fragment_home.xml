@@ -40,7 +40,7 @@
                     rv_centered="true"
                     app:rv_centered="true"
                     app:rv_color="@color/colorRippleGreen"
-                    app:rv_rippleDuration="150">
+                    app:rv_rippleDuration="10">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:layout_marginTop="10dp"
                     app:rv_centered="true"
                     app:rv_color="@color/colorRippleGreen"
-                    app:rv_rippleDuration="150">
+                    app:rv_rippleDuration="10">
 
                     <fr.arnaudguyon.smartfontslib.FontButton
                         android:layout_width="match_parent"

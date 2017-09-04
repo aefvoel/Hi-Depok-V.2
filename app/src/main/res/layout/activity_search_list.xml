@@ -25,10 +25,10 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/colorOrange"
-            app:tabIndicatorHeight="4dp"
+            app:tabIndicatorColor="@color/colorWhite"
+            app:tabIndicatorHeight="3dp"
             app:tabTextColor="#3093B9"
-            app:tabSelectedTextColor="@color/colorOrange"
+            app:tabSelectedTextColor="@color/colorWhite"
             app:tabMode="scrollable" />
     </android.support.design.widget.AppBarLayout>
 

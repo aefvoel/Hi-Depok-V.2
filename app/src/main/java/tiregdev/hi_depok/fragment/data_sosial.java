@@ -20,7 +20,7 @@ public class data_sosial extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_master_karya, container, false);
+        v = inflater.inflate(R.layout.fragment_data_sosial, container, false);
         return v;
     }
 }

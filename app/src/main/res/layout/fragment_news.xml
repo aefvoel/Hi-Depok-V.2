@@ -41,7 +41,7 @@
             android:layout_toStartOf="@id/menu"
             app:rv_centered="true"
             app:rv_color="@color/colorRipple"
-            app:rv_rippleDuration="150">
+            app:rv_rippleDuration="10">
 
             <ImageView
                 android:layout_width="wrap_content"

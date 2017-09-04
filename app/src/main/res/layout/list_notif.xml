@@ -39,6 +39,7 @@
             app:font="@string/fontReguler" />
 
         <ImageView
+            android:id="@+id/dm"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/chat"
