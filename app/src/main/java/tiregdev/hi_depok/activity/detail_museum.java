@@ -3,19 +3,15 @@ package tiregdev.hi_depok.activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.viewpagerindicator.CirclePageIndicator;
-
 import tiregdev.hi_depok.R;
 
-public class detail_search extends AppCompatActivity {
+public class detail_museum extends AppCompatActivity {
 
     CollapsingToolbarLayout collapsingToolbar;
     ImageView placePicture;
@@ -23,7 +19,7 @@ public class detail_search extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_search);
+        setContentView(R.layout.activity_detail_museum);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setCollaps();
         setupToolbar();
@@ -32,9 +28,9 @@ public class detail_search extends AppCompatActivity {
     public void setCollaps(){
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         placePicture = (ImageView) findViewById(R.id.image);
-        placePicture.setImageResource(R.drawable.bg_rs);
+        placePicture.setImageResource(R.drawable.header_bg);
 
-        collapsingToolbar.setTitle("Detail Data");
+        collapsingToolbar.setTitle("Detail Museum");
         collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.transperent));
         collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));
     }
@@ -50,7 +46,7 @@ public class detail_search extends AppCompatActivity {
             case android.R.id.home:
                 // todo: goto back activity from here
 
-                detail_search.this.finish();
+                detail_museum.this.finish();
                 return true;
 
             default:

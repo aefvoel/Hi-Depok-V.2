@@ -6,18 +6,20 @@ package tiregdev.hi_depok.model;
 
 public class itemObject_karya {
 
-    private String username, location, likeTxt, commentTxt, postTxt, shareTxt;
-    private int avatar, imagePost;
+    private String username, location, likeTxt, commentTxt, postTxt, shareTxt, time;
+    private int avatar, imagePost, status;
 
-    public itemObject_karya(String username, String location, String likeTxt, String commentTxt, String postTxt, String shareTxt, int avatar, int imagePost) {
+    public itemObject_karya(String username, String location, String likeTxt, String commentTxt, String postTxt, String shareTxt, String time, int avatar, int imagePost, int status) {
         this.username = username;
         this.location = location;
         this.likeTxt = likeTxt;
         this.commentTxt = commentTxt;
         this.postTxt = postTxt;
         this.shareTxt = shareTxt;
+        this.time = time;
         this.avatar = avatar;
         this.imagePost = imagePost;
+        this.status = status;
     }
 
     public String getUsername() {
@@ -68,6 +70,14 @@ public class itemObject_karya {
         this.shareTxt = shareTxt;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public int getAvatar() {
         return avatar;
     }
@@ -82,5 +92,13 @@ public class itemObject_karya {
 
     public void setImagePost(int imagePost) {
         this.imagePost = imagePost;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

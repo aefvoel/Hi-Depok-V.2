@@ -58,15 +58,20 @@ public class Master_karya extends Fragment {
     private List<itemObject_karya> getAllItemList(){
         List<itemObject_karya> allItems = new ArrayList<>();
         allItems.add(new itemObject_karya(getResources().getString(R.string.nama), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt),
-                getResources().getString(R.string.commentTxt),getResources().getString(R.string.postTxt),getResources().getString(R.string.share1),R.drawable.char_icon,R.drawable.report_banjir));
+                getResources().getString(R.string.commentTxt),getResources().getString(R.string.postTxt),getResources().getString(R.string.share1),
+                getResources().getString(R.string.time),R.drawable.char_icon,R.drawable.report_banjir,R.drawable.status_waiting));
         allItems.add(new itemObject_karya(getResources().getString(R.string.nama1), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt1),
-                getResources().getString(R.string.commentTxt1),getResources().getString(R.string.postTxt3),getResources().getString(R.string.share2),R.drawable.char_icon,R.drawable.report_pohontumbang));
+                getResources().getString(R.string.commentTxt1),getResources().getString(R.string.postTxt3),getResources().getString(R.string.share2),
+                getResources().getString(R.string.time2),R.drawable.char_icon,R.drawable.report_pohontumbang,R.drawable.status_accepted));
         allItems.add(new itemObject_karya(getResources().getString(R.string.nama2), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt2),
-                getResources().getString(R.string.commentTxt2),getResources().getString(R.string.postTxt2),getResources().getString(R.string.share3),R.drawable.char_icon,R.drawable.report_macet));
+                getResources().getString(R.string.commentTxt2),getResources().getString(R.string.postTxt2),getResources().getString(R.string.share3),
+                getResources().getString(R.string.time1),R.drawable.char_icon,R.drawable.report_macet,R.drawable.status_proses));
         allItems.add(new itemObject_karya(getResources().getString(R.string.nama3), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt3),
-                getResources().getString(R.string.commentTxt3),getResources().getString(R.string.postTxt1),getResources().getString(R.string.share1),R.drawable.char_icon,R.drawable.wisata));
+                getResources().getString(R.string.commentTxt3),getResources().getString(R.string.postTxt1),getResources().getString(R.string.share1),
+                getResources().getString(R.string.time),R.drawable.char_icon,R.drawable.wisata,R.drawable.status_waiting));
         allItems.add(new itemObject_karya(getResources().getString(R.string.nama), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt),
-                getResources().getString(R.string.commentTxt),getResources().getString(R.string.postTxt),getResources().getString(R.string.share2),R.drawable.char_icon,R.drawable.report_banjir));
+                getResources().getString(R.string.commentTxt),getResources().getString(R.string.postTxt),getResources().getString(R.string.share2),
+                getResources().getString(R.string.time2),R.drawable.char_icon,R.drawable.report_banjir,R.drawable.status_proses));
 
         return allItems;
     }
@@ -84,11 +89,10 @@ public class Master_karya extends Fragment {
 
     private void addBanners() {
         List<Banner> banners = new ArrayList<>();
-        banners.add(new DrawableBanner(R.drawable.header_bg));
-        banners.add(new DrawableBanner(R.drawable.header_profile));
-        banners.add(new DrawableBanner(R.drawable.report_banjir));
-        banners.add(new DrawableBanner(R.drawable.report_macet));
-        banners.add(new DrawableBanner(R.drawable.report_pohontumbang));
+        banners.add(new DrawableBanner(R.drawable.karya_1));
+        banners.add(new DrawableBanner(R.drawable.karya_2));
+        banners.add(new DrawableBanner(R.drawable.karya_3));
+        banners.add(new DrawableBanner(R.drawable.karya_4));
 
         banner.setBanners(banners);
     }

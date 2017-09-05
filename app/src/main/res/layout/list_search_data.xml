@@ -16,10 +16,11 @@
         android:background="@drawable/rectangle_white"
         android:padding="10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:contentDescription="@string/ImgDesc"
             android:scaleType="centerCrop"
             android:src="@drawable/massege_icon" />
 

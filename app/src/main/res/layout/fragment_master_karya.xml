@@ -17,7 +17,7 @@
             <ss.com.bannerslider.views.BannerSlider
                 android:id="@+id/banner_karya"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="180dp"
                 app:animateIndicators="true"
                 app:defaultIndicators="round_square"
                 app:interval="5000"

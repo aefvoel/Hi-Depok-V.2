@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.detail_karya;
+import tiregdev.hi_depok.activity.detail_modul;
 import tiregdev.hi_depok.model.itemObject_modul;
 
 /**
@@ -61,7 +64,14 @@ public class adapter_modul extends RecyclerView.Adapter<adapter_modul.holder_mod
             list_viewer = (TextView)itemView.findViewById(R.id.viewer);
             list_kategori = (TextView)itemView.findViewById(R.id.kategori);
             list_cover = (ImageView)itemView.findViewById(R.id.cover);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, detail_modul.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

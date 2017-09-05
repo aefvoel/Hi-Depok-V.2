@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.detail_modul;
+import tiregdev.hi_depok.activity.detail_museum;
 import tiregdev.hi_depok.model.itemObject_museum;
 
 /**
@@ -57,7 +60,14 @@ public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_m
             list_nama = (TextView)itemView.findViewById(R.id.nama);
             list_tahun= (TextView)itemView.findViewById(R.id.tahun);
             list_picMuseum = (ImageView)itemView.findViewById(R.id.picMuseum);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, detail_museum.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

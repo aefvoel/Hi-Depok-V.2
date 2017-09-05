@@ -66,7 +66,16 @@
         <activity
             android:name=".activity.search_list"
             android:label="Cari Data" />
-        <activity android:name=".activity.detail_search"></activity>
+        <activity
+            android:name=".activity.detail_search"
+            android:label="Detail Data" />
+        <activity
+            android:name=".activity.detail_karya"
+            android:label="Detail Karya" />
+        <activity
+            android:name=".activity.detail_modul"
+            android:label="Detail Modul" />
+        <activity android:name=".activity.detail_museum"></activity>
     </application>
 
 </manifest>

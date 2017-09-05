@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.detail_karya;
+import tiregdev.hi_depok.activity.detail_search;
 import tiregdev.hi_depok.model.itemObject_karya;
 
 /**
@@ -45,6 +48,8 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
         holder.list_shareTxt.setText(itemList.get(position).getShareTxt());
         holder.list_Avatar.setImageResource(itemList.get(position).getAvatar());
         holder.list_imagePost.setImageResource(itemList.get(position).getImagePost());
+        holder.list_status.setImageResource(itemList.get(position).getStatus());
+        holder.list_time.setText(itemList.get(position).getTime());
     }
 
     @Override
@@ -53,8 +58,8 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
     }
 
     public class holder_karya extends RecyclerView.ViewHolder {
-        public TextView list_username, list_location, list_likeTxt, list_commentTxt, list_postTxt, list_shareTxt;
-        public ImageView list_Avatar, list_imagePost;
+        public TextView list_username, list_location, list_likeTxt, list_commentTxt, list_postTxt, list_shareTxt, list_time;
+        public ImageView list_Avatar, list_imagePost, list_status;
 
         public holder_karya(View itemView){
             super(itemView);
@@ -67,6 +72,16 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
             list_shareTxt = (TextView)itemView.findViewById(R.id.shareText);
             list_Avatar = (ImageView)itemView.findViewById(R.id.avatar);
             list_imagePost = (ImageView)itemView.findViewById(R.id.imagePost);
+            list_status = (ImageView)itemView.findViewById(R.id.status);
+            list_time = (TextView)itemView.findViewById(R.id.time);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, detail_karya.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
