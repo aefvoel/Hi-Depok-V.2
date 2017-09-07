@@ -79,12 +79,6 @@ public class Master_karya extends Fragment {
     public void setupBanner(){
         banner = (BannerSlider) v.findViewById(R.id.banner_karya);
         addBanners();
-        banner.setOnBannerClickListener(new OnBannerClickListener() {
-            @Override
-            public void onClick(int position) {
-                Toast.makeText(getActivity(), "Banner with position " + String.valueOf(position) + " clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void addBanners() {

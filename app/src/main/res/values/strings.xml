@@ -65,7 +65,7 @@
     <string name="diag">Diagnosa</string>
     <string name="ensiklo">Ensiklopedi</string>
     <string name="volunteer">Volunteer</string>
-    <string name="usaha">Usaha</string>
+    <string name="usaha">Sahabat UKM</string>
     <string name="rsud">RSUD</string>
     <string name="sahabatkos">Sahabat Kos</string>
     <string name="ss">Space Room</string>
@@ -194,6 +194,43 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="peraih">Diraih oleh</string>
     <string name="tglPenobatan">Tanggal Penobatan</string>
+    <string name="descSS">
+        <b>Smart Space</b> atau Space Room merupakan ruang publik yang disediakan oleh pemerintah Kota Depok untuk masyarakat umum,
+         terutama dikalangan anak muda yang bertujuan agar para anak muda dapat berkreasi, mengembangkan ide dan berkarya untuk
+        menciptakan sesuatu yang dapat bermanfaat untuk Kota Depok.
+    </string>
+    <string name="moreInfoSS"><u>Lihat lebih lengkap</u></string>
+    <string name="jadawalKosong"><u>Lihat jadwal kosong</u></string>
+    <string name="formSS">Form Peminjaman Space Room</string>
+
+    <string name="formSS_1">Nama</string>
+    <string name="formSS_2">Nama Instansi/Organisasi</string>
+    <string name="formSS_3">Tanggal Peminjaman</string>
+    <string name="formSS_4">Keperluan</string>
+    <string name="formSS_5">Jumlah Anggota</string>
+
+    <string name="volunteer_judul">Form Pengajuan Volunteer</string>
+    <string name="volunteer_form_desc">
+        <b>Bagi Anda</b> yang menyukai kegiatan sosial, Anda dapat mendaftar menjadi Volunteer dengan aplikasi ini.
+        Aplikasi ini akan menjadi penghubung Anda dengan seluruh <b>Panti Asuhan</b> di Kota Depok, setelah Anda mengajukan diri
+        untuk menjadi Volunteer Anda akan segera di hubungi oleh pihak panti asuhan yang membutuhkan tenaga Volunteer dari Anda.
+    </string>
+    <string name="volunteer_form_1">Jenis Volunteer</string>
+    <string name="volunteer_ex_1">ex. Freelance/Cherish us/Etc</string>
+    <string name="volunteer_form_2">Nama</string>
+    <string name="volunteer_ex_2">ex. Abdul</string>
+    <string name="volunteer_form_3">No. Telepon</string>
+    <string name="volunteer_ex_3">ex. 08778723xxx</string>
+    <string name="volunteer_form_4">Keahlian</string>
+    <string name="volunteer_ex_4">ex. Mengajar Matematika</string>
+    <string name="volunteer_form_5">Status</string>
+    <string name="volunteer_ex_5">ex. Sekolah/Kuliah/Etc</string>
+    <string name="volunteer_form_6">Umur</string>
+    <string name="volunteer_ex_6">ex. 21th</string>
+    <string name="volunteer_form_7">Alasan</string>
+    <string name="volunteer_ex_7">ex. Saya sangat menyukai kegiatan yang bersifat sosial</string>
+
+    <string name="komentar">Tulis komentar...</string>
     <!--DESCRIPTION-->
     <string name="ImgDesc">Hi-Depok Image Description</string>
 

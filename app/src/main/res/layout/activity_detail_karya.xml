@@ -281,6 +281,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/wrap2"
+                    android:layout_marginBottom="60dp"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -308,4 +309,41 @@
         </android.support.v4.widget.NestedScrollView>
 
     </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp">
+
+
+        <fr.arnaudguyon.smartfontslib.FontEditText
+            android:id="@+id/isiKomentar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/rectangle_color_background"
+            android:inputType="textMultiLine"
+            android:layout_weight="5"
+            android:padding="10dp"
+            android:textColor="@color/colorGray"
+            android:hint="@string/komentar"
+            app:font="@string/fontReguler"/>
+
+        <ImageView
+            android:id="@+id/btnKirim"
+            android:contentDescription="@string/ImgDesc"
+            android:padding="10dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center"
+            android:background="@drawable/circle_color_background"
+            android:src="@drawable/send_button" />
+    </LinearLayout>
+
 </FrameLayout>

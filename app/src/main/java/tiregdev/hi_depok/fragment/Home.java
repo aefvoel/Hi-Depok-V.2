@@ -12,6 +12,8 @@ import com.andexert.library.RippleView;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.maps;
+import tiregdev.hi_depok.activity.space_room;
+import tiregdev.hi_depok.activity.volunteer;
 
 /**
  * Created by Muhammad63 on 8/3/2017.
@@ -41,6 +43,24 @@ public class Home extends Fragment {
             @Override
             public void onComplete(RippleView rippleView) {
                 Intent w = new Intent(getActivity(), maps.class);
+                startActivity(w);
+            }
+        });
+
+        final RippleView spaceroom = (RippleView) v.findViewById(R.id.spaceroom);
+        spaceroom.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), space_room.class);
+                startActivity(w);
+            }
+        });
+
+        final RippleView volunteers = (RippleView) v.findViewById(R.id.volunteer);
+        volunteers.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), volunteer.class);
                 startActivity(w);
             }
         });

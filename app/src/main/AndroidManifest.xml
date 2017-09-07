@@ -71,11 +71,21 @@
             android:label="Detail Data" />
         <activity
             android:name=".activity.detail_karya"
+            android:windowSoftInputMode="stateHidden"
             android:label="Detail Karya" />
         <activity
             android:name=".activity.detail_modul"
             android:label="Detail Modul" />
-        <activity android:name=".activity.detail_museum"></activity>
+        <activity android:name=".activity.detail_museum"
+            android:label="Detail Penghargaan"/>
+        <activity android:name=".activity.space_room"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Form Space Room"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
+        <activity android:name=".activity.volunteer"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Form Volunteer"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
     </application>
 
 </manifest>
