@@ -79,6 +79,7 @@ public class News extends Fragment {
 
         RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_news);
         rView.setLayoutManager(lLayout);
+        rView.setNestedScrollingEnabled(false);
 
         adapter_news rcAdapter = new adapter_news(getContext(), rowListItem);
         rView.setAdapter(rcAdapter);

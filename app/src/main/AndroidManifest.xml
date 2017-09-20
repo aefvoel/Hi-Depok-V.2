@@ -71,7 +71,8 @@
             android:label="Detail Data" />
         <activity
             android:name=".activity.detail_karya"
-            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden"
             android:label="Detail Karya" />
         <activity
             android:name=".activity.detail_modul"

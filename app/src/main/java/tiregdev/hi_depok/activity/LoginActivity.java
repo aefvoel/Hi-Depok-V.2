@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
@@ -31,6 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AlertDialogUtil;
@@ -51,7 +53,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
-    private ProgressDialogUtil pDialog;
+//    private ProgressDialogUtil pDialog;
+    AVLoadingIndicatorView pDialog;
+    LinearLayout wrap;
     private AlertDialog alertDialog;
     private static final int REQUEST_GMAIL = 9001;
 
@@ -64,10 +68,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         setAuthInstance();
         setDatabaseInstance();
         setSharedPreferences();
-        setProgressDialog();
+//        setProgressDialog();
+        ballPulseAnimLoader();
+    }
 
-
-
+    public void ballPulseAnimLoader() {
+        wrap = (LinearLayout) findViewById(R.id.wrap);
+        pDialog = (AVLoadingIndicatorView) findViewById(R.id.avi);
     }
 
     private void setDefault(){
@@ -178,9 +185,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
-    private void setProgressDialog() {
-        pDialog = new ProgressDialogUtil(this, ProgressDialog.STYLE_SPINNER, true);
-    }
+//    private void setProgressDialog() {
+//        pDialog = new ProgressDialogUtil(this, ProgressDialog.STYLE_SPINNER, true);
+//    }
+
     private void onLogInUser() {
         String emailUser = emailFrm.getText().toString().trim();
         String passUser = passFrm.getText().toString().trim();
@@ -198,7 +206,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void logIn(String email, String password) {
-        pDialog.show();
+        wrap.setVisibility(View.VISIBLE);
+        pDialog.setVisibility(View.VISIBLE);
         mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -208,7 +217,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             showAlertDialog("Email tidak terdaftar!", true);
                             Log.e("ERROR", task.getException().getMessage());
                         }
-                        pDialog.dismiss();
+                        pDialog.setVisibility(View.INVISIBLE);
+                        wrap.setVisibility(View.INVISIBLE);
                     }
                 }
         );
@@ -236,7 +246,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 }else{
                     goToMainActivity();
                 }
-                pDialog.dismiss();
+                pDialog.setVisibility(View.INVISIBLE);
+                wrap.setVisibility(View.INVISIBLE);
             }
 
             @Override
