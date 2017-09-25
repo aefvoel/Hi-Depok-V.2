@@ -77,9 +77,16 @@ public class News extends Fragment {
         List<itemObject_news> rowListItem = getAllItemList();
         LinearLayoutManager lLayout = new LinearLayoutManager(getContext());
 
-        RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_news);
+        final RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_news);
         rView.setLayoutManager(lLayout);
         rView.setNestedScrollingEnabled(false);
+        rView.setOnFlingListener(new RecyclerView.OnFlingListener() {
+            @Override
+            public boolean onFling(int velocityX, int velocityY) {
+                rView.dispatchNestedFling(velocityX, velocityY, false);
+                return false;
+            }
+        });
 
         adapter_news rcAdapter = new adapter_news(getContext(), rowListItem);
         rView.setAdapter(rcAdapter);

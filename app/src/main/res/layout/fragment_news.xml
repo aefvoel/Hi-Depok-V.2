@@ -153,7 +153,8 @@
                 android:id="@+id/view_news"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
                 android:isScrollContainer="false"/>
 
         </LinearLayout>
