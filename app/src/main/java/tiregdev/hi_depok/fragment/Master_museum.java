@@ -1,9 +1,11 @@
 package tiregdev.hi_depok.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,7 @@ import tiregdev.hi_depok.model.itemObject_museum;
 public class Master_museum extends Fragment{
 
     View v;
+    SwipeRefreshLayout swipeRefreshRecyclerList;
 
     @Nullable
     @Override
@@ -36,7 +39,28 @@ public class Master_museum extends Fragment{
         v = inflater.inflate(R.layout.fragment_master_museum, container, false);
         spinner();
         setupAdapter();
+        swipeRefresh();
         return v;
+    }
+
+    public void swipeRefresh(){
+        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Do your stuff on refresh
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (swipeRefreshRecyclerList.isRefreshing())
+                            swipeRefreshRecyclerList.setRefreshing(false);
+                    }
+                }, 5000);
+
+            }
+        });
     }
 
     public void spinner(){

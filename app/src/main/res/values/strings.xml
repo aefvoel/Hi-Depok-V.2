@@ -229,6 +229,10 @@
     <string name="volunteer_ex_6">ex. 21th</string>
     <string name="volunteer_form_7">Alasan</string>
     <string name="volunteer_ex_7">ex. Saya sangat menyukai kegiatan yang bersifat sosial</string>
+    <string name="posting">Post</string>
+    <string name="ApaKaryamu">Apa karyamu?</string>
+    <string name="ayoSubmit">Ayo submit karya terbaikmu!</string>
+    <string name="discard">Anda yakin ingin meninggalkan halaman ini?</string>
 
     <string name="komentar">Tulis komentar...</string>
     <!--DESCRIPTION-->

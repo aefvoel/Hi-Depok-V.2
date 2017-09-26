@@ -58,14 +58,6 @@
             android:text="@string/time"
             app:font="@string/fontThin" />
 
-
-
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/wrapper"
-        android:background="#d6d5d4" />
 
 </RelativeLayout>

@@ -27,10 +27,10 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.9.2@aar') {
         transitive = true
     }
-    compile 'com.makeramen:roundedimageview:2.3.0'
-    compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.3.0'
     compile 'com.google.android.gms:play-services-auth:10.0.1'
@@ -50,6 +50,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 

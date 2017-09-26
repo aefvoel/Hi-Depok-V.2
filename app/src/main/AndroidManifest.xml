@@ -72,21 +72,28 @@
         <activity
             android:name=".activity.detail_karya"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden"
-            android:label="Detail Karya" />
+            android:label="Detail Karya"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity
             android:name=".activity.detail_modul"
             android:label="Detail Modul" />
-        <activity android:name=".activity.detail_museum"
-            android:label="Detail Penghargaan"/>
-        <activity android:name=".activity.space_room"
+        <activity
+            android:name=".activity.detail_museum"
+            android:label="Detail Penghargaan" />
+        <activity
+            android:name=".activity.space_room"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Form Space Room"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.volunteer"
+        <activity
+            android:name=".activity.volunteer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Form Volunteer"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
+        <activity android:name=".activity.submit_master_karya"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Submit"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden"/>
     </application>
 
 </manifest>

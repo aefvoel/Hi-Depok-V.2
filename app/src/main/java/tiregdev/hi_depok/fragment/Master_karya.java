@@ -1,29 +1,31 @@
 package tiregdev.hi_depok.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.andexert.library.RippleView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ss.com.bannerslider.banners.Banner;
 import ss.com.bannerslider.banners.DrawableBanner;
-import ss.com.bannerslider.banners.RemoteBanner;
-import ss.com.bannerslider.events.OnBannerClickListener;
 import ss.com.bannerslider.views.BannerSlider;
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.maps;
+import tiregdev.hi_depok.activity.submit_master_karya;
 import tiregdev.hi_depok.adapter.adapter_karya;
-import tiregdev.hi_depok.adapter.adapter_news;
 import tiregdev.hi_depok.model.itemObject_karya;
-import tiregdev.hi_depok.model.itemObject_news;
 
 /**
  * Created by TiregDev on 23/08/2017.
@@ -33,6 +35,7 @@ public class Master_karya extends Fragment {
 
     View v;
     BannerSlider banner;
+    SwipeRefreshLayout swipeRefreshRecyclerList;
 
     @Nullable
     @Override
@@ -40,8 +43,40 @@ public class Master_karya extends Fragment {
         v = inflater.inflate(R.layout.fragment_master_karya, container, false);
         setupBanner();
         setupAdapter();
-
+        swipeRefresh();
+        findSubmit();
         return v;
+    }
+
+    public void findSubmit(){
+        final RippleView rippleViews = (RippleView) v.findViewById(R.id.submit);
+        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), submit_master_karya.class);
+                startActivity(w);
+            }
+        });
+    }
+
+    public void swipeRefresh(){
+        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Do your stuff on refresh
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (swipeRefreshRecyclerList.isRefreshing())
+                            swipeRefreshRecyclerList.setRefreshing(false);
+                    }
+                }, 5000);
+
+            }
+        });
     }
 
     public void setupAdapter(){

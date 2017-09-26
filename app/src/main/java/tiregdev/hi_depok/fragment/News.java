@@ -3,9 +3,11 @@ package tiregdev.hi_depok.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.maps;
 import tiregdev.hi_depok.activity.pesan;
-import tiregdev.hi_depok.adapter.adapter_news;
-import tiregdev.hi_depok.model.itemObject_news;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -29,6 +28,7 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
  */
 
 public class News extends Fragment {
+    ViewPager pager;
     View v;
     ImageView ham;
     public static News newInstance(){
@@ -45,7 +45,13 @@ public class News extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_news, null);
-        setUpAdapter();
+        pager = (ViewPager) v.findViewById(R.id.pager);
+
+        TabLayout tabs = (TabLayout) v.findViewById(R.id.tabs);
+        tabs.setupWithViewPager(pager);
+
+        setupViewPager(pager);
+
         setMenuHamburger();
         setPesanLink();
 
@@ -73,34 +79,42 @@ public class News extends Fragment {
         });
     }
 
-    public void setUpAdapter(){
-        List<itemObject_news> rowListItem = getAllItemList();
-        LinearLayoutManager lLayout = new LinearLayoutManager(getContext());
+    private void setupViewPager(ViewPager viewPager) {
 
-        final RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_news);
-        rView.setLayoutManager(lLayout);
-        rView.setNestedScrollingEnabled(false);
-        rView.setOnFlingListener(new RecyclerView.OnFlingListener() {
-            @Override
-            public boolean onFling(int velocityX, int velocityY) {
-                rView.dispatchNestedFling(velocityX, velocityY, false);
-                return false;
-            }
-        });
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        adapter.addFragment(new news_blog(),"BLOG");
+        adapter.addFragment(new news_event(), "EVENT");
+        viewPager.setAdapter(adapter);
 
-        adapter_news rcAdapter = new adapter_news(getContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
     }
 
-    private List<itemObject_news> getAllItemList(){
-        List<itemObject_news> allItems = new ArrayList<>();
-        allItems.add(new itemObject_news(getResources().getString(R.string.news2), getResources().getString(R.string.portal2),getResources().getString(R.string.time1), R.drawable.report_banjir));
-        allItems.add(new itemObject_news(getResources().getString(R.string.news3), getResources().getString(R.string.portal3),getResources().getString(R.string.time1), R.drawable.report_macet));
-        allItems.add(new itemObject_news(getResources().getString(R.string.news4), getResources().getString(R.string.portal1),getResources().getString(R.string.time2), R.drawable.report_pohontumbang));
-        allItems.add(new itemObject_news(getResources().getString(R.string.news5), getResources().getString(R.string.portal2),getResources().getString(R.string.time1), R.drawable.report_banjir));
-        allItems.add(new itemObject_news(getResources().getString(R.string.news2), getResources().getString(R.string.portal3),getResources().getString(R.string.time1), R.drawable.report_macet));
-        allItems.add(new itemObject_news(getResources().getString(R.string.news1), getResources().getString(R.string.portal2),getResources().getString(R.string.time2), R.drawable.wisata));
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        return allItems;
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
+
 }

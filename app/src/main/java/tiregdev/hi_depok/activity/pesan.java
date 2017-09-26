@@ -1,8 +1,12 @@
 package tiregdev.hi_depok.activity;
 
 import android.content.pm.ActivityInfo;
+import android.os.Handler;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +25,8 @@ import static java.security.AccessController.getContext;
 
 public class pesan extends AppCompatActivity {
 
+    SwipeRefreshLayout swipeRefreshRecyclerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +34,27 @@ public class pesan extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setUpAdapter();
         setUpToolbar();
+        swipeRefresh();
+    }
+
+    public void swipeRefresh(){
+        swipeRefreshRecyclerList = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Do your stuff on refresh
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (swipeRefreshRecyclerList.isRefreshing())
+                            swipeRefreshRecyclerList.setRefreshing(false);
+                    }
+                }, 5000);
+
+            }
+        });
     }
 
     public void setUpToolbar(){

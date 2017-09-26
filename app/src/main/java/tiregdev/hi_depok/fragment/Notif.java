@@ -2,8 +2,12 @@ package tiregdev.hi_depok.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,8 +33,10 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
 
 public class Notif extends Fragment {
 
-    private LinearLayoutManager lLayout;
+    RecyclerView rView;
+    LinearLayoutManager lLayout;
     ImageView ham;
+    SwipeRefreshLayout swipeRefreshRecyclerList;
     View v;
 
     public static Notif newInstance(){
@@ -46,27 +52,57 @@ public class Notif extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_notif, null);
-        List<itemObjcect_notif> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(getContext());
+        v = inflater.inflate(R.layout.fragment_notif, container, false);
+        setupAdapter();
+        setHamBtn();
+        setPesanLink();
+        swipeRefresh();
+        return v;
+    }
 
-        RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_notif);
-        rView.setLayoutManager(lLayout);
+    public void swipeRefresh(){
+        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
 
-        adapter_notif rcAdapter = new adapter_notif(getContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
+                // Do your stuff on refresh
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
+                        if (swipeRefreshRecyclerList.isRefreshing())
+                            swipeRefreshRecyclerList.setRefreshing(false);
+                    }
+                }, 5000);
+
+            }
+        });
+    }
+
+    public void setHamBtn(){
         ham = (ImageView) v.findViewById(R.id.menu);
-
         ham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 results.openDrawer();
             }
         });
+    }
 
-        setPesanLink();
-        return v;
+    public void setupAdapter(){
+        List<itemObjcect_notif> rowListItem = getAllItemList();
+        lLayout = new LinearLayoutManager(getContext());
+
+        rView = (RecyclerView)v.findViewById(R.id.view_notif);
+        rView.setLayoutManager(lLayout);
+
+        adapter_notif rcAdapter = new adapter_notif(getContext(), rowListItem);
+        rView.setAdapter(rcAdapter);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), lLayout.getOrientation());
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.line_view));
+        rView.addItemDecoration(dividerItemDecoration);
     }
 
     public void setPesanLink(){
