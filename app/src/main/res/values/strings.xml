@@ -193,6 +193,8 @@
     <string name="penghargaan">Penghargaan</string>
     <string name="deskripsi">Deskripsi</string>
     <string name="peraih">Diraih oleh</string>
+    <string name="tingkatpenghargaan">Tingkat Penghargaan</string>
+    <string name="kategoripenghargaan">Kategori Penghargaan</string>
     <string name="tglPenobatan">Tanggal Penobatan</string>
     <string name="descSS">
         <b>Smart Space</b> atau Space Room merupakan ruang publik yang disediakan oleh pemerintah Kota Depok untuk masyarakat umum,
@@ -201,6 +203,8 @@
     </string>
     <string name="moreInfoSS"><u>Lihat lebih lengkap</u></string>
     <string name="jadawalKosong"><u>Lihat jadwal kosong</u></string>
+    <string name="directme">Direct me here</string>
+    <string name="call">Hubungi Tempat Ini</string>
     <string name="formSS">Form Peminjaman Space Room</string>
 
     <string name="formSS_1">Nama</string>
@@ -233,6 +237,57 @@
     <string name="ApaKaryamu">Apa karyamu?</string>
     <string name="ayoSubmit">Ayo submit karya terbaikmu!</string>
     <string name="discard">Anda yakin ingin meninggalkan halaman ini?</string>
+
+    <string name="ss1">
+        <b>Learning Lounge</b> adalah sebuah fasilitas pusat belajar dengan konsep yang modern bagi anak muda. Learning Lounge didesain sebagai terobosan baru yang menggabungkan konsep
+        rumah belajar/learning center dengan elemen-elemen moderen yang kontekstual bagi kebutuhan anak muda.
+        Learning Lounge dihadirkan sebagai tempat yang nyaman dan terbuka bagi kaum muda untuk berkumpul dan melakukan berbagai kegiatan yang positif. Fasilitas ini dilengkapi sejumlah
+        buku berkualitas dan multimedia lainnya yang dapat dimanfaatkan oleh siapapun seperti penyelenggaraan pelatihan peningkatan ketrampilan oleh berbagai komunitas setempat.
+    </string>
+
+    <string name="ss2">
+        SPACE adalah ruang publik yang dapat dipergunakan oleh masyarakat sebagai:\n
+           - Presentation/seminar Room\n
+           - Teleconference Room\n
+           - Discussion Room\n
+           - Learning Center
+    </string>
+
+    <string name="ss3">
+        - 1 Unit Smart TV 55” Touch Screen\n
+        - 2 Unit PC All in One\n
+        - 1 Set Perangkat Sound System\n
+        - 1 Unit Webcam + Tripod\n
+        - 1 Unit e-Kiosk\n
+        - 5 Socket Listrik\n
+        - Free Wifi\n
+        - AC Sentral\n
+        - CCTV
+    </string>
+
+    <string name="ss4">
+        <b>Pendaftaran</b>\n
+        Setelah mensubmit identitas disertai keterangan waktu dan Tujuan penggunaan akan diverifikasi oleh admin SPACE dan
+        kemudian diberikan bukti pendaftaran melalui email untuk ditunjukkan saat pengambilan kunci ruangan.\n\n
+
+        <b>Pemanfaatan Ruangan</b>\n
+        Ruangan digunakan untuk kelompok atau komunitas dengan jumlah minimal 5 orang dan maksimal 20 orang.
+        Pengguna dipersilahkan memanfaatkan fasilitas yang ada dalam SP@CE secara bertanggung jawab dan memperhatikan tata tertib yang ada.\n\n
+
+        <b>Pendampingan</b>\n
+        Pengguna dapat meminta pendampingan dari admin SP@CE untuk pemanfaatan fasilitas.
+    </string>
+
+    <string name="ss5">
+        - <b>Pengguna wajib</b> terdaftar secara online agar dapat memanfaatkan ruangan\n
+        - <b>Pengguna wajib</b> menunjukkan print out / isi email bukti pendaftaran yang dikirimkan oleh admin\n
+        - <b>Pengguna wajib</b> membuka alas kaki saat memasuki ruangan\n
+        - <b>Pengguna wajib</b> mengisi buku tamu melalui e-kiosk yang ada dalam ruangan\n
+        - <b>Pengguna wajib</b> turut menjaga kebersihan ruangan\n
+        - <b>Pengguna wajib</b> memastikan seluruh perangkat di kembalikan dalam posisi dan kondisi semula saat akan meninggalkan ruangan\n
+        - <b>Pengguna wajib</b> mengembalikan kunci maksimal 30 menit setelah waktu pemakaian ruangan berakhir\n
+        - <b>Pengguna dilarang</b> menggunakan SPACE untuk kegiatan yang melanggar norma kesusilaan.
+    </string>
 
     <string name="komentar">Tulis komentar...</string>
     <!--DESCRIPTION-->

@@ -24,53 +24,13 @@
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:text="@string/search"
+                    android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp"
                     app:font="@string/fontReguler" />
-
-                <com.andexert.library.RippleView
-                    android:id="@+id/iconSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="30dp"
-                    rv_centered="true"
-                    app:rv_centered="true"
-                    app:rv_color="@color/colorRippleGreen"
-                    app:rv_rippleDuration="10">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/ImgDesc"
-                        android:src="@drawable/map" />
-
-                </com.andexert.library.RippleView>
-
-                <com.andexert.library.RippleView
-                    android:id="@+id/seacrh"
-                    rv_centered="true"
-                    android:layout_width="50dp"
-                    android:layout_height="15dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@id/iconSearch"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="10dp"
-                    app:rv_centered="true"
-                    app:rv_color="@color/colorRippleGreen"
-                    app:rv_rippleDuration="10">
-
-                    <fr.arnaudguyon.smartfontslib.FontButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rectangle_green"
-                        android:text="@string/cari"
-                        android:textSize="6sp" />
-
-                </com.andexert.library.RippleView>
 
             </RelativeLayout>
 
@@ -78,6 +38,66 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-50dp"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="2">
+
+                <com.andexert.library.RippleView
+                    android:id="@+id/seacrh"
+                    rv_centered="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    app:rv_centered="true"
+                    app:rv_color="@color/colorRipple"
+                    app:rv_rippleDuration="150">
+
+                    <fr.arnaudguyon.smartfontslib.FontButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_white"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/map"
+                        android:padding="10dp"
+                        android:text="@string/cari"
+                        android:textColor="@color/colorStatusBar"
+                        android:textSize="14sp"
+                        app:font="@string/fontBold" />
+
+                </com.andexert.library.RippleView>
+
+                <com.andexert.library.RippleView
+                    android:id="@+id/volunteer"
+                    rv_centered="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    app:rv_centered="true"
+                    app:rv_color="@color/colorRipple"
+                    app:rv_rippleDuration="150">
+
+                    <fr.arnaudguyon.smartfontslib.FontButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_white"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/volunteer"
+                        android:padding="10dp"
+                        android:text="@string/volunteer"
+                        android:textColor="@color/colorStatusBar"
+                        android:textSize="14sp"
+                        app:font="@string/fontBold" />
+
+                </com.andexert.library.RippleView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
                 android:orientation="horizontal"
                 android:padding="20dp"
                 android:weightSum="2">
@@ -126,66 +146,6 @@
                         android:drawableTop="@drawable/diagnosa"
                         android:padding="10dp"
                         android:text="@string/diag"
-                        android:textColor="@color/colorStatusBar"
-                        android:textSize="14sp"
-                        app:font="@string/fontBold" />
-
-                </com.andexert.library.RippleView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-30dp"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:weightSum="2">
-
-                <com.andexert.library.RippleView
-                    android:id="@+id/volunteer"
-                    rv_centered="true"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:layout_weight="1"
-                    app:rv_centered="true"
-                    app:rv_color="@color/colorRipple"
-                    app:rv_rippleDuration="150">
-
-                    <fr.arnaudguyon.smartfontslib.FontButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle_white"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/volunteer"
-                        android:padding="10dp"
-                        android:text="@string/volunteer"
-                        android:textColor="@color/colorStatusBar"
-                        android:textSize="14sp"
-                        app:font="@string/fontBold" />
-
-                </com.andexert.library.RippleView>
-
-                <com.andexert.library.RippleView
-                    android:id="@+id/usaha"
-                    rv_centered="true"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    app:rv_centered="true"
-                    app:rv_color="@color/colorRipple"
-                    app:rv_rippleDuration="150">
-
-                    <fr.arnaudguyon.smartfontslib.FontButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle_white"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@drawable/usaha"
-                        android:padding="10dp"
-                        android:text="@string/usaha"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
                         app:font="@string/fontBold" />

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
@@ -26,6 +27,11 @@ public class adapter_searchData extends RecyclerView.Adapter<adapter_searchData.
     public adapter_searchData(Context context, List<itemObject_searchData> itemList){
         this.itemList = itemList;
         this.context = context;
+    }
+
+    public void updateList(ArrayList<itemObject_searchData> modelList) {
+        this.itemList = modelList;
+        notifyDataSetChanged();
     }
 
     @Override

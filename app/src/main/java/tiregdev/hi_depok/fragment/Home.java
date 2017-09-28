@@ -38,15 +38,6 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final RippleView rippleViews = (RippleView) v.findViewById(R.id.iconSearch);
-        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
-            @Override
-            public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), maps.class);
-                startActivity(w);
-            }
-        });
-
         final RippleView spaceroom = (RippleView) v.findViewById(R.id.spaceroom);
         spaceroom.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override

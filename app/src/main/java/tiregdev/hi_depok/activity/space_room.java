@@ -2,13 +2,16 @@ package tiregdev.hi_depok.activity;
 
 import android.app.DatePickerDialog;
 import android.content.pm.ActivityInfo;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -26,6 +29,7 @@ import static tiregdev.hi_depok.R.layout.activity_signup;
 
 public class space_room extends AppCompatActivity {
 
+    TextView more, jadwal;
     BannerSlider banner;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Calendar dateAndTime = Calendar.getInstance();
@@ -72,7 +76,28 @@ public class space_room extends AppCompatActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setupBanner();
+        moreInfoSS();
         setTglPinjam();
+    }
+
+    public void moreInfoSS(){
+        more = (TextView) findViewById(R.id.moreInfoSS);
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final LayoutInflater factory = LayoutInflater.from(space_room.this);
+                final View exitDialogView = factory.inflate(R.layout.dialog_spaceroom, null);
+                final AlertDialog exitDialog = new AlertDialog.Builder(space_room.this).create();
+                exitDialog.setView(exitDialogView);
+                exitDialogView.findViewById(R.id.btnClose).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        exitDialog.dismiss();
+                    }
+                });
+                exitDialog.show();
+            }
+        });
     }
 
     @Override
