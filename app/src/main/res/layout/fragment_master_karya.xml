@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_refresh_recycler_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ss.com.bannerslider.views.BannerSlider
-        android:id="@+id/banner_karya"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:animateIndicators="true"
-        app:defaultIndicators="round_square"
-        app:interval="5000"
-        app:loopSlides="true" />
-
-    <com.andexert.library.RippleView
-        android:id="@+id/submit"
-        rv_centered="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:rv_centered="true"
-        app:rv_color="@color/colorRippleGray"
-        app:rv_rippleDuration="150">
-
-        <fr.arnaudguyon.smartfontslib.FontButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:drawableEnd="@drawable/plus"
-            android:gravity="start|center_vertical"
-            android:padding="15dp"
-            android:text="@string/submit"
-            android:textColor="@color/colorGray"
-            app:font="@string/fontBold" />
-
-    </com.andexert.library.RippleView>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_recycler_list"
-        android:layout_marginTop="5dp"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/view_karya"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            android:orientation="vertical">
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+            <ss.com.bannerslider.views.BannerSlider
+                android:id="@+id/banner_karya"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:animateIndicators="true"
+                app:defaultIndicators="round_square"
+                app:interval="5000"
+                app:loopSlides="true" />
 
-</LinearLayout>
+            <com.andexert.library.RippleView
+                android:id="@+id/submit"
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:rv_centered="true"
+                app:rv_color="@color/colorRippleGray"
+                app:rv_rippleDuration="150">
+
+                <fr.arnaudguyon.smartfontslib.FontButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:drawableEnd="@drawable/plus"
+                    android:gravity="start|center_vertical"
+                    android:padding="15dp"
+                    android:text="@string/submit"
+                    android:textColor="@color/colorGray"
+                    app:font="@string/fontBold" />
+
+            </com.andexert.library.RippleView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/view_karya"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

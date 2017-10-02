@@ -226,83 +226,17 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/colorBackground" />
 
-                <!-- ===================================
-                          KALO MAU HAPUS DARI SINI
-                 =================================== -->
-
-                <LinearLayout
-                    android:id="@+id/wrap1"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/view_komentar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/line2"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:layout_below="@id/line2"/>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:contentDescription="@string/ImgDesc"
-                        android:src="@drawable/char_icon"/>
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:font="@string/fontReguler"
-                        android:text="@string/desc"
-                        android:layout_marginStart="5dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/wrap2"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/wrap1"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:contentDescription="@string/ImgDesc"
-                    android:src="@drawable/char_icon"/>
-
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:font="@string/fontReguler"
-                    android:text="@string/desc"
-                    android:layout_marginStart="5dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/wrap3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/wrap2"
-                    android:layout_marginBottom="60dp"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:contentDescription="@string/ImgDesc"
-                        android:src="@drawable/char_icon"/>
-
-                    <fr.arnaudguyon.smartfontslib.FontTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:font="@string/fontReguler"
-                        android:text="@string/desc"
-                        android:layout_marginStart="5dp"/>
-
-                </LinearLayout>
-
-                <!-- ===================================
-                                SAMPE SINI
-                 =================================== -->
+                    android:layout_height="45dp"
+                    android:layout_below="@id/view_komentar"
+                    android:background="@color/colorWhite" />
 
             </RelativeLayout>
 
@@ -315,17 +249,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:layout_marginBottom="5dp"
-        android:padding="10dp">
-
+        android:gravity="bottom"
+        android:orientation="horizontal">
 
         <fr.arnaudguyon.smartfontslib.FontEditText
             android:id="@+id/isiKomentar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginEnd="5dp"
             android:background="@drawable/rectangle_color_background"
             android:inputType="textMultiLine"
             android:layout_weight="5"
@@ -338,8 +269,9 @@
             android:id="@+id/btnKirim"
             android:contentDescription="@string/ImgDesc"
             android:padding="10dp"
-            android:layout_width="45dp"
+            android:layout_width="0dp"
             android:layout_height="45dp"
+            android:layout_weight="0.7"
             android:layout_gravity="center_vertical|center_horizontal"
             android:gravity="center"
             android:background="@drawable/circle_color_background"

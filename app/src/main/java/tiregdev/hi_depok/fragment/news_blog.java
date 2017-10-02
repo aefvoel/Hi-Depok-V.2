@@ -1,8 +1,10 @@
 package tiregdev.hi_depok.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +20,7 @@ import tiregdev.hi_depok.adapter.adapter_news_blog;
 import tiregdev.hi_depok.model.itemObject_news_Blog;
 
 import static android.support.v7.recyclerview.R.attr.layoutManager;
+import static tiregdev.hi_depok.R.id.rview;
 import static tiregdev.hi_depok.R.id.view_news;
 
 /**
@@ -27,6 +30,7 @@ import static tiregdev.hi_depok.R.id.view_news;
 public class news_blog extends android.support.v4.app.Fragment {
 
     RecyclerView rView;
+    SwipeRefreshLayout swipeRefreshRecyclerList;
     View v;
 
     @Nullable
@@ -34,7 +38,28 @@ public class news_blog extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_news_blog, container, false);
         setUpAdapter();
+        swipeRefresh();
         return v;
+    }
+
+    public void swipeRefresh(){
+        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Do your stuff on refresh
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (swipeRefreshRecyclerList.isRefreshing())
+                            swipeRefreshRecyclerList.setRefreshing(false);
+                    }
+                }, 5000);
+
+            }
+        });
     }
 
     public void setUpAdapter(){
@@ -42,15 +67,8 @@ public class news_blog extends android.support.v4.app.Fragment {
         LinearLayoutManager lLayout = new LinearLayoutManager(getActivity());
 
         rView = (RecyclerView)v.findViewById(view_news);
+        rView.setNestedScrollingEnabled(false);
         rView.setLayoutManager(lLayout);
-//        rView.setNestedScrollingEnabled(false);
-//        rView.setOnFlingListener(new RecyclerView.OnFlingListener() {
-//            @Override
-//            public boolean onFling(int velocityX, int velocityY) {
-//                rView.dispatchNestedFling(velocityX, velocityY, false);
-//                return false;
-//            }
-//        });
 
         adapter_news_blog rcAdapter = new adapter_news_blog(getContext(), rowListItem);
         rView.setAdapter(rcAdapter);

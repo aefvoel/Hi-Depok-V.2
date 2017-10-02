@@ -84,6 +84,7 @@ public class Master_karya extends Fragment {
         LinearLayoutManager lLayout = new LinearLayoutManager(getContext());
 
         RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_karya);
+        rView.setNestedScrollingEnabled(false);
         rView.setLayoutManager(lLayout);
 
         adapter_karya rcAdapter = new adapter_karya(getContext(), rowListItem);

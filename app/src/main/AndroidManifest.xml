@@ -20,7 +20,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/logo_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/hi_depok"
         android:supportsRtl="true"
@@ -73,7 +73,7 @@
             android:name=".activity.detail_karya"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Detail Karya"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.detail_modul"
             android:label="Detail Modul" />
@@ -90,10 +90,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Form Volunteer"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.submit_master_karya"
+        <activity
+            android:name=".activity.submit_master_karya"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Submit"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
+        <activity android:name=".activity.detail_news_blog"></activity>
     </application>
 
 </manifest>

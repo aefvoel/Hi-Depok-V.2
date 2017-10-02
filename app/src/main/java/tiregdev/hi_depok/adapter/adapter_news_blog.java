@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.detail_news_blog;
 import tiregdev.hi_depok.model.itemObject_news_Blog;
 
 /**
@@ -59,6 +61,14 @@ public class adapter_news_blog extends RecyclerView.Adapter<adapter_news_blog.ho
             list_portal = (TextView)itemView.findViewById(R.id.source);
             list_time = (TextView)itemView.findViewById(R.id.time);
             list_picTitle = (ImageView)itemView.findViewById(R.id.imageTitle);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent i = new Intent(context, detail_news_blog.class);
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

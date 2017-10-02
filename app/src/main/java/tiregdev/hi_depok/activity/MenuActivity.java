@@ -1,6 +1,8 @@
 package tiregdev.hi_depok.activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -19,9 +21,11 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Badgeable;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
@@ -84,10 +88,9 @@ public class MenuActivity extends AppCompatActivity {
                         break;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                if(bottomBar.getCurrentTabPosition() > abc){
-                    transaction.setCustomAnimations(R.anim.slide_from_left,R.anim.slide_to_right);
-                }
-                else if(bottomBar.getCurrentTabPosition() < abc) {
+                if (bottomBar.getCurrentTabPosition() > abc) {
+                    transaction.setCustomAnimations(R.anim.slide_from_left, R.anim.slide_to_right);
+                } else if (bottomBar.getCurrentTabPosition() < abc) {
                     transaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left);
                 }
                 transaction.replace(R.id.frameLayout, selectedFragment);
@@ -126,14 +129,14 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        BottomBar bottomBar = (BottomBar)findViewById(R.id.bottomBar);
+        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         int selectedItemId = bottomBar.getCurrentTabId();
         if (results != null && results.isDrawerOpen()) {
             results.closeDrawer();
         } else {
-            if (R.id.tab_home != selectedItemId){
-                bottomBar.selectTabAtPosition(2,true);
-            } else if (backPressedToExitOnce){
+            if (R.id.tab_home != selectedItemId) {
+                bottomBar.selectTabAtPosition(2, true);
+            } else if (backPressedToExitOnce) {
                 finishAffinity();
             } else {
                 this.backPressedToExitOnce = true;
@@ -178,10 +181,10 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-
     private void drawer() {
         // Create a few sample profile
-        final IProfile profile = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.drawable.char_icon);
+        final IProfile profile = new ProfileDrawerItem().withName(getResources().getString(R.string.nama)).
+                withEmail(getResources().getString(R.string.emailJAR)).withIcon(R.drawable.char_icon);
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
@@ -202,16 +205,54 @@ public class MenuActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withAccountHeader(headerResult)
                 .withDisplayBelowStatusBar(true)
+                .withSelectedItem(-1)
                 .addDrawerItems(
                         new PrimaryDrawerItem()
-                                .withName("Ok")
-                                .withSetSelected(false),
-                        new SecondaryDrawerItem()
-                                .withName("Hai")
-                                .withSelectable(false)
-                                .withDescription("Halo")
-                                .withEnabled(false),
-                        new DividerDrawerItem()
+                                .withName(getResources().getString(R.string.app_name_bold))
+                                .withDescription("Aplikasi untuk informasi publik")
+                                .withEnabled(false)
+                                .withDisabledTextColor(Color.parseColor("#50aacd")),
+                        new SectionDrawerItem().withName("Other Apps"),
+                            new SecondaryDrawerItem()
+                                    .withName("Web Version")
+                                    .withDescription("Hi-Depok dalam versi website")
+                                    .withIcon(R.drawable.world)
+                                    .withLevel(2)
+                                    .withIdentifier(1),
+                            new SecondaryDrawerItem()
+                                    .withName("Depok Single Window")
+                                    .withDescription("Aplikasi pelayanan publik")
+                                    .withIcon(R.drawable.ic_shop_two_grey_600_24dp)
+                                    .withLevel(2)
+                                    .withIdentifier(2),
+                            new SecondaryDrawerItem()
+                                    .withName("SIGAP DEPOK")
+                                    .withDescription("Aplikasi pengaduan publik")
+                                    .withIcon(R.drawable.ic_shop_two_grey_600_24dp)
+                                    .withLevel(2)
+                                    .withIdentifier(3),
+                            new SecondaryDrawerItem()
+                                    .withName("e-PBB")
+                                    .withDescription("Aplikasi pelayanan dan konsultasi pajak")
+                                    .withIcon(R.drawable.ic_shop_two_grey_600_24dp)
+                                    .withLevel(2)
+                                    .withIdentifier(4),
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem()
+                                .withName("FAQ")
+                                .withDescription("Frequently Asked Question")
+                                .withIcon(R.drawable.ic_help_grey_600_24dp)
+                                .withIdentifier(5),
+                        new PrimaryDrawerItem()
+                                .withName("About")
+                                .withDescription("Tentang aplikasi")
+                                .withIcon(R.drawable.ic_info_grey_600_24dp)
+                                .withIdentifier(6),
+                        new PrimaryDrawerItem()
+                                .withName("Logout")
+                                .withDescription("Keluar akun")
+                                .withIcon(R.drawable.ic_exit_to_app_grey_600_24dp)
+                                .withIdentifier(7)
                 )
                 .withOnDrawerListener(new Drawer.OnDrawerListener() {
                     @Override
@@ -232,46 +273,33 @@ public class MenuActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        //check if the drawerItem is set.
-                        //there are different reasons for the drawerItem to be null
-                        //--> click on the header
-                        //--> click on the footer
-                        //those items don't contain a drawerItem
-
                         if (drawerItem != null) {
-                            if (drawerItem instanceof Nameable) {
-                                Toast.makeText(MenuActivity.this, ((Nameable) drawerItem).getName().getText(MenuActivity.this), Toast.LENGTH_SHORT).show();
-                            }
-
-                            if (drawerItem instanceof Badgeable) {
-                                Badgeable badgeable = (Badgeable) drawerItem;
-                                if (badgeable.getBadge() != null) {
-                                    //note don't do this if your badge contains a "+"
-                                    //only use toString() if you set the test as String
-                                    int badge = Integer.valueOf(badgeable.getBadge().toString());
-                                    if (badge > 0) {
-                                        badgeable.withBadge(String.valueOf(badge - 1));
-                                        results.updateItem(drawerItem);
-                                    }
-                                }
+//                            if (drawerItem instanceof Nameable) {
+//                                Toast.makeText(MenuActivity.this, ((Nameable) drawerItem).getName().getText(MenuActivity.this), Toast.LENGTH_SHORT).show();
+//                            }
+                            Intent intent = null;
+                            if (drawerItem.getIdentifier() == 1){
+                                Toast.makeText(MenuActivity.this, "bisa", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 2){
+                                Toast.makeText(MenuActivity.this, "ini bisa", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 3){
+                                Toast.makeText(MenuActivity.this, "bisa juga", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 4){
+                                Toast.makeText(MenuActivity.this, "bisa banget", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 5){
+                                Toast.makeText(MenuActivity.this, "bisa terus", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 6){
+                                Toast.makeText(MenuActivity.this, "bisa bisa", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 7){
+                                Toast.makeText(MenuActivity.this, "ini juga bisa", Toast.LENGTH_SHORT).show();
                             }
                         }
 
-                        return false;
-                    }
-                })
-                .withOnDrawerItemLongClickListener(new Drawer.OnDrawerItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem instanceof SecondaryDrawerItem) {
-                            Toast.makeText(MenuActivity.this, ((SecondaryDrawerItem) drawerItem).getName().getText(MenuActivity.this), Toast.LENGTH_SHORT).show();
-                        }
                         return false;
                     }
                 })
                 .withDrawerGravity(Gravity.END)
                 .build();
-
     }
 
 }
