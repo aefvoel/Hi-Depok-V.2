@@ -95,7 +95,14 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Submit"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.detail_news_blog"></activity>
+        <activity android:name=".activity.detail_news_blog" />
+        <activity
+            android:name=".activity.sahabat_kos"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Sahabat Kos"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
+        <activity android:name=".activity.detail_kos" />
+        <activity android:name=".activity.ntpd"></activity>
     </application>
 
 </manifest>

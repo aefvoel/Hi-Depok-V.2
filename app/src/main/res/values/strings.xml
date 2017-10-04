@@ -107,6 +107,7 @@
     <string name="time1">20m ago</string>
     <string name="time2">6h ago</string>
     <string name="titik">"\u2022"</string>
+    <string name="namaKos">Ketik nama kos ...</string>
 
     <string name="menu">Mode List</string>
     <string name="submit">Submit</string>
@@ -181,6 +182,22 @@
     <string name="kategori4">Teknologi</string>
     <string name="tingkat">Nasional</string>
 
+    <string name="fasilitas">Fasilitas</string>
+    <string name="fasilitas1">
+        1. AC\n
+        2. TV\n
+        3. Kamar mandi dalam\n
+        4. Meja Belajar\n
+        5. Tempat Tidur
+    </string>
+    <string name="kos1">Pondok Putri</string>
+    <string name="kos2">Pondok Putra</string>
+    <string name="kos3">Pondok Remaja</string>
+
+    <string name="harga">Harga</string>
+    <string name="harga1">IDR 600.000 /Bulan</string>
+    <string name="harga2">IDR 350.000 /Bulan</string>
+
     <string name="jarak">1024 meter dari sini</string>
     <string name="jarak2"> >>> </string>
     <string name="tempat1">Masjid Nurul Huda</string>
@@ -253,6 +270,8 @@
            - Discussion Room\n
            - Learning Center
     </string>
+
+    <string name="kontak">Kontak</string>
 
     <string name="ss3">
         - 1 Unit Smart TV 55” Touch Screen\n

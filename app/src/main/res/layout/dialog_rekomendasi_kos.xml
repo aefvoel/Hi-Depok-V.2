@@ -1,0 +1,110 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:text="Tentukan Prioritas"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/primary"
+        android:textSize="16sp"
+        android:text="Prioritas 1"/>
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/p1"
+        app:ms_background_color="@color/colorBackground"
+        app:ms_text_color="@color/colorBlack"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/primary"
+        android:textSize="16sp"
+        android:text="Prioritas 2"/>
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/p2"
+        app:ms_background_color="@color/colorBackground"
+        app:ms_text_color="@color/colorBlack"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/primary"
+        android:textSize="16sp"
+        android:text="Prioritas 3"/>
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/p3"
+        app:ms_background_color="@color/colorBackground"
+        app:ms_text_color="@color/colorBlack"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/colorRed"
+        android:text="*Urutan tiap prioritas tidak boleh sama"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rectangle_gray_full"
+            android:layout_marginEnd="10dp"
+            android:text="@string/close"/>
+
+        <Button
+            android:id="@+id/prosess"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rectangle_green"
+            android:text="prosess"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
