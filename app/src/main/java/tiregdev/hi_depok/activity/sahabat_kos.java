@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,9 +38,7 @@ public class sahabat_kos extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefreshRecyclerList;
     com.github.clans.fab.FloatingActionButton dss, price;
-    LayoutInflater rekomen, filter;
-    View extDialog;
-    AlertDialog alertDialog;
+    View layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,116 +53,118 @@ public class sahabat_kos extends AppCompatActivity {
 //        spinnerDSS();
     }
 
-    public void spinnerDSS(){
-        String dss[] = {"Harga",
-                "Jarak",
-                "Fasilitas"};
-        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.p1);
-        spinner.setItems(dss);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
-
-        String dss2[] = {"Jarak",
-                "Harga",
-                "Fasilitas"};
-        MaterialSpinner spinner2 = (MaterialSpinner) findViewById(R.id.p2);
-        spinner2.setItems(dss2);
-        spinner2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
-
-        String dss3[] = {"Fasilitas",
-                "Jarak",
-                "Harga"};
-        MaterialSpinner spinner3 = (MaterialSpinner) findViewById(R.id.p3);
-        spinner3.setItems(dss3);
-        spinner3.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void spinnerFilter(){
-        String gender[] = {"Semua",
-                "Campuran",
-                "Putra",
-                "Putri"};
-        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.gender_spinner);
-        spinner.setItems(gender);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
-
-        String minHarga[] = {"100.000",
-                "200.000",
-                "300.000",
-                "400.000",
-                "500.000",
-                "600.000",
-                "700.000",
-                "800.000",
-                "900.000",
-                "1.000.000",
-                "1.100.000",
-                "1.200.000",
-                "1.300.000",
-                "1.400.000",
-                "1.500.000",
-                "1.600.000",
-                "1.700.000",
-                "1.800.000",
-                "1.900.000",
-                "2.000.000"};
-        MaterialSpinner spinner2 = (MaterialSpinner) findViewById(R.id.minHarga_spinner);
-        spinner2.setItems(minHarga);
-        spinner2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
-
-        String maxHarga[] = {"100.000",
-                "200.000",
-                "300.000",
-                "400.000",
-                "500.000",
-                "600.000",
-                "700.000",
-                "800.000",
-                "900.000",
-                "1.000.000",
-                "1.100.000",
-                "1.200.000",
-                "1.300.000",
-                "1.400.000",
-                "1.500.000",
-                "1.600.000",
-                "1.700.000",
-                "1.800.000",
-                "1.900.000",
-                "2.000.000"};
-        MaterialSpinner spinner3 = (MaterialSpinner) findViewById(R.id.maxHarga_spinner);
-        spinner3.setItems(maxHarga);
-        spinner3.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    public void spinnerDSS(){
+//        layout = getLayoutInflater().inflate(R.layout.dialog_rekomendasi_kos, (ViewGroup) findViewById(R.id.popup_filter));
+//
+//        String dss[] = {"Harga",
+//                "Jarak",
+//                "Fasilitas"};
+//        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.p1);
+//        spinner.setItems(dss);
+//        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        String dss2[] = {"Jarak",
+//                "Harga",
+//                "Fasilitas"};
+//        MaterialSpinner spinner2 = (MaterialSpinner) findViewById(R.id.p2);
+//        spinner2.setItems(dss2);
+//        spinner2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        String dss3[] = {"Fasilitas",
+//                "Jarak",
+//                "Harga"};
+//        MaterialSpinner spinner3 = (MaterialSpinner) findViewById(R.id.p3);
+//        spinner3.setItems(dss3);
+//        spinner3.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+//
+//    public void spinnerFilter(){
+//        String gender[] = {"Semua",
+//                "Campuran",
+//                "Putra",
+//                "Putri"};
+//        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.gender_spinner);
+//        spinner.setItems(gender);
+//        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        String minHarga[] = {"100.000",
+//                "200.000",
+//                "300.000",
+//                "400.000",
+//                "500.000",
+//                "600.000",
+//                "700.000",
+//                "800.000",
+//                "900.000",
+//                "1.000.000",
+//                "1.100.000",
+//                "1.200.000",
+//                "1.300.000",
+//                "1.400.000",
+//                "1.500.000",
+//                "1.600.000",
+//                "1.700.000",
+//                "1.800.000",
+//                "1.900.000",
+//                "2.000.000"};
+//        MaterialSpinner spinner2 = (MaterialSpinner) findViewById(R.id.minHarga_spinner);
+//        spinner2.setItems(minHarga);
+//        spinner2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        String maxHarga[] = {"100.000",
+//                "200.000",
+//                "300.000",
+//                "400.000",
+//                "500.000",
+//                "600.000",
+//                "700.000",
+//                "800.000",
+//                "900.000",
+//                "1.000.000",
+//                "1.100.000",
+//                "1.200.000",
+//                "1.300.000",
+//                "1.400.000",
+//                "1.500.000",
+//                "1.600.000",
+//                "1.700.000",
+//                "1.800.000",
+//                "1.900.000",
+//                "2.000.000"};
+//        MaterialSpinner spinner3 = (MaterialSpinner) findViewById(R.id.maxHarga_spinner);
+//        spinner3.setItems(maxHarga);
+//        spinner3.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     public void floatingButton(){
         dss = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.dss);
@@ -172,36 +173,36 @@ public class sahabat_kos extends AppCompatActivity {
         dss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                final LayoutInflater factory = LayoutInflater.from(sahabat_kos.this);
-//                final View exitDialogView = factory.inflate(R.layout.dialog_rekomendasi_kos, null);
-//                final AlertDialog exitDialog = new AlertDialog.Builder(sahabat_kos.this).create();
-//                exitDialog.setView(exitDialogView);
-//                exitDialogView.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        exitDialog.dismiss();
-//                    }
-//                });
-//                exitDialog.show();
-                Toast.makeText(sahabat_kos.this, "Sukses", Toast.LENGTH_SHORT).show();
+                final LayoutInflater factory = LayoutInflater.from(sahabat_kos.this);
+                final View exitDialogView = factory.inflate(R.layout.dialog_rekomendasi_kos, null);
+                final AlertDialog exitDialog = new AlertDialog.Builder(sahabat_kos.this).create();
+                exitDialog.setView(exitDialogView);
+                exitDialogView.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        exitDialog.dismiss();
+                    }
+                });
+                exitDialog.show();
+//                Toast.makeText(sahabat_kos.this, "Sukses", Toast.LENGTH_SHORT).show();
             }
         });
 
         price.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                filter = LayoutInflater.from(sahabat_kos.this);
-//                extDialog = filter.inflate(R.layout.dialog_filter_kos, null);
-//                alertDialog = new AlertDialog.Builder(sahabat_kos.this).create();
-//                alertDialog.setView(extDialog);
-//                extDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        alertDialog.dismiss();
-//                    }
-//                });
-//                alertDialog.show();
-                Toast.makeText(sahabat_kos.this, "Bisa", Toast.LENGTH_SHORT).show();
+                final LayoutInflater factory = LayoutInflater.from(sahabat_kos.this);
+                final View exitDialogView = factory.inflate(R.layout.dialog_filter_kos, null);
+                final AlertDialog exitDialog = new AlertDialog.Builder(sahabat_kos.this).create();
+                exitDialog.setView(exitDialogView);
+                exitDialogView.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        exitDialog.dismiss();
+                    }
+                });
+                exitDialog.show();
+//                Toast.makeText(sahabat_kos.this, "Bisa", Toast.LENGTH_SHORT).show();
             }
         });
     }

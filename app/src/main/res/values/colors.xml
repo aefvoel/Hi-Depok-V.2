@@ -16,6 +16,7 @@
     <color name="colorRippleGray">#E4E4E4</color>
     <color name="colorBackground">#fafafa</color>
     <color name="colorOrange">#FFC383</color>
+    <color name="colorGreen">#27ae60</color>
     <color name="transperent">#00000000</color>
 
     <array name="array_dot_active">

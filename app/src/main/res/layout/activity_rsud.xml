@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="tiregdev.hi_depok.activity.rsud">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rsud_desc"
+                app:font="@string/fontReguler" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray"
+                android:layout_gravity="center"
+                android:alpha="0.5"
+                android:layout_marginTop="20dp"/>
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/regis_baru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:font="@string/fontReguler"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/primary"
+                android:text="@string/regis_1"/>
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/regis_lama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:font="@string/fontReguler"
+                android:textColor="@color/primary"
+                android:text="@string/regis_2"/>
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/regis_berobat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:font="@string/fontReguler"
+                android:textColor="@color/primary"
+                android:text="@string/regis_3"/>
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/ketentuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:font="@string/fontReguler"
+                android:textColor="@color/primary"
+                android:text="@string/ketentuan"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

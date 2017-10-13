@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
+    app:theme="@style/dialog"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
@@ -15,15 +16,24 @@
         android:layout_marginBottom="8dp"
         android:text="Tipe Kost (Gender)"/>
 
-    <com.jaredrummler.materialspinner.MaterialSpinner
-        app:ms_background_color="@color/colorBackground"
-        app:ms_text_color="@color/colorBlack"
-        android:id="@+id/gender_spinner"
+    <!--<com.jaredrummler.materialspinner.MaterialSpinner-->
+        <!--app:ms_background_color="@color/colorBackground"-->
+        <!--app:ms_text_color="@color/colorBlack"-->
+        <!--android:id="@+id/gender_spinner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:layout_marginBottom="8dp" />-->
+
+    <Spinner
+        android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_marginBottom="8dp" />
-
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_shape"
+        android:spinnerMode="dropdown"
+        android:entries="@array/gender"
+        android:padding="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,6 +41,7 @@
         android:textSize="17sp"
         android:textColor="@color/colorBlack"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="10dp"
         android:text="Range Harga"/>
 
     <LinearLayout
@@ -39,33 +50,33 @@
         android:layout_marginBottom="8dp"
         android:orientation="horizontal">
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            app:ms_background_color="@color/colorBackground"
-            app:ms_text_color="@color/colorBlack"
-            android:id="@+id/minHarga_spinner"
+        <Spinner
+            android:id="@+id/minHarga"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_shape"
             android:layout_marginEnd="8dp"
+            android:spinnerMode="dropdown"
+            android:entries="@array/harga"
             android:padding="5dp" />
 
         <View
             android:layout_width="25dp"
             android:layout_height="1dp"
             android:layout_gravity="center"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/colorWhite" />
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            app:ms_background_color="@color/colorBackground"
-            app:ms_text_color="@color/colorBlack"
-            android:id="@+id/maxHarga_spinner"
+        <Spinner
+            android:id="@+id/maxHarga"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_shape"
             android:layout_marginStart="8dp"
-            android:padding="5dp"/>
+            android:spinnerMode="dropdown"
+            android:entries="@array/harga"
+            android:padding="5dp" />
 
     </LinearLayout>
 
@@ -74,6 +85,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="17sp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
         android:text="@string/fasilitas"/>
 

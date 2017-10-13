@@ -16,4 +16,6 @@
         <item name="android:textColorPrimaryInverse">@color/colorPrimary</item>
     </style>
 
+    <style name="dialog" parent="Theme.AppCompat.Light.NoActionBar" />
+
 </resources>

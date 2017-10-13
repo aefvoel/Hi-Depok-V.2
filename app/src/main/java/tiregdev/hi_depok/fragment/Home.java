@@ -12,9 +12,11 @@ import com.andexert.library.RippleView;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.maps;
+import tiregdev.hi_depok.activity.rsud;
 import tiregdev.hi_depok.activity.sahabat_kos;
 import tiregdev.hi_depok.activity.space_room;
 import tiregdev.hi_depok.activity.volunteer;
+import tiregdev.hi_depok.activity.ntpd;
 
 /**
  * Created by Muhammad63 on 8/3/2017.
@@ -71,6 +73,24 @@ public class Home extends Fragment {
             @Override
             public void onComplete(RippleView rippleView) {
                 Intent w = new Intent(getActivity(), sahabat_kos.class);
+                startActivity(w);
+            }
+        });
+
+        final RippleView ntpd = (RippleView) v.findViewById(R.id.panicbtn);
+        ntpd.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), ntpd.class);
+                startActivity(w);
+            }
+        });
+
+        final RippleView rs = (RippleView) v.findViewById(R.id.rsud);
+        rs.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), rsud.class);
                 startActivity(w);
             }
         });

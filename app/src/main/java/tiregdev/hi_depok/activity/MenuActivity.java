@@ -274,10 +274,6 @@ public class MenuActivity extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem != null) {
-//                            if (drawerItem instanceof Nameable) {
-//                                Toast.makeText(MenuActivity.this, ((Nameable) drawerItem).getName().getText(MenuActivity.this), Toast.LENGTH_SHORT).show();
-//                            }
-                            Intent intent = null;
                             if (drawerItem.getIdentifier() == 1){
                                 Toast.makeText(MenuActivity.this, "bisa", Toast.LENGTH_SHORT).show();
                             } else if (drawerItem.getIdentifier() == 2){
@@ -287,9 +283,11 @@ public class MenuActivity extends AppCompatActivity {
                             } else if (drawerItem.getIdentifier() == 4){
                                 Toast.makeText(MenuActivity.this, "bisa banget", Toast.LENGTH_SHORT).show();
                             } else if (drawerItem.getIdentifier() == 5){
-                                Toast.makeText(MenuActivity.this, "bisa terus", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(MenuActivity.this, faq.class);
+                                startActivity(i);
                             } else if (drawerItem.getIdentifier() == 6){
-                                Toast.makeText(MenuActivity.this, "bisa bisa", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(MenuActivity.this, about.class);
+                                startActivity(i);
                             } else if (drawerItem.getIdentifier() == 7){
                                 Toast.makeText(MenuActivity.this, "ini juga bisa", Toast.LENGTH_SHORT).show();
                             }

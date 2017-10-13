@@ -102,7 +102,17 @@
             android:label="Sahabat Kos"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity android:name=".activity.detail_kos" />
-        <activity android:name=".activity.ntpd"></activity>
+        <activity
+            android:name=".activity.ntpd"
+            android:label="NTPD" />
+        <activity android:name=".activity.about" />
+        <activity android:name=".activity.faq"
+            android:label="FAQ" />
+        <activity
+            android:name=".activity.change_avatar"
+            android:label="Change Avatar" />
+        <activity android:name=".activity.rsud"
+            android:label="Registrasi RSUD Depok"/>
     </application>
 
 </manifest>

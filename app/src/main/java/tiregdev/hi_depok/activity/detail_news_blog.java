@@ -135,5 +135,13 @@ public class detail_news_blog extends AppCompatActivity {
 
         link = (TextView) findViewById(R.id.link);
         link.setText(url);
+
+        ImageView refresh = (ImageView) findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.reload();
+            }
+        });
     }
 }

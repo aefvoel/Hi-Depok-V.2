@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:theme="@style/dialog">
+
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:id="@+id/kirim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send"
+        app:font="@string/fontBold"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorGreen"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrasi Pasien Berobat"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:font="@string/fontBold" />
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:hint="@string/pasien_berobat"
+                android:textSize="16sp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                app:font="@string/fontReguler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilih Poli dan Dokter"
+                android:layout_marginTop="10dp"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/p1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_shape"
+                android:spinnerMode="dropdown"
+                android:entries="@array/poli"
+                android:padding="5dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

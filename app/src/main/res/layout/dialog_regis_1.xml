@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:id="@+id/kirim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send"
+        app:font="@string/fontBold"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorGreen"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrasi Pasien Baru"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:font="@string/fontBold" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="@string/formSS_1"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/nik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="@string/nik"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Jenis Kelamin"
+                android:textSize="16sp"
+                app:font="@string/fontReguler" />
+
+            <RadioGroup
+                android:id="@+id/jk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:weightSum="2">
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/jk_l"
+                    android:textColor="@color/colorGray" />
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/jk_p"
+                    android:textColor="@color/colorGray" />
+
+            </RadioGroup>
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/tglLahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="@string/TglLahir"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                android:textSize="16sp"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="@string/almt"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

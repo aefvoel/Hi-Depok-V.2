@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.activity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -59,6 +61,15 @@ public class edit_profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 settingTanggal();
+            }
+        });
+
+        ImageView avatar = (ImageView) findViewById(R.id.edit);
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(edit_profile.this, change_avatar.class);
+                startActivity(i);
             }
         });
     }

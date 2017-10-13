@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tiregdev.hi_depok.activity.faq">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton1"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no1"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab1"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton2"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no2"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab2"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton3"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no3"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab3"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton4"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no4"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab4"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton5"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no5"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab5"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton6"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no6"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab6"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton7"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton7"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no7"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab7"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton9"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton9"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no9"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab9"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/expandableButton10"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:gravity="start|center_vertical"
+                android:onClick="expandableButton10"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/faq_no10"
+                android:textAllCaps="false"
+                android:textColor="#066da1"
+                app:font="@string/fontReguler" />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical">
+
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/faq_jawab10"
+                    app:font="@string/fontReguler" />
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -182,6 +182,39 @@
     <string name="kategori4">Teknologi</string>
     <string name="tingkat">Nasional</string>
 
+    <string-array name="gender">
+        <item>Semua</item>
+        <item>Campuran</item>
+        <item>Putra</item>
+        <item>Putri</item>
+    </string-array>
+    <string-array name="atributdss">
+        <item>Harga</item>
+        <item>Jarak</item>
+        <item>Fasilitas</item>
+    </string-array>
+    <string-array name="harga">
+        <item>100.000</item>
+        <item>200.000</item>
+        <item>300.000</item>
+        <item>400.000</item>
+        <item>500.000</item>
+        <item>600.000</item>
+        <item>700.000</item>
+        <item>800.000</item>
+        <item>900.000</item>
+        <item>1.000.000</item>
+        <item>1.100.000</item>
+        <item>1.200.000</item>
+        <item>1.300.000</item>
+        <item>1.400.000</item>
+        <item>1.500.000</item>
+        <item>1.600.000</item>
+        <item>1.700.000</item>
+        <item>1.800.000</item>
+        <item>1.900.000</item>
+        <item>2.000.000</item>
+    </string-array>
     <string name="fasilitas">Fasilitas</string>
     <string name="fasilitas1">
         1. AC\n
@@ -255,6 +288,82 @@
     <string name="ApaKaryamu">Apa karyamu?</string>
     <string name="ayoSubmit">Ayo submit karya terbaikmu!</string>
     <string name="discard">Anda yakin ingin meninggalkan halaman ini?</string>
+
+    <string name="rsud_desc">
+        Saat ini layanan pendaftaran <b>RSUD Kota Depok</b> sudah menggunakan teknologi <b>SMS GATEWAY</b>, aplikasi ini menjembatani hal tersebut
+        Anda dapat mendaftar dengan cara menginputkan form yang tersedia kemudian aplikasi ini akan mengirimkannya ke layanan SMS GATEWAY
+        RSUD Depok dan <b>pastikan pulsa Anda tersedia</b>.
+    </string>
+
+    <string name="regis_1"><u>1. Registrasi Pasien Baru</u></string>
+    <string name="regis_2"><u>2. Registrasi Pasien Lama</u></string>
+    <string name="regis_3"><u>3. Registrasi Berobat</u></string>
+    <string name="ketentuan"><u>4. Ketentuan</u></string>
+    <string name="nik">NIK</string>
+    <string name="jk_l">Laki-laki</string>
+    <string name="jk_p">Perempuan</string>
+    <string name="pasien_berobat">
+        Silahkan Pilih Poli dan Nama dokter yang tersedia, name dokter akan menyesuaikan dengan Poli yang anda pilih.
+    </string>
+    <string-array name="poli">
+        <item> Penyakit Dalam - Dr. Kahar</item>
+        <item>Poli Penyakit Dalam - Dr. Desi</item>
+        <item>Poli Anak - Dr. Dipari</item>
+        <item>Poli Anak - Dr. Harry</item>
+        <item>Poli Anak - Dr. Indra</item>
+        <item>Poli Anak - Dr. Siswanto</item>
+        <item>Poli Psikiatri - Dr. Diana</item>
+        <item>Poli Saraf/Neurologi - Dr. Agus</item>
+        <item>Poli Mata - Dr. Lieska</item>
+        <item>Poli Paru - Dr. Sherly</item>
+        <item>Poli Anestesi - Dr. Amelia</item>
+        <item>Poli Bedah - Dr. Abu</item>
+        <item>Poli Bedah - Dr. Henru</item>
+        <item>Poli Kebidanan dan Kandungan - Dr. Bagus</item>
+        <item>Poli Kebidanan dan Kandungan - Dr. Patma</item>
+        <item>Poli THT - Dr. Caroline</item>
+        <item>Poli Gigi dan Bedah Mulu - Dr. Sigit</item>
+        <item>Poli Gigi dan Bedah Mulu - Dr. Darma</item>
+        <item>Poli CST - Dr. Kurnia</item>
+        <item>Poli VCT - Dr. Kurnia</item>
+    </string-array>
+
+    <string name="ketentuan1">Registrasi dapat dilakukan setiap saat dan hanya satu kali (satu No.HP berlaku untuk 1 pasien) </string>
+    <string name="ketentuan2">Setelah pasien melakukan registrasi akan mendapatkan SMS balasan konfirmasi, jika belum mendapat SMS balasan mohon cek kembali format pengetikan SMS  </string>
+    <string name="ketentuan3">Pendaftaran poli rawat jalan dilakukan pukul 03.00 s/d 06.00 pada hari pasien akan berobat    </string>
+    <string name="ketentuan4">Pasien yang belum memiliki KTP, dapat mengetik 123 pada kode NIK  </string>
+    <string name="ketentuan5">Kolom tanggal lahir diisi: tanggal 2 digit/ bulan 2 digit/ tahun 4 digit      </string>
+    <string name="ketentuan6">No. RM adalah nomor yang tertera pada kartu berobat yang terdiri dari 6 digit, bila pasien tidak mengetahui nomor rekam medis maka No.RM diisi 0 </string>
+    <string name="ketentuan7">Pasien daftar ulang kembali di loket pendaftaran RSUD Kota Depok pada waktu yang telah ditetapkan dalam balasan SMS</string>
+
+    <string name="about_desc">
+        Hi-Depok merupakan wujud peningkatan pelayanan pemerintah Kota Depok kepada warganya.
+        Aplikasi ini dapat membantu warga Kota Depok dalam berbagai aspek pelayanan seperti pelayanan
+        kesehatan, keamanan, sosial dan juga kebutuhan akan informasi.
+    </string>
+    <string name="copyright">© Copyright  2016 TiregDev</string>
+
+    <!-- ==================================== FAQ QUETION ============================================= !-->
+    <string name="faq_no1">1. Apakah yang dimaksud dengan aplikasi Hi-Depok?</string>
+    <string name="faq_no2">2. Apa saja keunggulan aplikasi Hi-Depok?</string>
+    <string name="faq_no3">3. OS apa saja yang support aplikasi Hi-Depok?</string>
+    <string name="faq_no4">4. Siapa saja yang bisa menggunakan aplikasi Hi-Depok?</string>
+    <string name="faq_no5">5. Bagaimana cara mendapatkan aplikasi Hi-Depok?</string>
+    <string name="faq_no6">6. Apakah saya harus mendaftar terlebih dahulu untuk menggunakan aplikasi Hi-Depok?</string>
+    <string name="faq_no7">7. Apakah aplikasi Hi-Depok membutuhkan koneksi internet?</string>
+    <string name="faq_no9">8. Bagaimana cara mendaftarkan untuk menjadi partner Hi-Depok?</string>
+    <string name="faq_no10">9. Dapatkah saya mengajukan tempat untuk ditampilkan pada aplikasi Hi-Depok walaupun saya bukan pemilik tempat tersebut?</string>
+
+    <!-- ==================================== FAQ ANSWER ============================================= !-->
+    <string name="faq_jawab1">Hi-Depok adalah aplikasi yang bertujukan untuk memudahkan aktivitas warga Depok dan sekitarnya. Aplikasi ini dibuat untuk memenuhi program 1000 aplikasi untuk kota Depok yang di prakarsai oleh Pemkot Depok dan rencananya akan menjadi aplikasi pendukung smart city kota Depok</string>
+    <string name="faq_jawab2">Aplikasi ini mencakup berbagai tipe sistem informasi dan menggunakan konsep teknologi terbaru, antara lain adalah sistem pakar, sistem pendukung keputusan, data mining, dan masih banyak lagi. Aplikasi ini juga memudahkan penggunanya untuk dapat saling berinteraksi dan mendapatkan informasi seputar kota Depok, memberikan berita-berita terbaru kota Depok, menyediakan informasi seputar kesehatan,  panti asuhan, tempat kumpul, tempat makan seru, GOR, dan lain-lain. Selain itu, aplikasi ini juga menyediakan wadah untuk melaporkan kondisi di sekitar penggunanya yang kemudian akan masuk kedalam forum agar dapat segera ditindak lanjuti, dan masih banyak lagi keunggulan dari aplikasi Hi-Depok ini</string>
+    <string name="faq_jawab3">Untuk sementara aplikasi Hi-Depok ini hanya dapat berjalan pada sistem operasi Android versi Jelly Bean keatas, namun informasi pada aplikasi ini juga tersedia di website Hi-Depok yang dapat diakses di www.hi.depok.go.id</string>
+    <string name="faq_jawab4">Aplikasi ini bisa digunakan untuk semua kalangan dan berbagai tingkat usia</string>
+    <string name="faq_jawab5">Aplikasi bisa diunduh di Play Store atau dengan memindai QR Code yang tersedia di website www.hi.depok.go.id</string>
+    <string name="faq_jawab6">Ya, Anda harus mendaftar terlebih dahulu untuk menggunakan aplikasi Hi-Depok. Mengapa? Karena aplikasi ini membutuhkan data Anda untuk melakukan verifikasi dan data Anda akan berguna untuk menjalankan fitur-fitur yang ada di dalam aplikasi Hi-Depok</string>
+    <string name="faq_jawab7">Tentu saja. Aplikasi ini berjalan secara realtime, maka koneksi internet yang stabil sangat dibutuhkan oleh aplikasi Hi-Depok ini untuk dapat mengambil data dari server</string>
+    <string name="faq_jawab9">Apabila anda ingin mendaftarkan untuk menjadi partner Hi-Depok dalam rangka media partner event ataupun aplikasi pendukung, Anda dapat menghubungi kami melalui hi@depok.go.id, Anda hanya tinggal mengirimkan proposal pengajuan Anda ke alamat email kami dengan subject “PENGAJUAN PARTNER HI-DEPOK”</string>
+    <string name="faq_jawab10">Tentu saja bisa. Jika Anda ingin mendaftarkan Panti asuhan, UMKM, Tempat Sehat (seperti panti pijat, apotek, dsb), GOR tempat futsal, badminton, fitness, dsb), tempat wisata dan tempat kumpul, Anda dapat mendaftarkannya di www.partner.hidepok.id/regispartner</string>
 
     <string name="ss1">
         <b>Learning Lounge</b> adalah sebuah fasilitas pusat belajar dengan konsep yang modern bagi anak muda. Learning Lounge didesain sebagai terobosan baru yang menggabungkan konsep
