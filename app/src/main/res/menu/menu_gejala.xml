@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:title="Gejala"
+        android:id="@+id/action_gejala"
+        android:layout_alignParentLeft="true"
+        android:name="Gejala"
+        app:showAsAction="always" />
+</menu>

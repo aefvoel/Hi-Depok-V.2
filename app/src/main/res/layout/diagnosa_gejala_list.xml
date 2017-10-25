@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/title_ensiklopedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:text="Title"
+        app:font="@string/fontReguler" />
+
+    <fr.arnaudguyon.smartfontslib.FontTextView
+        android:id="@+id/x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:text="x"
+        app:font="@string/fontReguler" />
+
+</LinearLayout>

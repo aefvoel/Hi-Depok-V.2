@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".activity.Gejala">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_ensiklopedia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:scrollbars="vertical" />
+
+        <fr.arnaudguyon.smartfontslib.FontTextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            app:font="@string/fontReguler"
+            android:text="Pilih Gejala"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:id="@+id/tombol_sugesti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rectangle_green"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:text="Lihat Sugesti"
+        app:font="@string/fontBold" />
+
+</RelativeLayout>

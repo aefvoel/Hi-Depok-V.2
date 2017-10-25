@@ -106,13 +106,28 @@
             android:name=".activity.ntpd"
             android:label="NTPD" />
         <activity android:name=".activity.about" />
-        <activity android:name=".activity.faq"
+        <activity
+            android:name=".activity.faq"
             android:label="FAQ" />
         <activity
             android:name=".activity.change_avatar"
             android:label="Change Avatar" />
-        <activity android:name=".activity.rsud"
-            android:label="Registrasi RSUD Depok"/>
+        <activity
+            android:name=".activity.rsud"
+            android:label="Registrasi RSUD Depok" />
+        <activity android:name=".activity.Deskripsi"
+            android:label="Deskripsi Penyakit"/>
+        <activity android:name=".activity.Diagnosa"
+            android:label="Bagian Tubuh"/>
+        <activity android:name=".activity.DiagnosaBagian"
+            android:label="Diagnosa Penyakit"/>
+        <activity android:name=".activity.Ensiklopedia"
+            android:label="Ensiklopedia Penyakit"/>
+        <activity android:name=".activity.Gejala"
+            android:label="Gejala Yang Dirasakan"/>
+        <activity android:name=".activity.Sugesti"
+            android:label="Hasil Diagnosa"/>
+
     </application>
 
 </manifest>

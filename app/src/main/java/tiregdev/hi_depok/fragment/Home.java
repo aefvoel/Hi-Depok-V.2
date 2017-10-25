@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.andexert.library.RippleView;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.Diagnosa;
+import tiregdev.hi_depok.activity.Ensiklopedia;
 import tiregdev.hi_depok.activity.maps;
 import tiregdev.hi_depok.activity.rsud;
 import tiregdev.hi_depok.activity.sahabat_kos;
@@ -91,6 +93,22 @@ public class Home extends Fragment {
             @Override
             public void onComplete(RippleView rippleView) {
                 Intent w = new Intent(getActivity(), rsud.class);
+                startActivity(w);
+            }
+        });
+        final RippleView ensiklo = (RippleView) v.findViewById(R.id.ensiklopedi);
+        ensiklo.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), Ensiklopedia.class);
+                startActivity(w);
+            }
+        });
+        final RippleView diagnos = (RippleView) v.findViewById(R.id.diagnosa);
+        diagnos.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent w = new Intent(getActivity(), Diagnosa.class);
                 startActivity(w);
             }
         });
