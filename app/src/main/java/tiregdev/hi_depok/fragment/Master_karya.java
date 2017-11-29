@@ -3,7 +3,6 @@ package tiregdev.hi_depok.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,6 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.andexert.library.RippleView;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,34 +28,52 @@ import ss.com.bannerslider.banners.Banner;
 import ss.com.bannerslider.banners.DrawableBanner;
 import ss.com.bannerslider.views.BannerSlider;
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.maps;
 import tiregdev.hi_depok.activity.submit_master_karya;
 import tiregdev.hi_depok.adapter.adapter_karya;
-import tiregdev.hi_depok.model.itemObject_karya;
+import tiregdev.hi_depok.model.MasterpiecePost;
+import tiregdev.hi_depok.utils.AppConfig;
+import tiregdev.hi_depok.utils.AppController;
 
 /**
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_karya extends Fragment {
+public class Master_karya extends BaseFragment {
 
     View v;
     BannerSlider banner;
     SwipeRefreshLayout swipeRefreshRecyclerList;
+    RippleView rippleViews;
+    RecyclerView rView;
+    MasterpiecePost mPost;
+    JSONObject jsonObject;
+    List<MasterpiecePost> dataAdapter;
+    adapter_karya rvAdapter;
+    LinearLayoutManager lLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_master_karya, container, false);
-        setupBanner();
-        setupAdapter();
-        swipeRefresh();
-        findSubmit();
+        findViews();
+        setViews();
+        displayData();
         return v;
     }
 
-    public void findSubmit(){
-        final RippleView rippleViews = (RippleView) v.findViewById(R.id.submit);
+    private void findViews(){
+        rippleViews = (RippleView) v.findViewById(R.id.submit);
+        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
+        rView = (RecyclerView)v.findViewById(R.id.view_karya);
+        banner = (BannerSlider) v.findViewById(R.id.banner_karya);
+        lLayout = new LinearLayoutManager(getContext());
+        dataAdapter = new ArrayList<>();
+    }
+
+    private void setViews(){
+        rView.setNestedScrollingEnabled(false);
+        rView.setLayoutManager(lLayout);
+
         rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
@@ -57,67 +81,7 @@ public class Master_karya extends Fragment {
                 startActivity(w);
             }
         });
-    }
 
-    public void swipeRefresh(){
-        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
-        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-                // Do your stuff on refresh
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        if (swipeRefreshRecyclerList.isRefreshing())
-                            swipeRefreshRecyclerList.setRefreshing(false);
-                    }
-                }, 5000);
-
-            }
-        });
-    }
-
-    public void setupAdapter(){
-        List<itemObject_karya> rowListItem = getAllItemList();
-        LinearLayoutManager lLayout = new LinearLayoutManager(getContext());
-
-        RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_karya);
-        rView.setNestedScrollingEnabled(false);
-        rView.setLayoutManager(lLayout);
-
-        adapter_karya rcAdapter = new adapter_karya(getContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
-    }
-
-    private List<itemObject_karya> getAllItemList(){
-        List<itemObject_karya> allItems = new ArrayList<>();
-        allItems.add(new itemObject_karya(getResources().getString(R.string.nama), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt),
-                getResources().getString(R.string.commentTxt),getResources().getString(R.string.postTxt),getResources().getString(R.string.share1),
-                getResources().getString(R.string.time),R.drawable.char_icon,R.drawable.report_banjir,R.drawable.status_waiting));
-        allItems.add(new itemObject_karya(getResources().getString(R.string.nama1), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt1),
-                getResources().getString(R.string.commentTxt1),getResources().getString(R.string.postTxt3),getResources().getString(R.string.share2),
-                getResources().getString(R.string.time2),R.drawable.char_icon,R.drawable.report_pohontumbang,R.drawable.status_accepted));
-        allItems.add(new itemObject_karya(getResources().getString(R.string.nama2), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt2),
-                getResources().getString(R.string.commentTxt2),getResources().getString(R.string.postTxt2),getResources().getString(R.string.share3),
-                getResources().getString(R.string.time1),R.drawable.char_icon,R.drawable.report_macet,R.drawable.status_proses));
-        allItems.add(new itemObject_karya(getResources().getString(R.string.nama3), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt3),
-                getResources().getString(R.string.commentTxt3),getResources().getString(R.string.postTxt1),getResources().getString(R.string.share1),
-                getResources().getString(R.string.time),R.drawable.char_icon,R.drawable.wisata,R.drawable.status_waiting));
-        allItems.add(new itemObject_karya(getResources().getString(R.string.nama), getResources().getString(R.string.location),getResources().getString(R.string.likeTxt),
-                getResources().getString(R.string.commentTxt),getResources().getString(R.string.postTxt),getResources().getString(R.string.share2),
-                getResources().getString(R.string.time2),R.drawable.char_icon,R.drawable.report_banjir,R.drawable.status_proses));
-
-        return allItems;
-    }
-
-    public void setupBanner(){
-        banner = (BannerSlider) v.findViewById(R.id.banner_karya);
-        addBanners();
-    }
-
-    private void addBanners() {
         List<Banner> banners = new ArrayList<>();
         banners.add(new DrawableBanner(R.drawable.karya_1));
         banners.add(new DrawableBanner(R.drawable.karya_2));
@@ -125,6 +89,71 @@ public class Master_karya extends Fragment {
         banners.add(new DrawableBanner(R.drawable.karya_4));
 
         banner.setBanners(banners);
+    }
+
+    private void displayData(){
+        swipeRefreshRecyclerList.setRefreshing(true);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.DISPLAY_MASTERPIECE, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++){
+                    mPost = new MasterpiecePost();
+                    jsonObject = null;
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        mPost.setId_user(jsonObject.getString("id_user"));
+                        mPost.setDeskripsi(jsonObject.getString("deskripsi"));
+                        mPost.setInstansi(jsonObject.getString("instansi"));
+                        mPost.setKategori(jsonObject.getString("kategori"));
+                        mPost.setImage(jsonObject.getString("image"));
+                        mPost.setNama_peraih(jsonObject.getString("nama_peraih"));
+                        mPost.setNama_prestasi(jsonObject.getString("nama_prestasi"));
+                        mPost.setKeterangan(jsonObject.getString("keterangan"));
+                        mPost.setTingkat(jsonObject.getString("tingkat"));
+                        mPost.setJumlah_komentar(jsonObject.getString("jumlah_komentar"));
+                        mPost.setJumlah_suka(jsonObject.getString("jumlah_suka"));
+                        mPost.setTgl_post(jsonObject.getString("tgl_post"));
+                        mPost.setStatus(jsonObject.getString("status"));
+                        mPost.setRiwayat(jsonObject.getString("riwayat"));
+
+                    }  catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    dataAdapter.add(mPost);
+
+                }
+                rvAdapter = new adapter_karya(getContext(), dataAdapter);
+                rView.setAdapter(rvAdapter);
+                swipeRefreshRecyclerList.setRefreshing(false);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+    @Override
+    protected void onSaveState(Bundle outState) {
+        super.onSaveState(outState);
+        outState.putParcelable("myState", lLayout.onSaveInstanceState());
+    }
+
+    @Override
+    protected void onRestoreState(Bundle savedInstanceState) {
+        super.onRestoreState(savedInstanceState);
+        lLayout.onRestoreInstanceState(savedInstanceState.getParcelable("myState"));
     }
 
 }

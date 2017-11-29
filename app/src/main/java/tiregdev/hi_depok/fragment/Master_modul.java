@@ -1,70 +1,74 @@
 package tiregdev.hi_depok.fragment;
 
-
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.adapter_karya;
 import tiregdev.hi_depok.adapter.adapter_modul;
-import tiregdev.hi_depok.model.itemObject_karya;
-import tiregdev.hi_depok.model.itemObject_modul;
+import tiregdev.hi_depok.model.ModulPost;
+import tiregdev.hi_depok.utils.AppConfig;
+import tiregdev.hi_depok.utils.AppController;
 
 /**
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_modul extends Fragment {
+public class Master_modul extends BaseFragment implements MaterialSpinner.OnItemSelectedListener {
 
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
+    RecyclerView rView;
+    ModulPost mPost;
+    JSONObject jsonObject;
+    List<ModulPost> dataAdapter;
+    adapter_modul rvAdapter;
+    GridLayoutManager gridLayoutManager;
+    MaterialSpinner spinner;
+    String extraLink;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_master_modul, container, false);
-        spinner();
-        setupAdapter();
-        swipeRefresh();
+        findViews();
+        setViews();
+        displayData();
         return v;
     }
 
-    public void swipeRefresh(){
+    private void findViews(){
         swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
-        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-                // Do your stuff on refresh
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        if (swipeRefreshRecyclerList.isRefreshing())
-                            swipeRefreshRecyclerList.setRefreshing(false);
-                    }
-                }, 5000);
-
-            }
-        });
+        rView = (RecyclerView)v.findViewById(R.id.view_modul);
+        spinner = (MaterialSpinner)v.findViewById(R.id.spinner_seacrh);
+        gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        dataAdapter = new ArrayList<>();
     }
 
-    public void spinner(){
+    private void setViews(){
+        rView.setNestedScrollingEnabled(false);
+        rView.setLayoutManager(gridLayoutManager);
+        extraLink = AppConfig.DISPLAY_MODUL;
         String searhdata[] = {"Semua Kategori",
                 "Robotic",
                 "Android",
@@ -75,45 +79,107 @@ public class Master_modul extends Fragment {
                 "Fisika",
                 "Kimia",
                 "Umum"};
-        MaterialSpinner spinner = (MaterialSpinner) v.findViewById(R.id.spinner_seacrh);
-        spinner.setItems(searhdata);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
+        spinner.setItems(searhdata);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+    private void displayData(){
+        dataAdapter.clear();
+        swipeRefreshRecyclerList.setRefreshing(true);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(extraLink, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++){
+                    mPost = new ModulPost();
+                    jsonObject = null;
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        mPost.setId_modul(jsonObject.getString("id_modul"));
+                        mPost.setJudul(jsonObject.getString("judul"));
+                        mPost.setPengarang(jsonObject.getString("pengarang"));
+                        mPost.setKategori(jsonObject.getString("kategori"));
+                        mPost.setJml_halaman(jsonObject.getString("jml_halaman"));
+                        mPost.setFoto(jsonObject.getString("foto"));
+                        mPost.setLink(jsonObject.getString("link"));
+
+                    }  catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    dataAdapter.add(mPost);
+
+                }
+                rvAdapter = new adapter_modul(getContext(), dataAdapter);
+                rView.setAdapter(rvAdapter);
+                swipeRefreshRecyclerList.setRefreshing(false);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
         });
+
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
 
-    public void setupAdapter(){
-        List<itemObject_modul> rowListItem = getAllItemList();
-        LinearLayoutManager lLayout = new LinearLayoutManager(getContext());
-
-        RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_modul);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
-        rView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-
-        adapter_modul rcAdapter = new adapter_modul(getContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
+    @Override
+    public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+        switch (position) {
+            case 0:
+                extraLink = AppConfig.DISPLAY_MODUL;
+                break;
+            case 1:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Robotic";
+                break;
+            case 2:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Android";
+                break;
+            case 3:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Website";
+                break;
+            case 4:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Database";
+                break;
+            case 5:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Sejarah";
+                break;
+            case 6:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Biologi";
+                break;
+            case 7:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Fisika";
+                break;
+            case 8:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Kimia";
+                break;
+            case 9:
+                extraLink = AppConfig.DISPLAY_MODUL + "?kategori=Umum";
+                break;
+            default:
+                break;
+        }
+        displayData();
     }
 
-    private List<itemObject_modul> getAllItemList(){
-        List<itemObject_modul> allItems = new ArrayList<>();
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul), getResources().getString(R.string.pengarang),getResources().getString(R.string.page),
-                getResources().getString(R.string.viewer),getResources().getString(R.string.kategori),R.drawable.header_bg));
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul1), getResources().getString(R.string.pengarang1),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer1),getResources().getString(R.string.kategori1),R.drawable.report_pohontumbang));
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul2), getResources().getString(R.string.pengarang2),getResources().getString(R.string.page2),
-                getResources().getString(R.string.viewer2),getResources().getString(R.string.kategori2),R.drawable.report_macet));
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul3), getResources().getString(R.string.pengarang),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer),getResources().getString(R.string.kategori3),R.drawable.report_banjir));
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul), getResources().getString(R.string.pengarang1),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer1),getResources().getString(R.string.kategori),R.drawable.header_profile));
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul1), getResources().getString(R.string.pengarang2),getResources().getString(R.string.page2),
-                getResources().getString(R.string.viewer2),getResources().getString(R.string.kategori1),R.drawable.report_banjir));
-        allItems.add(new itemObject_modul(getResources().getString(R.string.judul2), getResources().getString(R.string.pengarang),getResources().getString(R.string.page1),
-                getResources().getString(R.string.viewer),getResources().getString(R.string.kategori2),R.drawable.header_bg));
-
-        return allItems;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
+
+    @Override
+    protected void onSaveState(Bundle outState) {
+        super.onSaveState(outState);
+        outState.putParcelable("myState", gridLayoutManager.onSaveInstanceState());
+    }
+
+    @Override
+    protected void onRestoreState(Bundle savedInstanceState) {
+        super.onRestoreState(savedInstanceState);
+        gridLayoutManager.onRestoreInstanceState(savedInstanceState.getParcelable("myState"));
+    }
+
 }

@@ -40,6 +40,8 @@ import tiregdev.hi_depok.fragment.News;
 import tiregdev.hi_depok.fragment.Notif;
 import tiregdev.hi_depok.fragment.Profile;
 import tiregdev.hi_depok.fragment.Masterpiece;
+import tiregdev.hi_depok.utils.SQLiteHandler;
+import tiregdev.hi_depok.utils.SessionManager;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -50,6 +52,9 @@ public class MenuActivity extends AppCompatActivity {
     private AccountHeader headerResult = null;
     public static Drawer results = null;
     ImageView ham;
+    BottomBar bottomBar;
+    private SQLiteHandler db;
+    private SessionManager session;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,9 +62,10 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_utama);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        drawer();
 
-        final BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        db = new SQLiteHandler(getApplicationContext());
+        session = new SessionManager(getApplicationContext());
+        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setDefaultTab(R.id.tab_home);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -104,13 +110,14 @@ public class MenuActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameLayout, Home.newInstance());
         transaction.commit();
+
+        drawer();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //add the values which need to be saved from the drawer to the bundle
-//        outState = result.saveInstanceState(outState);
-//        super.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 
 
@@ -183,8 +190,8 @@ public class MenuActivity extends AppCompatActivity {
 
     private void drawer() {
         // Create a few sample profile
-        final IProfile profile = new ProfileDrawerItem().withName(getResources().getString(R.string.nama)).
-                withEmail(getResources().getString(R.string.emailJAR)).withIcon(R.drawable.char_icon);
+        final IProfile profile = new ProfileDrawerItem().withName(db.getUserDetails().get("name")).
+                withEmail(db.getUserDetails().get("email")).withIcon(db.getUserDetails().get("foto"));
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
@@ -289,7 +296,8 @@ public class MenuActivity extends AppCompatActivity {
                                 Intent i = new Intent(MenuActivity.this, about.class);
                                 startActivity(i);
                             } else if (drawerItem.getIdentifier() == 7){
-                                Toast.makeText(MenuActivity.this, "ini juga bisa", Toast.LENGTH_SHORT).show();
+                                logoutUser();
+                                Toast.makeText(MenuActivity.this, "Logout Berhasil!", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -298,6 +306,17 @@ public class MenuActivity extends AppCompatActivity {
                 })
                 .withDrawerGravity(Gravity.END)
                 .build();
+    }
+
+    private void logoutUser() {
+        session.setLogin(false);
+
+        db.deleteUsers();
+
+        // Launching the login activity
+        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

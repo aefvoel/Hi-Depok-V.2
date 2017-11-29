@@ -14,6 +14,8 @@ import java.util.List;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.detail_modul;
 import tiregdev.hi_depok.activity.detail_museum;
+import tiregdev.hi_depok.fragment.Masterpiece;
+import tiregdev.hi_depok.model.MasterpiecePost;
 import tiregdev.hi_depok.model.itemObject_museum;
 
 /**
@@ -21,10 +23,10 @@ import tiregdev.hi_depok.model.itemObject_museum;
  */
 
 public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_museum> {
-    private List<itemObject_museum> itemList;
+    private List<MasterpiecePost> itemList;
     private Context context;
 
-    public adapter_museum(Context context, List<itemObject_museum> itemList){
+    public adapter_museum(Context context, List<MasterpiecePost> itemList){
         this.context = context;
         this.itemList = itemList;
     }
@@ -38,10 +40,8 @@ public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_m
 
     @Override
     public void onBindViewHolder(adapter_museum.holder_museum holder, int position){
-        holder.list_judul.setText(itemList.get(position).getJudul());
-        holder.list_nama.setText(itemList.get(position).getNama());
-        holder.list_tahun.setText(itemList.get(position).getTahun());
-        holder.list_picMuseum.setImageResource(itemList.get(position).getPicMuseum());
+        holder.list_judul.setText(itemList.get(position).getNama_prestasi());
+        holder.list_nama.setText(itemList.get(position).getNama_peraih());
     }
 
     @Override
@@ -65,6 +65,13 @@ public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_m
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, detail_museum.class);
+                    intent.putExtra("NAMA", itemList.get(getAdapterPosition()).getNama_prestasi());
+                    intent.putExtra("DESKRIPSI", itemList.get(getAdapterPosition()).getDeskripsi());
+                    intent.putExtra("PERAIH", itemList.get(getAdapterPosition()).getNama_peraih());
+                    intent.putExtra("TANGGAL", itemList.get(getAdapterPosition()).getTgl_post());
+                    intent.putExtra("KATEGORI", itemList.get(getAdapterPosition()).getKategori());
+                    intent.putExtra("TINGKAT", itemList.get(getAdapterPosition()).getTingkat());
+                    intent.putExtra("IMAGE", itemList.get(getAdapterPosition()).getImage());
                     context.startActivity(intent);
                 }
             });

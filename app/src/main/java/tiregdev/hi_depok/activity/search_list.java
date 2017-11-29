@@ -36,13 +36,14 @@ import tiregdev.hi_depok.fragment.data_sandang;
 import tiregdev.hi_depok.fragment.data_sosial;
 import tiregdev.hi_depok.fragment.data_umum;
 import tiregdev.hi_depok.fragment.data_wisata;
+import tiregdev.hi_depok.model.CariData;
 import tiregdev.hi_depok.model.itemObject_searchData;
 
 public class search_list extends AppCompatActivity {
 
     ViewPager pager;
     private adapter_searchData mAdapter;
-    private ArrayList<itemObject_searchData> modelList = new ArrayList<>();
+    private ArrayList<CariData> modelList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class search_list extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                ArrayList<itemObject_searchData> filterList = new ArrayList<itemObject_searchData>();
+                ArrayList<CariData> filterList = new ArrayList<CariData>();
                 if (s.length() > 0) {
                     for (int i = 0; i < modelList.size(); i++) {
                         if (modelList.get(i).getNamaTempat().toLowerCase().contains(s.toString().toLowerCase())) {
@@ -155,12 +156,12 @@ public class search_list extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
 
         search_list.Adapter adapter = new search_list.Adapter(getSupportFragmentManager());
-        adapter.addFragment(new data_kesehatan(), "KESEHATAN");
-        adapter.addFragment(new data_pendidikan(), "PENDIDIKAN");
-        adapter.addFragment(new data_sandang(), "SANDANG DAN PANGAN");
-        adapter.addFragment(new data_wisata(), "WISATA");
+        adapter.addFragment(data_kesehatan.newInstance("kesehatan"), "KESEHATAN");
+        adapter.addFragment(data_pendidikan.newInstance("pendidikan"), "PENDIDIKAN");
+        adapter.addFragment(data_sandang.newInstance("sandangpangan"), "SANDANG DAN PANGAN");
+        adapter.addFragment(data_wisata.newInstance("wisata"), "WISATA");
         adapter.addFragment(new data_sosial(), "SOSIAL");
-        adapter.addFragment(new data_umum(), "UMUM");
+        adapter.addFragment(data_umum.newInstance("umkm"), "UMUM");
         viewPager.setAdapter(adapter);
 
     }

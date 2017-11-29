@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 import com.andexert.library.RippleView;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.Diagnosa;
-import tiregdev.hi_depok.activity.Ensiklopedia;
-import tiregdev.hi_depok.activity.maps;
+import tiregdev.hi_depok.activity.MapsActivity;
 import tiregdev.hi_depok.activity.rsud;
 import tiregdev.hi_depok.activity.sahabat_kos;
 import tiregdev.hi_depok.activity.space_room;
@@ -65,7 +63,7 @@ public class Home extends Fragment {
         rippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), maps.class);
+                Intent w = new Intent(getActivity(), MapsActivity.class);
                 startActivity(w);
             }
         });

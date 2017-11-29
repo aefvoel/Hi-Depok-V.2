@@ -25,6 +25,21 @@ public class data_kesehatan extends Fragment {
     ViewPager pager;
     View v;
 
+    public static data_kesehatan newInstance(String title) {
+        data_kesehatan fragment = new data_kesehatan();
+
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    public String getTitle() {
+        Bundle args = getArguments();
+        return args.getString("title", "NO TITLE FOUND");
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -39,12 +54,12 @@ public class data_kesehatan extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new kesehatan_RS(),"RUMAH SAKIT");
-        adapter.addFragment(new kesehatan_apotek(), "APOTEK");
-        adapter.addFragment(new kesehatan_puskesmas(), "PUSKESMAS");
-        adapter.addFragment(new kesehatan_pijat(), "PANTI PIJAT");
-        adapter.addFragment(new kesehatan_bidan(), "BIDAN");
-        adapter.addFragment(new kesehatan_bidan(), "AMBULANCE");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "rs"),"RUMAH SAKIT");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "apotek"), "APOTEK");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "puskesmas"), "PUSKESMAS");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pantipijat"), "PANTI PIJAT");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "bidan"), "BIDAN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "ambulans"), "AMBULANCE");
         viewPager.setAdapter(adapter);
 
     }

@@ -40,7 +40,7 @@
                 android:inputType="text"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
-                android:text="@string/emailJAR"
+                android:hint="@string/email"
                 android:textColor="@color/colorBlack"
                 app:font="@string/fontReguler" />
 
@@ -99,21 +99,51 @@
             <fr.arnaudguyon.smartfontslib.FontEditText
                 android:id="@+id/alamat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_below="@id/confirmPassLayout"
                 android:layout_marginTop="5dp"
+                android:hint="@string/alamat"
                 android:background="@drawable/rectangle_white_login"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
-                android:text="@string/alamat"
                 android:textColor="@color/colorBlack"
                 app:font="@string/fontReguler" />
+
+            <RadioGroup
+                android:id="@+id/jenisKel"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/alamat"
+                android:textColor="@color/colorBlack"
+                android:orientation="horizontal">
+
+                <fr.arnaudguyon.smartfontslib.FontRadioButton
+                    android:id="@+id/radio_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/jk_l"
+                    app:font="@string/fontReguler"/>
+
+                <fr.arnaudguyon.smartfontslib.FontRadioButton
+                    android:id="@+id/radio_p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/jk_p"
+                    app:font="@string/fontReguler"/>
+
+            </RadioGroup>
 
             <fr.arnaudguyon.smartfontslib.FontEditText
                 android:id="@+id/nmrTlp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_below="@id/alamat"
+                android:layout_below="@id/jenisKel"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rectangle_white_login"
                 android:hint="@string/nmrTlp"

@@ -39,7 +39,7 @@ public class detail_news_blog extends AppCompatActivity {
 
     WebView webView;
     TextView link;
-    String url = "https://www.depoknews.id/pemutaran-film-pengkhianatan-g30spki-begini-tanggapan-anak-depok/";
+    String url;
     private ProgressBar mProgressBar;
 
     @Override
@@ -89,6 +89,7 @@ public class detail_news_blog extends AppCompatActivity {
     }
 
     public void webView() {
+        url = getIntent().getStringExtra("url");
         mProgressBar = (ProgressBar) findViewById(R.id.pb);
 
         webView = (WebView) findViewById(R.id.webview);

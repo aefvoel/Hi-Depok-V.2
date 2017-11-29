@@ -25,6 +25,21 @@ public class data_sandang extends Fragment {
     ViewPager pager;
     View v;
 
+    public static data_sandang newInstance(String title) {
+        data_sandang fragment = new data_sandang();
+
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    public String getTitle() {
+        Bundle args = getArguments();
+        return args.getString("title", "NO TITLE FOUND");
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -39,10 +54,10 @@ public class data_sandang extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new sandang_restoran(),"RESTORAN");
-        adapter.addFragment(new sandang_psrTradisional(), "PASAR TRADISIONAL");
-        adapter.addFragment(new sandang_psrModern(), "PASAR MODERN");
-        adapter.addFragment(new sandang_umkm(), "UMKM");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "restoran"),"RESTORAN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "ptradisional"), "PASAR TRADISIONAL");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pmodern"), "PASAR MODERN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "umkm"), "UMKM");
         viewPager.setAdapter(adapter);
 
     }

@@ -46,6 +46,7 @@ public class News extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_news, null);
         pager = (ViewPager) v.findViewById(R.id.pager);
+        pager.setOffscreenPageLimit(2);
 
         TabLayout tabs = (TabLayout) v.findViewById(R.id.tabs);
         tabs.setupWithViewPager(pager);

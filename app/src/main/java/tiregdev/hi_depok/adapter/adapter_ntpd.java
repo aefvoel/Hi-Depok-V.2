@@ -1,15 +1,22 @@
 package tiregdev.hi_depok.adapter;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.detail_news_blog;
 import tiregdev.hi_depok.model.itemObject_ntpd;
 
 /**
@@ -47,12 +54,38 @@ public class adapter_ntpd extends RecyclerView.Adapter<adapter_ntpd.holder_ntpd>
     
     public class holder_ntpd extends RecyclerView.ViewHolder{
         public TextView nama, nmr;
+        public ImageView call, copy;
         
-        public holder_ntpd(View itemView){
+        public holder_ntpd(final View itemView){
             super(itemView);
 
             nama = (TextView)itemView.findViewById(R.id.nama);
             nmr = (TextView)itemView.findViewById(R.id.nmr);
+            call = (ImageView)itemView.findViewById(R.id.call);
+            copy = (ImageView)itemView.findViewById(R.id.copy);
+
+            call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context c = view.getContext();
+                    Intent dial = new Intent();
+                    dial.setAction("android.intent.action.DIAL");
+                    dial.setData(Uri.parse("tel:" + list.get(getAdapterPosition()).getNmr()));
+                    c.startActivity(dial);
+
+                }
+            });
+
+            copy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context c = view.getContext();
+                    ClipboardManager clipboard = (ClipboardManager) c.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("Copied to clipboard", list.get(getAdapterPosition()).getNama());
+                    clipboard.setPrimaryClip(clip);
+                    Toast.makeText(c, "Copied to clipboard", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

@@ -24,7 +24,7 @@
         android:padding="5dp"
         android:maxLines="2"
         app:font="@string/fontBold"
-        android:text="@string/news2"/>
+        android:text="@string/news1"/>
 
     <fr.arnaudguyon.smartfontslib.FontTextView
         android:id="@+id/source"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/titleNews"
         android:layout_marginStart="5dp"
-        android:text="@string/portal2"
+        android:text="@string/portal1"
         android:textSize="12sp"
         app:font="@string/fontReguler" />
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/titik"
         android:layout_below="@id/titleNews"
-        android:text="@string/time2"
+        android:text="@string/time1"
         android:textSize="12sp"
         app:font="@string/fontReguler" />
 

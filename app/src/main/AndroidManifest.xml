@@ -52,12 +52,12 @@
         <activity android:name=".activity.VerifySignUpActivity" />
         <activity android:name=".activity.ForgotPassActivity" />
         <activity
-            android:name=".activity.edit_profile"
+            android:name=".activity.EditProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Edit Profile"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity
-            android:name=".activity.maps"
+            android:name=".activity.MapsActivity"
             android:label="Cari Data"
             android:theme="@style/tireg.menu" />
         <activity
@@ -95,7 +95,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Submit"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.detail_news_blog" />
+        <activity android:name=".activity.detail_news_blog"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity
             android:name=".activity.sahabat_kos"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -106,8 +107,7 @@
             android:name=".activity.ntpd"
             android:label="NTPD" />
         <activity android:name=".activity.about" />
-        <activity
-            android:name=".activity.faq"
+        <activity android:name=".activity.faq"
             android:label="FAQ" />
         <activity
             android:name=".activity.change_avatar"
@@ -128,6 +128,7 @@
         <activity android:name=".activity.Sugesti"
             android:label="Hasil Diagnosa"/>
 
+        <service android:name=".utils.RssService" />
     </application>
 
 </manifest>

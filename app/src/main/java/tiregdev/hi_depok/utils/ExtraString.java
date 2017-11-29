@@ -14,6 +14,8 @@ public class ExtraString {
     public static final String EXTRA_STATUS_USER= "EXTRA_STATUS_USER";
     public static final String EXTRA_STATUS_KASUS= "EXTRA_STATUS_KASUS";
 
+    public static final String TAG = "Hi-Depok";
+
 
 
 }

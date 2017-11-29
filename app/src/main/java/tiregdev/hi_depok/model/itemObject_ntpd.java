@@ -13,6 +13,10 @@ public class itemObject_ntpd {
         this.nmr = nmr;
     }
 
+    public itemObject_ntpd(){
+
+    }
+
     public String getNama() {
         return nama;
     }

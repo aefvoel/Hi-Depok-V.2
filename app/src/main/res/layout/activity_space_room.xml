@@ -120,6 +120,18 @@
                     android:textColorHint="@color/colorGray"
                     app:font="@string/fontReguler" />
 
+                <fr.arnaudguyon.smartfontslib.FontEditText
+                    android:id="@+id/notelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle_white_without_radius"
+                    android:hint="@string/formSS_6"
+                    android:padding="10dp"
+                    android:textColor="@color/colorGray"
+                    android:textColorHint="@color/colorGray"
+                    app:font="@string/fontReguler" />
+
                 <fr.arnaudguyon.smartfontslib.FontButton
                     android:id="@+id/tgl"
                     android:layout_width="match_parent"

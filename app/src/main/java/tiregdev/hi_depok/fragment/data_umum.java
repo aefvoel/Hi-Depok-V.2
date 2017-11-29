@@ -25,6 +25,21 @@ public class data_umum extends Fragment {
     ViewPager pager;
     View v;
 
+    public static data_umum newInstance(String title) {
+        data_umum fragment = new data_umum();
+
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    public String getTitle() {
+        Bundle args = getArguments();
+        return args.getString("title", "NO TITLE FOUND");
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -39,12 +54,12 @@ public class data_umum extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new umum_pam(),"PAM");
-        adapter.addFragment(new umum_pln(), "PLN");
-        adapter.addFragment(new umum_pemadam(), "PEMADAM KEBAKARAN");
-        adapter.addFragment(new umum_posPolisi(), "POS POLISI");
-        adapter.addFragment(new umum_terminal(), "TERMINAL DAN STASIUN");
-        adapter.addFragment(new umum_tpu(), "TPU");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pam"),"PAM");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pln"), "PLN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "damkar"), "PEMADAM KEBAKARAN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pospol"), "POS POLISI");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "terminal"), "TERMINAL DAN STASIUN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "tpu"), "TPU");
         viewPager.setAdapter(adapter);
 
     }

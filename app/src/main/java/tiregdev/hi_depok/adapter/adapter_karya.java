@@ -3,29 +3,31 @@ package tiregdev.hi_depok.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.detail_karya;
-import tiregdev.hi_depok.activity.detail_search;
-import tiregdev.hi_depok.model.itemObject_karya;
+
+import tiregdev.hi_depok.model.MasterpiecePost;
+import tiregdev.hi_depok.utils.AppConfig;
 
 /**
  * Created by TiregDev on 28/08/2017.
  */
 
 public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_karya> {
-    private List<itemObject_karya> itemList;
+    private List<MasterpiecePost> itemList;
     private Context context;
 
-    public adapter_karya(Context context, List<itemObject_karya> itemList){
+    public adapter_karya(Context context, List<MasterpiecePost> itemList){
         this.itemList = itemList;
         this.context = context;
     }
@@ -40,16 +42,16 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
 
     @Override
     public void onBindViewHolder(adapter_karya.holder_karya holder, int position){
-        holder.list_username.setText(itemList.get(position).getUsername());
-        holder.list_location.setText(itemList.get(position).getLocation());
-        holder.list_likeTxt.setText(itemList.get(position).getLikeTxt());
-        holder.list_commentTxt.setText(itemList.get(position).getCommentTxt());
-        holder.list_postTxt.setText(itemList.get(position).getPostTxt());
-        holder.list_shareTxt.setText(itemList.get(position).getShareTxt());
-        holder.list_Avatar.setImageResource(itemList.get(position).getAvatar());
-        holder.list_imagePost.setImageResource(itemList.get(position).getImagePost());
-        holder.list_status.setImageResource(itemList.get(position).getStatus());
-        holder.list_time.setText(itemList.get(position).getTime());
+        holder.list_username.setText(itemList.get(position).getNama_peraih());
+        holder.list_location.setText(itemList.get(position).getTingkat());
+        holder.list_likeTxt.setText(itemList.get(position).getJumlah_suka());
+        holder.list_commentTxt.setText(itemList.get(position).getJumlah_komentar());
+        holder.list_postTxt.setText(itemList.get(position).getDeskripsi());
+        holder.list_shareTxt.setText(itemList.get(position).getJumlah_suka());
+        holder.list_time.setText(itemList.get(position).getTgl_post());
+
+        Glide.with(context).load(AppConfig.IMG_MASTERPIECE + itemList.get(position).getImage()).placeholder(R.drawable.no_image).into(holder.list_imagePost);
+//        Glide.with(context).load(itemList.get(position).getImage()).placeholder(R.drawable.no_image).into(holder.list_Avatar);
     }
 
     @Override
@@ -79,6 +81,13 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, detail_karya.class);
+                    intent.putExtra("NAMA", itemList.get(getAdapterPosition()).getNama_prestasi());
+                    intent.putExtra("DESKRIPSI", itemList.get(getAdapterPosition()).getDeskripsi());
+                    intent.putExtra("PERAIH", itemList.get(getAdapterPosition()).getNama_peraih());
+                    intent.putExtra("TANGGAL", itemList.get(getAdapterPosition()).getTgl_post());
+                    intent.putExtra("KATEGORI", itemList.get(getAdapterPosition()).getKategori());
+                    intent.putExtra("TINGKAT", itemList.get(getAdapterPosition()).getTingkat());
+                    intent.putExtra("IMAGE", itemList.get(getAdapterPosition()).getImage());
                     context.startActivity(intent);
                 }
             });

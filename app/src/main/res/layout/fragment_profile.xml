@@ -80,13 +80,13 @@
 
                 <ImageView
                     android:id="@+id/avatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200px"
+                    android:layout_height="200px"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/rectangle_gray"
                     android:contentDescription="@string/ImgDesc"
                     android:padding="10dp"
-                    android:src="@drawable/char_icon" />
+                    android:src="@drawable/no_image" />
 
                 <fr.arnaudguyon.smartfontslib.FontTextView
                     android:id="@+id/user"

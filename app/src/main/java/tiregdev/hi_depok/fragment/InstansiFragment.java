@@ -15,13 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.search_list;
 
 /**
  * Created by Muhammad63 on 10/6/2017.
  */
 
-public class ntpd_2 extends Fragment {
+public class InstansiFragment extends Fragment {
 
     ViewPager pager;
     View v;
@@ -46,11 +45,11 @@ public class ntpd_2 extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new ntpd_kecamatan(), "KECAMATAN/KELURAHAN");
-        adapter.addFragment(new ntpd_instansilain(), "INSTANSI LAIN");
-        adapter.addFragment(new ntpd_puskesmas(), "PUSKESMAS");
-        adapter.addFragment(new ntpd_upt(), "UPT");
-        adapter.addFragment(new ntpd_kepolisian(), "KEPOLISIAN/TNI");
+        adapter.addFragment(ListInstansiFragment.newInstance("kecamatan"), "KECAMATAN/KELURAHAN");
+        adapter.addFragment(ListInstansiFragment.newInstance("damkar"), "INSTANSI LAIN");
+        adapter.addFragment(ListInstansiFragment.newInstance("puskesmas"), "PUSKESMAS");
+        adapter.addFragment(ListInstansiFragment.newInstance("rs"), "UPT");
+        adapter.addFragment(ListInstansiFragment.newInstance("polisi"), "KEPOLISIAN/TNI");
         viewPager.setAdapter(adapter);
 
     }

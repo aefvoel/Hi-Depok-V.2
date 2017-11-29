@@ -15,14 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.fragment.data_kesehatan;
-import tiregdev.hi_depok.fragment.data_pendidikan;
-import tiregdev.hi_depok.fragment.data_sandang;
-import tiregdev.hi_depok.fragment.data_sosial;
-import tiregdev.hi_depok.fragment.data_umum;
-import tiregdev.hi_depok.fragment.data_wisata;
-import tiregdev.hi_depok.fragment.ntpd_1;
-import tiregdev.hi_depok.fragment.ntpd_2;
+import tiregdev.hi_depok.fragment.PanicButtonFragment;
+import tiregdev.hi_depok.fragment.InstansiFragment;
 
 public class ntpd extends AppCompatActivity {
 
@@ -68,8 +62,8 @@ public class ntpd extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
 
         ntpd.Adapter adapter = new ntpd.Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ntpd_1(), "PANIC BUTTON");
-        adapter.addFragment(new ntpd_2(), "INSTANSI");
+        adapter.addFragment(new PanicButtonFragment(), "PANIC BUTTON");
+        adapter.addFragment(new InstansiFragment(), "INSTANSI");
         viewPager.setAdapter(adapter);
 
     }

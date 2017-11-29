@@ -24,6 +24,20 @@ public class data_wisata extends Fragment {
 
     ViewPager  pager;
     View v;
+    public static data_wisata newInstance(String title) {
+        data_wisata fragment = new data_wisata();
+
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    public String getTitle() {
+        Bundle args = getArguments();
+        return args.getString("title", "NO TITLE FOUND");
+    }
 
     @Nullable
     @Override
@@ -39,10 +53,10 @@ public class data_wisata extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new wisata_ibadah(),"TEMPAT IBADAH");
-        adapter.addFragment(new wisata_wisata(), "TEMPAT WISATA");
-        adapter.addFragment(new wisata_taman(), "TAMAN PUBLIK");
-        adapter.addFragment(new wisata_gor(), "GOR");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "tibadah"),"TEMPAT IBADAH");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "twisata"), "TEMPAT WISATA");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "tpublik"), "TAMAN PUBLIK");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "gor"), "GOR");
         viewPager.setAdapter(adapter);
 
     }

@@ -1,76 +1,78 @@
 package tiregdev.hi_depok.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.adapter_modul;
 import tiregdev.hi_depok.adapter.adapter_museum;
-import tiregdev.hi_depok.model.itemObject_modul;
-import tiregdev.hi_depok.model.itemObject_museum;
+import tiregdev.hi_depok.model.MasterpiecePost;
+import tiregdev.hi_depok.utils.AppConfig;
+import tiregdev.hi_depok.utils.AppController;
 
 /**
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_museum extends Fragment{
+public class Master_museum extends Fragment {
 
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
+    RecyclerView rView;
+    MasterpiecePost mPost;
+    JSONObject jsonObject;
+    List<MasterpiecePost> dataAdapter;
+    adapter_museum rvAdapter;
+    GridLayoutManager gridLayoutManager;
+    MaterialSpinner spinner;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_master_museum, container, false);
-        spinner();
-        setupAdapter();
-        swipeRefresh();
+        findViews();
+        setViews();
+        displayData();
         return v;
     }
 
-    public void swipeRefresh(){
+    private void findViews(){
         swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
-        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-                // Do your stuff on refresh
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        if (swipeRefreshRecyclerList.isRefreshing())
-                            swipeRefreshRecyclerList.setRefreshing(false);
-                    }
-                }, 5000);
-
-            }
-        });
+        rView = (RecyclerView)v.findViewById(R.id.view_museum);
+        spinner = (MaterialSpinner)v.findViewById(R.id.spinner_seacrh);
+        gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        dataAdapter = new ArrayList<>();
     }
 
-    public void spinner(){
+    private void setViews(){
+        rView.setNestedScrollingEnabled(false);
+        rView.setLayoutManager(gridLayoutManager);
+
         String searhdata[] = {"Semua Kategori",
                 "Teknologi",
                 "Kesehatan",
                 "Lingkungan",
                 "Pendidikan",
                 "Umum"};
-        MaterialSpinner spinner = (MaterialSpinner) v.findViewById(R.id.spinner_seacrh);
         spinner.setItems(searhdata);
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -80,29 +82,51 @@ public class Master_museum extends Fragment{
         });
     }
 
-    public void setupAdapter(){
-        List<itemObject_museum> rowListItem = getAllItemList();
+    private void displayData(){
+        swipeRefreshRecyclerList.setRefreshing(true);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.DISPLAY_MASTERPIECE, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++){
+                    mPost = new MasterpiecePost();
+                    jsonObject = null;
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        mPost.setId_user(jsonObject.getString("id_user"));
+                        mPost.setDeskripsi(jsonObject.getString("deskripsi"));
+                        mPost.setInstansi(jsonObject.getString("instansi"));
+                        mPost.setKategori(jsonObject.getString("kategori"));
+                        mPost.setImage(jsonObject.getString("image"));
+                        mPost.setNama_peraih(jsonObject.getString("nama_peraih"));
+                        mPost.setNama_prestasi(jsonObject.getString("nama_prestasi"));
+                        mPost.setKeterangan(jsonObject.getString("keterangan"));
+                        mPost.setTingkat(jsonObject.getString("tingkat"));
+                        mPost.setJumlah_komentar(jsonObject.getString("jumlah_komentar"));
+                        mPost.setJumlah_suka(jsonObject.getString("jumlah_suka"));
+                        mPost.setTgl_post(jsonObject.getString("tgl_post"));
+                        mPost.setStatus(jsonObject.getString("status"));
+                        mPost.setRiwayat(jsonObject.getString("riwayat"));
 
-        RecyclerView rView = (RecyclerView)v.findViewById(R.id.view_museum);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
-        rView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+                    }  catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-        adapter_museum rcAdapter = new adapter_museum(getActivity(), rowListItem);
-        rView.setAdapter(rcAdapter);
+                    dataAdapter.add(mPost);
+
+                }
+                rvAdapter = new adapter_museum(getContext(), dataAdapter);
+                rView.setAdapter(rvAdapter);
+                swipeRefreshRecyclerList.setRefreshing(false);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
 
-    private List<itemObject_museum> getAllItemList(){
-        List<itemObject_museum> allItems = new ArrayList<>();
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum1), getResources().getString(R.string.nama1),getResources().getString(R.string.tahun), R.drawable.wisata));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum2), getResources().getString(R.string.nama2),getResources().getString(R.string.tahun1), R.drawable.header_bg));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum3), getResources().getString(R.string.nama3),getResources().getString(R.string.tahun2), R.drawable.header_profile));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum1), getResources().getString(R.string.nama),getResources().getString(R.string.tahun), R.drawable.report_banjir));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum2), getResources().getString(R.string.nama1),getResources().getString(R.string.tahun1), R.drawable.report_macet));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum3), getResources().getString(R.string.nama2),getResources().getString(R.string.tahun2), R.drawable.report_pohontumbang));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum1), getResources().getString(R.string.nama3),getResources().getString(R.string.tahun), R.drawable.report_banjir));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum2), getResources().getString(R.string.nama1),getResources().getString(R.string.tahun1), R.drawable.wisata));
-        allItems.add(new itemObject_museum(getResources().getString(R.string.museum3), getResources().getString(R.string.nama),getResources().getString(R.string.tahun2), R.drawable.header_profile));
-
-        return allItems;
-    }
 }

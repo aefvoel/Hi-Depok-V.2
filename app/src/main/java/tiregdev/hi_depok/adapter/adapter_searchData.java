@@ -14,6 +14,7 @@ import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.detail_search;
+import tiregdev.hi_depok.model.CariData;
 import tiregdev.hi_depok.model.itemObject_searchData;
 
 /**
@@ -21,15 +22,15 @@ import tiregdev.hi_depok.model.itemObject_searchData;
  */
 
 public class adapter_searchData extends RecyclerView.Adapter<adapter_searchData.holder_searchData> {
-    private List<itemObject_searchData> itemList;
+    private List<CariData> itemList;
     private Context context;
 
-    public adapter_searchData(Context context, List<itemObject_searchData> itemList){
+    public adapter_searchData(Context context, List<CariData> itemList){
         this.itemList = itemList;
         this.context = context;
     }
 
-    public void updateList(ArrayList<itemObject_searchData> modelList) {
+    public void updateList(ArrayList<CariData> modelList) {
         this.itemList = modelList;
         notifyDataSetChanged();
     }
@@ -45,8 +46,8 @@ public class adapter_searchData extends RecyclerView.Adapter<adapter_searchData.
     public void onBindViewHolder(adapter_searchData.holder_searchData holder, int position){
         holder.list_namaTempat.setText(itemList.get(position).getNamaTempat());
         holder.list_alamat.setText(itemList.get(position).getAlamat());
-        holder.list_jarak.setText(itemList.get(position).getJarak());
-        holder.list_icon.setImageResource(itemList.get(position).getIcon());
+//        holder.list_jarak.setText(itemList.get(position).getJarak());
+//        holder.list_icon.setImageResource(itemList.get(position).getIcon());
     }
 
     @Override
@@ -70,6 +71,15 @@ public class adapter_searchData extends RecyclerView.Adapter<adapter_searchData.
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, detail_search.class);
+                    intent.putExtra("NAMA_TEMPAT", itemList.get(getAdapterPosition()).getNamaTempat());
+                    intent.putExtra("KOORDINAT", itemList.get(getAdapterPosition()).getKoordinat());
+                    intent.putExtra("DESKRIPSI", itemList.get(getAdapterPosition()).getDeskripsi());
+                    intent.putExtra("ALAMAT", itemList.get(getAdapterPosition()).getAlamat());
+                    intent.putExtra("NO_TELP", itemList.get(getAdapterPosition()).getNoTelp());
+                    intent.putExtra("JAM_OPERASI", itemList.get(getAdapterPosition()).getJamOperasi());
+                    intent.putExtra("KECAMATAN", itemList.get(getAdapterPosition()).getKecamatan());
+                    intent.putExtra("WEBSITE", itemList.get(getAdapterPosition()).getWebsite());
+                    intent.putExtra("FOTO", itemList.get(getAdapterPosition()).getFoto());
                     context.startActivity(intent);
                 }
             });

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="tiregdev.hi_depok.activity.edit_profile">
+    tools:context="tiregdev.hi_depok.activity.EditProfileActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -111,6 +111,43 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
+                    android:text="@string/jk"
+                    android:textColor="@color/colorRed" />
+
+                <RadioGroup
+                    android:id="@+id/jenisKel"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_below="@id/alamat"
+                    android:textColor="@color/colorBlack"
+                    android:orientation="horizontal">
+
+                    <fr.arnaudguyon.smartfontslib.FontRadioButton
+                        android:id="@+id/radio_l"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:text="@string/jk_l"
+                        app:font="@string/fontReguler"/>
+
+                    <fr.arnaudguyon.smartfontslib.FontRadioButton
+                        android:id="@+id/radio_p"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:text="@string/jk_p"
+                        app:font="@string/fontReguler"/>
+
+                </RadioGroup>
+                <fr.arnaudguyon.smartfontslib.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/nmrTlp"
                     android:textColor="@color/colorRed" />
 
@@ -181,6 +218,7 @@
                     app:rv_rippleDuration="150">
 
                     <fr.arnaudguyon.smartfontslib.FontButton
+                        android:id="@+id/saveChanges"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/rectangle_blue"

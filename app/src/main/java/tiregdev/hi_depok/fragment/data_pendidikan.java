@@ -25,6 +25,21 @@ public class data_pendidikan extends Fragment {
     ViewPager pager;
     View v;
 
+    public static data_pendidikan newInstance(String title) {
+        data_pendidikan fragment = new data_pendidikan();
+
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    public String getTitle() {
+        Bundle args = getArguments();
+        return args.getString("title", "NO TITLE FOUND");
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -39,11 +54,11 @@ public class data_pendidikan extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new pendidikan_sd(),"SD");
-        adapter.addFragment(new pendidikan_smp(), "SMP");
-        adapter.addFragment(new pendidikan_sma(), "SMA");
-        adapter.addFragment(new pendidikan_pt(), "PERGURUAN TINGGI");
-        adapter.addFragment(new pendidikan_perpus(), "PERPUSTAKAAN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "sd"),"SD");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "smp"), "SMP");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "sma"), "SMA");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pt"), "PERGURUAN TINGGI");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "perpus"), "PERPUSTAKAAN");
         viewPager.setAdapter(adapter);
 
     }

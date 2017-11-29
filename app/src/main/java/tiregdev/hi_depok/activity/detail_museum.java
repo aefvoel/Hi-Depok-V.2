@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import fr.arnaudguyon.smartfontslib.FontTextView;
 import tiregdev.hi_depok.R;
 
 public class detail_museum extends AppCompatActivity {
@@ -25,14 +26,41 @@ public class detail_museum extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setCollaps();
         setupToolbar();
+        findViews();
     }
 
+    private FontTextView namaPenghargaan;
+    private FontTextView descPenghargaan;
+    private FontTextView peraih;
+    private FontTextView tgl;
+    private FontTextView kategori;
+    private FontTextView tingkat;
+
+
+    private void findViews() {
+        namaPenghargaan = (FontTextView)findViewById( R.id.namaPenghargaan );
+        descPenghargaan = (FontTextView)findViewById( R.id.desc_penghargaan );
+        peraih = (FontTextView)findViewById( R.id.peraih );
+        tgl = (FontTextView)findViewById( R.id.tgl );
+        kategori = (FontTextView)findViewById( R.id.kategori );
+        tingkat = (FontTextView)findViewById( R.id.tingkat );
+
+        namaPenghargaan.setText(getIntent().getExtras().getString("NAMA"));
+        descPenghargaan.setText(getIntent().getExtras().getString("DESKRIPSI"));
+        peraih.setText(getIntent().getExtras().getString("PERAIH"));
+        tgl.setText(getIntent().getExtras().getString("TANGGAL"));
+        kategori.setText(getIntent().getExtras().getString("KATEGORI"));
+        tingkat.setText(getIntent().getExtras().getString("TINGKAT"));
+    }
+
+
     public void setCollaps(){
+
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         placePicture = (ImageView) findViewById(R.id.image);
         placePicture.setImageResource(R.drawable.header_bg);
 
-        collapsingToolbar.setTitle("Detail Museum");
+        collapsingToolbar.setTitle(getIntent().getExtras().getString("NAMA"));
         collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.transperent));
         collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));
     }

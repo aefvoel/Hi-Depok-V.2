@@ -41,6 +41,7 @@
     <string name="signup">SIGN UP</string>
     <string name="ttl">Tanggal Lahir</string>
     <string name="bio">Bio</string>
+    <string name="jk">Jenis Kelamin</string>
     <string name="nmrTlp">Nomor Telepon</string>
     <string name="verify">
         Kami telah mengirimkan Anda SMS dengan kode verifikasi,
@@ -54,7 +55,7 @@
     <string name="validasi">
         Dengan ini saya bersedia untuk bertanggung jawab dengan nama diatas
         dan dengan segala aktivitas yang saya lakukan pada aplikasi ini</string>
-    <string name="alamat">Jl. Kembang Raya Beji no.71, Beji, Depok</string>
+    <string name="alamat">Alamat</string>
     <string name="lupaPass"><u>Lupa Password?</u></string>
     <string name="loginwithgoogle">Login dengan G+</string>
     <string name="search">
@@ -95,17 +96,13 @@
     <string name="karya">KARYA</string>
     <string name="modul">MODUL</string>
     <string name="museum">MUSEUM</string>
-    <string name="news1">10 Tempat Wisata Keren di Kota Depok Yang Wajib Anda Kunjungi</string>
-    <string name="news2">Banjir Di Kecamatan Cilodong Bikin Macet Hingga 5 Jam</string>
-    <string name="news3">Kemacetan Kembali Terjadi Di Jalan Nusantara, SSA Jadi Solusi</string>
-    <string name="news5">Kecelakaan Beruntun Terjadi di Jalan Juanda, Kondisi Supir Sangat Mengenaskan</string>
-    <string name="news4">Water Park Di Kota Depok Semakin Banyak, Kini Giliran Fantasy Water Park di Pondok Petir</string>
-    <string name="portal1">depoknews.id</string>
-    <string name="portal2">beritadepok.id</string>
-    <string name="portal3">depok.go.id</string>
+    <string name="news1">[NEWS_TITLE]</string>
+    <string name="portal1">[NEWS_PORTAL]</string>
     <string name="hot">HOT NEWS</string>
-    <string name="time1">20m ago</string>
-    <string name="time2">6h ago</string>
+    <string name="time1">[NEWS_DATE]</string>
+    <string name="news2">[NEWS_TITLE]</string>
+    <string name="portal2">[NEWS_PORTAL]</string>
+    <string name="time2">[NEWS_DATE]</string>
     <string name="titik">"\u2022"</string>
     <string name="namaKos">Ketik nama kos ...</string>
 
@@ -263,6 +260,7 @@
     <string name="formSS_3">Tanggal Peminjaman</string>
     <string name="formSS_4">Keperluan</string>
     <string name="formSS_5">Jumlah Anggota</string>
+    <string name="formSS_6">No Telepon</string>
 
     <string name="volunteer_judul">Form Pengajuan Volunteer</string>
     <string name="volunteer_form_desc">
