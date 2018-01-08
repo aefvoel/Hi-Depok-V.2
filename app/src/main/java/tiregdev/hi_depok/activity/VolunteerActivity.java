@@ -19,8 +19,6 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +29,7 @@ import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 
-public class volunteer extends AppCompatActivity implements View.OnClickListener {
+public class VolunteerActivity extends AppCompatActivity implements View.OnClickListener {
 
 
 
@@ -45,7 +43,7 @@ public class volunteer extends AppCompatActivity implements View.OnClickListener
     private FontButton kirim;
     private SQLiteHandler db;
     private ProgressDialog pDialog;
-    private static final String TAG = volunteer.class.getSimpleName();
+    private static final String TAG = VolunteerActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,7 +211,7 @@ public class volunteer extends AppCompatActivity implements View.OnClickListener
         switch (item.getItemId()) {
             case android.R.id.home:
                 // todo: goto back activity from here
-                volunteer.this.finish();
+                VolunteerActivity.this.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

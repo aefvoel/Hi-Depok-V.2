@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "tiregdev.hi_depok"
         minSdkVersion 18
@@ -52,9 +52,12 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.clans:fab:1.6.4'
-    compile 'com.github.bumptech.glide:glide:4.2.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
+
+    // Include all the Twitter APIs
+    compile 'com.twitter.sdk.android:twitter:3.1.1'
+
     testCompile 'junit:junit:4.12'
 }
 

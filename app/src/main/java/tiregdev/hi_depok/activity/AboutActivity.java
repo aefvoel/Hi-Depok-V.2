@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import tiregdev.hi_depok.R;
 
-public class about extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

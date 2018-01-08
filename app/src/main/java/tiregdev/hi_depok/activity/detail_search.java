@@ -5,16 +5,14 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.viewpagerindicator.CirclePageIndicator;
+import com.github.clans.fab.FloatingActionButton;
 
 import fr.arnaudguyon.smartfontslib.FontButton;
 import fr.arnaudguyon.smartfontslib.FontTextView;
@@ -36,7 +34,7 @@ public class detail_search extends AppCompatActivity implements View.OnClickList
     private ImageView image;
     private FontTextView namaTempat;
     private FontTextView alamat;
-    private FontButton direct;
+    private FloatingActionButton direct;
     private FontTextView desc;
     private FontTextView jadwal;
     private FontTextView more;
@@ -48,7 +46,7 @@ public class detail_search extends AppCompatActivity implements View.OnClickList
         image = (ImageView)findViewById( R.id.image );
         namaTempat = (FontTextView)findViewById( R.id.namaTempat );
         alamat = (FontTextView)findViewById( R.id.alamat );
-        direct = (FontButton)findViewById( R.id.direct );
+        direct = (FloatingActionButton) findViewById( R.id.direct );
         desc = (FontTextView)findViewById( R.id.desc );
         jadwal = (FontTextView)findViewById( R.id.jadwal );
         more = (FontTextView)findViewById( R.id.more );

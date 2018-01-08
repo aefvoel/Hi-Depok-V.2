@@ -20,8 +20,7 @@ public class RssService extends IntentService {
 
     private static final String[] RSS_LINK = {
             "http://www.depoknews.id/feed/",
-            "http://www.depokpos.com/feed/",
-            "http://www.depoktik.co.id/feed/"
+            "http://www.depokpos.com/feed/"
     };
     public static final String ITEMS = "items";
     public static final String ACTION_RSS_PARSED = "tiregdev.hi_depok.ACTION_RSS_PARSED";

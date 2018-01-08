@@ -18,6 +18,8 @@ import tiregdev.hi_depok.activity.detail_karya;
 
 import tiregdev.hi_depok.model.MasterpiecePost;
 import tiregdev.hi_depok.utils.AppConfig;
+import tiregdev.hi_depok.utils.MasterpieceFunctions;
+import tiregdev.hi_depok.utils.SQLiteHandler;
 
 /**
  * Created by TiregDev on 28/08/2017.
@@ -42,16 +44,30 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
 
     @Override
     public void onBindViewHolder(adapter_karya.holder_karya holder, int position){
-        holder.list_username.setText(itemList.get(position).getNama_peraih());
+        holder.list_username.setText(itemList.get(position).getUsername());
         holder.list_location.setText(itemList.get(position).getTingkat());
         holder.list_likeTxt.setText(itemList.get(position).getJumlah_suka());
         holder.list_commentTxt.setText(itemList.get(position).getJumlah_komentar());
         holder.list_postTxt.setText(itemList.get(position).getDeskripsi());
-        holder.list_shareTxt.setText(itemList.get(position).getJumlah_suka());
         holder.list_time.setText(itemList.get(position).getTgl_post());
 
-        Glide.with(context).load(AppConfig.IMG_MASTERPIECE + itemList.get(position).getImage()).placeholder(R.drawable.no_image).into(holder.list_imagePost);
-//        Glide.with(context).load(itemList.get(position).getImage()).placeholder(R.drawable.no_image).into(holder.list_Avatar);
+        Glide.with(context).load(AppConfig.IMG_MASTERPIECE + itemList.get(position).getImage()).centerCrop().placeholder(R.drawable.no_image).into(holder.list_imagePost);
+        Glide.with(context).load(itemList.get(position).getAvatar()).centerCrop().placeholder(R.drawable.no_image).into(holder.list_Avatar);
+
+
+
+
+        if(itemList.get(position).getStatus().equals("diproses")){
+            holder.list_status.setImageResource(R.drawable.status_waiting);
+        }else if(itemList.get(position).getStatus().equals("diterima")){
+            holder.list_status.setImageResource(R.drawable.status_accepted);
+        }else if(itemList.get(position).getStatus().equals("ditolak")) {
+            holder.list_status.setImageResource(R.drawable.status_proses);
+        }
+
+        if(itemList.get(position).is_liked()){
+            holder.likeIcon.setImageResource(R.drawable.favorite);
+        }
     }
 
     @Override
@@ -61,7 +77,7 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
 
     public class holder_karya extends RecyclerView.ViewHolder {
         public TextView list_username, list_location, list_likeTxt, list_commentTxt, list_postTxt, list_shareTxt, list_time;
-        public ImageView list_Avatar, list_imagePost, list_status;
+        public ImageView list_Avatar, list_imagePost, list_status, likeIcon;
 
         public holder_karya(View itemView){
             super(itemView);
@@ -76,11 +92,23 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
             list_imagePost = (ImageView)itemView.findViewById(R.id.imagePost);
             list_status = (ImageView)itemView.findViewById(R.id.status);
             list_time = (TextView)itemView.findViewById(R.id.time);
+            likeIcon = (ImageView)itemView.findViewById(R.id.likeIcon);
+            likeIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SQLiteHandler db = new SQLiteHandler(context);
+                    MasterpieceFunctions mFun = new MasterpieceFunctions(context);
+                    mFun.insertLike(db.getUserDetails().get("uid"), itemList.get(getAdapterPosition()).getId_post());
+                    likeIcon.setImageResource(R.drawable.favorite);
+                    notifyDataSetChanged();
+                }
+            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, detail_karya.class);
+                    intent.putExtra("ID_POST", itemList.get(getAdapterPosition()).getId_post());
                     intent.putExtra("NAMA", itemList.get(getAdapterPosition()).getNama_prestasi());
                     intent.putExtra("DESKRIPSI", itemList.get(getAdapterPosition()).getDeskripsi());
                     intent.putExtra("PERAIH", itemList.get(getAdapterPosition()).getNama_peraih());
@@ -88,6 +116,11 @@ public class adapter_karya extends RecyclerView.Adapter<adapter_karya.holder_kar
                     intent.putExtra("KATEGORI", itemList.get(getAdapterPosition()).getKategori());
                     intent.putExtra("TINGKAT", itemList.get(getAdapterPosition()).getTingkat());
                     intent.putExtra("IMAGE", itemList.get(getAdapterPosition()).getImage());
+                    intent.putExtra("JUMLAH_SUKA", itemList.get(getAdapterPosition()).getJumlah_suka());
+                    intent.putExtra("JUMLAH_KOMENTAR", itemList.get(getAdapterPosition()).getJumlah_komentar());
+                    intent.putExtra("ISLIKED", itemList.get(getAdapterPosition()).is_liked());
+                    intent.putExtra("AVATAR", itemList.get(getAdapterPosition()).getAvatar());
+
                     context.startActivity(intent);
                 }
             });

@@ -11,11 +11,13 @@ import android.view.ViewGroup;
 import com.andexert.library.RippleView;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.Diagnosa;
+import tiregdev.hi_depok.activity.Ensiklopedia;
 import tiregdev.hi_depok.activity.MapsActivity;
 import tiregdev.hi_depok.activity.rsud;
 import tiregdev.hi_depok.activity.sahabat_kos;
 import tiregdev.hi_depok.activity.space_room;
-import tiregdev.hi_depok.activity.volunteer;
+import tiregdev.hi_depok.activity.VolunteerActivity;
 import tiregdev.hi_depok.activity.ntpd;
 
 /**
@@ -54,7 +56,7 @@ public class Home extends Fragment {
         volunteers.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), volunteer.class);
+                Intent w = new Intent(getActivity(), VolunteerActivity.class);
                 startActivity(w);
             }
         });

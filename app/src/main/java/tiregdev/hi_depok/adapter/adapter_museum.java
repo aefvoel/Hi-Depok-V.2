@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import tiregdev.hi_depok.R;
@@ -17,6 +19,7 @@ import tiregdev.hi_depok.activity.detail_museum;
 import tiregdev.hi_depok.fragment.Masterpiece;
 import tiregdev.hi_depok.model.MasterpiecePost;
 import tiregdev.hi_depok.model.itemObject_museum;
+import tiregdev.hi_depok.utils.AppConfig;
 
 /**
  * Created by TiregDev on 29/08/2017.
@@ -42,6 +45,8 @@ public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_m
     public void onBindViewHolder(adapter_museum.holder_museum holder, int position){
         holder.list_judul.setText(itemList.get(position).getNama_prestasi());
         holder.list_nama.setText(itemList.get(position).getNama_peraih());
+        holder.list_tahun.setText(itemList.get(position).getTgl_post());
+        Glide.with(context).load(AppConfig.IMG_MASTERPIECE + itemList.get(position).getImage()).centerCrop().placeholder(R.drawable.no_image).into(holder.list_picMuseum);
     }
 
     @Override

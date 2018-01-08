@@ -27,11 +27,6 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -372,16 +367,16 @@ public class submit_master_karya extends AppCompatActivity implements View.OnCli
 
         final String id_user = db.getUserDetails().get("uid");
         final String nama_peraih = db.getUserDetails().get("name");
-        final String instansi = "Umum";
+        final String instansi = "-";
         final String nama_prestasi = textPos.getText().toString().trim();
         final String deskripsi = textPos.getText().toString().trim();
-        final String tingkat = "Umum";
-        final String kategori = "Umum";
-        final String riwayat = textPos.getText().toString().trim();
-        final String keterangan = textPos.getText().toString().trim();
+        final String tingkat = "-";
+        final String kategori = "-";
+        final String riwayat = "-";
+        final String keterangan = "-";
         final String jumlah_suka = "0";
         final String jumlah_komentar = "0";
-        final String status = "waiting";
+        final String status = "diproses";
         final String tgl_post = sdf.format(Calendar.getInstance().getTime().getTime());
 
         String tag_string_req = "req_submit_masterpiece";

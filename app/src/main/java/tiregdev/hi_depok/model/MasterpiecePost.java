@@ -6,6 +6,7 @@ package tiregdev.hi_depok.model;
 
 public class MasterpiecePost {
 
+    private String id_post;
     private String id_user;
     private String nama_peraih;
     private String instansi;
@@ -20,26 +21,44 @@ public class MasterpiecePost {
     private String status;
     private String tgl_post;
     private String image;
+    private String username;
+    private String avatar;
+    private boolean is_liked;
 
     public MasterpiecePost(){
 
     }
 
-    public MasterpiecePost(String id_user, String nama_peraih, String instansi, String nama_prestasi, String deskripsi, String tingkat, String kategori, String riwayat, String keterangan, String jumlah_suka, String jumlah_komentar, String status, String tgl_post, String image) {
-        this.id_user = id_user;
-        this.nama_peraih = nama_peraih;
-        this.instansi = instansi;
-        this.nama_prestasi = nama_prestasi;
-        this.deskripsi = deskripsi;
-        this.tingkat = tingkat;
-        this.kategori = kategori;
-        this.riwayat = riwayat;
-        this.keterangan = keterangan;
-        this.jumlah_suka = jumlah_suka;
-        this.jumlah_komentar = jumlah_komentar;
-        this.status = status;
-        this.tgl_post = tgl_post;
-        this.image = image;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public boolean is_liked() {
+        return is_liked;
+    }
+
+    public void setIs_liked(boolean is_liked) {
+        this.is_liked = is_liked;
+    }
+
+    public String getId_post() {
+        return id_post;
+    }
+
+    public void setId_post(String id_post) {
+        this.id_post = id_post;
     }
 
     public String getId_user() {

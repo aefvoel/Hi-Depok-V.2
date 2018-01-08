@@ -4,6 +4,7 @@ package tiregdev.hi_depok.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -141,11 +142,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             GoogleSignInAccount account = result.getSignInAccount();
             String getNama = account.getDisplayName();
             String getEmail = account.getEmail();
-            String getPhoto = account.getPhotoUrl().toString();
+            Uri uri = account.getPhotoUrl();
             Intent toRegister = new Intent(LoginActivity.this, SignUpActivity.class);
             toRegister.putExtra("getNama", getNama);
             toRegister.putExtra("getEmail", getEmail);
-            toRegister.putExtra("getPhoto", getPhoto);
+            if(uri != null){
+                String getPhoto = uri.toString();
+                toRegister.putExtra("getPhoto", getPhoto);
+
+            }else{
+                toRegister.putExtra("getPhoto", "-");
+            }
+
             startActivity(toRegister);
         }
     }

@@ -112,17 +112,17 @@
     <string name="nama1">Pandu</string>
     <string name="nama2">Toriq Aefvoel</string>
     <string name="nama3">HVS 13</string>
-    <string name="likeTxt">125 Suka</string>
-    <string name="likeTxt1">12 Suka</string>
-    <string name="likeTxt2">15 Suka</string>
-    <string name="likeTxt3">150 Suka</string>
-    <string name="commentTxt">40 Komentar</string>
-    <string name="commentTxt1">4 Komentar</string>
-    <string name="commentTxt2">10 Komentar</string>
-    <string name="commentTxt3">34 Komentar</string>
-    <string name="share1">46 Share</string>
-    <string name="share2">22 Share</string>
-    <string name="share3">135 Share</string>
+    <string name="likeTxt">Suka</string>
+    <string name="likeTxt1">Suka</string>
+    <string name="likeTxt2">Suka</string>
+    <string name="likeTxt3">Suka</string>
+    <string name="commentTxt">Komentar</string>
+    <string name="commentTxt1">Komentar</string>
+    <string name="commentTxt2">Komentar</string>
+    <string name="commentTxt3">Komentar</string>
+    <string name="share1">Share</string>
+    <string name="share2">Share</string>
+    <string name="share3">Share</string>
     <string name="postTxt">
         Robot line follower oleh tim ROBOFIGHTER dari SD Muhammadiyah Negeri 1 Depok
     </string>

@@ -9,10 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.detail_karya;
+import tiregdev.hi_depok.model.MasterpieceKomentar;
 import tiregdev.hi_depok.model.itemObject_karya;
 import tiregdev.hi_depok.model.itemObject_komen_karya;
 
@@ -21,10 +24,10 @@ import tiregdev.hi_depok.model.itemObject_komen_karya;
  */
 
 public class adapter_komen_karya extends RecyclerView.Adapter<adapter_komen_karya.holder_komen_karya> {
-    private List<itemObject_komen_karya> itemList;
+    private List<MasterpieceKomentar> itemList;
     private Context context;
 
-    public adapter_komen_karya(Context context, List<itemObject_komen_karya> itemList){
+    public adapter_komen_karya(Context context, List<MasterpieceKomentar> itemList){
         this.itemList = itemList;
         this.context = context;
     }
@@ -38,10 +41,11 @@ public class adapter_komen_karya extends RecyclerView.Adapter<adapter_komen_kary
 
     @Override
     public void onBindViewHolder(adapter_komen_karya.holder_komen_karya holder, int position){
-        holder.uname.setText(itemList.get(position).getUname());
-        holder.time.setText(itemList.get(position).getTime());
-        holder.komen.setText(itemList.get(position).getKomen());
-        holder.avatar.setImageResource(itemList.get(position).getAvatar());
+        holder.uname.setText(itemList.get(position).getNamaUser());
+        holder.time.setText(itemList.get(position).getWaktu());
+        holder.komen.setText(itemList.get(position).getIsiKomentar());
+
+        Glide.with(context).load(itemList.get(position).getAvatar()).placeholder(R.drawable.no_image).into(holder.avatar);
     }
 
     @Override

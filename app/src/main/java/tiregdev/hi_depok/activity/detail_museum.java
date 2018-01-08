@@ -11,8 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 import fr.arnaudguyon.smartfontslib.FontTextView;
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.utils.AppConfig;
 
 public class detail_museum extends AppCompatActivity {
 
@@ -51,6 +54,7 @@ public class detail_museum extends AppCompatActivity {
         tgl.setText(getIntent().getExtras().getString("TANGGAL"));
         kategori.setText(getIntent().getExtras().getString("KATEGORI"));
         tingkat.setText(getIntent().getExtras().getString("TINGKAT"));
+
     }
 
 
@@ -58,8 +62,7 @@ public class detail_museum extends AppCompatActivity {
 
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         placePicture = (ImageView) findViewById(R.id.image);
-        placePicture.setImageResource(R.drawable.header_bg);
-
+        Glide.with(this).load(AppConfig.IMG_MASTERPIECE + getIntent().getExtras().getString("IMAGE")).centerCrop().placeholder(R.drawable.no_image).into(placePicture);
         collapsingToolbar.setTitle(getIntent().getExtras().getString("NAMA"));
         collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.transperent));
         collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));

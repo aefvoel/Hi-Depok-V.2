@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +34,14 @@ import tiregdev.hi_depok.adapter.adapter_karya;
 import tiregdev.hi_depok.model.MasterpiecePost;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
+import tiregdev.hi_depok.utils.MasterpieceFunctions;
+import tiregdev.hi_depok.utils.SQLiteHandler;
 
 /**
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_karya extends BaseFragment {
+public class Master_karya extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     View v;
     BannerSlider banner;
@@ -50,6 +53,8 @@ public class Master_karya extends BaseFragment {
     List<MasterpiecePost> dataAdapter;
     adapter_karya rvAdapter;
     LinearLayoutManager lLayout;
+    MasterpieceFunctions mFun;
+    SQLiteHandler db;
 
     @Nullable
     @Override
@@ -57,7 +62,6 @@ public class Master_karya extends BaseFragment {
         v = inflater.inflate(R.layout.fragment_master_karya, container, false);
         findViews();
         setViews();
-        displayData();
         return v;
     }
 
@@ -68,6 +72,8 @@ public class Master_karya extends BaseFragment {
         banner = (BannerSlider) v.findViewById(R.id.banner_karya);
         lLayout = new LinearLayoutManager(getContext());
         dataAdapter = new ArrayList<>();
+        mFun = new MasterpieceFunctions(getContext());
+        db = new SQLiteHandler(getContext());
     }
 
     private void setViews(){
@@ -92,6 +98,7 @@ public class Master_karya extends BaseFragment {
     }
 
     private void displayData(){
+        dataAdapter.clear();
         swipeRefreshRecyclerList.setRefreshing(true);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.DISPLAY_MASTERPIECE, new Response.Listener<JSONArray>() {
             @Override
@@ -101,6 +108,7 @@ public class Master_karya extends BaseFragment {
                     jsonObject = null;
                     try {
                         jsonObject = response.getJSONObject(i);
+                        mPost.setId_post(jsonObject.getString("id_penghargaan"));
                         mPost.setId_user(jsonObject.getString("id_user"));
                         mPost.setDeskripsi(jsonObject.getString("deskripsi"));
                         mPost.setInstansi(jsonObject.getString("instansi"));
@@ -115,6 +123,18 @@ public class Master_karya extends BaseFragment {
                         mPost.setTgl_post(jsonObject.getString("tgl_post"));
                         mPost.setStatus(jsonObject.getString("status"));
                         mPost.setRiwayat(jsonObject.getString("riwayat"));
+                        mPost.setUsername(jsonObject.getString("username"));
+                        mPost.setAvatar(jsonObject.getString("foto"));
+
+                        if(!jsonObject.getString("id_user_suka").equals("null")){
+                            if (jsonObject.getString("id_user_suka").contains(db.getUserDetails().get("uid"))) {
+                                mPost.setIs_liked(true);
+                            } else {
+                                mPost.setIs_liked(false);
+                            }
+                        }else{
+                            mPost.setIs_liked(false);
+                        }
 
                     }  catch (JSONException e) {
                         e.printStackTrace();
@@ -122,8 +142,10 @@ public class Master_karya extends BaseFragment {
 
                     dataAdapter.add(mPost);
 
+
                 }
                 rvAdapter = new adapter_karya(getContext(), dataAdapter);
+                rvAdapter.notifyDataSetChanged();
                 rView.setAdapter(rvAdapter);
                 swipeRefreshRecyclerList.setRefreshing(false);
 
@@ -156,4 +178,27 @@ public class Master_karya extends BaseFragment {
         lLayout.onRestoreInstanceState(savedInstanceState.getParcelable("myState"));
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        displayData();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        swipeRefreshRecyclerList.setRefreshing(false);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        swipeRefreshRecyclerList.setRefreshing(false);
+    }
+
+    @Override
+    public void onRefresh() {
+        displayData();
+        rvAdapter.notifyDataSetChanged();
+    }
 }

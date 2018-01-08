@@ -21,21 +21,19 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.Badgeable;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.fragment.Home;
+import tiregdev.hi_depok.fragment.Home_2;
 import tiregdev.hi_depok.fragment.News;
 import tiregdev.hi_depok.fragment.Notif;
 import tiregdev.hi_depok.fragment.Profile;
@@ -82,7 +80,7 @@ public class MenuActivity extends AppCompatActivity {
                         break;
                     case R.id.tab_home:
                         abc = 2;
-                        selectedFragment = Home.newInstance();
+                        selectedFragment = Home_2.newInstance();
                         break;
                     case R.id.tab_notif:
                         abc = 3;
@@ -108,7 +106,7 @@ public class MenuActivity extends AppCompatActivity {
         });
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLayout, Home.newInstance());
+        transaction.replace(R.id.frameLayout, Home_2.newInstance());
         transaction.commit();
 
         drawer();
@@ -293,7 +291,7 @@ public class MenuActivity extends AppCompatActivity {
                                 Intent i = new Intent(MenuActivity.this, faq.class);
                                 startActivity(i);
                             } else if (drawerItem.getIdentifier() == 6){
-                                Intent i = new Intent(MenuActivity.this, about.class);
+                                Intent i = new Intent(MenuActivity.this, AboutActivity.class);
                                 startActivity(i);
                             } else if (drawerItem.getIdentifier() == 7){
                                 logoutUser();

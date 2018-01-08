@@ -33,7 +33,7 @@ import tiregdev.hi_depok.utils.AppController;
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_museum extends Fragment {
+public class Master_museum extends BaseFragment implements MaterialSpinner.OnItemSelectedListener {
 
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
@@ -44,6 +44,7 @@ public class Master_museum extends Fragment {
     adapter_museum rvAdapter;
     GridLayoutManager gridLayoutManager;
     MaterialSpinner spinner;
+    String extraLink;
 
     @Nullable
     @Override
@@ -82,9 +83,36 @@ public class Master_museum extends Fragment {
         });
     }
 
+    @Override
+    public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+        switch (position) {
+            case 0:
+                extraLink = AppConfig.DISPLAY_MASTERPIECE + "?status=diterima";
+                break;
+            case 1:
+                extraLink = AppConfig.DISPLAY_MASTERPIECE + "?kategori=Teknologi";
+                break;
+            case 2:
+                extraLink = AppConfig.DISPLAY_MASTERPIECE + "?kategori=Kesehatan";
+                break;
+            case 3:
+                extraLink = AppConfig.DISPLAY_MASTERPIECE + "?kategori=Lingkungan";
+                break;
+            case 4:
+                extraLink = AppConfig.DISPLAY_MASTERPIECE + "?kategori=Pendidikan";
+                break;
+            case 5:
+                extraLink = AppConfig.DISPLAY_MASTERPIECE + "?kategori=Umum";
+                break;
+            default:
+                break;
+        }
+        displayData();
+    }
+
     private void displayData(){
         swipeRefreshRecyclerList.setRefreshing(true);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.DISPLAY_MASTERPIECE, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(extraLink, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 for (int i = 0; i < response.length(); i++){
