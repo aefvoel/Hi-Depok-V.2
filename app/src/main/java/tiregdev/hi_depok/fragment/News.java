@@ -83,8 +83,8 @@ public class News extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new news_blog(),"BLOG");
-        adapter.addFragment(new news_event(), "EVENT");
+        adapter.addFragment(new RSSFragment(),"BLOG");
+        adapter.addFragment(new EventFragment(), "EVENT");
         viewPager.setAdapter(adapter);
 
     }

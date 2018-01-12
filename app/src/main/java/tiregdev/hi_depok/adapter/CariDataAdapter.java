@@ -15,17 +15,16 @@ import java.util.List;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.detail_search;
 import tiregdev.hi_depok.model.CariData;
-import tiregdev.hi_depok.model.itemObject_searchData;
 
 /**
  * Created by Muhammad63 on 9/1/2017.
  */
 
-public class adapter_searchData extends RecyclerView.Adapter<adapter_searchData.holder_searchData> {
+public class CariDataAdapter extends RecyclerView.Adapter<CariDataAdapter.holder_searchData> {
     private List<CariData> itemList;
     private Context context;
 
-    public adapter_searchData(Context context, List<CariData> itemList){
+    public CariDataAdapter(Context context, List<CariData> itemList){
         this.itemList = itemList;
         this.context = context;
     }
@@ -43,10 +42,10 @@ public class adapter_searchData extends RecyclerView.Adapter<adapter_searchData.
     }
 
     @Override
-    public void onBindViewHolder(adapter_searchData.holder_searchData holder, int position){
+    public void onBindViewHolder(CariDataAdapter.holder_searchData holder, int position){
         holder.list_namaTempat.setText(itemList.get(position).getNamaTempat());
         holder.list_alamat.setText(itemList.get(position).getAlamat());
-//        holder.list_jarak.setText(itemList.get(position).getJarak());
+        holder.list_jarak.setText(itemList.get(position).getJarak() + " KM");
 //        holder.list_icon.setImageResource(itemList.get(position).getIcon());
     }
 

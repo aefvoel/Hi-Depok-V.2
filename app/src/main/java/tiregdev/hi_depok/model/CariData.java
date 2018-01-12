@@ -14,8 +14,9 @@ public class CariData {
     private String kecamatan;
     private String website;
     private String foto;
+    private String jarak;
 
-    public CariData(String namaTempat, String koordinat, String deskripsi, String alamat, String noTelp, String jamOperasi, String kecamatan, String website, String foto) {
+    public CariData(String namaTempat, String koordinat, String deskripsi, String alamat, String noTelp, String jamOperasi, String kecamatan, String website, String foto, String jarak) {
         this.namaTempat = namaTempat;
         this.koordinat = koordinat;
         this.deskripsi = deskripsi;
@@ -25,6 +26,7 @@ public class CariData {
         this.kecamatan = kecamatan;
         this.website = website;
         this.foto = foto;
+        this.jarak = jarak;
     }
 
     public CariData() {
@@ -100,5 +102,13 @@ public class CariData {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getJarak() {
+        return jarak;
+    }
+
+    public void setJarak(String jarak) {
+        this.jarak = jarak;
     }
 }

@@ -2,11 +2,9 @@ package tiregdev.hi_depok.activity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,12 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.adapter_karya;
 import tiregdev.hi_depok.adapter.adapter_pesan;
-import tiregdev.hi_depok.model.itemObject_karya;
 import tiregdev.hi_depok.model.itemObject_pesan;
-
-import static java.security.AccessController.getContext;
 
 public class pesan extends AppCompatActivity {
 

@@ -65,21 +65,21 @@
             android:name=".activity.pesan"
             android:label="Pesan" />
         <activity
-            android:name=".activity.search_list"
+            android:name=".activity.CariDataActivity"
             android:label="Cari Data" />
         <activity
             android:name=".activity.detail_search"
             android:label="Detail Data" />
         <activity
-            android:name=".activity.detail_karya"
+            android:name=".activity.DetailKaryaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Detail Karya"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.detail_modul"
+            android:name=".activity.DetailModulActivity"
             android:label="Detail Modul" />
         <activity
-            android:name=".activity.detail_museum"
+            android:name=".activity.DetailMuseumActivity"
             android:label="Detail Penghargaan" />
         <activity
             android:name=".activity.space_room"
@@ -92,11 +92,11 @@
             android:label="Form Volunteer"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity
-            android:name=".activity.submit_master_karya"
+            android:name=".activity.SubmitKaryaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Submit"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.detail_news_blog"
+        <activity android:name=".activity.DetailNewsActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity
             android:name=".activity.sahabat_kos"
@@ -104,6 +104,7 @@
             android:label="Sahabat Kos"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity android:name=".activity.detail_kos" />
+        <activity android:name=".activity.DetailEventActivity" />
         <activity
             android:name=".activity.ntpd"
             android:label="NTPD" />

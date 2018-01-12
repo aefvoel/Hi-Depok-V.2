@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -37,7 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import fr.arnaudguyon.smartfontslib.FontEditText;
 
@@ -47,7 +45,7 @@ import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 import tiregdev.hi_depok.utils.VolleyMultipartRequest;
 
-public class submit_master_karya extends AppCompatActivity implements View.OnClickListener {
+public class SubmitKaryaActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +67,7 @@ public class submit_master_karya extends AppCompatActivity implements View.OnCli
     private SimpleDateFormat sdf;
     private boolean isPosted;
 
-    private static final String TAG = submit_master_karya.class.getSimpleName();
+    private static final String TAG = SubmitKaryaActivity.class.getSimpleName();
     //Image request code
     private int PICK_IMAGE_REQUEST = 1;
 
@@ -101,109 +99,6 @@ public class submit_master_karya extends AppCompatActivity implements View.OnCli
         posting.setOnClickListener(this);
     }
 
-//    private void sendData(){
-//        final String id_user = db.getUserDetails().get("uid");
-//        final String nama_peraih = db.getUserDetails().get("name");
-//        final String instansi = "Umum";
-//        final String nama_prestasi = textPos.getText().toString().trim();
-//        final String deskripsi = textPos.getText().toString().trim();
-//        final String tingkat = "Umum";
-//        final String kategori = "Umum";
-//        final String riwayat = textPos.getText().toString().trim();
-//        final String keterangan = textPos.getText().toString().trim();
-//        final String jumlah_suka = "0";
-//        final String jumlah_komentar = "0";
-//        final String status = "waiting";
-//        final String tgl_post = sdf.format(Calendar.getInstance().getTime().getTime());
-//        final String image = db.getUserDetails().get("foto");
-//
-//        String tag_string_req = "req_submit_masterpiece";
-//
-//        pDialog.setMessage("Saving Changes ...");
-//        showDialog();
-//
-//        StringRequest strReq = new StringRequest(Request.Method.POST,
-//                AppConfig.SUBMIT_MASTERPIECE, new Response.Listener<String>() {
-//
-//            @Override
-//            public void onResponse(String response) {
-//                Log.d(TAG, "Register Response: " + response.toString());
-//                hideDialog();
-//
-//                try {
-//                    JSONObject jObj = new JSONObject(response);
-//                    boolean error = jObj.getBoolean("error");
-//                    if (!error) {
-//
-//                        Toast.makeText(getApplicationContext(), "Post added successfully!", Toast.LENGTH_LONG).show();
-//                        isPosted = true;
-//
-//                        // Launch login activity
-//                        Intent intent = new Intent(
-//                                getApplicationContext(),
-//                                MenuActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                    } else {
-//
-//                        // Error occurred in registration. Get the error
-//                        // message
-//                        String errorMsg = jObj.getString("error_msg");
-//                        Toast.makeText(getApplicationContext(),
-//                                errorMsg, Toast.LENGTH_LONG).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }, new Response.ErrorListener() {
-//
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//                Toast.makeText(getApplicationContext(),
-//                        error.getMessage(), Toast.LENGTH_LONG).show();
-//                Log.d(TAG, "Failed with error msg:\t" + error.getMessage());
-//                Log.d(TAG, "Error StackTrace: \t" + error.getStackTrace());
-//                // edited here
-//                try {
-//                    byte[] htmlBodyBytes = error.networkResponse.data;
-//                    Log.e(TAG, new String(htmlBodyBytes), error);
-//                } catch (NullPointerException e) {
-//                    e.printStackTrace();
-//                }
-//                hideDialog();
-//            }
-//        }) {
-//
-//            @Override
-//            protected Map<String, String> getParams() {
-//                // Posting params to register url
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("id_user", id_user);
-//                params.put("nama_peraih", nama_peraih);
-//                params.put("image", image);
-//                params.put("jumlah_suka", jumlah_suka);
-//                params.put("jumlah_komentar", jumlah_komentar);
-//                params.put("tgl_post", tgl_post);
-//                params.put("deskripsi", deskripsi);
-//                params.put("instansi", instansi);
-//                params.put("tingkat", tingkat);
-//                params.put("kategori", kategori);
-//                params.put("riwayat", riwayat);
-//                params.put("keterangan", keterangan);
-//                params.put("nama_prestasi", nama_prestasi);
-//                params.put("status", status);
-//
-//                return params;
-//            }
-//
-//        };
-//
-//// Adding request to request queue
-//        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-//    }
 
     private void showDialog() {
         if (!pDialog.isShowing())
@@ -226,7 +121,7 @@ public class submit_master_karya extends AppCompatActivity implements View.OnCli
             exitDialogView.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    submit_master_karya.this.finish();
+                    SubmitKaryaActivity.this.finish();
                 }
             });
             exitDialogView.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
@@ -240,32 +135,6 @@ public class submit_master_karya extends AppCompatActivity implements View.OnCli
             super.onBackPressed();
         }
     }
-
-//    /*
-//   * This is the method responsible for image upload
-//   * We need the full image path and the name for the image in this method
-//   * */
-//    public void uploadMultipart() {
-//        //getting the actual path of the image
-//        String path = getPath(filePath);
-//
-//        //Uploading code
-//        try {
-//            String uploadId = UUID.randomUUID().toString();
-//
-//            //Creating a multi part request
-//            new MultipartUploadRequest(this, uploadId, AppConfig.SUBMIT_MASTERPIECE)
-//                    .addFileToUpload(path, "image") //Adding file
-//                    .addParameter("name", "masterpiece_img")
-//                    .setNotificationConfig(new UploadNotificationConfig())
-//                    .setMaxRetries(2)
-//                    .startUpload(); //Starting the upload
-//
-//            sendData();
-//        } catch (Exception exc) {
-//            Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
 
     //method to show file chooser
@@ -293,23 +162,6 @@ public class submit_master_karya extends AppCompatActivity implements View.OnCli
         }
     }
 
-//    //method to get the file path from uri
-//    public String getPath(Uri uri) {
-//        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-//        cursor.moveToFirst();
-//        String document_id = cursor.getString(0);
-//        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-//        cursor.close();
-//
-//        cursor = getContentResolver().query(
-//                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-//        cursor.moveToFirst();
-//        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-//        cursor.close();
-//
-//        return path;
-//    }
 
 
     //Requesting permission

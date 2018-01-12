@@ -15,12 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -32,10 +30,7 @@ import java.util.Map;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AdBlocker;
 
-import static java.security.AccessController.getContext;
-import static tiregdev.hi_depok.R.id.share;
-
-public class detail_news_blog extends AppCompatActivity {
+public class DetailNewsActivity extends AppCompatActivity {
 
     WebView webView;
     TextView link;
@@ -75,7 +70,7 @@ public class detail_news_blog extends AppCompatActivity {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("link has been copy to clipboard", url);
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(detail_news_blog.this, "link has been copy to clipboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailNewsActivity.this, "link has been copy to clipboard", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.open:

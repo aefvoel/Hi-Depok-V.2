@@ -1,11 +1,7 @@
 package tiregdev.hi_depok.activity;
 
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,23 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.github.clans.fab.FloatingActionMenu;
-import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.adapter.adapter_kos;
-import tiregdev.hi_depok.adapter.adapter_museum;
 import tiregdev.hi_depok.model.itemObject_kos;
-import tiregdev.hi_depok.model.itemObject_museum;
 
 public class sahabat_kos extends AppCompatActivity {
 

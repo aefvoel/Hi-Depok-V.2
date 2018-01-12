@@ -14,34 +14,32 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_karya;
-import tiregdev.hi_depok.activity.detail_modul;
+import tiregdev.hi_depok.activity.DetailModulActivity;
 import tiregdev.hi_depok.model.ModulPost;
-import tiregdev.hi_depok.model.itemObject_modul;
 import tiregdev.hi_depok.utils.AppConfig;
 
 /**
  * Created by TiregDev on 28/08/2017.
  */
 
-public class adapter_modul extends RecyclerView.Adapter<adapter_modul.holder_modul> {
+public class MasterModulAdapter extends RecyclerView.Adapter<MasterModulAdapter.holder_modul> {
     private List<ModulPost> itemList;
     private Context context;
 
-    public adapter_modul(Context context, List<ModulPost> itemList){
+    public MasterModulAdapter(Context context, List<ModulPost> itemList){
         this.itemList = itemList;
         this.context = context;
     }
 
     @Override
-    public adapter_modul.holder_modul onCreateViewHolder(ViewGroup parent, int viewType){
+    public MasterModulAdapter.holder_modul onCreateViewHolder(ViewGroup parent, int viewType){
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_master_modul,null);
-        adapter_modul.holder_modul hn = new holder_modul(layoutView);
+        MasterModulAdapter.holder_modul hn = new holder_modul(layoutView);
         return hn;
     }
 
     @Override
-    public void onBindViewHolder(adapter_modul.holder_modul holder, int position){
+    public void onBindViewHolder(MasterModulAdapter.holder_modul holder, int position){
         holder.list_judul.setText(itemList.get(position).getJudul());
         holder.list_pengarang.setText(itemList.get(position).getPengarang());
         holder.list_page.setText(itemList.get(position).getJml_halaman());
@@ -73,7 +71,7 @@ public class adapter_modul extends RecyclerView.Adapter<adapter_modul.holder_mod
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, detail_modul.class);
+                    Intent intent = new Intent(context, DetailModulActivity.class);
                     intent.putExtra("JUDUL", itemList.get(getAdapterPosition()).getJudul());
                     intent.putExtra("PENGARANG", itemList.get(getAdapterPosition()).getPengarang());
                     intent.putExtra("PAGE", itemList.get(getAdapterPosition()).getJml_halaman());

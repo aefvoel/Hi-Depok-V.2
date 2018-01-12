@@ -242,7 +242,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return true;
 
             case R.id.more:
-                Intent in = new Intent(MapsActivity.this, search_list.class);
+                Intent in = new Intent(MapsActivity.this, CariDataActivity.class);
                 startActivity(in);
                 return true;
 

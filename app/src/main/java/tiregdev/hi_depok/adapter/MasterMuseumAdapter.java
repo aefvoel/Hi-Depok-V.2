@@ -14,39 +14,36 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_modul;
-import tiregdev.hi_depok.activity.detail_museum;
-import tiregdev.hi_depok.fragment.Masterpiece;
+import tiregdev.hi_depok.activity.DetailMuseumActivity;
 import tiregdev.hi_depok.model.MasterpiecePost;
-import tiregdev.hi_depok.model.itemObject_museum;
 import tiregdev.hi_depok.utils.AppConfig;
 
 /**
  * Created by TiregDev on 29/08/2017.
  */
 
-public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_museum> {
+public class MasterMuseumAdapter extends RecyclerView.Adapter<MasterMuseumAdapter.holder_museum> {
     private List<MasterpiecePost> itemList;
     private Context context;
 
-    public adapter_museum(Context context, List<MasterpiecePost> itemList){
+    public MasterMuseumAdapter(Context context, List<MasterpiecePost> itemList){
         this.context = context;
         this.itemList = itemList;
     }
 
     @Override
-    public adapter_museum.holder_museum onCreateViewHolder(ViewGroup parent, int viewType){
+    public MasterMuseumAdapter.holder_museum onCreateViewHolder(ViewGroup parent, int viewType){
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_master_museum,null);
-        adapter_museum.holder_museum hn = new holder_museum(layoutView);
+        MasterMuseumAdapter.holder_museum hn = new holder_museum(layoutView);
         return hn;
     }
 
     @Override
-    public void onBindViewHolder(adapter_museum.holder_museum holder, int position){
+    public void onBindViewHolder(MasterMuseumAdapter.holder_museum holder, int position){
         holder.list_judul.setText(itemList.get(position).getNama_prestasi());
         holder.list_nama.setText(itemList.get(position).getNama_peraih());
-        holder.list_tahun.setText(itemList.get(position).getTgl_post());
-        Glide.with(context).load(AppConfig.IMG_MASTERPIECE + itemList.get(position).getImage()).centerCrop().placeholder(R.drawable.no_image).into(holder.list_picMuseum);
+        holder.list_tahun.setText(itemList.get(position).getTgl_post().substring(0, 10));
+        Glide.with(context).load(AppConfig.IMG_MASTERPIECE + itemList.get(position).getImage()).fitCenter().into(holder.list_picMuseum);
     }
 
     @Override
@@ -69,7 +66,7 @@ public class adapter_museum extends RecyclerView.Adapter<adapter_museum.holder_m
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, detail_museum.class);
+                    Intent intent = new Intent(context, DetailMuseumActivity.class);
                     intent.putExtra("NAMA", itemList.get(getAdapterPosition()).getNama_prestasi());
                     intent.putExtra("DESKRIPSI", itemList.get(getAdapterPosition()).getDeskripsi());
                     intent.putExtra("PERAIH", itemList.get(getAdapterPosition()).getNama_peraih());

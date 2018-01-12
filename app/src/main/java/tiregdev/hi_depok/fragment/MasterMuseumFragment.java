@@ -3,7 +3,6 @@ package tiregdev.hi_depok.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.adapter_museum;
+import tiregdev.hi_depok.adapter.MasterMuseumAdapter;
 import tiregdev.hi_depok.model.MasterpiecePost;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
@@ -33,7 +32,7 @@ import tiregdev.hi_depok.utils.AppController;
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_museum extends BaseFragment implements MaterialSpinner.OnItemSelectedListener {
+public class MasterMuseumFragment extends BaseFragment implements MaterialSpinner.OnItemSelectedListener {
 
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
@@ -41,7 +40,7 @@ public class Master_museum extends BaseFragment implements MaterialSpinner.OnIte
     MasterpiecePost mPost;
     JSONObject jsonObject;
     List<MasterpiecePost> dataAdapter;
-    adapter_museum rvAdapter;
+    MasterMuseumAdapter rvAdapter;
     GridLayoutManager gridLayoutManager;
     MaterialSpinner spinner;
     String extraLink;
@@ -67,7 +66,7 @@ public class Master_museum extends BaseFragment implements MaterialSpinner.OnIte
     private void setViews(){
         rView.setNestedScrollingEnabled(false);
         rView.setLayoutManager(gridLayoutManager);
-
+        extraLink = AppConfig.DISPLAY_MASTERPIECE + "?status=diterima";
         String searhdata[] = {"Semua Kategori",
                 "Teknologi",
                 "Kesehatan",
@@ -75,12 +74,7 @@ public class Master_museum extends BaseFragment implements MaterialSpinner.OnIte
                 "Pendidikan",
                 "Umum"};
         spinner.setItems(searhdata);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_SHORT).show();
-            }
-        });
+        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -111,6 +105,7 @@ public class Master_museum extends BaseFragment implements MaterialSpinner.OnIte
     }
 
     private void displayData(){
+        dataAdapter.clear();
         swipeRefreshRecyclerList.setRefreshing(true);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(extraLink, new Response.Listener<JSONArray>() {
             @Override
@@ -142,7 +137,7 @@ public class Master_museum extends BaseFragment implements MaterialSpinner.OnIte
                     dataAdapter.add(mPost);
 
                 }
-                rvAdapter = new adapter_museum(getContext(), dataAdapter);
+                rvAdapter = new MasterMuseumAdapter(getContext(), dataAdapter);
                 rView.setAdapter(rvAdapter);
                 swipeRefreshRecyclerList.setRefreshing(false);
 

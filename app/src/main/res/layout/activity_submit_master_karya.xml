@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="tiregdev.hi_depok.activity.submit_master_karya">
+    tools:context="tiregdev.hi_depok.activity.SubmitKaryaActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

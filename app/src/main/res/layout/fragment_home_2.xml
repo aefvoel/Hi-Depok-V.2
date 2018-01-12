@@ -6,28 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fr.arnaudguyon.smartfontslib.FontButton
-        android:id="@+id/searchList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="65dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/rectangle_green_without_radius"
-        android:text="@string/menu"
-        android:drawableStart="@drawable/ic_list_white_36dp"
-        android:drawablePadding="15dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="10dp"
-        android:visibility="visible"
-        app:font="@string/fontReguler"/>
-
     <WebView
         android:id="@+id/maps"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 
     <LinearLayout
         android:id="@+id/wrap"
@@ -47,5 +29,22 @@
             app:indicator_color="@color/colorWhite" />
 
     </LinearLayout>
+
+    <fr.arnaudguyon.smartfontslib.FontButton
+        android:id="@+id/searchList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/rectangle_green_without_radius"
+        android:text="@string/menu"
+        android:drawableStart="@drawable/ic_list_white_36dp"
+        android:drawablePadding="15dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="10dp"
+        android:visibility="gone"
+        app:font="@string/fontReguler"/>
 
 </RelativeLayout>

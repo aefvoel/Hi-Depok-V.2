@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -41,10 +40,9 @@ import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.MasterpieceFunctions;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 
-import static tiregdev.hi_depok.R.id.ava;
 import static tiregdev.hi_depok.R.id.view_komentar;
 
-public class detail_karya extends AppCompatActivity implements View.OnClickListener{
+public class DetailKaryaActivity extends AppCompatActivity implements View.OnClickListener{
 
     private CollapsingToolbarLayout collapsingToolbar;
     private ImageView placePicture;
@@ -99,11 +97,11 @@ public class detail_karya extends AppCompatActivity implements View.OnClickListe
         btnKirim = (ImageView)findViewById( R.id.btnKirim );
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         placePicture = (ImageView) findViewById(R.id.image);
-        lLayout = new LinearLayoutManager(detail_karya.this);
+        lLayout = new LinearLayoutManager(DetailKaryaActivity.this);
         rView = (RecyclerView) findViewById(view_komentar);
-        dividerItemDecoration = new DividerItemDecoration(detail_karya.this, lLayout.getOrientation());
+        dividerItemDecoration = new DividerItemDecoration(DetailKaryaActivity.this, lLayout.getOrientation());
         dataAdapter = new ArrayList<>();
-        mFun = new MasterpieceFunctions(detail_karya.this);
+        mFun = new MasterpieceFunctions(DetailKaryaActivity.this);
         db = new SQLiteHandler(getApplicationContext());
         pDialog = new ProgressDialog(this);
 
@@ -122,6 +120,17 @@ public class detail_karya extends AppCompatActivity implements View.OnClickListe
 
         commentText.setText(getIntent().getExtras().getString("JUMLAH_KOMENTAR"));
         likeText.setText(getIntent().getExtras().getString("JUMLAH_SUKA"));
+        shareText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Lihat konten ini pada Aplikasi Hi-Depok";
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share Via"));
+            }
+        });
 
         if(getIntent().getExtras().getBoolean("ISLIKED")){
             likeIcon.setImageResource(R.drawable.favorite);
@@ -138,7 +147,7 @@ public class detail_karya extends AppCompatActivity implements View.OnClickListe
         Glide.with(this).load(AppConfig.IMG_MASTERPIECE + getIntent().getExtras().getString("IMAGE")).placeholder(R.drawable.no_image).into(placePicture);
         Glide.with(this).load(getIntent().getExtras().getString("AVATAR")).placeholder(R.drawable.no_image).into(avatar);
 
-        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(detail_karya.this, R.drawable.line_view));
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(DetailKaryaActivity.this, R.drawable.line_view));
         rView.addItemDecoration(dividerItemDecoration);
 
         commentIcon.setOnClickListener(this);
@@ -159,7 +168,7 @@ public class detail_karya extends AppCompatActivity implements View.OnClickListe
             case android.R.id.home:
                 // todo: goto back activity from here
 
-                detail_karya.this.finish();
+                DetailKaryaActivity.this.finish();
                 return true;
 
             default:

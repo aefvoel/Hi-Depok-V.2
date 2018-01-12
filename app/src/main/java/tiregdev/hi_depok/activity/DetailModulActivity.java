@@ -17,7 +17,7 @@ import fr.arnaudguyon.smartfontslib.FontTextView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
 
-public class detail_modul extends AppCompatActivity implements View.OnClickListener {
+public class DetailModulActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
@@ -85,7 +85,7 @@ public class detail_modul extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case android.R.id.home:
                 // todo: goto back activity from here
-                detail_modul.this.finish();
+                DetailModulActivity.this.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

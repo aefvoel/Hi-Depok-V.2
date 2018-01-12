@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="tiregdev.hi_depok.activity.search_list">
+    tools:context="tiregdev.hi_depok.activity.CariDataActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

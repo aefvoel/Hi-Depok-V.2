@@ -17,7 +17,7 @@ import com.andexert.library.RippleView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.search_list;
+import tiregdev.hi_depok.activity.CariDataActivity;
 
 /**
  * Created by Muhammad63 on 8/3/2017.
@@ -62,7 +62,7 @@ public class Home_2 extends Fragment {
         list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), search_list.class);
+                Intent i = new Intent(getActivity(), CariDataActivity.class);
                 startActivity(i);
             }
         });

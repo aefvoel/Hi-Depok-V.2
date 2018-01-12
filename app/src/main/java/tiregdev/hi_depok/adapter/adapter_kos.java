@@ -12,9 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_karya;
 import tiregdev.hi_depok.activity.detail_kos;
-import tiregdev.hi_depok.model.itemObject_komen_karya;
 import tiregdev.hi_depok.model.itemObject_kos;
 
 /**

@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.andexert.library.RippleView;
 
@@ -87,9 +86,9 @@ public class Masterpiece extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new Master_karya(),"KARYA");
-        adapter.addFragment(new Master_modul(), "MODUL");
-        adapter.addFragment(new Master_museum(), "MUSEUM");
+        adapter.addFragment(new MasterKaryaFragment(),"KARYA");
+        adapter.addFragment(new MasterModulFragment(), "MODUL");
+        adapter.addFragment(new MasterMuseumFragment(), "MUSEUM");
         viewPager.setAdapter(adapter);
 
     }

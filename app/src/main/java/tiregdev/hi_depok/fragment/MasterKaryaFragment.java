@@ -4,11 +4,9 @@ package tiregdev.hi_depok.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +27,8 @@ import ss.com.bannerslider.banners.Banner;
 import ss.com.bannerslider.banners.DrawableBanner;
 import ss.com.bannerslider.views.BannerSlider;
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.submit_master_karya;
-import tiregdev.hi_depok.adapter.adapter_karya;
+import tiregdev.hi_depok.activity.SubmitKaryaActivity;
+import tiregdev.hi_depok.adapter.MasterKaryaAdapter;
 import tiregdev.hi_depok.model.MasterpiecePost;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
@@ -41,7 +39,7 @@ import tiregdev.hi_depok.utils.SQLiteHandler;
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_karya extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class MasterKaryaFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     View v;
     BannerSlider banner;
@@ -51,7 +49,7 @@ public class Master_karya extends BaseFragment implements SwipeRefreshLayout.OnR
     MasterpiecePost mPost;
     JSONObject jsonObject;
     List<MasterpiecePost> dataAdapter;
-    adapter_karya rvAdapter;
+    MasterKaryaAdapter rvAdapter;
     LinearLayoutManager lLayout;
     MasterpieceFunctions mFun;
     SQLiteHandler db;
@@ -83,7 +81,7 @@ public class Master_karya extends BaseFragment implements SwipeRefreshLayout.OnR
         rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), submit_master_karya.class);
+                Intent w = new Intent(getActivity(), SubmitKaryaActivity.class);
                 startActivity(w);
             }
         });
@@ -117,7 +115,7 @@ public class Master_karya extends BaseFragment implements SwipeRefreshLayout.OnR
                         mPost.setNama_peraih(jsonObject.getString("nama_peraih"));
                         mPost.setNama_prestasi(jsonObject.getString("nama_prestasi"));
                         mPost.setKeterangan(jsonObject.getString("keterangan"));
-                        mPost.setTingkat(jsonObject.getString("tingkat"));
+                        mPost.setTingkat(jsonObject.getString("bio"));
                         mPost.setJumlah_komentar(jsonObject.getString("jumlah_komentar"));
                         mPost.setJumlah_suka(jsonObject.getString("jumlah_suka"));
                         mPost.setTgl_post(jsonObject.getString("tgl_post"));
@@ -144,7 +142,7 @@ public class Master_karya extends BaseFragment implements SwipeRefreshLayout.OnR
 
 
                 }
-                rvAdapter = new adapter_karya(getContext(), dataAdapter);
+                rvAdapter = new MasterKaryaAdapter(getContext(), dataAdapter);
                 rvAdapter.notifyDataSetChanged();
                 rView.setAdapter(rvAdapter);
                 swipeRefreshRecyclerList.setRefreshing(false);

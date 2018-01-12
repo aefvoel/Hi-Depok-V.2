@@ -16,7 +16,6 @@ import android.widget.Toast;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_news_blog;
 import tiregdev.hi_depok.model.itemObject_ntpd;
 
 /**

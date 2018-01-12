@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.DetailEventActivity;
 import tiregdev.hi_depok.adapter.adapter_news_event;
 import tiregdev.hi_depok.model.itemObject_news_event;
 import tiregdev.hi_depok.utils.GridMarginDecoration;
@@ -23,7 +25,7 @@ import tiregdev.hi_depok.utils.GridMarginDecoration;
  * Created by TiregDev on 26/09/2017.
  */
 
-public class news_event extends android.support.v4.app.Fragment {
+public class EventFragment extends android.support.v4.app.Fragment {
 
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
@@ -98,7 +100,8 @@ public class news_event extends android.support.v4.app.Fragment {
         mAdapter.SetOnItemClickListener(new adapter_news_event.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, itemObject_news_event model) {
-                Toast.makeText(getActivity(), "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(), DetailEventActivity.class);
+                startActivity(i);
             }
         });
 

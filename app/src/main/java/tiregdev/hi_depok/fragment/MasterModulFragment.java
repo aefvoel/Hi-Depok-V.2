@@ -1,10 +1,7 @@
 package tiregdev.hi_depok.fragment;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.adapter_modul;
+import tiregdev.hi_depok.adapter.MasterModulAdapter;
 import tiregdev.hi_depok.model.ModulPost;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
@@ -34,7 +31,7 @@ import tiregdev.hi_depok.utils.AppController;
  * Created by TiregDev on 23/08/2017.
  */
 
-public class Master_modul extends BaseFragment implements MaterialSpinner.OnItemSelectedListener {
+public class MasterModulFragment extends BaseFragment implements MaterialSpinner.OnItemSelectedListener {
 
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
@@ -42,7 +39,7 @@ public class Master_modul extends BaseFragment implements MaterialSpinner.OnItem
     ModulPost mPost;
     JSONObject jsonObject;
     List<ModulPost> dataAdapter;
-    adapter_modul rvAdapter;
+    MasterModulAdapter rvAdapter;
     GridLayoutManager gridLayoutManager;
     MaterialSpinner spinner;
     String extraLink;
@@ -110,7 +107,7 @@ public class Master_modul extends BaseFragment implements MaterialSpinner.OnItem
                     dataAdapter.add(mPost);
 
                 }
-                rvAdapter = new adapter_modul(getContext(), dataAdapter);
+                rvAdapter = new MasterModulAdapter(getContext(), dataAdapter);
                 rView.setAdapter(rvAdapter);
                 swipeRefreshRecyclerList.setRefreshing(false);
 

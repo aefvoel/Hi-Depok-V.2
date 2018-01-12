@@ -5,17 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +27,13 @@ import java.util.Date;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_news_blog;
-import tiregdev.hi_depok.adapter.adapter_news_blog;
+import tiregdev.hi_depok.activity.DetailNewsActivity;
+import tiregdev.hi_depok.adapter.RSSAdapter;
 import tiregdev.hi_depok.model.RssItem;
 import tiregdev.hi_depok.utils.RssService;
 
 
-public class news_blog extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     RecyclerView rView;
     SwipeRefreshLayout swipeRefreshRecyclerList;
@@ -113,7 +109,7 @@ public class news_blog extends BaseFragment implements SwipeRefreshLayout.OnRefr
                 hotNews.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getContext(), detail_news_blog.class);
+                        Intent intent = new Intent(getContext(), DetailNewsActivity.class);
                         intent.putExtra("url", items.get(0).getLink());
                         startActivity(intent);
                     }
@@ -132,8 +128,8 @@ public class news_blog extends BaseFragment implements SwipeRefreshLayout.OnRefr
                         return 0;
                     }
                 });
-                adapter_news_blog adapter = new adapter_news_blog(getActivity(), items);
-                adapter.setDisplayCount(10);
+                RSSAdapter adapter = new RSSAdapter(getActivity(), items);
+                adapter.setDisplayCount(20);
                 rView.setAdapter(adapter);
 
                 swipeRefreshRecyclerList.setRefreshing(false);

@@ -58,10 +58,12 @@ public class RssParser {
                     portal = "Depok News";
                 }else if(link.contains("depokpos")){
                     portal = "Depok Pos";
-                }else if(link.contains("depoktik")){
-                    portal = "Depok TIK";
-                }else if(link.contains("hallodepok")){
-                    portal = "Hallo Depok";
+                }else if(link.contains("depokgoid")){
+                    portal = "Portal Depok";
+                }else if(link.contains("hariandepok")){
+                    portal = "Harian Depok";
+                }else if(link.contains("radardepok")){
+                    portal = "Radar Depok";
                 }
                 RssItem item = new RssItem(title, link, pubDate, portal);
                 items.add(item);

@@ -1,7 +1,6 @@
 package tiregdev.hi_depok.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_karya;
 import tiregdev.hi_depok.model.MasterpieceKomentar;
-import tiregdev.hi_depok.model.itemObject_karya;
-import tiregdev.hi_depok.model.itemObject_komen_karya;
 
 /**
  * Created by Muhammad63 on 9/30/2017.
