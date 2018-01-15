@@ -42,8 +42,8 @@ public class MasterModulAdapter extends RecyclerView.Adapter<MasterModulAdapter.
     public void onBindViewHolder(MasterModulAdapter.holder_modul holder, int position){
         holder.list_judul.setText(itemList.get(position).getJudul());
         holder.list_pengarang.setText(itemList.get(position).getPengarang());
-        holder.list_page.setText(itemList.get(position).getJml_halaman());
-        holder.list_viewer.setText(itemList.get(position).getId_modul());
+        holder.list_page.setText(itemList.get(position).getJml_halaman()+" Halaman");
+        holder.list_viewer.setText("Id ke-"+itemList.get(position).getId_modul());
         holder.list_kategori.setText(itemList.get(position).getKategori());
 
         Glide.with(context).load(AppConfig.IMG_LINK + "modul/" + itemList.get(position).getFoto()).into(holder.list_cover);
@@ -74,8 +74,8 @@ public class MasterModulAdapter extends RecyclerView.Adapter<MasterModulAdapter.
                     Intent intent = new Intent(context, DetailModulActivity.class);
                     intent.putExtra("JUDUL", itemList.get(getAdapterPosition()).getJudul());
                     intent.putExtra("PENGARANG", itemList.get(getAdapterPosition()).getPengarang());
-                    intent.putExtra("PAGE", itemList.get(getAdapterPosition()).getJml_halaman());
-                    intent.putExtra("VIEWER", itemList.get(getAdapterPosition()).getId_modul());
+                    intent.putExtra("PAGE", itemList.get(getAdapterPosition()).getJml_halaman()+" Halaman");
+                    intent.putExtra("VIEWER", "Id ke-"+itemList.get(getAdapterPosition()).getId_modul());
                     intent.putExtra("KATEGORI", itemList.get(getAdapterPosition()).getKategori());
                     intent.putExtra("COVER", itemList.get(getAdapterPosition()).getFoto());
                     intent.putExtra("LINK", itemList.get(getAdapterPosition()).getLink());

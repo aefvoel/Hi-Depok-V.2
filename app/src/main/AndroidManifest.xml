@@ -96,7 +96,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Submit"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.DetailNewsActivity"
+        <activity
+            android:name=".activity.DetailNewsActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
         <activity
             android:name=".activity.sahabat_kos"
@@ -109,7 +110,8 @@
             android:name=".activity.ntpd"
             android:label="NTPD" />
         <activity android:name=".activity.AboutActivity" />
-        <activity android:name=".activity.faq"
+        <activity
+            android:name=".activity.faq"
             android:label="FAQ" />
         <activity
             android:name=".activity.change_avatar"
@@ -117,20 +119,32 @@
         <activity
             android:name=".activity.rsud"
             android:label="Registrasi RSUD Depok" />
-        <activity android:name=".activity.Deskripsi"
-            android:label="Deskripsi Penyakit"/>
-        <activity android:name=".activity.Diagnosa"
-            android:label="Bagian Tubuh"/>
-        <activity android:name=".activity.DiagnosaBagian"
-            android:label="Diagnosa Penyakit"/>
-        <activity android:name=".activity.Ensiklopedia"
-            android:label="Ensiklopedia Penyakit"/>
-        <activity android:name=".activity.Gejala"
-            android:label="Gejala Yang Dirasakan"/>
-        <activity android:name=".activity.Sugesti"
-            android:label="Hasil Diagnosa"/>
+        <activity
+            android:name=".activity.Deskripsi"
+            android:label="Deskripsi Penyakit" />
+        <activity
+            android:name=".activity.Diagnosa"
+            android:label="Bagian Tubuh" />
+        <activity
+            android:name=".activity.DiagnosaBagian"
+            android:label="Diagnosa Penyakit" />
+        <activity
+            android:name=".activity.Ensiklopedia"
+            android:label="Ensiklopedia Penyakit" />
+        <activity
+            android:name=".activity.Gejala"
+            android:label="Gejala Yang Dirasakan" />
+        <activity
+            android:name=".activity.Sugesti"
+            android:label="Hasil Diagnosa" />
 
         <service android:name=".utils.RssService" />
+
+        <activity
+            android:name=".activity.kritikSaran"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Kritik dan Saran"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden"/>
     </application>
 
 </manifest>

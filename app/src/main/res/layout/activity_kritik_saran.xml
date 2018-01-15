@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context="tiregdev.hi_depok.activity.kritikSaran">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <fr.arnaudguyon.smartfontslib.FontTextView
+                android:id="@+id/fasilitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descKS"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="@string/formSS_1"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/nik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="@string/nik"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/tgl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:text="@string/almt"
+                android:gravity="start|center_vertical"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontEditText
+                android:id="@+id/keperluan"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:inputType="textImeMultiLine"
+                android:gravity="top"
+                android:background="@drawable/rectangle_white_without_radius"
+                android:hint="Kritik dan Saran"
+                android:padding="10dp"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
+                app:font="@string/fontReguler" />
+
+            <fr.arnaudguyon.smartfontslib.FontButton
+                android:id="@+id/kirim"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle_blue_primary_without_radius"
+                android:text="@string/submit"
+                android:textColor="@color/colorWhite"
+                app:font="@string/fontBold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

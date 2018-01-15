@@ -63,6 +63,11 @@
         secara detail \n disini, hanya dengan satu kali <b>KLIK</b>
         untuk \n mempermudah segala urusan Anda
     </string>
+    <string name="descKS">
+        Jika Anda ingin berkontribusi untuk pembangunan Kota Depok atau terhadap pengembangan dari aplikasi ini, Anda dapat memberikan
+        kritik dan saran pada form dibawah ini. Tim kami akan segera melakukan tindak lanjut terhadap kritik dan saran yang Anda berikan
+        lewat aplikasi ini.
+    </string>
     <string name="cari">CARI <b>DATA</b></string>
     <string name="diag">Diagnosa</string>
     <string name="ensiklo">Ensiklopedi</string>

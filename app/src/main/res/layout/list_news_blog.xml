@@ -19,9 +19,9 @@
         android:id="@+id/titleNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_toStartOf="@id/imageTitle"
+        android:layout_marginEnd="130dp"
         android:padding="5dp"
+        android:ellipsize="end"
         android:maxLines="2"
         app:font="@string/fontBold"
         android:text="@string/news1"/>
@@ -66,13 +66,5 @@
         android:layout_below="@id/titleNews"
         android:layout_toStartOf="@id/imageTitle"
         android:layout_marginEnd="20dp"/>
-
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0.5dp"-->
-        <!--android:alpha="0.3"-->
-        <!--android:layout_below="@id/imageTitle"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:background="@color/colorGray"/>-->
 
 </RelativeLayout>

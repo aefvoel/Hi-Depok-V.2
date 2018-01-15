@@ -244,6 +244,11 @@ public class MenuActivity extends AppCompatActivity {
                                     .withIdentifier(4),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem()
+                                .withName("Kritik dan Saran")
+                                .withDescription("Memberikan kritik atau saran untuk Kota Depok atau untuk pengembangan aplikasi ini")
+                                .withIcon(R.drawable.ic_format_quote_grey_600_24dp)
+                                .withIdentifier(8),
+                        new PrimaryDrawerItem()
                                 .withName("FAQ")
                                 .withDescription("Frequently Asked Question")
                                 .withIcon(R.drawable.ic_help_grey_600_24dp)
@@ -296,6 +301,9 @@ public class MenuActivity extends AppCompatActivity {
                             } else if (drawerItem.getIdentifier() == 7){
                                 logoutUser();
                                 Toast.makeText(MenuActivity.this, "Logout Berhasil!", Toast.LENGTH_SHORT).show();
+                            } else if (drawerItem.getIdentifier() == 8) {
+                                Intent i = new Intent(MenuActivity.this, kritikSaran.class);
+                                startActivity(i);
                             }
                         }
 

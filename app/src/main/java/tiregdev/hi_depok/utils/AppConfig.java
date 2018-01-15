@@ -48,5 +48,5 @@ public class AppConfig {
 
     public static String IMG_LINK = "http://hi.depok.go.id/img/";
 
-    public static String IMG_MASTERPIECE = "http://hi.depok.go.id/android_api/masterpiece_img/";
+    public static String IMG_MASTERPIECE = "http://hi.depok.go.id/storage/img_masterpiece/";
 }
