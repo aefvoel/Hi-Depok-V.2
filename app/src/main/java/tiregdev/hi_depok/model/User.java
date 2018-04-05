@@ -3,6 +3,7 @@ package tiregdev.hi_depok.model;
 
 public class User {
 
+    private String id;
     private String nama;
     private String email;
     private String pass;
@@ -15,6 +16,12 @@ public class User {
     public User() {
     }
 
+    public User(String id, String nama, String email) {
+        this.id = id;
+        this.nama = nama;
+        this.email = email;
+    }
+
     public User(String nama, String email, String pass, String alamat, String bio, String noTelp, String tglLahir, String dibuatPada) {
         this.nama = nama;
         this.email = email;
@@ -25,6 +32,15 @@ public class User {
         this.tglLahir = tglLahir;
         this.dibuatPada = dibuatPada;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getNama() {
         return nama;
     }

@@ -14,8 +14,9 @@ import com.bumptech.glide.Glide;
 
 import fr.arnaudguyon.smartfontslib.FontTextView;
 import tiregdev.hi_depok.R;
+import tiregdev.hi_depok.activity.ChatActivity;
 import tiregdev.hi_depok.activity.EditProfileActivity;
-import tiregdev.hi_depok.activity.pesan;
+import tiregdev.hi_depok.activity.PesanActivity;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
@@ -110,7 +111,7 @@ public class Profile extends Fragment {
         pesan.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), pesan.class);
+                Intent w = new Intent(getActivity(), ChatActivity.class);
                 startActivity(w);
             }
         });

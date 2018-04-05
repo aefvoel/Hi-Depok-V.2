@@ -22,69 +22,104 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.core.models.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
+import io.fabric.sdk.android.Fabric;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
+import tiregdev.hi_depok.utils.Application;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 import tiregdev.hi_depok.utils.SessionManager;
 
 import static com.google.android.gms.auth.api.Auth.GoogleSignInApi;
 
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
-        GoogleApiClient.ConnectionCallbacks {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button login, signup;
-    TextView forgot;
-    EditText emailFrm, passFrm;
-    GoogleApiClient mGoogleApiClient;
+    private Button login;
+    private SignInButton btnGoogle;
+    private LoginButton btnFacebook;
+    private TwitterLoginButton btnTwitter;
+    private TextView forgot;
+    private EditText emailFrm, passFrm;
+    private GoogleApiClient mGoogleApiClient;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
     private static final String TAG = LoginActivity.class.getSimpleName();
-    private static final int REQUEST_GMAIL = 9001;
+    private static final int RC_SIGN_IN = 9001;
+    private CallbackManager mFacebookCallbackManager;
+    private String full_name;
+    private String email_id;
+    private String photo_url;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        mFacebookCallbackManager = CallbackManager.Factory.create();
+        TwitterAuthConfig authConfig = new TwitterAuthConfig("EcXjy4S0dDcPfcSfq8cloDDps",
+                "D2b77118vTt4n1kH3m1QTgfrwbZcPEY3IDgKyJ25y5FcXWmFey");
+        Fabric.with(this, new TwitterCore(authConfig));
+
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setInit();
     }
 
 
+    private void setInit() {
 
-    private void setInit(){
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
-                GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
-                .build();
+        emailFrm = (EditText) findViewById(R.id.email);
+        passFrm = (EditText) findViewById(R.id.pass);
 
-        emailFrm = (EditText)findViewById(R.id.email);
-        passFrm = (EditText)findViewById(R.id.pass);
-
-        login = (Button)findViewById(R.id.btnLogin);
-        signup = (Button)findViewById(R.id.btnLoginGoogle);
-
-        forgot = (TextView)findViewById(R.id.lupaPass);
-
+        login = (Button) findViewById(R.id.btnLogin);
+        btnGoogle = (SignInButton) findViewById(R.id.btnLoginGoogle);
+        btnFacebook = (LoginButton) findViewById(R.id.btnLoginFacebook);
+        btnTwitter = (TwitterLoginButton) findViewById(R.id.btnLoginTwitter);
+        forgot = (TextView) findViewById(R.id.lupaPass);
+        login.setOnClickListener(this);
+        btnGoogle.setOnClickListener(this);
+        forgot.setOnClickListener(this);
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -103,57 +138,238 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             finish();
         }
 
-        login.setOnClickListener(new View.OnClickListener() {
+
+//        checkForInstagramData();
+
+        // The private key that follows should never be public
+        // (consider this when deploying the application)
+
+
+        btnFacebook.registerCallback(mFacebookCallbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(final LoginResult loginResult) {
+                        //By Profile Class
+
+                        Profile profile = Profile.getCurrentProfile();
+                        if (profile != null) {
+                            String facebook_id = profile.getId();
+                            full_name = profile.getFirstName();
+                            String m_name = profile.getMiddleName();
+                            String l_name = profile.getLastName();
+                            String full_name = profile.getName();
+                            photo_url = profile.getProfilePictureUri(400, 400).toString();
+                        }
+                        //Toast.makeText(FacebookLogin.this,"Wait...",Toast.LENGTH_SHORT).show();
+                        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(JSONObject object, GraphResponse response) {
+                                        try {
+                                            email_id = object.getString("email");
+                                            String gender = object.getString("gender");
+                                            String full_name = object.getString("name");
+                                            long fb_id = object.getLong("id"); //use this for logout
+
+                                        } catch (JSONException e) {
+                                            // TODO Auto-generated catch block
+                                            //  e.printStackTrace();
+                                        }
+
+                                    }
+
+                                });
+
+                        handleSignInResult(new Callable<Void>() {
+                            @Override
+                            public Void call() throws Exception {
+                                LoginManager.getInstance().logOut();
+                                return null;
+                            }
+                        }, full_name, email_id, photo_url);
+                        request.executeAsync();
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        handleSignInResult(null, null, null, null);
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Log.d(LoginActivity.class.getCanonicalName(), error.getMessage());
+                        handleSignInResult(null, null, null, null);
+                    }
+                }
+        );
+
+        btnTwitter.setCallback(new Callback<TwitterSession>() {
             @Override
-            public void onClick(View view) {
-                onLogInUser();
+            public void success(final Result<TwitterSession> result) {
+                TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
+                twitterApiClient.getAccountService().verifyCredentials(false, false, new Callback<com.twitter.sdk.android.core.models.User>() {
+                    @Override
+                    public void success(Result<com.twitter.sdk.android.core.models.User> userResult) {
+                        full_name = userResult.data.name;
+//                        email_id = userResult.data.email;
+                        photo_url = userResult.data.profileImageUrl;
+
+                        TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
+                        TwitterAuthClient authClient = new TwitterAuthClient();
+                        authClient.requestEmail(session, new Callback<String>() {
+                            @Override
+                            public void success(Result<String> result) {
+                                // Do something with the result, which provides the email address
+                                // the email is saved in the result variable 'result.data'
+                                email_id = result.data;
+                                handleSignInResult(new Callable<Void>() {
+                                    @Override
+                                    public Void call() throws Exception {
+                                        TwitterCore.getInstance().logOut();
+                                        return null;
+                                    }
+                                }, full_name, email_id, photo_url);
+                            }
+
+                            @Override
+                            public void failure(TwitterException exception) {
+                                // Do something on failure
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void failure(TwitterException exc) {
+                        Log.d("TwitterKit", "Verify Credentials Failure", exc);
+                    }
+                });
+
+            }
+
+            @Override
+            public void failure(TwitterException e) {
+                Log.d(LoginActivity.class.getCanonicalName(), e.getMessage());
+                handleSignInResult(null, null, null, null);
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                googleSignIn();
-            }
-        });
-
-        forgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ForgotPassActivity.class);
-                startActivity(intent);
-            }
-        });
     }
-    private void googleSignIn(){
 
-        Intent intent = GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(intent, REQUEST_GMAIL);
+    private void signInWithGoogle() {
+        if(mGoogleApiClient != null) {
+            mGoogleApiClient.disconnect();
+        }
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        final Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+
     }
+
+//    private void signInWithInstagram() {
+//        final Uri.Builder uriBuilder = new Uri.Builder();
+//        uriBuilder.scheme("https")
+//                .authority("api.instagram.com")
+//                .appendPath("oauth")
+//                .appendPath("authorize")
+//                .appendQueryParameter("client_id", "18a8b74da9644bd7a9294caef1c5e76c")
+//                .appendQueryParameter("redirect_uri", "sociallogin://redirect")
+//                .appendQueryParameter("response_type", "token");
+//        final Intent browser = new Intent(Intent.ACTION_VIEW, uriBuilder.build());
+//        startActivity(browser);
+//    }
+//
+//    private void checkForInstagramData() {
+//        final Uri data = this.getIntent().getData();
+//        if(data != null && data.getScheme().equals("sociallogin") && data.getFragment() != null) {
+//            final String accessToken = data.getFragment().replaceFirst("access_token=", "");
+//            if (accessToken != null) {
+//                handleSignInResult(new Callable<Void>() {
+//                    @Override
+//                    public Void call() throws Exception {
+//                        // Do nothing, just throw the access token away.
+//                        return null;
+//                    }
+//                });
+//            } else {
+//                handleSignInResult(null);
+//            }
+//        }
+//    }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_GMAIL){
-            GoogleSignInResult result = GoogleSignInApi.getSignInResultFromIntent(data);
-            handleResult(result);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+            if (result.isSuccess()) {
+                final GoogleApiClient client = mGoogleApiClient;
+                full_name = result.getSignInAccount().getDisplayName();
+                email_id = result.getSignInAccount().getEmail();
+
+                Uri uri= result.getSignInAccount().getPhotoUrl();
+
+                if(uri != null){
+                    photo_url = uri.toString();
+                }else{
+                    photo_url = "http://hi.depok.go.id/storage/default/no%20image.jpg";
+                }
+
+                handleSignInResult(new Callable<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        if (client != null) {
+
+                            Auth.GoogleSignInApi.signOut(client).setResultCallback(
+                                    new ResultCallback<Status>() {
+                                        @Override
+                                        public void onResult(Status status) {
+                                            Log.d(LoginActivity.class.getCanonicalName(),
+                                                    status.getStatusMessage());
+
+                                        /* TODO: handle logout failures */
+                                        }
+                                    }
+                            );
+
+                        }
+
+                        return null;
+                    }
+                }, full_name, email_id, photo_url);
+
+            } else {
+                handleSignInResult(null, null, null, null);
+            }
+        } else if (TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE == requestCode) {
+            btnTwitter.onActivityResult(requestCode, resultCode, data);
+        } else {
+            mFacebookCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
-    private void handleResult(GoogleSignInResult result) {
-        if (result.isSuccess()) {
-            GoogleSignInAccount account = result.getSignInAccount();
-            String getNama = account.getDisplayName();
-            String getEmail = account.getEmail();
-            Uri uri = account.getPhotoUrl();
+
+    private void handleSignInResult(Callable<Void> logout, String fullname, String email, String photo) {
+        if (logout == null) {
+            /* Login error */
+            Toast.makeText(getApplicationContext(), "Login gagal", Toast.LENGTH_SHORT).show();
+        } else {
+            /* Login success */
+
+            Application.getInstance().setLogoutCallable(logout);
             Intent toRegister = new Intent(LoginActivity.this, SignUpActivity.class);
-            toRegister.putExtra("getNama", getNama);
-            toRegister.putExtra("getEmail", getEmail);
-            if(uri != null){
-                String getPhoto = uri.toString();
-                toRegister.putExtra("getPhoto", getPhoto);
-
-            }else{
-                toRegister.putExtra("getPhoto", "-");
-            }
-
+            toRegister.putExtra("getNama", fullname);
+            toRegister.putExtra("getEmail", email);
+            toRegister.putExtra("getPhoto", photo);
             startActivity(toRegister);
         }
     }
@@ -216,6 +432,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                         // Inserting row in users table
                         db.addUser(name, email, uid, alamat, no_telp, tanggal_lahir, bio, foto_user, jenis_kel, created_at, updated_at);
+
+                        tiregdev.hi_depok.model.User gcmUser = new tiregdev.hi_depok.model.User(jObj.getString("uid"),
+                                user.getString("name"),
+                                user.getString("email"));
+
+                        // storing user in shared preferences
+                        AppController.getInstance().getPrefManager().storeUser(gcmUser);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
@@ -280,18 +503,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             pDialog.dismiss();
     }
 
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-
-    }
 
     @Override
-    public void onConnectionSuspended(int i) {
-
+    public void onClick(View view) {
+        if (view == login) {
+            onLogInUser();
+        } else if (view == btnGoogle) {
+            signInWithGoogle();
+        } else if (view == forgot) {
+            Intent intent = new Intent(LoginActivity.this, ForgotPassActivity.class);
+            startActivity(intent);
+        }
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
 }

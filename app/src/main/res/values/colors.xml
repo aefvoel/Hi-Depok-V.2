@@ -56,4 +56,7 @@
     <color name="dot_active_screen7">#fff</color>
     <color name="windowBackground">#2b87aa</color>
     <color name="background_material_light">#fafafa</color>
+
+    <color name="list_divider">#dedede</color>
+    <color name="bg_bubble_self">#E1E1E1</color>
 </resources>

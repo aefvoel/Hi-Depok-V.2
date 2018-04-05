@@ -12,17 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.twitter.sdk.android.tweetui.SearchTimeline;
-import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
-import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import tiregdev.hi_depok.R;
 
 public class TwitterTimeline extends Fragment {
 
     View view;
-    UserTimeline userTimeline;
-    TweetTimelineListAdapter adapter;
+
     ListView listView;
 
     @Nullable
@@ -34,12 +30,9 @@ public class TwitterTimeline extends Fragment {
     }
 
     private void setUpTimeline() {
-        SearchTimeline searchTimeline = new SearchTimeline.Builder().query("#depok").build();
 
-        final TweetTimelineListAdapter timelineAdapter = new TweetTimelineListAdapter(getActivity(), searchTimeline);
 
         ListView timelineView = (ListView) getActivity().findViewById(R.id.event_timeline);
         timelineView.setEmptyView(getActivity().findViewById(R.id.empty_timeline));
-        timelineView.setAdapter(timelineAdapter);
     }
 }

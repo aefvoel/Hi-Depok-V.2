@@ -2,7 +2,9 @@
     <string name="app_name">Hi-Depok</string>
     <string name="app_name_bold">HI-<b>DEPOK</b></string>
     <string name="app_tagline">we share we care</string>
+    <string name="hint_enter_a_message">Type a message…</string>
 
+    <string name="facebook_app_id">191754478218300</string>
     <!--FONT START-->
     <string name="fontReguler" translatable="false">font/Brandon_reg.otf</string>
     <string name="fontRegulerItalic" translatable="false">font/Brandon_reg_it.otf</string>
@@ -57,7 +59,9 @@
         dan dengan segala aktivitas yang saya lakukan pada aplikasi ini</string>
     <string name="alamat">Alamat</string>
     <string name="lupaPass"><u>Lupa Password?</u></string>
-    <string name="loginwithgoogle">Login dengan G+</string>
+    <string name="loginwithgoogle">Google</string>
+    <string name="loginwithfb">Facebook</string>
+    <string name="loginwithtwit">Twitter</string>
     <string name="search">
         Temukan semua data dan lokasi berbagai \n  tempat di Kota Depok
         secara detail \n disini, hanya dengan satu kali <b>KLIK</b>

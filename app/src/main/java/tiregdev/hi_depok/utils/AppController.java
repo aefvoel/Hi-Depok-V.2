@@ -1,6 +1,7 @@
 package tiregdev.hi_depok.utils;
 
 import android.app.Application;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -8,38 +9,22 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import com.twitter.sdk.android.core.GuestSession;
-import com.twitter.sdk.android.core.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterConfig;
+import tiregdev.hi_depok.activity.LoginActivity;
 
 public class AppController extends Application {
 
     public static final String TAG = AppController.class.getSimpleName();
     public static final int MY_SOCKET_TIMEOUT_MS = 1000 * 10;
-    private static final String TWITTER_KEY = "EcXjy4S0dDcPfcSfq8cloDDps";
-    private static final String TWITTER_SECRET = "D2b77118vTt4n1kH3m1QTgfrwbZcPEY3IDgKyJ25y5FcXWmFey";
-    public GuestSession guestAppSession = null;
 
     private RequestQueue mRequestQueue;
 
     private static AppController mInstance;
+    private SessionManager pref;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        TwitterConfig config = new TwitterConfig.Builder(this).twitterAuthConfig(authConfig).build();
-        Twitter.initialize(config);
-    }
-
-    public GuestSession getGuestAppSession() {
-        return guestAppSession;
-    }
-
-    public void setGuestAppSession(GuestSession guestAppSession) {
-        this.guestAppSession = guestAppSession;
     }
 
     public static synchronized AppController getInstance() {
@@ -76,5 +61,19 @@ public class AppController extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+
+    public SessionManager getPrefManager() {
+        if (pref == null) {
+            pref = new SessionManager(this);
+        }
+
+        return pref;
+    }
+    public void logout() {
+        pref.clear();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

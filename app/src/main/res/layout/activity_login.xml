@@ -47,6 +47,7 @@
             android:textColor="@color/colorBlack"
             app:font="@string/fontReguler" />
 
+
         <fr.arnaudguyon.smartfontslib.FontEditText
             android:id="@+id/pass"
             android:layout_width="match_parent"
@@ -84,20 +85,71 @@
             android:text="@string/lupaPass"
             android:textColor="#348eb1" />
 
-        <fr.arnaudguyon.smartfontslib.FontButton
+        <com.google.android.gms.common.SignInButton
             android:id="@+id/btnLoginGoogle"
             android:layout_width="match_parent"
+            android:layout_below="@+id/lupaPass"
             android:layout_height="35dp"
-            android:layout_below="@id/lupaPass"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_red"
-            android:drawableStart="@drawable/google"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:text="@string/loginwithgoogle"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp"
-            app:font="@string/fontReguler" />
+            android:layout_marginTop="10dp"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btnLoginFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/btnLoginGoogle"
+            android:layout_marginTop="5dp"/>
+
+        <com.twitter.sdk.android.core.identity.TwitterLoginButton
+            android:id="@+id/btnLoginTwitter"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/btnLoginFacebook"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"/>
+
+        <!--<fr.arnaudguyon.smartfontslib.FontButton-->
+            <!--android:id="@+id/btnLoginGoogle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_below="@id/lupaPass"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@drawable/rectangle_red"-->
+            <!--android:drawableStart="@drawable/google"-->
+            <!--android:paddingEnd="10dp"-->
+            <!--android:paddingStart="10dp"-->
+            <!--android:text="@string/loginwithgoogle"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textSize="12sp"-->
+            <!--app:font="@string/fontReguler" />-->
+
+        <!--<fr.arnaudguyon.smartfontslib.FontButton-->
+            <!--android:id="@+id/btnLoginFacebook"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_below="@id/btnLoginGoogle"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:background="@drawable/rectangle_blue_primary"-->
+            <!--android:drawableStart="@drawable/google"-->
+            <!--android:paddingEnd="10dp"-->
+            <!--android:paddingStart="10dp"-->
+            <!--android:text="@string/loginwithfb"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textSize="12sp"-->
+            <!--app:font="@string/fontReguler" />-->
+
+        <!--<fr.arnaudguyon.smartfontslib.FontButton-->
+            <!--android:id="@+id/btnLoginTwitter"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_below="@id/btnLoginFacebook"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:background="@drawable/rectangle_blue"-->
+            <!--android:drawableStart="@drawable/google"-->
+            <!--android:paddingEnd="10dp"-->
+            <!--android:paddingStart="10dp"-->
+            <!--android:text="@string/loginwithtwit"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textSize="12sp"-->
+            <!--app:font="@string/fontReguler" />-->
 
     </RelativeLayout>
 

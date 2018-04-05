@@ -49,4 +49,17 @@ public class AppConfig {
     public static String IMG_LINK = "http://hi.depok.go.id/img/";
 
     public static String IMG_MASTERPIECE = "http://hi.depok.go.id/storage/img_masterpiece/";
+
+    // Server display post
+    public static String DISPLAY_CHAT = "http://hi.depok.go.id/android_api/masterpiece/display_pesan.php";
+
+
+
+    // GCM URL -
+    public static final String BASE_URL = "http://hi.depok.go.id/android_api/gcm_chat/v1";
+    public static final String LOGIN = BASE_URL + "/user/login";
+    public static final String USER = BASE_URL + "/user/_ID_";
+    public static final String CHAT_ROOMS = BASE_URL + "/chat_rooms";
+    public static final String CHAT_THREAD = BASE_URL + "/chat_rooms/_ID_";
+    public static final String CHAT_ROOM_MESSAGE = BASE_URL + "/chat_rooms/_ID_/message";
 }

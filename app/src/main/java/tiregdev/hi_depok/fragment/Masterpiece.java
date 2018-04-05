@@ -19,7 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.pesan;
+import tiregdev.hi_depok.activity.ChatActivity;
+import tiregdev.hi_depok.activity.PesanActivity;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -77,7 +78,7 @@ public class Masterpiece extends Fragment {
         rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), pesan.class);
+                Intent w = new Intent(getActivity(), ChatActivity.class);
                 startActivity(w);
             }
         });

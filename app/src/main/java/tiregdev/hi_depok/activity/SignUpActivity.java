@@ -42,13 +42,13 @@ import tiregdev.hi_depok.utils.SessionManager;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText name, email, pass, confirmPass, alamat, noTelp, bio;
-    RadioGroup jenisKel;
-    Button signup, ttl;
-    CheckBox validasi;
-    SimpleDateFormat sdf;
-    Calendar dateAndTime;
-    DatePickerDialog.OnDateSetListener d;
+    private EditText name, email, pass, confirmPass, alamat, noTelp, bio;
+    private RadioGroup jenisKel;
+    private Button signup, ttl;
+    private CheckBox validasi;
+    private SimpleDateFormat sdf;
+    private Calendar dateAndTime;
+    private DatePickerDialog.OnDateSetListener d;
     private AlertDialog alertDialog;
     private ProgressDialog pDialog;
     private SessionManager session;
