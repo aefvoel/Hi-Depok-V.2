@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,7 +12,7 @@
         android:textSize="16sp"
         android:text="Kecamatan Limo"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/nmr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -40,35 +40,35 @@
                 android:orientation="vertical"
                 android:padding="15dp">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/fasilitas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/descSS"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <fr.arnaudguyon.smartfontslib.FontTextView
+                    <TextView
                         android:id="@+id/moreInfoSS"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/moreInfoSS"
                         android:textColor="@color/primary"
-                        app:font="@string/fontReguler" />
+                        android:fontFamily="@string/fontReguler" />
 
-                    <fr.arnaudguyon.smartfontslib.FontTextView
+                    <TextView
                         android:id="@+id/or"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/moreInfoSS"
                         android:layout_marginStart="5dp"
                         android:text="atau"
-                        app:font="@string/fontReguler" />
+                        android:fontFamily="@string/fontReguler" />
 
-                    <fr.arnaudguyon.smartfontslib.FontTextView
+                    <TextView
                         android:id="@+id/jadwalKosong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                         android:text="@string/jadawalKosong"
                         android:layout_toEndOf="@id/or"
                         android:textColor="@color/colorRed"
-                        app:font="@string/fontReguler" />
+                        android:fontFamily="@string/fontReguler" />
 
                 </RelativeLayout>
 
@@ -87,16 +87,16 @@
                     android:alpha="0.5"
                     android:background="@color/colorGray" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:text="@string/formSS"
                     android:textSize="16sp"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/nama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,9 +106,9 @@
                     android:padding="10dp"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/namaInstansi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,9 +118,9 @@
                     android:padding="10dp"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/notelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,9 +130,9 @@
                     android:padding="10dp"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontButton
+                <Button
                     android:id="@+id/tgl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,9 +144,9 @@
                     android:textSize="14sp"
                     android:padding="10dp"
                     android:textColor="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/keperluan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -156,9 +156,9 @@
                     android:padding="10dp"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/jumlah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,9 +168,9 @@
                     android:padding="10dp"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontButton
+                <Button
                     android:id="@+id/kirim"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -179,7 +179,7 @@
                     android:background="@drawable/rectangle_blue_primary_without_radius"
                     android:text="@string/submit"
                     android:textColor="@color/colorWhite"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
             </LinearLayout>
         </LinearLayout>

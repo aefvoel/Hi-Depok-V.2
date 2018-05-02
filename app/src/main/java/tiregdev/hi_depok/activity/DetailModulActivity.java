@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import fr.arnaudguyon.smartfontslib.FontButton;
-import fr.arnaudguyon.smartfontslib.FontTextView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
 
@@ -31,24 +31,24 @@ public class DetailModulActivity extends AppCompatActivity implements View.OnCli
     }
 
     private ImageView cover;
-    private FontTextView kategori;
-    private FontTextView judul;
-    private FontTextView pengarang;
-    private FontTextView page;
-    private FontTextView viewer;
+    private TextView kategori;
+    private TextView judul;
+    private TextView pengarang;
+    private TextView page;
+    private TextView viewer;
     private ImageView share;
-    private FontButton download;
+    private Button download;
 
 
     private void findViews() {
         cover = (ImageView)findViewById( R.id.cover );
-        kategori = (FontTextView)findViewById( R.id.kategori );
-        judul = (FontTextView)findViewById( R.id.judul );
-        pengarang = (FontTextView)findViewById( R.id.pengarang );
-        page = (FontTextView)findViewById( R.id.page );
-        viewer = (FontTextView)findViewById( R.id.viewer );
+        kategori = (TextView)findViewById( R.id.kategori );
+        judul = (TextView)findViewById( R.id.judul );
+        pengarang = (TextView)findViewById( R.id.pengarang );
+        page = (TextView)findViewById( R.id.page );
+        viewer = (TextView)findViewById( R.id.viewer );
         share = (ImageView)findViewById( R.id.share );
-        download = (FontButton)findViewById( R.id.download );
+        download = (Button)findViewById( R.id.download );
 
         kategori.setText(getIntent().getExtras().getString("KATEGORI"));
         judul.setText(getIntent().getExtras().getString("JUDUL"));

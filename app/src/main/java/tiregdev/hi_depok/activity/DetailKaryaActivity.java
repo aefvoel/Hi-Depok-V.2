@@ -14,7 +14,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -29,10 +31,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.arnaudguyon.smartfontslib.FontEditText;
-import fr.arnaudguyon.smartfontslib.FontTextView;
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.adapter_komen_karya;
+import tiregdev.hi_depok.adapter.DetailKaryaAdapter;
 import tiregdev.hi_depok.model.MasterpieceKomentar;
 
 import tiregdev.hi_depok.utils.AppConfig;
@@ -47,17 +47,17 @@ public class DetailKaryaActivity extends AppCompatActivity implements View.OnCli
     private CollapsingToolbarLayout collapsingToolbar;
     private ImageView placePicture;
     private ImageView likeIcon;
-    private FontTextView likeText;
+    private TextView likeText;
     private ImageView commentIcon;
-    private FontTextView commentText;
+    private TextView commentText;
     private ImageView shareIcon;
-    private FontTextView shareText;
+    private TextView shareText;
     private ImageView avatar;
-    private FontTextView username;
-    private FontTextView time;
-    private FontTextView location;
-    private FontTextView postTxt;
-    private FontEditText isiKomentar;
+    private TextView username;
+    private TextView time;
+    private TextView location;
+    private TextView postTxt;
+    private EditText isiKomentar;
     private ImageView btnKirim;
     private JSONObject jsonObject;
     private RecyclerView rView;
@@ -65,7 +65,7 @@ public class DetailKaryaActivity extends AppCompatActivity implements View.OnCli
     private DividerItemDecoration dividerItemDecoration;
     private MasterpieceKomentar mKom;
     private List<MasterpieceKomentar> dataAdapter;
-    private adapter_komen_karya rvAdapter;
+    private DetailKaryaAdapter rvAdapter;
     private MasterpieceFunctions mFun;
     private SQLiteHandler db;
     private ProgressDialog pDialog;
@@ -83,17 +83,17 @@ public class DetailKaryaActivity extends AppCompatActivity implements View.OnCli
 
     private void findViews() {
         likeIcon = (ImageView)findViewById( R.id.likeIcon );
-        likeText = (FontTextView)findViewById( R.id.likeText );
+        likeText = (TextView)findViewById( R.id.likeText );
         commentIcon = (ImageView)findViewById( R.id.commentIcon );
-        commentText = (FontTextView)findViewById( R.id.commentText );
+        commentText = (TextView)findViewById( R.id.commentText );
         shareIcon = (ImageView)findViewById( R.id.shareIcon );
-        shareText = (FontTextView)findViewById( R.id.shareText );
+        shareText = (TextView)findViewById( R.id.shareText );
         avatar = (ImageView)findViewById( R.id.avatar );
-        username = (FontTextView)findViewById( R.id.username );
-        time = (FontTextView)findViewById( R.id.time );
-        location = (FontTextView)findViewById( R.id.location );
-        postTxt = (FontTextView)findViewById( R.id.postTxt );
-        isiKomentar = (FontEditText)findViewById( R.id.isiKomentar );
+        username = (TextView)findViewById( R.id.username );
+        time = (TextView)findViewById( R.id.time );
+        location = (TextView)findViewById( R.id.location );
+        postTxt = (TextView)findViewById( R.id.postTxt );
+        isiKomentar = (EditText)findViewById( R.id.isiKomentar );
         btnKirim = (ImageView)findViewById( R.id.btnKirim );
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         placePicture = (ImageView) findViewById(R.id.image);
@@ -202,7 +202,7 @@ public class DetailKaryaActivity extends AppCompatActivity implements View.OnCli
 
                 }
                 commentText.setText(String.valueOf(dataAdapter.size()));
-                rvAdapter = new adapter_komen_karya(getApplicationContext(), dataAdapter);
+                rvAdapter = new DetailKaryaAdapter(getApplicationContext(), dataAdapter);
                 rView.setAdapter(rvAdapter);
                 hideDialog();
 

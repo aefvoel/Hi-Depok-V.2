@@ -14,7 +14,7 @@
         android:contentDescription="@string/ImgDesc"
         tools:src="@drawable/no_image" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/nama_bagian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/bagian_tubuh"
         android:textSize="20sp"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         tools:text="Kepala" />
 
     <View

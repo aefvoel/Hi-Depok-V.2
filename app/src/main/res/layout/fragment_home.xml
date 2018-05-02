@@ -21,7 +21,7 @@
                 android:background="@drawable/cari_data"
                 android:padding="20dp">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -30,7 +30,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </RelativeLayout>
 
@@ -53,7 +53,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -63,7 +63,7 @@
                         android:text="@string/cari"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -78,7 +78,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -88,7 +88,7 @@
                         android:text="@string/volunteer"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -113,7 +113,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -123,7 +123,7 @@
                         android:text="@string/ensiklo"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -138,7 +138,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -148,7 +148,7 @@
                         android:text="@string/diag"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -173,7 +173,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -183,7 +183,7 @@
                         android:text="@string/rsud"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -198,7 +198,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -208,7 +208,7 @@
                         android:text="@string/sahabatkos"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -233,7 +233,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -243,7 +243,7 @@
                         android:text="@string/ss"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
@@ -258,7 +258,7 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_white"
@@ -268,7 +268,7 @@
                         android:text="@string/tomboldarurat"
                         android:textColor="@color/colorStatusBar"
                         android:textSize="14sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context="tiregdev.hi_depok.activity.kritikSaran">
+    tools:context="tiregdev.hi_depok.activity.KritikSaranActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -26,14 +26,14 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/fasilitas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/descKS"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,9 +43,9 @@
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nik"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,9 +55,9 @@
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/tgl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,9 +69,9 @@
                 android:textSize="14sp"
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/keperluan"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
@@ -83,9 +83,9 @@
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/kirim"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -94,7 +94,7 @@
                 android:background="@drawable/rectangle_blue_primary_without_radius"
                 android:text="@string/submit"
                 android:textColor="@color/colorWhite"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
         </LinearLayout>
     </ScrollView>

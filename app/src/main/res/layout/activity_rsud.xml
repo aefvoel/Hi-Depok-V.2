@@ -26,11 +26,11 @@
             android:padding="15dp"
             android:orientation="vertical">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rsud_desc"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <View
                 android:layout_width="150dp"
@@ -40,36 +40,36 @@
                 android:alpha="0.5"
                 android:layout_marginTop="20dp"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/regis_baru"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/primary"
                 android:text="@string/regis_1"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/regis_lama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/primary"
                 android:text="@string/regis_2"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/regis_berobat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/primary"
                 android:text="@string/regis_3"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/ketentuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/primary"
                 android:text="@string/ketentuan"/>
 

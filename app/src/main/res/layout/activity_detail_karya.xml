@@ -80,7 +80,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/like" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/likeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                     android:layout_toEndOf="@id/likeIcon"
                     android:text="@string/likeTxt"
                     android:textColor="@color/primary"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/commentIcon"
@@ -101,7 +101,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/comment" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/commentText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                     android:layout_toEndOf="@id/commentIcon"
                     android:text="@string/commentTxt"
                     android:textColor="@color/primary"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/shareIcon"
@@ -122,7 +122,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/forward_gray" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/shareText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                     android:layout_toEndOf="@id/shareIcon"
                     android:text="@string/share1"
                     android:textColor="@color/primary"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <View
                     android:id="@+id/line"
@@ -155,7 +155,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/char_icon" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,9 +167,9 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/nama"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -181,9 +181,9 @@
                     android:text="@string/time"
                     android:textColor="@color/colorGray"
                     android:textSize="12sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                     android:alpha="0.7"
                     android:text="@string/location"
                     android:textSize="12sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <View
                     android:id="@+id/line3"
@@ -206,7 +206,7 @@
                     android:alpha="0.3"
                     android:background="@color/colorGray" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/postTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
                     android:layout_marginTop="10dp"
                     android:maxLines="4"
                     android:text="@string/postTxt"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <View
                     android:id="@+id/line2"
@@ -252,7 +252,7 @@
         android:gravity="bottom"
         android:orientation="horizontal">
 
-        <fr.arnaudguyon.smartfontslib.FontEditText
+        <EditText
             android:id="@+id/isiKomentar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -263,7 +263,7 @@
             android:padding="10dp"
             android:textColor="@color/colorGray"
             android:hint="@string/komentar"
-            app:font="@string/fontReguler"/>
+            android:fontFamily="@string/fontReguler"/>
 
         <ImageView
             android:id="@+id/btnKirim"

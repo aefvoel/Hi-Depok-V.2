@@ -16,7 +16,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/kata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:padding="10dp"
         android:text="Pilih gejala yang anda alami"
         android:textSize="16sp"
-        app:font="@string/fontBold" />
+        android:fontFamily="@string/fontBold" />
 
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/list_ensiklopedia"

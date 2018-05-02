@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -42,6 +44,7 @@ import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.GCMConfig;
 import tiregdev.hi_depok.utils.GcmIntentService;
 import tiregdev.hi_depok.utils.NotificationUtils;
+import tiregdev.hi_depok.utils.SQLiteHandler;
 import tiregdev.hi_depok.utils.SimpleDividerItemDecoration;
 
 
@@ -53,6 +56,8 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayList<ChatRoom> chatRoomArrayList;
     private ChatRoomsAdapter mAdapter;
     private RecyclerView recyclerView;
+    private CoordinatorLayout coordinatorLayout;
+    private SQLiteHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class ChatActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+//        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         /**
@@ -108,7 +113,7 @@ public class ChatActivity extends AppCompatActivity {
         ));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
+        db = new SQLiteHandler(getApplicationContext());
         recyclerView.addOnItemTouchListener(new ChatRoomsAdapter.RecyclerTouchListener(getApplicationContext(), recyclerView, new ChatRoomsAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -155,7 +160,16 @@ public class ChatActivity extends AppCompatActivity {
             // push belongs to user alone
             // just showing the message in a toast
             Message message = (Message) intent.getSerializableExtra("message");
-            Toast.makeText(getApplicationContext(), "New push: " + message.getMessage(), Toast.LENGTH_LONG).show();
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, "[" + message.getUser().getNama() + "] Pesan Baru: " + message.getMessage(), Snackbar.LENGTH_LONG)
+                    .setAction("VIEW", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(), message.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+            snackbar.show();
         }
 
 

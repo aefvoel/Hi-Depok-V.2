@@ -19,7 +19,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/char_icon" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,9 +28,9 @@
             android:layout_toEndOf="@id/avatar"
             android:text="@string/nama2"
             android:textSize="16sp"
-            app:font="@string/fontBold" />
+            android:fontFamily="@string/fontBold" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,9 +39,9 @@
             android:alpha="0.5"
             android:text="@string/jam"
             android:textSize="12sp"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/pesan4"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
         <View
             android:layout_width="match_parent"

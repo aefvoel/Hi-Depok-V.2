@@ -12,7 +12,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize">
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -20,7 +20,7 @@
             android:text="@string/forHeader"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
         <ImageView
             android:id="@+id/menu"
@@ -31,26 +31,6 @@
             android:layout_marginEnd="20dp"
             android:contentDescription="@string/ImgDesc"
             android:src="@drawable/menu" />
-
-        <com.andexert.library.RippleView
-            android:id="@+id/pesan"
-            rv_centered="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="15dp"
-            android:layout_toStartOf="@id/menu"
-            app:rv_centered="true"
-            app:rv_color="@color/colorRipple"
-            app:rv_rippleDuration="10">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/ImgDesc"
-                android:src="@drawable/massege_icon" />
-
-        </com.andexert.library.RippleView>
 
     </RelativeLayout>
 
@@ -86,7 +66,7 @@
                     android:padding="10dp"
                     android:src="@drawable/no_image" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,9 +74,9 @@
                     android:layout_centerHorizontal="true"
                     android:text="@string/nama"
                     android:textSize="20sp"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/jointxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,16 +85,16 @@
                     android:layout_marginTop="-40dp"
                     android:text="@string/jointxt"
                     android:textColor="@color/colorGray"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/jointgl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/jointxt"
                     android:layout_marginStart="10dp"
                     android:text="@string/jointgl"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
                 <com.andexert.library.RippleView
                     android:id="@+id/btnEdtProfile"
@@ -129,17 +109,17 @@
                     app:rv_color="@color/colorRipple"
                     app:rv_rippleDuration="150">
 
-                    <fr.arnaudguyon.smartfontslib.FontButton
+                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_gray_full"
                         android:text="@string/edtprofile"
                         android:textSize="10sp"
-                        app:font="@string/fontBold" />
+                        android:fontFamily="@string/fontBold" />
 
                 </com.andexert.library.RippleView>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/bio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,7 +131,7 @@
                     android:paddingStart="30dp"
                     android:text="@string/isibio"
                     android:textSize="14sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </RelativeLayout>
 
@@ -171,14 +151,14 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/mail" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/mail"
                     android:text="@string/emailJAR"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/earth"
@@ -189,7 +169,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/world" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/alamat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -198,7 +178,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/earth"
                     android:text="@string/alamat"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/phone"
@@ -209,7 +189,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/phone" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/tlp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -218,7 +198,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/phone"
                     android:text="@string/tlp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <ImageView
                     android:id="@+id/calender"
@@ -229,7 +209,7 @@
                     android:contentDescription="@string/ImgDesc"
                     android:src="@drawable/calender" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/ttl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -238,7 +218,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/calender"
                     android:text="@string/jointgl"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </RelativeLayout>
 
@@ -249,54 +229,44 @@
                 android:background="@color/colorWhite"
                 android:orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/tropy"
                     android:textColor="@color/colorGrayOld"
                     android:textSize="18sp"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/tropyKet"
+                    android:text="Posts by User in Topic Discussion"
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/horbarchart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorWhite"
-                android:orientation="vertical">
-
-                <fr.arnaudguyon.smartfontslib.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/post"
-                    android:textColor="@color/colorGrayOld"
-                    android:textSize="18sp"
-                    app:font="@string/fontBold" />
-
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/tropyKet"
+                    android:text="Sentiment Posts by User"
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"/>
 
             </LinearLayout>
 

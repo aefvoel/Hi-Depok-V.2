@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -41,6 +42,25 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_CREATED_AT = "created_at";
     private static final String KEY_UPDATED_AT = "updated_at";
 
+    private static final String TABLE_ROOM = "chatroom";
+    private static final String ID_ROOM = "chat_room_id";
+    private static final String NAME_ROOM = "name";
+    private static final String TGL_ROOM = "created_at";
+
+    private static final String TABLE_MESSAGE = "messages";
+    private static final String ID_MESSAGE = "message_id";
+    private static final String FK_ID_ROOM = "chat_room_id";
+    private static final String FK_ID_USER = "user_id";
+    private static final String MESSAGE = "message";
+    private static final String TGL_MESSAGE = "created_at";
+    private static final String ANALYSIS = "analysis";
+
+    private static final String TABLE_BROADCAST = "broadcasts";
+    private static final String ID_BROADCAST = "id";
+    private static final String MESSAGE_BROADCAST = "message";
+    private static final String TGL_BRROADCAST = "created_at";
+
+
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -55,7 +75,27 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + KEY_TANGGAL_LAHIR + " TEXT," + KEY_BIO + " TEXT,"
                 + KEY_FOTO_USER + " TEXT," + KEY_JENIS_KELAMIN + " TEXT,"
                 + KEY_CREATED_AT + " TEXT," + KEY_UPDATED_AT + " TEXT" + ")";
+
+        String CREATE_ROOM_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_ROOM + "("
+                + ID_ROOM + " INTEGER PRIMARY KEY," + NAME_ROOM + " TEXT,"
+                + TGL_ROOM + " TEXT" + ")";
+
+        String CREATE_ROOM_MESSAGE = "CREATE TABLE IF NOT EXISTS " + TABLE_MESSAGE + "("
+                + ID_MESSAGE + " INTEGER PRIMARY KEY," + FK_ID_ROOM + " TEXT,"
+                + FK_ID_USER + " TEXT," + MESSAGE + " TEXT," + TGL_MESSAGE+ " TEXT,"
+                + ANALYSIS + " TEXT" + ")";
+
+        String CREATE_BROADCAST = "CREATE TABLE IF NOT EXISTS " + TABLE_BROADCAST + "("
+                + ID_BROADCAST + " INTEGER PRIMARY KEY," + MESSAGE_BROADCAST + " TEXT,"
+                + TGL_BRROADCAST + " TEXT" + ")";
+
+        db.execSQL(CREATE_ROOM_TABLE);
+
+        db.execSQL(CREATE_ROOM_MESSAGE);
+
         db.execSQL(CREATE_LOGIN_TABLE);
+
+        db.execSQL(CREATE_BROADCAST);
 
         Log.d(TAG, "Database tables created");
     }
@@ -96,6 +136,68 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
 
         Log.d(TAG, "New user inserted into sqlite: " + id);
+    }
+
+    public void insertBroadcast(String message, String created){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(MESSAGE_BROADCAST, message);
+        values.put(TGL_BRROADCAST, created);
+
+        long id = db.insert(TABLE_BROADCAST, null, values);
+        db.close(); // Closing database connection
+        Log.d(TAG, "New Broadcast inserted into sqlite: " + id);
+
+    }
+
+    public void insertRoom(String id_room, String name, String created){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(ID_ROOM, id_room);
+        values.put(NAME_ROOM, name);
+        values.put(TGL_ROOM, created);
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_ROOM + " WHERE " +  ID_ROOM
+                + " = '"+ id_room +"'", null);
+        if(c.moveToFirst()) {
+            db.close(); // Closing database connection
+        }
+        else {
+            // Inserting Row
+            long id = db.insert(TABLE_ROOM, null, values);
+            db.close(); // Closing database connection
+            Log.d(TAG, "New Room inserted into sqlite: " + id);
+        }
+
+
+    }
+
+    public void insertMessage(String id_message, String id_room, String id_user, String message,
+                              String created, String analysis){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(ID_MESSAGE, id_message);
+        values.put(FK_ID_ROOM, id_room);
+        values.put(FK_ID_USER, id_user);
+        values.put(MESSAGE, message);
+        values.put(TGL_MESSAGE, created);
+        values.put(ANALYSIS, analysis);
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_MESSAGE + " WHERE " +  ID_MESSAGE
+                + " = '"+ id_message +"'", null);
+        if(c.moveToFirst()) {
+            db.close(); // Closing database connection
+        }
+        else {
+            // Inserting Row
+            long id = db.insert(TABLE_MESSAGE, null, values);
+            db.close(); // Closing database connection
+            Log.d(TAG, "New Message inserted into sqlite: " + id);
+        }
+
     }
 
     public void updateUser(String name, String email, String uid, String alamat, String no_telp,
@@ -155,6 +257,101 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return user;
     }
 
+    public HashMap<String, ArrayList<String>> getUserActiveInRoom(String id_user) {
+        HashMap<String, ArrayList<String>> stats = new HashMap<>();
+
+        ArrayList<String> roomName = new ArrayList<>();
+        ArrayList<String> totalPost = new ArrayList<>();
+        String query = "SELECT a." + ID_ROOM + ", a." + NAME_ROOM + ", COUNT(b." + FK_ID_USER
+                +") AS total_post FROM " + TABLE_ROOM + " a JOIN " + TABLE_MESSAGE + " b ON a."
+                + ID_ROOM + " = b." + FK_ID_ROOM + " WHERE " + FK_ID_USER + " = '" + id_user
+                + "' GROUP BY a." + ID_ROOM + ", a." + NAME_ROOM;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if (c != null ) {
+            if  (c.moveToFirst()) {
+                do {
+                    String rName = c.getString(c.getColumnIndex("name"));
+                    String tPost = c.getString(c.getColumnIndex("total_post"));
+                    roomName.add(rName);
+                    totalPost.add(tPost);
+                }while (c.moveToNext());
+            }
+        }
+        c.close();
+        db.close();
+
+        stats.put("room_name", roomName);
+        stats.put("total_post", totalPost);
+
+        return stats;
+    }
+
+    public HashMap<String, ArrayList<String>> getSentimentPostByUser(String id_user) {
+        HashMap<String, ArrayList<String>> stats = new HashMap<>();
+
+        ArrayList<String> sentimentName = new ArrayList<>();
+        ArrayList<String> totalPost = new ArrayList<>();
+        String query = "SELECT " + ANALYSIS + ", COUNT(" + FK_ID_USER
+                +") AS total_post FROM " + TABLE_MESSAGE +  " WHERE " + FK_ID_USER + " = '" + id_user
+                + "' GROUP BY " + ANALYSIS;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if (c != null ) {
+            if  (c.moveToFirst()) {
+                do {
+                    String rName = c.getString(c.getColumnIndex("analysis"));
+                    String tPost = c.getString(c.getColumnIndex("total_post"));
+                    sentimentName.add(rName);
+                    totalPost.add(tPost);
+                }while (c.moveToNext());
+            }
+        }
+        c.close();
+        db.close();
+
+        stats.put("sentiment_name", sentimentName);
+        stats.put("total_post", totalPost);
+
+        return stats;
+    }
+
+    public HashMap<String, ArrayList<String>> getBroadcastMessages() {
+        HashMap<String, ArrayList<String>> stats = new HashMap<>();
+
+        ArrayList<String> idBroadcast = new ArrayList<>();
+        ArrayList<String> messageBroadcast = new ArrayList<>();
+        ArrayList<String> tglBroadcast = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_MESSAGE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if (c != null ) {
+            if  (c.moveToFirst()) {
+                do {
+                    String rId = c.getString(c.getColumnIndex("id"));
+                    String rName = c.getString(c.getColumnIndex("message"));
+                    String tPost = c.getString(c.getColumnIndex("created_at"));
+                    idBroadcast.add(rId);
+                    messageBroadcast.add(rName);
+                    tglBroadcast.add(tPost);
+                }while (c.moveToNext());
+            }
+        }
+        c.close();
+        db.close();
+
+        stats.put("id", idBroadcast);
+        stats.put("message", messageBroadcast);
+        stats.put("created_at", tglBroadcast);
+
+        return stats;
+    }
     /**
      * Re crate database Delete all tables and create them again
      * */
@@ -162,6 +359,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_USER, null, null);
+        db.delete(TABLE_BROADCAST, null, null);
         db.close();
 
         Log.d(TAG, "Deleted all user info from sqlite");

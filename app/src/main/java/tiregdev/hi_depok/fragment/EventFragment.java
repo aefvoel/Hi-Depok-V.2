@@ -1,6 +1,5 @@
 package tiregdev.hi_depok.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,14 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.DetailEventActivity;
-import tiregdev.hi_depok.adapter.adapter_news_event;
-import tiregdev.hi_depok.model.itemObject_news_event;
+import tiregdev.hi_depok.adapter.EventAdapter;
+import tiregdev.hi_depok.model.EventList;
 import tiregdev.hi_depok.utils.GridMarginDecoration;
 
 /**
@@ -30,8 +28,8 @@ public class EventFragment extends android.support.v4.app.Fragment {
     View v;
     SwipeRefreshLayout swipeRefreshRecyclerList;
     private RecyclerView recyclerView;
-    private adapter_news_event mAdapter;
-    private ArrayList<itemObject_news_event> modelList = new ArrayList<>();
+    private EventAdapter mAdapter;
+    private ArrayList<EventList> modelList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -70,21 +68,21 @@ public class EventFragment extends android.support.v4.app.Fragment {
     private void setAdapter() {
 
 
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul), getResources().getString(R.string.nama), getResources().getString(R.string.time), R.drawable.wisata));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul1), getResources().getString(R.string.nama1), getResources().getString(R.string.time), R.drawable.report_banjir));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul2), getResources().getString(R.string.nama2), getResources().getString(R.string.time), R.drawable.report_macet));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul3), getResources().getString(R.string.nama3), getResources().getString(R.string.time1), R.drawable.report_pohontumbang));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul1), getResources().getString(R.string.nama), getResources().getString(R.string.time1), R.drawable.wisata));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul), getResources().getString(R.string.nama2), getResources().getString(R.string.time1), R.drawable.wisata));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul2), getResources().getString(R.string.nama1), getResources().getString(R.string.time1), R.drawable.report_macet));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul3), getResources().getString(R.string.nama3), getResources().getString(R.string.time2), R.drawable.report_pohontumbang));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul), getResources().getString(R.string.nama), getResources().getString(R.string.time2), R.drawable.report_banjir));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul1), getResources().getString(R.string.nama1), getResources().getString(R.string.time2), R.drawable.wisata));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul2), getResources().getString(R.string.nama2), getResources().getString(R.string.time2), R.drawable.report_pohontumbang));
-        modelList.add(new itemObject_news_event(getResources().getString(R.string.judul3), getResources().getString(R.string.nama3), getResources().getString(R.string.time2), R.drawable.wisata));
+        modelList.add(new EventList(getResources().getString(R.string.judul), getResources().getString(R.string.nama), getResources().getString(R.string.time), R.drawable.wisata));
+        modelList.add(new EventList(getResources().getString(R.string.judul1), getResources().getString(R.string.nama1), getResources().getString(R.string.time), R.drawable.report_banjir));
+        modelList.add(new EventList(getResources().getString(R.string.judul2), getResources().getString(R.string.nama2), getResources().getString(R.string.time), R.drawable.report_macet));
+        modelList.add(new EventList(getResources().getString(R.string.judul3), getResources().getString(R.string.nama3), getResources().getString(R.string.time1), R.drawable.report_pohontumbang));
+        modelList.add(new EventList(getResources().getString(R.string.judul1), getResources().getString(R.string.nama), getResources().getString(R.string.time1), R.drawable.wisata));
+        modelList.add(new EventList(getResources().getString(R.string.judul), getResources().getString(R.string.nama2), getResources().getString(R.string.time1), R.drawable.wisata));
+        modelList.add(new EventList(getResources().getString(R.string.judul2), getResources().getString(R.string.nama1), getResources().getString(R.string.time1), R.drawable.report_macet));
+        modelList.add(new EventList(getResources().getString(R.string.judul3), getResources().getString(R.string.nama3), getResources().getString(R.string.time2), R.drawable.report_pohontumbang));
+        modelList.add(new EventList(getResources().getString(R.string.judul), getResources().getString(R.string.nama), getResources().getString(R.string.time2), R.drawable.report_banjir));
+        modelList.add(new EventList(getResources().getString(R.string.judul1), getResources().getString(R.string.nama1), getResources().getString(R.string.time2), R.drawable.wisata));
+        modelList.add(new EventList(getResources().getString(R.string.judul2), getResources().getString(R.string.nama2), getResources().getString(R.string.time2), R.drawable.report_pohontumbang));
+        modelList.add(new EventList(getResources().getString(R.string.judul3), getResources().getString(R.string.nama3), getResources().getString(R.string.time2), R.drawable.wisata));
 
 
-        mAdapter = new adapter_news_event(getActivity(), modelList);
+        mAdapter = new EventAdapter(getActivity(), modelList);
 
         recyclerView.setHasFixedSize(true);
 
@@ -97,9 +95,9 @@ public class EventFragment extends android.support.v4.app.Fragment {
         recyclerView.setAdapter(mAdapter);
 
 
-        mAdapter.SetOnItemClickListener(new adapter_news_event.OnItemClickListener() {
+        mAdapter.SetOnItemClickListener(new EventAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int position, itemObject_news_event model) {
+            public void onItemClick(View view, int position, EventList model) {
                 Intent i = new Intent(getContext(), DetailEventActivity.class);
                 startActivity(i);
             }

@@ -9,14 +9,14 @@
     android:padding="15dp"
     android:orientation="horizontal">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/title_sugesti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="16sp"
         android:text="Title"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
     <ProgressBar
         android:id="@+id/pb"

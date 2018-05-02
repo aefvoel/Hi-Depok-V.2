@@ -7,8 +7,8 @@
     android:padding="10dp"
     android:background="@color/colorWhite">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
-        app:font="@string/fontReguler"
+    <TextView
+        android:fontFamily="@string/fontReguler"
         android:id="@+id/title_ensiklopedia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

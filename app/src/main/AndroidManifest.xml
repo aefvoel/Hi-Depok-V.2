@@ -10,18 +10,21 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- needed for older devices -
-     used to check app background / foreground status -->
+    <!--
+     needed for older devices -
+     used to check app background / foreground status
+    -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <!-- START Added for GCM -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <permission
         android:name="tiregdev.hi_depok.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="tiregdev.hi_depok.permission.C2D_MESSAGE" />
-    <!-- END Added for GCM -->
 
+    <!-- END Added for GCM -->
     <application
         android:name=".utils.AppController"
         android:allowBackup="true"
@@ -30,8 +33,9 @@
         android:roundIcon="@drawable/hi_depok"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -46,11 +50,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".activity.MenuActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -59,16 +63,18 @@
         <activity
             android:name=".activity.SplashScreenActivity"
             android:noHistory="true" />
-        <activity
-            android:name=".activity.LoginActivity" >
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="sociallogin" android:host="redirect" />
+
+                <data
+                    android:host="redirect"
+                    android:scheme="sociallogin" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.VerifySignUpActivity" />
         <activity android:name=".activity.ForgotPassActivity" />
@@ -85,7 +91,7 @@
             android:name=".activity.CariDataActivity"
             android:label="Cari Data" />
         <activity
-            android:name=".activity.detail_search"
+            android:name=".activity.DetailCariDataActivity"
             android:label="Detail Data" />
         <activity
             android:name=".activity.DetailKaryaActivity"
@@ -99,16 +105,6 @@
             android:name=".activity.DetailMuseumActivity"
             android:label="Detail Penghargaan" />
         <activity
-            android:name=".activity.space_room"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Form Space Room"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity
-            android:name=".activity.VolunteerActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Form Volunteer"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity
             android:name=".activity.SubmitKaryaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Submit"
@@ -116,68 +112,32 @@
         <activity
             android:name=".activity.DetailNewsActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity
-            android:name=".activity.sahabat_kos"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Sahabat Kos"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
-        <activity android:name=".activity.detail_kos" />
         <activity android:name=".activity.DetailEventActivity" />
-        <activity
-            android:name=".activity.ntpd"
-            android:label="NTPD" />
         <activity android:name=".activity.AboutActivity" />
         <activity
-            android:name=".activity.faq"
+            android:name=".activity.FAQActivity"
             android:label="FAQ" />
         <activity
-            android:name=".activity.change_avatar"
+            android:name=".activity.ChangeAvatarActivity"
             android:label="Change Avatar" />
-        <activity
-            android:name=".activity.rsud"
-            android:label="Registrasi RSUD Depok" />
-        <activity
-            android:name=".activity.Deskripsi"
-            android:label="Deskripsi Penyakit" />
-        <activity
-            android:name=".activity.Diagnosa"
-            android:label="Bagian Tubuh" />
-        <activity
-            android:name=".activity.DiagnosaBagian"
-            android:label="Diagnosa Penyakit" />
-        <activity
-            android:name=".activity.Ensiklopedia"
-            android:label="Ensiklopedia Penyakit" />
-        <activity
-            android:name=".activity.Gejala"
-            android:label="Gejala Yang Dirasakan" />
-        <activity
-            android:name=".activity.Sugesti"
-            android:label="Hasil Diagnosa" />
-
-        <activity
-            android:name=".activity.PesanActivity"
-            android:label="Chat" />
-
-        <activity
-            android:name=".activity.PesanListActivity"
-            android:label="Chat With ..." />
-
         <activity
             android:name=".activity.ChatActivity"
             android:label="Chat" />
-
         <activity
             android:name=".activity.ChatRoomActivity"
             android:label="Chat With ..." />
+        <activity
+            android:name=".activity.StatistikActivity"
+            android:label="Statistik" />
 
         <service android:name=".utils.RssService" />
 
         <activity
-            android:name=".activity.kritikSaran"
+            android:name=".activity.KritikSaranActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Kritik dan Saran"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|stateHidden" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="f405e394ca1d421202255d09c66250b61a9aa1db" />
@@ -201,7 +161,6 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
         <service
             android:name=".utils.GcmIntentService"
             android:exported="false">
@@ -211,6 +170,9 @@
         </service>
 
         <!-- END Added for GCM -->
+        <activity
+            android:name=".activity.BroadcastActivity"
+            android:label="Broadcast History"></activity>
     </application>
 
 </manifest>

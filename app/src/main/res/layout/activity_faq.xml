@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="tiregdev.hi_depok.activity.faq">
+    tools:context="tiregdev.hi_depok.activity.FAQActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 android:text="@string/faq_no1"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout1"
@@ -48,15 +48,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab1"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                 android:text="@string/faq_no2"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout2"
@@ -80,15 +80,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab2"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                 android:text="@string/faq_no3"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout3"
@@ -112,15 +112,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab3"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                 android:text="@string/faq_no4"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout4"
@@ -144,15 +144,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab4"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                 android:text="@string/faq_no5"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout5"
@@ -176,15 +176,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab5"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton6"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                 android:text="@string/faq_no6"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout6"
@@ -208,15 +208,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab6"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
                 android:text="@string/faq_no7"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout7"
@@ -240,15 +240,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab7"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton9"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -260,7 +260,7 @@
                 android:text="@string/faq_no9"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout9"
@@ -272,15 +272,15 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab9"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/expandableButton10"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -292,7 +292,7 @@
                 android:text="@string/faq_no10"
                 android:textAllCaps="false"
                 android:textColor="#066da1"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/expandableLayout10"
@@ -304,12 +304,12 @@
                 app:ael_interpolator="fastOutSlowIn"
                 app:ael_orientation="vertical">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="@string/faq_jawab10"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
         </LinearLayout>

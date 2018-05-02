@@ -7,7 +7,7 @@
     tools:context="tiregdev.hi_depok.activity.VerifySignUpActivity"
     android:background="@drawable/screen_bg">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/txtVerif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:textAlignment="center"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:textSize="16sp"
         android:text="@string/verify"/>
 
@@ -34,7 +34,7 @@
         android:background="@drawable/rectangle_white_login"
         android:hint="@string/verifyNum"/>
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/btnVerify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,6 +44,6 @@
         android:background="@drawable/rectangle_green"
         android:textColor="@color/colorWhite"
         android:text="@string/verifyBtn"
-        app:font="@string/fontBold"/>
+        android:fontFamily="@string/fontBold"/>
 
 </RelativeLayout>

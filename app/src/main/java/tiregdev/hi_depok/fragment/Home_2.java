@@ -1,6 +1,8 @@
 package tiregdev.hi_depok.fragment;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,18 +22,20 @@ import com.wang.avi.AVLoadingIndicatorView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.CariDataActivity;
 
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
 /**
  * Created by Muhammad63 on 8/3/2017.
  */
 
 public class Home_2 extends Fragment {
 
-    AVLoadingIndicatorView pDialog;
-    LinearLayout wrap;
-    WebView webView;
-    Button list;
-    String url = "http://hi.depok.go.id/maps";
-    View v;
+    private AVLoadingIndicatorView pDialog;
+    private LinearLayout wrap;
+    private WebView webView;
+    private Button list;
+    private String url = "http://hi.depok.go.id/maps";
+    private View v;
 
     public static Home_2 newInstance(){
         Home_2 fragment = new Home_2();
@@ -71,8 +76,18 @@ public class Home_2 extends Fragment {
     public void setWebView(){
         webView = (WebView) v.findViewById(R.id.maps);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAppCacheMaxSize( 5 * 1024 * 1024 ); // 5MB
+        webView.getSettings().setAppCachePath( getContext().getCacheDir().getAbsolutePath() );
+        webView.getSettings().setAllowFileAccess( true );
+        webView.getSettings().setAppCacheEnabled( true );
+        webView.getSettings().setJavaScriptEnabled( true );
+        webView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT ); // load online by default
         webView.setVerticalScrollBarEnabled(true);
         webView.setHorizontalScrollBarEnabled(false);
+
+        if ( !isNetworkAvailable() ) { // loading offline
+            webView.getSettings().setCacheMode( WebSettings.LOAD_CACHE_ELSE_NETWORK );
+        }
         webView.setWebChromeClient(new WebChromeClient(){
             public void onProgressChanged(WebView view, int newProgress){
                 // Update the progress bar with page loading progress
@@ -88,5 +103,11 @@ public class Home_2 extends Fragment {
             }
         });
         webView.loadUrl(url);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService( CONNECTIVITY_SERVICE );
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

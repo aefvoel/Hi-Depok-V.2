@@ -20,7 +20,6 @@ import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.ChatActivity;
-import tiregdev.hi_depok.activity.PesanActivity;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -68,27 +67,15 @@ public class Masterpiece extends Fragment {
         tabs.setupWithViewPager(pager);
 
         setupViewPager(pager);
-        setPesanLink();
 
         return v;
     }
 
-    public void setPesanLink(){
-        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
-        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
-            @Override
-            public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), ChatActivity.class);
-                startActivity(w);
-            }
-        });
-    }
 
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new MasterKaryaFragment(),"KARYA");
-        adapter.addFragment(new MasterModulFragment(), "MODUL");
         adapter.addFragment(new MasterMuseumFragment(), "MUSEUM");
         viewPager.setAdapter(adapter);
 

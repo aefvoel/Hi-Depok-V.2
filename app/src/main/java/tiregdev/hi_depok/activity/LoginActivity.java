@@ -43,10 +43,13 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.TwitterConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
@@ -61,7 +64,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-import io.fabric.sdk.android.Fabric;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
@@ -69,14 +71,11 @@ import tiregdev.hi_depok.utils.Application;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 import tiregdev.hi_depok.utils.SessionManager;
 
-import static com.google.android.gms.auth.api.Auth.GoogleSignInApi;
-
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button login;
     private SignInButton btnGoogle;
-    private LoginButton btnFacebook;
     private TwitterLoginButton btnTwitter;
     private TextView forgot;
     private EditText emailFrm, passFrm;
@@ -86,7 +85,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private SQLiteHandler db;
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int RC_SIGN_IN = 9001;
-    private CallbackManager mFacebookCallbackManager;
     private String full_name;
     private String email_id;
     private String photo_url;
@@ -96,10 +94,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-        mFacebookCallbackManager = CallbackManager.Factory.create();
-        TwitterAuthConfig authConfig = new TwitterAuthConfig("EcXjy4S0dDcPfcSfq8cloDDps",
-                "D2b77118vTt4n1kH3m1QTgfrwbZcPEY3IDgKyJ25y5FcXWmFey");
-        Fabric.with(this, new TwitterCore(authConfig));
+        TwitterConfig config = new TwitterConfig.Builder(this)
+                .logger(new DefaultLogger(Log.DEBUG))
+                .twitterAuthConfig(new TwitterAuthConfig("EcXjy4S0dDcPfcSfq8cloDDps", "D2b77118vTt4n1kH3m1QTgfrwbZcPEY3IDgKyJ25y5FcXWmFey"))
+                .debug(true)
+                .build();
+        Twitter.initialize(config);
 
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -114,11 +114,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         login = (Button) findViewById(R.id.btnLogin);
         btnGoogle = (SignInButton) findViewById(R.id.btnLoginGoogle);
-        btnFacebook = (LoginButton) findViewById(R.id.btnLoginFacebook);
         btnTwitter = (TwitterLoginButton) findViewById(R.id.btnLoginTwitter);
         forgot = (TextView) findViewById(R.id.lupaPass);
         login.setOnClickListener(this);
         btnGoogle.setOnClickListener(this);
+        btnGoogle.setSize(SignInButton.SIZE_WIDE);
         forgot.setOnClickListener(this);
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -145,111 +145,41 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // (consider this when deploying the application)
 
 
-        btnFacebook.registerCallback(mFacebookCallbackManager,
-                new FacebookCallback<LoginResult>() {
+        btnTwitter.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                // Do something with result, which provides a TwitterSession for making API calls
+                TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
+                TwitterAuthToken authToken = session.getAuthToken();
+                String token = authToken.token;
+                String secret = authToken.secret;
+
+                TwitterAuthClient authClient = new TwitterAuthClient();
+                authClient.requestEmail(session, new Callback<String>() {
                     @Override
-                    public void onSuccess(final LoginResult loginResult) {
-                        //By Profile Class
-
-                        Profile profile = Profile.getCurrentProfile();
-                        if (profile != null) {
-                            String facebook_id = profile.getId();
-                            full_name = profile.getFirstName();
-                            String m_name = profile.getMiddleName();
-                            String l_name = profile.getLastName();
-                            String full_name = profile.getName();
-                            photo_url = profile.getProfilePictureUri(400, 400).toString();
-                        }
-                        //Toast.makeText(FacebookLogin.this,"Wait...",Toast.LENGTH_SHORT).show();
-                        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
-                                new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(JSONObject object, GraphResponse response) {
-                                        try {
-                                            email_id = object.getString("email");
-                                            String gender = object.getString("gender");
-                                            String full_name = object.getString("name");
-                                            long fb_id = object.getLong("id"); //use this for logout
-
-                                        } catch (JSONException e) {
-                                            // TODO Auto-generated catch block
-                                            //  e.printStackTrace();
-                                        }
-
-                                    }
-
-                                });
-
+                    public void success(Result<String> result) {
+                        // Do something with the result, which provides the email address
+                        // the email is saved in the result variable 'result.data'
+                        email_id = result.data;
                         handleSignInResult(new Callable<Void>() {
                             @Override
                             public Void call() throws Exception {
-                                LoginManager.getInstance().logOut();
                                 return null;
                             }
                         }, full_name, email_id, photo_url);
-                        request.executeAsync();
-
                     }
 
                     @Override
-                    public void onCancel() {
-                        handleSignInResult(null, null, null, null);
-                    }
-
-                    @Override
-                    public void onError(FacebookException error) {
-                        Log.d(LoginActivity.class.getCanonicalName(), error.getMessage());
-                        handleSignInResult(null, null, null, null);
-                    }
-                }
-        );
-
-        btnTwitter.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(final Result<TwitterSession> result) {
-                TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
-                twitterApiClient.getAccountService().verifyCredentials(false, false, new Callback<com.twitter.sdk.android.core.models.User>() {
-                    @Override
-                    public void success(Result<com.twitter.sdk.android.core.models.User> userResult) {
-                        full_name = userResult.data.name;
-//                        email_id = userResult.data.email;
-                        photo_url = userResult.data.profileImageUrl;
-
-                        TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
-                        TwitterAuthClient authClient = new TwitterAuthClient();
-                        authClient.requestEmail(session, new Callback<String>() {
-                            @Override
-                            public void success(Result<String> result) {
-                                // Do something with the result, which provides the email address
-                                // the email is saved in the result variable 'result.data'
-                                email_id = result.data;
-                                handleSignInResult(new Callable<Void>() {
-                                    @Override
-                                    public Void call() throws Exception {
-                                        TwitterCore.getInstance().logOut();
-                                        return null;
-                                    }
-                                }, full_name, email_id, photo_url);
-                            }
-
-                            @Override
-                            public void failure(TwitterException exception) {
-                                // Do something on failure
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void failure(TwitterException exc) {
-                        Log.d("TwitterKit", "Verify Credentials Failure", exc);
+                    public void failure(TwitterException exception) {
+                        // Do something on failure
                     }
                 });
-
             }
 
             @Override
-            public void failure(TwitterException e) {
-                Log.d(LoginActivity.class.getCanonicalName(), e.getMessage());
+            public void failure(TwitterException exception) {
+                // Do something on failure
+                Log.d(LoginActivity.class.getCanonicalName(), exception.getMessage());
                 handleSignInResult(null, null, null, null);
             }
         });
@@ -273,36 +203,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-//    private void signInWithInstagram() {
-//        final Uri.Builder uriBuilder = new Uri.Builder();
-//        uriBuilder.scheme("https")
-//                .authority("api.instagram.com")
-//                .appendPath("oauth")
-//                .appendPath("authorize")
-//                .appendQueryParameter("client_id", "18a8b74da9644bd7a9294caef1c5e76c")
-//                .appendQueryParameter("redirect_uri", "sociallogin://redirect")
-//                .appendQueryParameter("response_type", "token");
-//        final Intent browser = new Intent(Intent.ACTION_VIEW, uriBuilder.build());
-//        startActivity(browser);
-//    }
-//
-//    private void checkForInstagramData() {
-//        final Uri data = this.getIntent().getData();
-//        if(data != null && data.getScheme().equals("sociallogin") && data.getFragment() != null) {
-//            final String accessToken = data.getFragment().replaceFirst("access_token=", "");
-//            if (accessToken != null) {
-//                handleSignInResult(new Callable<Void>() {
-//                    @Override
-//                    public Void call() throws Exception {
-//                        // Do nothing, just throw the access token away.
-//                        return null;
-//                    }
-//                });
-//            } else {
-//                handleSignInResult(null);
-//            }
-//        }
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -353,8 +253,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         } else if (TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE == requestCode) {
             btnTwitter.onActivityResult(requestCode, resultCode, data);
-        } else {
-            mFacebookCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 

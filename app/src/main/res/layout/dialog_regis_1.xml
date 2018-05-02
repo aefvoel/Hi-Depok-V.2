@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/kirim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/send"
-        app:font="@string/fontBold"
+        android:fontFamily="@string/fontBold"
         android:textSize="18sp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorGreen"/>
@@ -26,15 +26,15 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrasi Pasien Baru"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,9 +44,9 @@
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nik"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,16 +57,16 @@
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:text="Jenis Kelamin"
                 android:textSize="16sp"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <RadioGroup
                 android:id="@+id/jk"
@@ -92,7 +92,7 @@
 
             </RadioGroup>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/tglLahir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,9 +103,9 @@
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
                 android:textSize="16sp"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                 android:padding="10dp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
         </LinearLayout>
 

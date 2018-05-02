@@ -33,7 +33,7 @@
                 app:rv_color="@color/colorRippleGray"
                 app:rv_rippleDuration="150">
 
-                <fr.arnaudguyon.smartfontslib.FontButton
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
@@ -42,7 +42,7 @@
                     android:padding="15dp"
                     android:text="@string/submit"
                     android:textColor="@color/colorGray"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
             </com.andexert.library.RippleView>
 

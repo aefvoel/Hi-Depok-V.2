@@ -20,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,8 +31,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.arnaudguyon.smartfontslib.FontButton;
-import fr.arnaudguyon.smartfontslib.FontEditText;
+import android.widget.Button;
+import android.widget.EditText;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
@@ -43,14 +46,14 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
     private static final String TAG = EditProfileActivity.class.getSimpleName();
     private ImageView editavatar;
-    private FontEditText username;
-    private FontEditText email;
-    private FontEditText alamat;
-    private FontEditText nmrTlp;
-    private FontButton tglLahir;
-    private FontButton saveChanges;
-    private FontEditText bio;
-    private ImageView avatar;
+    private EditText username;
+    private EditText email;
+    private EditText alamat;
+    private EditText nmrTlp;
+    private Button tglLahir;
+    private Button saveChanges;
+    private EditText bio;
+    private CircleImageView avatar;
     private Calendar dateAndTime;
     private SQLiteHandler db;
     private ProgressDialog pDialog;
@@ -98,16 +101,15 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        avatar = (ImageView)findViewById( R.id.avatar );
-        username = (FontEditText)findViewById( R.id.username );
-        email = (FontEditText)findViewById( R.id.email );
-        alamat = (FontEditText)findViewById( R.id.alamat );
-        nmrTlp = (FontEditText)findViewById( R.id.nmrTlp );
-        tglLahir = (FontButton)findViewById( R.id.tglLahir );
-        saveChanges = (FontButton)findViewById( R.id.saveChanges );
-        bio = (FontEditText)findViewById( R.id.bio );
+        avatar = (CircleImageView)findViewById( R.id.avatar );
+        username = (EditText)findViewById( R.id.username );
+        email = (EditText)findViewById( R.id.email );
+        alamat = (EditText)findViewById( R.id.alamat );
+        nmrTlp = (EditText)findViewById( R.id.nmrTlp );
+        tglLahir = (Button)findViewById( R.id.tglLahir );
+        saveChanges = (Button)findViewById( R.id.saveChanges );
+        bio = (EditText)findViewById( R.id.bio );
         jenisKel = (RadioGroup)findViewById(R.id.jenisKel);
-        editavatar = (ImageView) findViewById(R.id.edit);
         pDialog = new ProgressDialog(this);
         db = new SQLiteHandler(getApplicationContext());
         sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -121,6 +123,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         nmrTlp.setText(db.getUserDetails().get("no_telp"));
         tglLahir.setText(db.getUserDetails().get("tanggal_lahir"));
         bio.setText(db.getUserDetails().get("bio"));
+        Glide.with(this).load(db.getUserDetails().get("foto")).into(avatar);
         pDialog.setCancelable(false);
         tglLahir.setOnClickListener( this );
         saveChanges.setOnClickListener( this );
@@ -259,9 +262,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             }else{
                 sendData();
             }
-        }else if( v == editavatar) {
-            Intent i = new Intent(EditProfileActivity.this, change_avatar.class);
-            startActivity(i);
         }
     }
 

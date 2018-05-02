@@ -34,37 +34,37 @@
                 android:src="@drawable/header_bg"/>
 
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/kategori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/cover"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:textSize="12sp"
                 android:text="@string/kategori2"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/judul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/cover"
                 android:layout_below="@id/kategori"
                 android:layout_marginStart="10dp"
-                app:font="@string/fontBold"
+                android:fontFamily="@string/fontBold"
                 android:textSize="16sp"
                 android:text="@string/judul1"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/pengarang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/cover"
                 android:layout_below="@id/judul"
                 android:layout_marginStart="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
                 android:text="@string/pengarang"/>
@@ -80,7 +80,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="10sp"
                 android:text="@string/page"
-                app:font="@string/fontReguler"/>
+                android:fontFamily="@string/fontReguler"/>
 
             <TextView
                 android:id="@+id/titik"
@@ -102,7 +102,7 @@
                 android:padding="5dp"
                 android:text="@string/titik"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/viewer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:layout_toEndOf="@id/titik"
                 android:textSize="10sp"
                 android:text="@string/viewer"
-                app:font="@string/fontReguler"/>
+                android:fontFamily="@string/fontReguler"/>
 
             <ImageView
                 android:id="@+id/share"
@@ -124,12 +124,12 @@
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/forward_gray"/>
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/download"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/rectangle_green"
-                app:font="@string/fontBold"
+                android:fontFamily="@string/fontBold"
                 android:text="@string/unduh"
                 android:layout_below="@id/cover"
                 android:layout_marginTop="20dp"/>

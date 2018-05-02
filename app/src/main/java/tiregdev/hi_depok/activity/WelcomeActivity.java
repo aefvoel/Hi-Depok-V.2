@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.utils.PreferenceManager;
+import tiregdev.hi_depok.utils.SessionManager;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private PreferenceManager prefManager;
+    private SessionManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // Checking for first time launch - before calling setContentView()
-        prefManager = new PreferenceManager(this);
+        prefManager = new SessionManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();

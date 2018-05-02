@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import fr.arnaudguyon.smartfontslib.FontTextView;
+import android.widget.TextView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
 
@@ -30,21 +30,21 @@ public class DetailMuseumActivity extends AppCompatActivity {
         findViews();
     }
 
-    private FontTextView namaPenghargaan;
-    private FontTextView descPenghargaan;
-    private FontTextView peraih;
-    private FontTextView tgl;
-    private FontTextView kategori;
-    private FontTextView tingkat;
+    private TextView namaPenghargaan;
+    private TextView descPenghargaan;
+    private TextView peraih;
+    private TextView tgl;
+    private TextView kategori;
+    private TextView tingkat;
 
 
     private void findViews() {
-        namaPenghargaan = (FontTextView)findViewById( R.id.namaPenghargaan );
-        descPenghargaan = (FontTextView)findViewById( R.id.desc_penghargaan );
-        peraih = (FontTextView)findViewById( R.id.peraih );
-        tgl = (FontTextView)findViewById( R.id.tgl );
-        kategori = (FontTextView)findViewById( R.id.kategori );
-        tingkat = (FontTextView)findViewById( R.id.tingkat );
+        namaPenghargaan = (TextView)findViewById( R.id.namaPenghargaan );
+        descPenghargaan = (TextView)findViewById( R.id.desc_penghargaan );
+        peraih = (TextView)findViewById( R.id.peraih );
+        tgl = (TextView)findViewById( R.id.tgl );
+        kategori = (TextView)findViewById( R.id.kategori );
+        tingkat = (TextView)findViewById( R.id.tingkat );
 
         namaPenghargaan.setText(getIntent().getExtras().getString("NAMA"));
         descPenghargaan.setText(getIntent().getExtras().getString("DESKRIPSI"));

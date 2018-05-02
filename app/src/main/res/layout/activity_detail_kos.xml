@@ -41,14 +41,14 @@
                     app:layout_collapseMode="parallax"
                     tools:background="@drawable/wisata" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nama_kos"
                     android:textSize="16sp"
                     android:layout_gravity="bottom"
                     android:text="@string/kos1"
-                    app:font="@string/fontBold"
+                    android:fontFamily="@string/fontBold"
                     android:textColor="@color/colorWhite"
                     android:background="#90000000"
                     android:padding="15dp"/>
@@ -90,68 +90,68 @@
                 android:padding="15dp"
                 android:background="@color/colorWhite">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:textColor="@color/primary"
                     android:text="@string/harga"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/harga"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    app:font="@string/fontBlack"
+                    android:fontFamily="@string/fontBlack"
                     android:textSize="20sp"
                     android:text="@string/harga1"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:textColor="@color/primary"
                     android:text="@string/almt"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/alamat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/alamat"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/fasilitas"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/fasilitas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/fasilitas1"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/kontak"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/kontak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="089788569455"/>
 
             </LinearLayout>

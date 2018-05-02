@@ -48,7 +48,7 @@ android:layout_height="match_parent">
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/namaTempat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,9 +57,9 @@ android:layout_height="match_parent">
                     android:text="@string/tempat1"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/alamat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,7 +67,7 @@ android:layout_height="match_parent">
                     android:layout_marginStart="15dp"
                     android:text="@string/alamat"
                     android:textColor="@color/colorWhite"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </RelativeLayout>
 
@@ -170,57 +170,57 @@ android:layout_height="match_parent">
             android:orientation="vertical"
             android:padding="15dp">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tentang"
                 android:textColor="@color/primary"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/desc"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/jadwal"
                 android:textColor="@color/primary"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/jadwal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/jadwal2"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/desk"
                 android:textColor="@color/primary"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/desc"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/call"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -232,7 +232,7 @@ android:layout_height="match_parent">
                 android:paddingStart="20dp"
                 android:text="@string/call"
                 android:visibility="visible"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
         </LinearLayout>
 

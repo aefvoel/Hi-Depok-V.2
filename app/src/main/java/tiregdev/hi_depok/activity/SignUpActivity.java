@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +34,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AlertDialogUtil;
 import tiregdev.hi_depok.utils.AppConfig;
@@ -53,6 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
+    private CircleImageView avatar;
     private static final String TAG = SignUpActivity.class.getSimpleName();
 
     @Override
@@ -64,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
     private void setInit(){
+        avatar = (CircleImageView)findViewById(R.id.avatar);
         name = (EditText)findViewById(R.id.username);
         email = (EditText)findViewById(R.id.email);
         pass = (EditText)findViewById(R.id.pass);
@@ -77,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
         jenisKel = (RadioGroup)findViewById(R.id.jenisKel);
         name.setText(getIntent().getExtras().getString("getNama"));
         email.setText(getIntent().getExtras().getString("getEmail"));
-
+        Glide.with(this).load(getIntent().getExtras().getString("getPhoto")).into(avatar);
         sdf = new SimpleDateFormat("dd-MM-yyyy");
         dateAndTime = Calendar.getInstance();
 // Progress dialog

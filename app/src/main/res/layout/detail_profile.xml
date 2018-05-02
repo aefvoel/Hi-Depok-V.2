@@ -14,25 +14,25 @@
         android:contentDescription="@string/ImgDesc"
         android:src="@drawable/char_icon" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/ava"
         android:text="@string/uname"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/uname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/user"
         android:layout_marginStart="5dp"
         android:text="@string/nama"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,9 +40,9 @@
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/ava"
         android:text="@string/mail"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,83 +50,83 @@
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/mail"
         android:text="@string/mail2"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/almt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/ava"
         android:layout_below="@id/mail"
         android:text="@string/almt"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/almt"
         android:layout_below="@id/email"
         android:text="@string/alamat"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/nmr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/ava"
         android:layout_below="@id/alamat"
         android:text="@string/noTlp"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/tlp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/nmr"
         android:layout_below="@id/alamat"
         android:text="@string/tlp"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/tgl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/ava"
         android:layout_below="@id/nmr"
         android:text="@string/TglLahir"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/tglLahir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/tgl"
         android:layout_below="@id/tlp"
         android:text="@string/jointgl"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/bio2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/ava"
         android:layout_below="@id/tgl"
         android:text="@string/bio2"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/bio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/bio2"
         android:layout_below="@id/tglLahir"
@@ -141,7 +141,7 @@
         android:background="@color/colorGray"
         android:layout_below="@id/bio"/>
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

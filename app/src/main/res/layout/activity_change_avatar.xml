@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context="tiregdev.hi_depok.activity.change_avatar">
+    tools:context="tiregdev.hi_depok.activity.ChangeAvatarActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -25,7 +25,7 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
             android:text="Pilih avatar favoritmu!"
             android:textColor="@color/primary"
             android:textSize="24sp"
-            app:font="@string/fontBold" />
+            android:fontFamily="@string/fontBold" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rview"

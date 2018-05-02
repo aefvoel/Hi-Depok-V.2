@@ -20,23 +20,23 @@
             android:layout_alignParentTop="true"
             android:src="@drawable/report_macet" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/picNotif"
             android:text="@string/nama"
-            app:font="@string/fontBold" />
+            android:fontFamily="@string/fontBold" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/notifTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@id/user"
             android:text="@string/like"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
         <ImageView
             android:id="@+id/dm"
@@ -48,7 +48,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"/>
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/picNotif"
             android:text="@string/time"
-            app:font="@string/fontThin" />
+            android:fontFamily="@string/fontThin" />
 
     </RelativeLayout>
 

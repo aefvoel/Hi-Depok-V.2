@@ -9,16 +9,16 @@
     android:padding="10dp"
     android:orientation="horizontal">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/title_ensiklopedia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="16sp"
         android:text="Title"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +26,6 @@
         android:gravity="center"
         android:textSize="16sp"
         android:text="x"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
 </LinearLayout>

@@ -24,7 +24,7 @@
         android:layout_above="@id/layoutDots"
         android:background="@android:color/white" />
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,9 +33,9 @@
         android:background="@null"
         android:text="@string/next"
         android:textColor="@android:color/white"
-        app:font="@string/fontBold" />
+        android:fontFamily="@string/fontBold" />
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,6 +44,6 @@
         android:background="@null"
         android:text="@string/skip"
         android:textColor="@android:color/white"
-        app:font="@string/fontBold" />
+        android:fontFamily="@string/fontBold" />
 </RelativeLayout>
 

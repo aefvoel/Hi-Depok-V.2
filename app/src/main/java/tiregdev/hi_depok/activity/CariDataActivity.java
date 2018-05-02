@@ -15,14 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.adapter.CariDataAdapter;
-import tiregdev.hi_depok.fragment.data_kesehatan;
-import tiregdev.hi_depok.fragment.data_pendidikan;
-import tiregdev.hi_depok.fragment.data_sandang;
-import tiregdev.hi_depok.fragment.data_sosial;
-import tiregdev.hi_depok.fragment.data_umum;
-import tiregdev.hi_depok.fragment.data_wisata;
-import tiregdev.hi_depok.model.CariData;
+import tiregdev.hi_depok.fragment.DataKesehatanFragment;
+import tiregdev.hi_depok.fragment.DataPendidikanFragment;
+import tiregdev.hi_depok.fragment.DataSandangFragment;
+import tiregdev.hi_depok.fragment.DataSosialFragment;
+import tiregdev.hi_depok.fragment.DataUmumFragment;
+import tiregdev.hi_depok.fragment.DataWisataFragment;
 
 public class CariDataActivity extends AppCompatActivity {
 
@@ -69,12 +67,12 @@ public class CariDataActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
 
         CariDataActivity.Adapter adapter = new CariDataActivity.Adapter(getSupportFragmentManager());
-        adapter.addFragment(data_kesehatan.newInstance("kesehatan"), "KESEHATAN");
-        adapter.addFragment(data_pendidikan.newInstance("pendidikan"), "PENDIDIKAN");
-        adapter.addFragment(data_sandang.newInstance("sandangpangan"), "SANDANG DAN PANGAN");
-        adapter.addFragment(data_wisata.newInstance("wisata"), "WISATA");
-        adapter.addFragment(new data_sosial(), "SOSIAL");
-        adapter.addFragment(data_umum.newInstance("umkm"), "UMUM");
+        adapter.addFragment(DataKesehatanFragment.newInstance("kesehatan"), "KESEHATAN");
+        adapter.addFragment(DataPendidikanFragment.newInstance("pendidikan"), "PENDIDIKAN");
+        adapter.addFragment(DataSandangFragment.newInstance("sandangpangan"), "SANDANG DAN PANGAN");
+        adapter.addFragment(DataWisataFragment.newInstance("wisata"), "WISATA");
+        adapter.addFragment(new DataSosialFragment(), "SOSIAL");
+        adapter.addFragment(DataUmumFragment.newInstance("umkm"), "UMUM");
         viewPager.setAdapter(adapter);
 
     }

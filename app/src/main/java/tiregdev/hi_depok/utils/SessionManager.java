@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
+import tiregdev.hi_depok.model.Message;
 import tiregdev.hi_depok.model.User;
 
 public class SessionManager {
@@ -25,7 +26,7 @@ public class SessionManager {
     int PRIVATE_MODE = 0;
 
     // Shared preferences file name
-    private static final String PREF_NAME = "AndroidHiveLogin";
+    private static final String PREF_NAME = "HiDepokLogin";
 
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
 
@@ -34,6 +35,8 @@ public class SessionManager {
     private static final String KEY_USER_NAME = "user_name";
     private static final String KEY_USER_EMAIL = "user_email";
     private static final String KEY_NOTIFICATIONS = "notifications";
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    private static final String KEY_SENTIMENT = "sentiment";
 
     public SessionManager(Context context) {
         this._context = context;
@@ -51,7 +54,18 @@ public class SessionManager {
         Log.d(TAG, "User login session modified!");
     }
 
+//    public void storeSentiment(String analisa) {
+//
+//        editor.putString(KEY_SENTIMENT, analisa);
+//
+//        // commit changes
+//        editor.commit();
+//
+//        Log.d(TAG, "Added Sentiment Analysis!");
+//    }
+
     public boolean isLoggedIn(){
+
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);
     }
 
@@ -93,11 +107,24 @@ public class SessionManager {
     }
 
     public String getNotifications() {
+
         return pref.getString(KEY_NOTIFICATIONS, null);
     }
 
     public void clear() {
         editor.clear();
         editor.commit();
+    }
+
+
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+
+        editor.commit();
+    }
+
+    public boolean isFirstTimeLaunch() {
+
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 }

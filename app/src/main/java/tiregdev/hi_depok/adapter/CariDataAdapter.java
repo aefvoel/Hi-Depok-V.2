@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.activity.detail_search;
+import tiregdev.hi_depok.activity.DetailCariDataActivity;
 import tiregdev.hi_depok.model.CariData;
 
 /**
@@ -69,7 +69,7 @@ public class CariDataAdapter extends RecyclerView.Adapter<CariDataAdapter.holder
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, detail_search.class);
+                    Intent intent = new Intent(context, DetailCariDataActivity.class);
                     intent.putExtra("NAMA_TEMPAT", itemList.get(getAdapterPosition()).getNamaTempat());
                     intent.putExtra("KOORDINAT", itemList.get(getAdapterPosition()).getKoordinat());
                     intent.putExtra("DESKRIPSI", itemList.get(getAdapterPosition()).getDeskripsi());

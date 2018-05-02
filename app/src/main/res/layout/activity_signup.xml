@@ -18,19 +18,28 @@
             android:paddingEnd="50dp"
             android:paddingStart="50dp">
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/ImgDesc"
+                android:src="@drawable/char_icon" />
+
+            <EditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:background="@drawable/rectangle_white_login"
                 android:hint="@string/username"
+                android:layout_below="@+id/avatar"
                 android:inputType="text"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@color/colorBlack"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -42,7 +51,7 @@
                 android:paddingStart="10dp"
                 android:hint="@string/email"
                 android:textColor="@color/colorBlack"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/passLayout"
@@ -55,7 +64,7 @@
                 app:hintAnimationEnabled="false"
                 app:passwordToggleEnabled="true">
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -66,7 +75,7 @@
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/colorBlack"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -81,7 +90,7 @@
                 app:hintEnabled="false"
                 app:passwordToggleEnabled="true">
 
-                <fr.arnaudguyon.smartfontslib.FontEditText
+                <EditText
                     android:id="@+id/confirm_pass"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -92,11 +101,11 @@
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
                     android:textColor="@color/colorBlack"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/alamat"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -107,7 +116,7 @@
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@color/colorBlack"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <RadioGroup
                 android:id="@+id/jenisKel"
@@ -117,7 +126,7 @@
                 android:textColor="@color/colorBlack"
                 android:orientation="horizontal">
 
-                <fr.arnaudguyon.smartfontslib.FontRadioButton
+                <RadioButton
                     android:id="@+id/radio_l"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,9 +134,9 @@
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
                     android:text="@string/jk_l"
-                    app:font="@string/fontReguler"/>
+                    android:fontFamily="@string/fontReguler"/>
 
-                <fr.arnaudguyon.smartfontslib.FontRadioButton
+                <RadioButton
                     android:id="@+id/radio_p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -135,11 +144,11 @@
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
                     android:text="@string/jk_p"
-                    app:font="@string/fontReguler"/>
+                    android:fontFamily="@string/fontReguler"/>
 
             </RadioGroup>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nmrTlp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -151,9 +160,9 @@
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@color/colorBlack"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/ttl"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -166,9 +175,9 @@
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@color/colorBlack"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
@@ -181,9 +190,9 @@
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@color/colorBlack"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontCheckBox
+            <CheckBox
                 android:id="@+id/validasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -192,7 +201,7 @@
                 android:text="@string/validasi"
                 android:textSize="8sp" />
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -206,7 +215,7 @@
                 android:paddingTop="5dp"
                 android:text="@string/signup"
                 android:textColor="@color/colorWhite"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
         </RelativeLayout>
     </ScrollView>

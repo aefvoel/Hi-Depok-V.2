@@ -22,9 +22,8 @@ import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.ChatActivity;
-import tiregdev.hi_depok.activity.PesanActivity;
-import tiregdev.hi_depok.adapter.adapter_notif;
-import tiregdev.hi_depok.model.itemObjcect_notif;
+import tiregdev.hi_depok.adapter.NotifAdapter;
+import tiregdev.hi_depok.model.Notifikasi;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -92,13 +91,13 @@ public class Notif extends Fragment {
     }
 
     public void setupAdapter(){
-        List<itemObjcect_notif> rowListItem = getAllItemList();
+        List<Notifikasi> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(getContext());
 
         rView = (RecyclerView)v.findViewById(R.id.view_notif);
         rView.setLayoutManager(lLayout);
 
-        adapter_notif rcAdapter = new adapter_notif(getContext(), rowListItem);
+        NotifAdapter rcAdapter = new NotifAdapter(getContext(), rowListItem);
         rView.setAdapter(rcAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), lLayout.getOrientation());
@@ -117,18 +116,18 @@ public class Notif extends Fragment {
         });
     }
 
-    private List<itemObjcect_notif> getAllItemList(){
-        List<itemObjcect_notif> allItems = new ArrayList<>();
-        allItems.add(new itemObjcect_notif("JAR", "Menanggapi postingan Anda","2 jam lalu", R.drawable.report_banjir));
-        allItems.add(new itemObjcect_notif("HVS", "Menanggapi postingan Anda","2 jam lalu", R.drawable.report_macet));
-        allItems.add(new itemObjcect_notif("Aefvoel", "Menyukai postingan Anda","3 jam lalu", R.drawable.report_pohontumbang));
-        allItems.add(new itemObjcect_notif("Pandu", "Menanggapi postingan Anda","3 jam lalu", R.drawable.report_banjir));
-        allItems.add(new itemObjcect_notif("Tegar", "Menyukai postingan Anda","3 jam lalu", R.drawable.report_banjir));
-        allItems.add(new itemObjcect_notif("Fajri", "Menanggapi postingan Anda","4 jam lalu", R.drawable.report_pohontumbang));
-        allItems.add(new itemObjcect_notif("Della", "Menyukai postingan Anda","4 jam lalu", R.drawable.report_macet));
-        allItems.add(new itemObjcect_notif("Citra", "Menyukai postingan Andaa","5 jam lalu", R.drawable.report_banjir));
-        allItems.add(new itemObjcect_notif("Nadiah", "Menanggapi postingan Anda","5 jam lalu", R.drawable.report_macet));
-        allItems.add(new itemObjcect_notif("Yessi", "Menanggapi postingan Anda","6 jam lalu", R.drawable.report_pohontumbang));
+    private List<Notifikasi> getAllItemList(){
+        List<Notifikasi> allItems = new ArrayList<>();
+        allItems.add(new Notifikasi("JAR", "Menanggapi postingan Anda","2 jam lalu", R.drawable.report_banjir));
+        allItems.add(new Notifikasi("HVS", "Menanggapi postingan Anda","2 jam lalu", R.drawable.report_macet));
+        allItems.add(new Notifikasi("Aefvoel", "Menyukai postingan Anda","3 jam lalu", R.drawable.report_pohontumbang));
+        allItems.add(new Notifikasi("Pandu", "Menanggapi postingan Anda","3 jam lalu", R.drawable.report_banjir));
+        allItems.add(new Notifikasi("Tegar", "Menyukai postingan Anda","3 jam lalu", R.drawable.report_banjir));
+        allItems.add(new Notifikasi("Fajri", "Menanggapi postingan Anda","4 jam lalu", R.drawable.report_pohontumbang));
+        allItems.add(new Notifikasi("Della", "Menyukai postingan Anda","4 jam lalu", R.drawable.report_macet));
+        allItems.add(new Notifikasi("Citra", "Menyukai postingan Andaa","5 jam lalu", R.drawable.report_banjir));
+        allItems.add(new Notifikasi("Nadiah", "Menanggapi postingan Anda","5 jam lalu", R.drawable.report_macet));
+        allItems.add(new Notifikasi("Yessi", "Menanggapi postingan Anda","6 jam lalu", R.drawable.report_pohontumbang));
 
         return allItems;
     }

@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/btnClose"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorGray"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_alignParentBottom="true"
         android:text="@string/close"/>
 
@@ -23,19 +23,19 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Konsep yang Diadopsi"
                 android:textColor="@color/primary"
-                app:font="@string/fontBlack" />
+                android:fontFamily="@string/fontBlack" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ss1"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <View
                 android:layout_width="match_parent"
@@ -44,20 +44,20 @@
                 android:alpha="0.5"
                 android:background="@color/colorGray" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Fungsi Space Room"
                 android:textColor="@color/primary"
-                app:font="@string/fontBlack" />
+                android:fontFamily="@string/fontBlack" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ss2"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <View
                 android:layout_width="match_parent"
@@ -66,20 +66,20 @@
                 android:alpha="0.5"
                 android:background="@color/colorGray" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Fasilitas Space Room"
                 android:textColor="@color/primary"
-                app:font="@string/fontBlack" />
+                android:fontFamily="@string/fontBlack" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ss3"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <View
                 android:layout_width="match_parent"
@@ -88,20 +88,20 @@
                 android:alpha="0.5"
                 android:background="@color/colorGray" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Mekanisme Pemanfaatan Space Room"
                 android:textColor="@color/primary"
-                app:font="@string/fontBlack" />
+                android:fontFamily="@string/fontBlack" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ss4"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <View
                 android:layout_width="match_parent"
@@ -110,20 +110,20 @@
                 android:alpha="0.5"
                 android:background="@color/colorGray" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Tata Tertib Space Room"
                 android:textColor="@color/primary"
-                app:font="@string/fontBlack" />
+                android:fontFamily="@string/fontBlack" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ss5"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
             <View
                 android:layout_width="match_parent"

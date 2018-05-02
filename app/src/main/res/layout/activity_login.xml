@@ -15,7 +15,7 @@
         android:contentDescription="@string/ImgDesc"
         android:src="@drawable/icon_splash" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/icon_tagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:text="@string/app_tagline"
         android:textColor="@color/colorBiruTua"
         android:textSize="30sp"
-        app:font="@string/fontRegulerItalic" />
+        android:fontFamily="@string/fontRegulerItalic" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         android:paddingEnd="80dp"
         android:paddingStart="80dp">
 
-        <fr.arnaudguyon.smartfontslib.FontEditText
+        <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="35dp"
@@ -45,10 +45,10 @@
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
             android:textColor="@color/colorBlack"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
 
-        <fr.arnaudguyon.smartfontslib.FontEditText
+        <EditText
             android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="35dp"
@@ -60,9 +60,9 @@
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
             android:textColor="@color/colorBlack"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
-        <fr.arnaudguyon.smartfontslib.FontButton
+        <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="35dp"
@@ -73,9 +73,9 @@
             android:paddingStart="10dp"
             android:text="@string/login"
             android:textColor="@color/colorWhite"
-            app:font="@string/fontBold" />
+            android:fontFamily="@string/fontBold" />
 
-        <fr.arnaudguyon.smartfontslib.FontTextView
+        <TextView
             android:id="@+id/lupaPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,28 +85,31 @@
             android:text="@string/lupaPass"
             android:textColor="#348eb1" />
 
+        <TextView
+            android:id="@+id/or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lupaPass"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Don't have account?"/>
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btnLoginGoogle"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/lupaPass"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/or"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"/>
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/btnLoginFacebook"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_below="@+id/btnLoginGoogle"
-            android:layout_marginTop="5dp"/>
 
         <com.twitter.sdk.android.core.identity.TwitterLoginButton
             android:id="@+id/btnLoginTwitter"
             android:layout_width="match_parent"
-            android:layout_below="@+id/btnLoginFacebook"
+            android:layout_below="@+id/btnLoginGoogle"
             android:layout_height="35dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:visibility="invisible"/>
 
-        <!--<fr.arnaudguyon.smartfontslib.FontButton-->
+        <!--<Button-->
             <!--android:id="@+id/btnLoginGoogle"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="35dp"-->
@@ -119,37 +122,7 @@
             <!--android:text="@string/loginwithgoogle"-->
             <!--android:textColor="@color/colorWhite"-->
             <!--android:textSize="12sp"-->
-            <!--app:font="@string/fontReguler" />-->
-
-        <!--<fr.arnaudguyon.smartfontslib.FontButton-->
-            <!--android:id="@+id/btnLoginFacebook"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="35dp"-->
-            <!--android:layout_below="@id/btnLoginGoogle"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:background="@drawable/rectangle_blue_primary"-->
-            <!--android:drawableStart="@drawable/google"-->
-            <!--android:paddingEnd="10dp"-->
-            <!--android:paddingStart="10dp"-->
-            <!--android:text="@string/loginwithfb"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textSize="12sp"-->
-            <!--app:font="@string/fontReguler" />-->
-
-        <!--<fr.arnaudguyon.smartfontslib.FontButton-->
-            <!--android:id="@+id/btnLoginTwitter"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="35dp"-->
-            <!--android:layout_below="@id/btnLoginFacebook"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:background="@drawable/rectangle_blue"-->
-            <!--android:drawableStart="@drawable/google"-->
-            <!--android:paddingEnd="10dp"-->
-            <!--android:paddingStart="10dp"-->
-            <!--android:text="@string/loginwithtwit"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:textSize="12sp"-->
-            <!--app:font="@string/fontReguler" />-->
+            <!--android:fontFamily="@string/fontReguler" />-->
 
     </RelativeLayout>
 

@@ -8,7 +8,7 @@
     android:padding="20dp"
     tools:context="tiregdev.hi_depok.activity.ForgotPassActivity">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/txtForgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/emailLayout"
@@ -26,7 +26,7 @@
         android:layout_below="@id/txtForgot"
         android:focusableInTouchMode="false">
 
-        <fr.arnaudguyon.smartfontslib.FontEditText
+        <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,11 +35,11 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorPrimaryDark"
-            app:font="@string/fontReguler" />
+            android:fontFamily="@string/fontReguler" />
 
     </android.support.design.widget.TextInputLayout>
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,6 +48,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_green"
         android:text="@string/send"
-        app:font="@string/fontBold" />
+        android:fontFamily="@string/fontBold" />
 
 </RelativeLayout>

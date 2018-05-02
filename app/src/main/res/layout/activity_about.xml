@@ -10,7 +10,7 @@
     tools:context="tiregdev.hi_depok.activity.AboutActivity">
 
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,15 +19,15 @@
         android:text="@string/app_name_bold"
         android:textColor="@color/primary"
         android:textSize="20sp"
-        app:font="@string/fontBold" />
+        android:fontFamily="@string/fontBold" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/textContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/about_desc"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:textAlignment="center" />
 
     <LinearLayout
@@ -61,7 +61,7 @@
             android:src="@drawable/logo_launcher" />
     </LinearLayout>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,9 +69,9 @@
         android:gravity="center_horizontal"
         android:text="Version 2.0"
         android:textSize="12sp"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,15 +80,15 @@
         android:text="www.hi.depok.go.id"
         android:textColor="@color/primary"
         android:textSize="12sp"
-        app:font="@string/fontReguler" />
+        android:fontFamily="@string/fontReguler" />
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:text="@string/copyright"
         android:textSize="12sp"
-        app:font="@string/fontBold" />
+        android:fontFamily="@string/fontBold" />
 
 </LinearLayout>

@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     app:theme="@style/dialog">
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/kirim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/send"
-        app:font="@string/fontBold"
+        android:fontFamily="@string/fontBold"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:layout_alignParentBottom="true"
@@ -28,15 +28,15 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrasi Pasien Berobat"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -44,10 +44,10 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorGray"
                 android:textColorHint="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
-                app:font="@string/fontReguler"
+            <TextView
+                android:fontFamily="@string/fontReguler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Pilih Poli dan Dokter"

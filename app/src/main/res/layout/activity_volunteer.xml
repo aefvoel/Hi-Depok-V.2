@@ -26,10 +26,10 @@
             android:padding="15dp"
             android:orientation="vertical">
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:text="@string/volunteer_form_desc"/>
 
             <View
@@ -39,121 +39,121 @@
                 android:alpha="0.5"
                 android:background="@color/colorGray" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="@string/volunteer_judul"
                 android:textSize="16sp"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_1"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/jenisVolunteer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:hint="@string/volunteer_ex_1"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_2"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:hint="@string/volunteer_ex_2"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_3"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/nmrTlp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:hint="@string/volunteer_ex_3"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_4"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/keahlian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:hint="@string/volunteer_ex_4"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_5"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:hint="@string/volunteer_ex_5"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_6"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/umur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:hint="@string/volunteer_ex_6"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:textColor="@color/colorRed"
                 android:text="@string/volunteer_form_7"/>
 
-            <fr.arnaudguyon.smartfontslib.FontEditText
+            <EditText
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
@@ -165,9 +165,9 @@
                 android:paddingStart="10dp"
                 android:text="@string/volunteer_ex_7"
                 android:textColor="@color/colorGray"
-                app:font="@string/fontReguler" />
+                android:fontFamily="@string/fontReguler" />
 
-            <fr.arnaudguyon.smartfontslib.FontButton
+            <Button
                 android:id="@+id/kirim"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -176,7 +176,7 @@
                 android:background="@drawable/rectangle_blue"
                 android:text="@string/submit"
                 android:textColor="@color/colorWhite"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
         </LinearLayout>
 

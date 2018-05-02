@@ -63,103 +63,103 @@
                 android:orientation="vertical"
                 android:padding="15dp">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:textColor="@color/primary"
                     android:text="@string/penghargaan"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/namaPenghargaan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    app:font="@string/fontBlack"
+                    android:fontFamily="@string/fontBlack"
                     android:textSize="20sp"
                     android:text="@string/museum2"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:textColor="@color/primary"
                     android:text="@string/deskripsi"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/desc_penghargaan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/desc"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/peraih"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/peraih"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textSize="16sp"
-                    app:font="@string/fontBold"
+                    android:fontFamily="@string/fontBold"
                     android:text="@string/nama2"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/tglPenobatan"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/tgl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    app:font="@string/fontBold"
+                    android:fontFamily="@string/fontBold"
                     android:layout_marginTop="5dp"
                     android:text="@string/tahun1"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/kategoripenghargaan"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/kategori"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    app:font="@string/fontBold"
+                    android:fontFamily="@string/fontBold"
                     android:layout_marginTop="5dp"
                     android:text="@string/kategori4"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
                     android:layout_marginTop="15dp"
-                    app:font="@string/fontReguler"
+                    android:fontFamily="@string/fontReguler"
                     android:text="@string/tingkatpenghargaan"/>
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/tingkat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    app:font="@string/fontBold"
+                    android:fontFamily="@string/fontBold"
                     android:layout_marginTop="5dp"
                     android:text="@string/tingkat"/>
 

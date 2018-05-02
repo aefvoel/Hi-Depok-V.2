@@ -13,21 +13,21 @@
         android:contentDescription="@string/ImgDesc"
         android:src="@drawable/char_icon"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/uname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontBold"
+        android:fontFamily="@string/fontBold"
         android:text="@string/nama"
         android:textSize="16sp"
         android:layout_toEndOf="@id/avatar"
         android:layout_marginStart="5dp"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:alpha="0.5"
         android:text="@string/time"
         android:textSize="10sp"
@@ -35,11 +35,11 @@
         android:layout_toEndOf="@id/avatar"
         android:layout_marginStart="5dp"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/komen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:font="@string/fontReguler"
+        android:fontFamily="@string/fontReguler"
         android:layout_below="@id/time"
         android:layout_marginTop="5dp"
         android:text="@string/desc"

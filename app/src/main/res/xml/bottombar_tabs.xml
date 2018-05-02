@@ -13,9 +13,9 @@
         icon="@drawable/home"
         title="Home"/>
     <tab
-        id="@+id/tab_notif"
-        icon="@drawable/alarm"
-        title="Notif"/>
+        id="@+id/tab_diskusi"
+        icon="@drawable/chat"
+        title="Diskusi"/>
     <tab
         id="@+id/tab_profile"
         icon="@drawable/user"

@@ -20,11 +20,11 @@
         android:contentDescription="@string/ImgDesc"
         android:src="@drawable/char_icon"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:font="@string/fontBold"
+        android:fontFamily="@string/fontBold"
         android:maxLines="1"
         android:layout_marginTop="5dp"
         android:ellipsize="end"

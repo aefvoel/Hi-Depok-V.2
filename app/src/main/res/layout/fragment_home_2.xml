@@ -30,7 +30,7 @@
 
     </LinearLayout>
 
-    <fr.arnaudguyon.smartfontslib.FontButton
+    <Button
         android:id="@+id/searchList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,6 +46,6 @@
         android:paddingEnd="20dp"
         android:paddingStart="10dp"
         android:visibility="gone"
-        app:font="@string/fontReguler"/>
+        android:fontFamily="@string/fontReguler"/>
 
 </RelativeLayout>

@@ -36,24 +36,12 @@ public class AppConfig {
     public static String INSERT_KOMENTAR = "http://hi.depok.go.id/android_api/masterpiece/insert_komentar.php";
 
     // Server user register url
-    public static String DISPLAY_INSTANSI = "http://hi.depok.go.id/android_api/ntpd/display_instansi.php";
-
-    // Server user register url
     public static String DISPLAY_CARIDATA = "http://hi.depok.go.id/android_api/caridata/display_caridata.php";
 
-    // Server user register url
-    public static String REG_SPACEROOM = "http://hi.depok.go.id/android_api/spaceroom/reg_spaceroom.php";
-
-    public static String REG_VOLUNTEER = "http://hi.depok.go.id/android_api/volunteer/reg_volunteer.php";
 
     public static String IMG_LINK = "http://hi.depok.go.id/img/";
 
     public static String IMG_MASTERPIECE = "http://hi.depok.go.id/storage/img_masterpiece/";
-
-    // Server display post
-    public static String DISPLAY_CHAT = "http://hi.depok.go.id/android_api/masterpiece/display_pesan.php";
-
-
 
     // GCM URL -
     public static final String BASE_URL = "http://hi.depok.go.id/android_api/gcm_chat/v1";

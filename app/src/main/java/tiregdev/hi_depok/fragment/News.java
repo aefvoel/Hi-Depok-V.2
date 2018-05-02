@@ -20,7 +20,6 @@ import java.util.List;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.ChatActivity;
-import tiregdev.hi_depok.activity.PesanActivity;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -55,20 +54,8 @@ public class News extends Fragment {
         setupViewPager(pager);
 
         setMenuHamburger();
-        setPesanLink();
 
         return v;
-    }
-
-    public void setPesanLink(){
-        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
-        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
-            @Override
-            public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), ChatActivity.class);
-                startActivity(w);
-            }
-        });
     }
 
     public void setMenuHamburger(){
@@ -85,7 +72,7 @@ public class News extends Fragment {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new RSSFragment(),"BLOG");
-        adapter.addFragment(new EventFragment(), "EVENT");
+        adapter.addFragment(new TwitterTimeline(), "EVENT");
         viewPager.setAdapter(adapter);
 
     }

@@ -328,7 +328,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onInfoWindowClick(Marker marker) {
         HashMap<String, String> sendData = extraHashMap.get(marker.getId());
 
-        Intent intent = new Intent(getApplicationContext(), detail_search.class);
+        Intent intent = new Intent(getApplicationContext(), DetailCariDataActivity.class);
         intent.putExtra("NAMA_TEMPAT", sendData.get("nama_tempat"));
         intent.putExtra("KOORDINAT", sendData.get("koordinat"));
         intent.putExtra("DESKRIPSI", sendData.get("gambaran_umum"));

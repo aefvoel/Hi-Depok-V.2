@@ -28,7 +28,7 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/no_image"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/nama_kos"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
@@ -38,26 +38,26 @@
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontBold"
+                android:fontFamily="@string/fontBold"
                 android:text="Nama Kos"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/alamat_kos"
                 android:layout_marginStart="10dp"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontReguler"
+                android:fontFamily="@string/fontReguler"
                 android:text="Alamat Kos"/>
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/harga_kos"
                 android:textColor="@color/colorRed"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:font="@string/fontBold"
+                android:fontFamily="@string/fontBold"
                 android:text="IDR 600.000 /Bulan"/>
 
             <Button

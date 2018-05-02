@@ -1,27 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_chat"
-    tools:context=".activity.ChatActivity">
+    android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@string/fontReguler"
+            android:text="@string/forHeader"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/ImgDesc"
+            android:src="@drawable/menu" />
+
+        <com.andexert.library.RippleView
+            android:id="@+id/pesan"
+            rv_centered="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@id/menu"
+            app:rv_centered="true"
+            app:rv_color="@color/colorRipple"
+            app:rv_rippleDuration="10">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/ImgDesc"
+                android:src="@drawable/massege_icon" />
+
+        </com.andexert.library.RippleView>
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_below="@+id/toolbar"
         android:layout_height="wrap_content"
         android:scrollbars="vertical" />
-</RelativeLayout>
+</LinearLayout>
 

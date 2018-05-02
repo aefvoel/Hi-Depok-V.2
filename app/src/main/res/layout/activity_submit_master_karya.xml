@@ -47,7 +47,7 @@
         android:orientation="vertical"
         android:weightSum="2">
 
-        <fr.arnaudguyon.smartfontslib.FontEditText
+        <EditText
             android:id="@+id/textPos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -57,7 +57,7 @@
             android:textColor="@color/colorGray"
             android:inputType="textMultiLine"
             android:hint="@string/ApaKaryamu"
-            app:font="@string/fontReguler"
+            android:fontFamily="@string/fontReguler"
             android:background="@color/transperent"/>
 
         <ImageView

@@ -1,12 +1,16 @@
 package tiregdev.hi_depok.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -27,12 +33,15 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
+import com.mikepenz.materialdrawer.util.DrawerImageLoader;
+import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import tiregdev.hi_depok.R;
-import tiregdev.hi_depok.fragment.Home;
+import tiregdev.hi_depok.fragment.ChatFragment;
 import tiregdev.hi_depok.fragment.Home_2;
 import tiregdev.hi_depok.fragment.News;
 import tiregdev.hi_depok.fragment.Notif;
@@ -54,6 +63,14 @@ public class MenuActivity extends AppCompatActivity {
     private SQLiteHandler db;
     private SessionManager session;
 
+    FragmentManager mFragmentManager;
+    Fragment mFragment;
+    Fragment newsFragment = News.newInstance();
+    Fragment masterpieceFragment = Masterpiece.newInstance();
+    Fragment homeFragment = Home_2.newInstance();
+    Fragment chatFragment = ChatFragment.newInstance();
+    Fragment profileFragment = Profile.newInstance();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,53 +80,65 @@ public class MenuActivity extends AppCompatActivity {
 
         db = new SQLiteHandler(getApplicationContext());
         session = new SessionManager(getApplicationContext());
+
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setDefaultTab(R.id.tab_home);
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelected(@IdRes int item) {
-                Fragment selectedFragment = null;
-                switch (item) {
-                    case R.id.tab_news:
-                        abc = 0;
-                        selectedFragment = News.newInstance();
-                        break;
-                    case R.id.tab_lapor:
-                        abc = 1;
-                        selectedFragment = Masterpiece.newInstance();
-                        break;
-                    case R.id.tab_home:
-                        abc = 2;
-                        selectedFragment = Home_2.newInstance();
-                        break;
-                    case R.id.tab_notif:
-                        abc = 3;
-                        selectedFragment = Notif.newInstance();
-                        break;
-                    case R.id.tab_profile:
-                        abc = 4;
-                        selectedFragment = Profile.newInstance();
-                        break;
-                }
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                if (bottomBar.getCurrentTabPosition() > abc) {
-                    transaction.setCustomAnimations(R.anim.slide_from_left, R.anim.slide_to_right);
-                } else if (bottomBar.getCurrentTabPosition() < abc) {
-                    transaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left);
-                }
-                transaction.replace(R.id.frameLayout, selectedFragment);
-                transaction.commit();
 
-                BottomBarTab nearby = bottomBar.getTabWithId(R.id.tab_notif);
-                nearby.setBadgeCount(5);
-            }
-        });
-        //Manually displaying the first fragment - one time only
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLayout, Home_2.newInstance());
-        transaction.commit();
+        mFragmentManager = getSupportFragmentManager();
+        createFragments();
+        setUIListeners();
 
         drawer();
+    }
+
+    private void setUIListeners() {
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                switch (tabId) {
+                    case R.id.tab_news:
+                        hideShowFragment(mFragment, newsFragment);
+                        mFragment = newsFragment;
+                        break;
+                    case R.id.tab_lapor:
+                        hideShowFragment(mFragment, masterpieceFragment);
+                        mFragment = masterpieceFragment;
+                        break;
+                    case R.id.tab_home:
+                        hideShowFragment(mFragment, homeFragment);
+                        mFragment = homeFragment;
+                        break;
+                    case R.id.tab_diskusi:
+                        hideShowFragment(mFragment, chatFragment);
+                        mFragment = chatFragment;
+                        break;
+                    case R.id.tab_profile:
+                        hideShowFragment(mFragment, profileFragment);
+                        mFragment = profileFragment;
+                        break;
+                }
+            }
+        });
+    }
+
+    //Method to add and hide all of the fragments you need to. In my case I hide 4 fragments, while 1 is visible, that is the first one.
+    private void addHideFragment(Fragment fragment) {
+        mFragmentManager.beginTransaction().add(R.id.frameLayout, fragment).hide(fragment).commit();
+    }
+
+    //Method to hide and show the fragment you need. It is called in the BottomBar click listener.
+    private void hideShowFragment(Fragment hide, Fragment show) {
+        mFragmentManager.beginTransaction().hide(hide).show(show).commit();
+    }
+
+    //Add all the fragments that need to be added and hidden. Also, add the one that is supposed to be the starting one, that one is not hidden.
+    private void createFragments() {
+        addHideFragment(newsFragment);
+        addHideFragment(masterpieceFragment);
+        addHideFragment(chatFragment);
+        addHideFragment(profileFragment);
+        mFragmentManager.beginTransaction().add(R.id.frameLayout, homeFragment).commit();
+        mFragment = homeFragment;
     }
 
     @Override
@@ -189,7 +218,38 @@ public class MenuActivity extends AppCompatActivity {
     private void drawer() {
         // Create a few sample profile
         final IProfile profile = new ProfileDrawerItem().withName(db.getUserDetails().get("name")).
-                withEmail(db.getUserDetails().get("email")).withIcon(db.getUserDetails().get("foto"));
+                withEmail(db.getUserDetails().get("email")).withIcon(Uri.parse(db.getUserDetails().get("foto")));
+
+        DrawerImageLoader.init(new AbstractDrawerImageLoader() {
+            @Override
+            public void set(ImageView imageView, Uri uri, Drawable placeholder, String tag) {
+                Glide.with(imageView.getContext()).load(db.getUserDetails().get("foto")).placeholder(placeholder).into(imageView);
+            }
+
+            @Override
+            public void cancel(ImageView imageView) {
+                Glide.clear(imageView);
+            }
+
+            @Override
+            public Drawable placeholder(Context ctx, String tag) {
+                //define different placeholders for different imageView targets
+                //default tags are accessible via the DrawerImageLoader.Tags
+                //custom ones can be checked via string. see the CustomUrlBasePrimaryDrawerItem LINE 111
+                if (DrawerImageLoader.Tags.PROFILE.name().equals(tag)) {
+                    return DrawerUIUtils.getPlaceHolder(ctx);
+                } else if (DrawerImageLoader.Tags.ACCOUNT_HEADER.name().equals(tag)) {
+                    return new IconicsDrawable(ctx).iconText(" ").backgroundColorRes(com.mikepenz.materialdrawer.R.color.primary).sizeDp(56);
+                } else if ("customUrlItem".equals(tag)) {
+                    return new IconicsDrawable(ctx).iconText(" ").backgroundColorRes(R.color.md_red_500).sizeDp(56);
+                }
+
+                //we use the default one for
+                //DrawerImageLoader.Tags.PROFILE_DRAWER_ITEM.name()
+
+                return super.placeholder(ctx, tag);
+            }
+        });
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
@@ -214,34 +274,9 @@ public class MenuActivity extends AppCompatActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem()
                                 .withName(getResources().getString(R.string.app_name_bold))
-                                .withDescription("Aplikasi untuk informasi publik")
+                                .withDescription("We Share, We Care")
                                 .withEnabled(false)
                                 .withDisabledTextColor(Color.parseColor("#50aacd")),
-                        new SectionDrawerItem().withName("Other Apps"),
-                            new SecondaryDrawerItem()
-                                    .withName("Web Version")
-                                    .withDescription("Hi-Depok dalam versi website")
-                                    .withIcon(R.drawable.world)
-                                    .withLevel(2)
-                                    .withIdentifier(1),
-                            new SecondaryDrawerItem()
-                                    .withName("Depok Single Window")
-                                    .withDescription("Aplikasi pelayanan publik")
-                                    .withIcon(R.drawable.ic_shop_two_grey_600_24dp)
-                                    .withLevel(2)
-                                    .withIdentifier(2),
-                            new SecondaryDrawerItem()
-                                    .withName("SIGAP DEPOK")
-                                    .withDescription("Aplikasi pengaduan publik")
-                                    .withIcon(R.drawable.ic_shop_two_grey_600_24dp)
-                                    .withLevel(2)
-                                    .withIdentifier(3),
-                            new SecondaryDrawerItem()
-                                    .withName("e-PBB")
-                                    .withDescription("Aplikasi pelayanan dan konsultasi pajak")
-                                    .withIcon(R.drawable.ic_shop_two_grey_600_24dp)
-                                    .withLevel(2)
-                                    .withIdentifier(4),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem()
                                 .withName("Kritik dan Saran")
@@ -293,7 +328,7 @@ public class MenuActivity extends AppCompatActivity {
                             } else if (drawerItem.getIdentifier() == 4){
                                 Toast.makeText(MenuActivity.this, "bisa banget", Toast.LENGTH_SHORT).show();
                             } else if (drawerItem.getIdentifier() == 5){
-                                Intent i = new Intent(MenuActivity.this, faq.class);
+                                Intent i = new Intent(MenuActivity.this, FAQActivity.class);
                                 startActivity(i);
                             } else if (drawerItem.getIdentifier() == 6){
                                 Intent i = new Intent(MenuActivity.this, AboutActivity.class);
@@ -302,7 +337,7 @@ public class MenuActivity extends AppCompatActivity {
                                 logoutUser();
                                 Toast.makeText(MenuActivity.this, "Logout Berhasil!", Toast.LENGTH_SHORT).show();
                             } else if (drawerItem.getIdentifier() == 8) {
-                                Intent i = new Intent(MenuActivity.this, kritikSaran.class);
+                                Intent i = new Intent(MenuActivity.this, KritikSaranActivity.class);
                                 startActivity(i);
                             }
                         }

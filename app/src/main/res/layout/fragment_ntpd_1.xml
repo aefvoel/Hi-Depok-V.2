@@ -24,19 +24,19 @@
 
     </com.andexert.library.RippleView>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Call 112"
-        app:font="@string/fontBold"
+        android:fontFamily="@string/fontBold"
         android:textSize="36sp"
         android:layout_marginTop="10dp"
         android:textColor="#27ae60"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nomor Tunggal Panggilan Darurat"
-        app:font="@string/fontReguler"/>
+        android:fontFamily="@string/fontReguler"/>
 
 </LinearLayout>

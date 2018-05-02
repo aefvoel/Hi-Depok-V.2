@@ -33,7 +33,7 @@
                     android:alpha="0.5"
                     android:background="@color/colorBlack" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/titleHotNews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,9 +46,9 @@
                     android:text="@string/news1"
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/hn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,9 +58,9 @@
                     android:text="@string/hot"
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
-                    app:font="@string/fontBlack" />
+                    android:fontFamily="@string/fontBlack" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:text="@string/portal1"
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
                 <TextView
                     android:id="@+id/titik"
@@ -84,7 +84,7 @@
                     android:text="@string/titik"
                     android:textColor="@color/colorWhite" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                     android:text="@string/time1"
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </RelativeLayout>
 

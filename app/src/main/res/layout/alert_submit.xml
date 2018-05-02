@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
-        app:font="@string/fontBold"
+    <TextView
+        android:fontFamily="@string/fontBold"
         android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,8 +28,8 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <fr.arnaudguyon.smartfontslib.FontButton
-            app:font="@string/fontBold"
+        <Button
+            android:fontFamily="@string/fontBold"
             android:id="@+id/btn_yes"
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -45,8 +45,8 @@
             android:alpha="0.5"
             android:background="@color/colorGray"/>
 
-        <fr.arnaudguyon.smartfontslib.FontButton
-            app:font="@string/fontBold"
+        <Button
+            android:fontFamily="@string/fontBold"
             android:id="@+id/btn_no"
             android:layout_width="0dp"
             android:layout_height="30dp"

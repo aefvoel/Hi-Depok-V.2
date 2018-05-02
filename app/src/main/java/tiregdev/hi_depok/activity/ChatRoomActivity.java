@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +34,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +50,7 @@ import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.GCMConfig;
 import tiregdev.hi_depok.utils.NotificationUtils;
+import tiregdev.hi_depok.utils.SQLiteHandler;
 
 public class ChatRoomActivity extends AppCompatActivity {
 
@@ -56,11 +63,18 @@ public class ChatRoomActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private EditText inputMessage;
     private Button btnSend;
+    private Map<String, ArrayList<String>> statistik;
+    private SQLiteHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,13 +87,13 @@ public class ChatRoomActivity extends AppCompatActivity {
         String title = intent.getStringExtra("name");
 
         getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (chatRoomId == null) {
             Toast.makeText(getApplicationContext(), "Chat room not found!", Toast.LENGTH_SHORT).show();
             finish();
         }
 
+        db = new SQLiteHandler(getApplicationContext());
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         messageArrayList = new ArrayList<>();
@@ -196,6 +210,8 @@ public class ChatRoomActivity extends AppCompatActivity {
                         message.setCreatedAt(createdAt);
                         message.setUser(user);
 
+
+
                         messageArrayList.add(message);
 
                         mAdapter.notifyDataSetChanged();
@@ -251,6 +267,22 @@ public class ChatRoomActivity extends AppCompatActivity {
     }
 
 
+    public String getMonth(String dateStr) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timestamp = "";
+
+        try {
+            Date date = format.parse(dateStr);
+            SimpleDateFormat todayFormat = new SimpleDateFormat("MMM");
+            String date1 = todayFormat.format(date);
+            timestamp = date1.toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return timestamp;
+    }
+
     /**
      * Fetching all the messages of a single chat room
      * */
@@ -273,12 +305,24 @@ public class ChatRoomActivity extends AppCompatActivity {
                     if (obj.getBoolean("error") == false) {
                         JSONArray commentsObj = obj.getJSONArray("messages");
 
+                        ArrayList<String> messageCount = new ArrayList<>();
+                        ArrayList<String> analysisCount = new ArrayList<>();
+                        ArrayList<String> scoreCount = new ArrayList<>();
+                        ArrayList<String> monthCount = new ArrayList<>();
+                        ArrayList<String> usersCount = new ArrayList<>();
+
+                        statistik = new HashMap();
+
                         for (int i = 0; i < commentsObj.length(); i++) {
                             JSONObject commentObj = (JSONObject) commentsObj.get(i);
 
                             String commentId = commentObj.getString("message_id");
                             String commentText = commentObj.getString("message");
                             String createdAt = commentObj.getString("created_at");
+                            String analysis = commentObj.getString("analysis");
+                            String scores = commentObj.getString("scores");
+
+
 
                             JSONObject userObj = commentObj.getJSONObject("user");
                             String userId = userObj.getString("user_id");
@@ -291,8 +335,22 @@ public class ChatRoomActivity extends AppCompatActivity {
                             message.setCreatedAt(createdAt);
                             message.setUser(user);
 
+                            db.insertMessage(commentId, chatRoomId, userId, commentText, createdAt, analysis);
+
                             messageArrayList.add(message);
+
+                            messageCount.add(commentText);
+                            analysisCount.add(analysis);
+                            scoreCount.add(scores);
+                            monthCount.add(getMonth(createdAt));
+                            usersCount.add(userName);
                         }
+
+                        statistik.put("ARRAY_MESSAGES", messageCount);
+                        statistik.put("ARRAY_ANALYSIS", analysisCount);
+                        statistik.put("ARRAY_SCORES", scoreCount);
+                        statistik.put("ARRAY_MONTH", monthCount);
+                        statistik.put("ARRAY_USERS", usersCount);
 
                         mAdapter.notifyDataSetChanged();
                         if (mAdapter.getItemCount() > 1) {
@@ -323,11 +381,25 @@ public class ChatRoomActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_stats, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // todo: goto back activity from here
                 ChatRoomActivity.this.finish();
+                return true;
+            case R.id.action_stats:
+
+                Intent intent = new Intent(getApplicationContext(), StatistikActivity.class);
+
+                intent.putExtra("STATISTIK_HASHMAP", (Serializable) statistik);
+
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

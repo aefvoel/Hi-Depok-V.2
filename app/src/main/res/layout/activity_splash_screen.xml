@@ -16,7 +16,7 @@
         android:contentDescription="@string/ImgDesc"
         android:layout_marginTop="60dp"/>
 
-    <fr.arnaudguyon.smartfontslib.FontTextView
+    <TextView
         android:id="@+id/icon_tagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +26,6 @@
         android:text="@string/app_tagline"
         android:textColor="@color/colorBiruTua"
         android:textSize="30sp"
-        app:font="@string/fontRegulerItalic"/>
+        android:fontFamily="@string/fontRegulerItalic"/>
 
 </RelativeLayout>

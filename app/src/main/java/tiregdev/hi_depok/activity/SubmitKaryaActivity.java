@@ -37,7 +37,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.arnaudguyon.smartfontslib.FontEditText;
+import android.widget.EditText;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.utils.AppConfig;
@@ -61,7 +61,7 @@ public class SubmitKaryaActivity extends AppCompatActivity implements View.OnCli
     private ImageView camera;
     private ImageView imgPost;
     private TextView posting;
-    private FontEditText textPos;
+    private EditText textPos;
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SimpleDateFormat sdf;
@@ -87,7 +87,7 @@ public class SubmitKaryaActivity extends AppCompatActivity implements View.OnCli
         camera = (ImageView)findViewById( R.id.camera );
         imgPost = (ImageView)findViewById( R.id.imgPost );
         posting = (TextView)findViewById( R.id.posting );
-        textPos = (FontEditText)findViewById( R.id.textPos );
+        textPos = (EditText)findViewById( R.id.textPos );
 
         pDialog = new ProgressDialog(this);
         db = new SQLiteHandler(getApplicationContext());

@@ -26,7 +26,7 @@
                 android:layout_marginStart="10dp"
                 android:src="@drawable/report_banjir" />
 
-            <fr.arnaudguyon.smartfontslib.FontTextView
+            <TextView
                 android:id="@+id/titleMuseum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:maxLines="1"
                 android:text="@string/museum1"
                 android:textSize="18sp"
-                app:font="@string/fontBold" />
+                android:fontFamily="@string/fontBold" />
 
             <LinearLayout
                 android:id="@+id/wrapperName"
@@ -47,14 +47,14 @@
                 android:layout_marginStart="10dp"
                 android:orientation="horizontal">
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/nama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nama1"
                     android:textColor="@color/primary"
                     android:textSize="12sp"
-                    app:font="@string/fontBold" />
+                    android:fontFamily="@string/fontBold" />
 
                 <TextView
                     android:id="@+id/titik"
@@ -64,13 +64,13 @@
                     android:text="@string/titik"
                     android:textSize="10sp" />
 
-                <fr.arnaudguyon.smartfontslib.FontTextView
+                <TextView
                     android:id="@+id/tahun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tahun"
                     android:textSize="12sp"
-                    app:font="@string/fontReguler" />
+                    android:fontFamily="@string/fontReguler" />
 
             </LinearLayout>
 

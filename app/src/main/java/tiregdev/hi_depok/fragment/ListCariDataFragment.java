@@ -278,8 +278,6 @@ public class ListCariDataFragment extends BaseFragment implements LocationListen
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     // use this method for auto complete search process
-                    dataAdapter.clear();
-                    displayData();
                     return false;
                 }
             });
