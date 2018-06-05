@@ -12,6 +12,11 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize">
 
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_recycler_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,6 +42,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,6 +80,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="@string/nama"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     android:fontFamily="@string/fontBold" />
 
                 <TextView
@@ -112,7 +119,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle_gray_full"
+                        android:background="@color/colorPrimary"
                         android:text="@string/edtprofile"
                         android:textSize="10sp"
                         android:fontFamily="@string/fontBold" />
@@ -222,6 +229,7 @@
 
             </RelativeLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,7 +251,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="Posts by User in Topic Discussion"
+                    android:text="Posts by User in Discussion"
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
                     android:fontFamily="@string/fontReguler" />
@@ -258,7 +266,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="Sentiment Posts by User"
+                    android:text="Sentiment Analysis Result"
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
                     android:fontFamily="@string/fontReguler" />
@@ -267,6 +275,20 @@
                     android:id="@+id/piechart"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="User's Words Frequency"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    android:fontFamily="@string/fontReguler" />
+                <net.alhazmy13.wordcloud.WordCloudView
+                    android:id="@+id/wordCloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 

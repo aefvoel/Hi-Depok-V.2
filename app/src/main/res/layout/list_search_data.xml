@@ -21,8 +21,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="@string/ImgDesc"
-            android:scaleType="centerCrop"
-            android:src="@drawable/massege_icon" />
+            android:src="@drawable/map" />
 
         <TextView
             android:id="@+id/namaTempat"

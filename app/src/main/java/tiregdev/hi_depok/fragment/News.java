@@ -71,7 +71,7 @@ public class News extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new RSSFragment(),"BLOG");
+        adapter.addFragment(new RSSFragment(),"NEWS");
         adapter.addFragment(new TwitterTimeline(), "EVENT");
         viewPager.setAdapter(adapter);
 

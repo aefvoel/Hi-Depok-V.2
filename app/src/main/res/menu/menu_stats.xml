@@ -2,9 +2,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:title="STATS"
         android:id="@+id/action_stats"
-        android:layout_alignParentLeft="true"
         android:name="Hapus"
+        android:layout_alignParentLeft="true"
+        android:icon="@drawable/diagnosa"
+        android:title="STATS"
         app:showAsAction="always" />
 </menu>

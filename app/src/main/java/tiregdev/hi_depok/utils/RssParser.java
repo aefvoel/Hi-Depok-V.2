@@ -22,7 +22,12 @@ public class RssParser {
     // We don't use namespaces
     private final String ns = null;
 
-    public List<RssItem> parse(InputStream inputStream) throws XmlPullParserException, IOException {
+    public List<RssItem> parse(InputStream inputStream) throws XmlPullParserException, IOException, IllegalArgumentException {
+
+        if(inputStream == null){
+            throw new IllegalArgumentException();
+        }
+
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -30,7 +35,11 @@ public class RssParser {
             parser.nextTag();
             return readFeed(parser);
         } finally {
-            inputStream.close();
+            try{
+                inputStream.close();
+            }catch(Exception e){
+                //do something
+            }
         }
     }
 

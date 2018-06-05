@@ -63,7 +63,7 @@
     <string name="loginwithfb">Facebook</string>
     <string name="loginwithtwit">Twitter</string>
     <string name="search">
-        Temukan semua data dan lokasi berbagai \n  tempat di Kota Depok
+        Temukan berita, data, dan lokasi berbagai \n  tempat di Kota Depok
         secara detail \n disini, hanya dengan satu kali <b>KLIK</b>
         untuk \n mempermudah segala urusan Anda
     </string>
@@ -82,7 +82,7 @@
     <string name="ss">Space Room</string>
     <string name="about">About</string>
     <string name="tomboldarurat">NTPD</string>
-    <string name="jointxt">Join pada</string>
+    <string name="jointxt">Join Since</string>
     <string name="jointgl">05/08/2017</string>
     <string name="edtprofile">EDIT PROFILE</string>
     <string name="viewprofile"><u>view detail profile</u></string>
@@ -345,8 +345,9 @@
 
     <string name="about_desc">
         Hi-Depok merupakan wujud peningkatan pelayanan pemerintah Kota Depok kepada warganya.
-        Aplikasi ini dapat membantu warga Kota Depok dalam berbagai aspek pelayanan seperti pelayanan
-        kesehatan, keamanan, sosial dan juga kebutuhan akan informasi.
+        Aplikasi ini dapat membantu warga Kota Depok dalam mendapatkan informasi terkini seputar Depok
+        serta sebagai sarana untuk menyalurkan opini pribadi sehingga dapat membantu pemerintah dalam
+        mewujudkan Kota Depok yang Friendly City.
     </string>
     <string name="copyright">© Copyright  2016 TiregDev</string>
 

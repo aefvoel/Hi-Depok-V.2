@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.DetailNewsActivity;
 import tiregdev.hi_depok.model.RssItem;
@@ -56,25 +57,14 @@ public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.holder_news> {
         if(link.contains("depoknews")){
             Glide.with(context).load("https://journalistdays2015.files.wordpress.com/2015/02/logo-depoknews-com.jpg").fitCenter().into(holder.list_picTitle);
         }else if(link.contains("depokpos")){
-            Glide.with(context).load("http://www.depokpos.com/go/wp-content/uploads/2017/12/logo-majalah.png").fitCenter().into(holder.list_picTitle);
+            Glide.with(context).load("https://pbs.twimg.com/profile_images/691510248029294592/v_fq5Vt0_400x400.png").fitCenter().into(holder.list_picTitle);
         }else if(link.contains("depokgoid")){
             Glide.with(context).load("https://www.depok.go.id/berkas-unggah/2017/08/pp_baru.jpg").fitCenter().into(holder.list_picTitle);
         }else if(link.contains("hariandepok")){
             Glide.with(context).load("http://www.hariandepok.com/wp-content/uploads/2014/09/HARIAN-DEPOK-JOSS.png").fitCenter().into(holder.list_picTitle);
         }else if(link.contains("radardepok")){
-            Glide.with(context).load("http://radardepok.com/wp-content/uploads/2016/12/Logo-Radar-Depok-Ok.jpg").fitCenter().into(holder.list_picTitle);
+            Glide.with(context).load("http://cdn-kisikisi.qerja.com/assets/companies/images/logo/radar_depok_fb.jpg").fitCenter().into(holder.list_picTitle);
         }
-        holder.shareNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = "Lihat konten ini pada Aplikasi Hi-Depok";
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                context.startActivity(Intent.createChooser(sharingIntent, "Share Via"));
-            }
-        });
     }
 
 
@@ -97,17 +87,14 @@ public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.holder_news> {
         public TextView list_title;
         public TextView list_portal;
         public TextView list_time;
-        public ImageView list_picTitle;
-        public ImageView shareNews;
-
+        public CircleImageView list_picTitle;
         public holder_news(final View itemView){
             super(itemView);
 
             list_title = (TextView)itemView.findViewById(R.id.titleNews);
             list_portal = (TextView)itemView.findViewById(R.id.source);
             list_time = (TextView)itemView.findViewById(R.id.time);
-            list_picTitle = (ImageView)itemView.findViewById(R.id.imageTitle);
-            shareNews = (ImageView)itemView.findViewById(R.id.forward);
+            list_picTitle = (CircleImageView)itemView.findViewById(R.id.imageTitle);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

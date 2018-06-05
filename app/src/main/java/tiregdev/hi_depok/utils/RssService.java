@@ -41,14 +41,17 @@ public class RssService extends IntentService {
             try {
                 RssParser parser = new RssParser();
                 rssItems = parser.parse(getInputStream(RSS_LINK[i]));
+                listNews.addAll(rssItems);
 
             } catch (XmlPullParserException | IOException e) {
                 Log.w(e.getMessage(), e);
+            } catch (IllegalArgumentException e){
+                Log.w(e.getMessage(), e);
             }
 
-            listNews.addAll(rssItems);
             // Send result
         }
+
         Intent resultIntent = new Intent(ACTION_RSS_PARSED);
         resultIntent.putExtra(ITEMS, (Serializable) listNews);
         LocalBroadcastManager.getInstance(this).sendBroadcast(resultIntent);

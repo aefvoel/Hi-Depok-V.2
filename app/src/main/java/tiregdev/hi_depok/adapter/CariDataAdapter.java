@@ -23,6 +23,7 @@ import tiregdev.hi_depok.model.CariData;
 public class CariDataAdapter extends RecyclerView.Adapter<CariDataAdapter.holder_searchData> {
     private List<CariData> itemList;
     private Context context;
+    private int displaySize;
 
     public CariDataAdapter(Context context, List<CariData> itemList){
         this.itemList = itemList;
@@ -51,7 +52,17 @@ public class CariDataAdapter extends RecyclerView.Adapter<CariDataAdapter.holder
 
     @Override
     public int getItemCount(){
-        return this.itemList.size();
+
+        if(displaySize > itemList.size())
+            return itemList.size();
+        else
+            return displaySize;
+    }
+
+    public void setDisplayCount(int numberOfEntries) {
+        displaySize = numberOfEntries;
+        notifyDataSetChanged();
+
     }
 
     public class holder_searchData extends RecyclerView.ViewHolder {

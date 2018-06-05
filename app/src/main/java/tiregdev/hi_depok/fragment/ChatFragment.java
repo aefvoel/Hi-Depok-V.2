@@ -1,5 +1,7 @@
 package tiregdev.hi_depok.fragment;
 
+import android.content.DialogInterface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +26,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -39,15 +44,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.BroadcastActivity;
 import tiregdev.hi_depok.activity.ChatActivity;
 import tiregdev.hi_depok.activity.ChatRoomActivity;
+import tiregdev.hi_depok.activity.EditProfileActivity;
 import tiregdev.hi_depok.activity.LoginActivity;
+import tiregdev.hi_depok.activity.MenuActivity;
 import tiregdev.hi_depok.adapter.ChatRoomsAdapter;
 import tiregdev.hi_depok.model.ChatRoom;
 import tiregdev.hi_depok.model.Message;
+import tiregdev.hi_depok.model.User;
 import tiregdev.hi_depok.utils.AppConfig;
 import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.GCMConfig;
@@ -59,7 +69,7 @@ import tiregdev.hi_depok.utils.SimpleDividerItemDecoration;
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
 
-public class ChatFragment extends Fragment {
+public class ChatFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private String TAG = "ChatFragment";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -72,6 +82,7 @@ public class ChatFragment extends Fragment {
     private ImageView menu;
     private RippleView pesan;
     private SQLiteHandler db;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public static ChatFragment newInstance(){
         ChatFragment fragment = new ChatFragment();
@@ -83,7 +94,41 @@ public class ChatFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_chat, container, false);
         menu = (ImageView)view.findViewById( R.id.menu );
-        pesan = (RippleView)view.findViewById( R.id.pesan );
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getActivity());
+                View mView = layoutInflaterAndroid.inflate(R.layout.user_input_dialog, null);
+                AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(getActivity());
+                alertDialogBuilderUserInput.setView(mView);
+
+                final EditText userInputDialogEditText = (EditText) mView.findViewById(R.id.userInputDialog);
+                alertDialogBuilderUserInput
+                        .setCancelable(false)
+                        .setPositiveButton("Create", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogBox, int id) {
+                                // ToDo get user input here
+
+                                String title = userInputDialogEditText.getText().toString().trim();
+                                createNewTopic(title);
+
+                            }
+                        })
+
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        dialogBox.cancel();
+                                    }
+                                });
+
+                AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
+                alertDialogAndroid.show();
+            }
+        });
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,13 +136,6 @@ public class ChatFragment extends Fragment {
             }
         });
 
-        pesan.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
-            @Override
-            public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), BroadcastActivity.class);
-                startActivity(w);
-            }
-        });
 
         return view;
     }
@@ -202,16 +240,6 @@ public class ChatFragment extends Fragment {
             // just showing the message in a toast
             Message message = (Message) intent.getSerializableExtra("message");
             db.insertBroadcast(message.getMessage(), message.getCreatedAt());
-//            Snackbar snackbar = Snackbar
-//                    .make(coordinatorLayout, "[" + message.getUser().getNama() + "] Pesan Baru: " + message.getMessage(), Snackbar.LENGTH_LONG)
-//                    .setAction("VIEW", new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            Toast.makeText(getActivity(), message.getMessage(), Toast.LENGTH_LONG).show();
-//                        }
-//                    });
-//
-//            snackbar.show();
         }
 
 
@@ -234,18 +262,83 @@ public class ChatFragment extends Fragment {
         mAdapter.notifyDataSetChanged();
     }
 
+    private void createNewTopic(String title){
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.CHAT_NEW_THREAD, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        chatRoomArrayList.clear();
+                        fetchChatRooms();
+                        mAdapter.notifyDataSetChanged();
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getActivity(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getActivity(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d(TAG, "Failed with error msg:\t" + error.getMessage());
+                Log.d(TAG, "Error StackTrace: \t" + error.getStackTrace());
+                // edited here
+                try {
+                    byte[] htmlBodyBytes = error.networkResponse.data;
+                    Log.e(TAG, new String(htmlBodyBytes), error);
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        }) {
+
+            @Override
+            protected java.util.Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("uid", db.getUserDetails().get("uid"));
+                params.put("title", title);
+
+                return params;
+            }
+
+        };
+
+// Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq);
+    }
 
     /**
      * fetching the chat rooms by making http call
      */
     private void fetchChatRooms() {
+        swipeRefreshLayout.setRefreshing(true);
         StringRequest strReq = new StringRequest(Request.Method.GET,
                 AppConfig.CHAT_ROOMS, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
+                swipeRefreshLayout.setRefreshing(false);
                 Log.e(TAG, "response: " + response);
-
+                fetchChatThread();
                 try {
                     JSONObject obj = new JSONObject(response);
 
@@ -286,6 +379,7 @@ public class ChatFragment extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
+                swipeRefreshLayout.setRefreshing(false);
                 NetworkResponse networkResponse = error.networkResponse;
                 Log.e(TAG, "Volley error: " + error.getMessage() + ", code: " + networkResponse);
                 Toast.makeText(getActivity(), "Volley error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -296,6 +390,70 @@ public class ChatFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(strReq);
     }
 
+    private void fetchChatThread() {
+
+        String endPoint = AppConfig.CHAT_THREAD_ALL.replace("_ID_", db.getUserDetails().get("uid"));
+        Log.e(TAG, "endPoint: " + endPoint);
+
+        StringRequest strReq = new StringRequest(Request.Method.GET,
+                endPoint, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.e(TAG, "response: " + response);
+                try {
+                    JSONObject obj = new JSONObject(response);
+
+                    // check for error
+                    if (obj.getBoolean("error") == false) {
+                        JSONArray commentsObj = obj.getJSONArray("messages");
+
+
+                        for (int i = 0; i < commentsObj.length(); i++) {
+                            JSONObject commentObj = (JSONObject) commentsObj.get(i);
+
+                            String commentId = commentObj.getString("message_id");
+                            String commentText = commentObj.getString("message");
+                            String createdAt = commentObj.getString("created_at");
+                            String analysis = commentObj.getString("analysis");
+                            String scores = commentObj.getString("scores");
+
+
+
+                            JSONObject userObj = commentObj.getJSONObject("user");
+                            String userId = userObj.getString("user_id");
+                            String userName = userObj.getString("username");
+
+                            JSONObject crObj = commentObj.getJSONObject("chat_room");
+                            String crId = crObj.getString("chat_room_id");
+                            String crName = crObj.getString("name");
+
+                            db.insertMessage(commentId, crId, userId, commentText, createdAt, analysis);
+
+                        }
+
+                    } else {
+                        Toast.makeText(getActivity(), "" + obj.getJSONObject("error").getString("message"), Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    Log.e(TAG, "json parsing error: " + e.getMessage());
+                    Toast.makeText(getActivity(), "json parse error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                NetworkResponse networkResponse = error.networkResponse;
+                Log.e(TAG, "Volley error: " + error.getMessage() + ", code: " + networkResponse);
+                Toast.makeText(getActivity(), "Volley error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq);
+    }
     // subscribing to global topic
     private void subscribeToGlobalTopic() {
         Intent intent = new Intent(getActivity(), GcmIntentService.class);
@@ -367,6 +525,13 @@ public class ChatFragment extends Fragment {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+        chatRoomArrayList.clear();
+        fetchChatRooms();
+        mAdapter.notifyDataSetChanged();
     }
 }
 

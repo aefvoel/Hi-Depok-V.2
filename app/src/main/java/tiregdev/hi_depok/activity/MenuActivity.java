@@ -42,6 +42,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.fragment.ChatFragment;
+import tiregdev.hi_depok.fragment.Home;
 import tiregdev.hi_depok.fragment.Home_2;
 import tiregdev.hi_depok.fragment.News;
 import tiregdev.hi_depok.fragment.Notif;
@@ -66,8 +67,8 @@ public class MenuActivity extends AppCompatActivity {
     FragmentManager mFragmentManager;
     Fragment mFragment;
     Fragment newsFragment = News.newInstance();
-    Fragment masterpieceFragment = Masterpiece.newInstance();
-    Fragment homeFragment = Home_2.newInstance();
+    Fragment notifFragment = Notif.newInstance();
+    Fragment homeFragment = Home.newInstance();
     Fragment chatFragment = ChatFragment.newInstance();
     Fragment profileFragment = Profile.newInstance();
 
@@ -100,17 +101,17 @@ public class MenuActivity extends AppCompatActivity {
                         hideShowFragment(mFragment, newsFragment);
                         mFragment = newsFragment;
                         break;
-                    case R.id.tab_lapor:
-                        hideShowFragment(mFragment, masterpieceFragment);
-                        mFragment = masterpieceFragment;
+                    case R.id.tab_discussion:
+                        hideShowFragment(mFragment, chatFragment);
+                        mFragment = chatFragment;
                         break;
                     case R.id.tab_home:
                         hideShowFragment(mFragment, homeFragment);
                         mFragment = homeFragment;
                         break;
-                    case R.id.tab_diskusi:
-                        hideShowFragment(mFragment, chatFragment);
-                        mFragment = chatFragment;
+                    case R.id.tab_notification:
+                        hideShowFragment(mFragment, notifFragment);
+                        mFragment = notifFragment;
                         break;
                     case R.id.tab_profile:
                         hideShowFragment(mFragment, profileFragment);
@@ -134,8 +135,8 @@ public class MenuActivity extends AppCompatActivity {
     //Add all the fragments that need to be added and hidden. Also, add the one that is supposed to be the starting one, that one is not hidden.
     private void createFragments() {
         addHideFragment(newsFragment);
-        addHideFragment(masterpieceFragment);
         addHideFragment(chatFragment);
+        addHideFragment(notifFragment);
         addHideFragment(profileFragment);
         mFragmentManager.beginTransaction().add(R.id.frameLayout, homeFragment).commit();
         mFragment = homeFragment;

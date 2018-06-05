@@ -1,5 +1,6 @@
 package tiregdev.hi_depok.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,8 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.andexert.library.RippleView;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +33,9 @@ import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.ChatActivity;
 import tiregdev.hi_depok.adapter.NotifAdapter;
 import tiregdev.hi_depok.model.Notifikasi;
+import tiregdev.hi_depok.utils.AppConfig;
+import tiregdev.hi_depok.utils.AppController;
+import tiregdev.hi_depok.utils.SQLiteHandler;
 
 import static tiregdev.hi_depok.activity.MenuActivity.results;
 
@@ -31,13 +43,17 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
  * Created by Muhammad63 on 8/3/2017.
  */
 
-public class Notif extends Fragment {
+public class Notif extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    RecyclerView rView;
-    LinearLayoutManager lLayout;
-    ImageView ham;
-    SwipeRefreshLayout swipeRefreshRecyclerList;
-    View v;
+    private View v;
+    private RecyclerView rView;
+    private LinearLayoutManager lLayout;
+    private Notif dataObjek;
+    private NotifAdapter rcAdapter;
+    private JSONObject jsonObject;
+    private ImageView ham;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private List<Notifikasi> allItems;
 
     public static Notif newInstance(){
         Notif fragment = new Notif();
@@ -54,33 +70,13 @@ public class Notif extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_notif, container, false);
         setupAdapter();
-        setHamBtn();
-        setPesanLink();
-        swipeRefresh();
+        displayData();
         return v;
     }
 
-    public void swipeRefresh(){
-        swipeRefreshRecyclerList = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_recycler_list);
-        swipeRefreshRecyclerList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
 
-                // Do your stuff on refresh
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
 
-                        if (swipeRefreshRecyclerList.isRefreshing())
-                            swipeRefreshRecyclerList.setRefreshing(false);
-                    }
-                }, 5000);
-
-            }
-        });
-    }
-
-    public void setHamBtn(){
+    public void setupAdapter(){
         ham = (ImageView) v.findViewById(R.id.menu);
         ham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,47 +84,71 @@ public class Notif extends Fragment {
                 results.openDrawer();
             }
         });
-    }
-
-    public void setupAdapter(){
-        List<Notifikasi> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(getContext());
+        swipeRefreshLayout = v.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        lLayout = new LinearLayoutManager(getActivity());
 
         rView = (RecyclerView)v.findViewById(R.id.view_notif);
         rView.setLayoutManager(lLayout);
 
-        NotifAdapter rcAdapter = new NotifAdapter(getContext(), rowListItem);
-        rView.setAdapter(rcAdapter);
-
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), lLayout.getOrientation());
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.line_view));
         rView.addItemDecoration(dividerItemDecoration);
+
+
     }
 
-    public void setPesanLink(){
-        final RippleView rippleViews = (RippleView) v.findViewById(R.id.pesan);
-        rippleViews.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+    private void displayData(){
+        swipeRefreshLayout.setRefreshing(true);
+        SQLiteHandler db;
+        db = new SQLiteHandler(getContext());
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.NOTIF.replace("_ID_", db.getUserDetails().get("uid")), new Response.Listener<JSONArray>() {
             @Override
-            public void onComplete(RippleView rippleView) {
-                Intent w = new Intent(getActivity(), ChatActivity.class);
-                startActivity(w);
+            public void onResponse(JSONArray response) {
+                allItems = new ArrayList<>();
+                swipeRefreshLayout.setRefreshing(false);
+                for (int i = 0; i < response.length(); i++){
+                    dataObjek = new Notif();
+                    jsonObject = null;
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        allItems.add(new Notifikasi(
+                                jsonObject.getString("id_notif"),
+                                jsonObject.getString("username"),
+                                jsonObject.getString("isi"),
+                                jsonObject.getString("waktu"),
+                                jsonObject.getString("foto"),
+                                jsonObject.getString("type"),
+                                jsonObject.getString("id_type"),
+                                jsonObject.getString("name")));
+
+
+                    }  catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                rcAdapter = new NotifAdapter(getContext(), allItems);
+                rView.setAdapter(rcAdapter);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                swipeRefreshLayout.setRefreshing(false);
+                Toast.makeText(getActivity(), "Belum Ada Data!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+
+
+
     }
 
-    private List<Notifikasi> getAllItemList(){
-        List<Notifikasi> allItems = new ArrayList<>();
-        allItems.add(new Notifikasi("JAR", "Menanggapi postingan Anda","2 jam lalu", R.drawable.report_banjir));
-        allItems.add(new Notifikasi("HVS", "Menanggapi postingan Anda","2 jam lalu", R.drawable.report_macet));
-        allItems.add(new Notifikasi("Aefvoel", "Menyukai postingan Anda","3 jam lalu", R.drawable.report_pohontumbang));
-        allItems.add(new Notifikasi("Pandu", "Menanggapi postingan Anda","3 jam lalu", R.drawable.report_banjir));
-        allItems.add(new Notifikasi("Tegar", "Menyukai postingan Anda","3 jam lalu", R.drawable.report_banjir));
-        allItems.add(new Notifikasi("Fajri", "Menanggapi postingan Anda","4 jam lalu", R.drawable.report_pohontumbang));
-        allItems.add(new Notifikasi("Della", "Menyukai postingan Anda","4 jam lalu", R.drawable.report_macet));
-        allItems.add(new Notifikasi("Citra", "Menyukai postingan Andaa","5 jam lalu", R.drawable.report_banjir));
-        allItems.add(new Notifikasi("Nadiah", "Menanggapi postingan Anda","5 jam lalu", R.drawable.report_macet));
-        allItems.add(new Notifikasi("Yessi", "Menanggapi postingan Anda","6 jam lalu", R.drawable.report_pohontumbang));
-
-        return allItems;
+    @Override
+    public void onRefresh() {
+        allItems.clear();
+        displayData();
+        rcAdapter.notifyDataSetChanged();
     }
 }

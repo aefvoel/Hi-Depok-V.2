@@ -148,7 +148,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.URL_UPDATE, new Response.Listener<String>() {
+                AppConfig.UPDATE, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

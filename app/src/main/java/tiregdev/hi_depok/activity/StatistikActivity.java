@@ -83,10 +83,35 @@ public class StatistikActivity extends AppCompatActivity {
         // xIndex (even if from different DataSets), since no values can be
         // drawn above each other.
         ArrayList<PieEntry> yvalues = new ArrayList<PieEntry>();
+        int pos, net, neg;
+        if(sentiment.get("positif")==null){
+            pos = 0;
+        }else{
+            pos = sentiment.get("positif");
+        }
 
-        yvalues.add(new PieEntry((sentiment.get("positif")*100) / analysisCount.size(), "Positif"));
-        yvalues.add(new PieEntry((sentiment.get("netral")*100) / analysisCount.size(), "Netral"));
-        yvalues.add(new PieEntry((sentiment.get("negatif")*100) / analysisCount.size(), "Negatif"));
+        if(sentiment.get("netral")==null){
+            net = 0;
+        }else{
+            net = sentiment.get("netral");
+        }
+
+        if(sentiment.get("negatif")==null){
+            neg = 0;
+        }else{
+            neg = sentiment.get("negatif");
+        }
+
+        try{
+            yvalues.add(new PieEntry((pos*100) / analysisCount.size(), "Positif"));
+            yvalues.add(new PieEntry((net*100) / analysisCount.size(), "Netral"));
+            yvalues.add(new PieEntry((neg*100) / analysisCount.size(), "Negatif"));
+        }catch (ArithmeticException e){
+            yvalues.add(new PieEntry((pos*100), "Positif"));
+            yvalues.add(new PieEntry((net*100), "Netral"));
+            yvalues.add(new PieEntry((neg*100), "Negatif"));
+        }
+
 
         PieDataSet dataSet = new PieDataSet(yvalues, "");
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);

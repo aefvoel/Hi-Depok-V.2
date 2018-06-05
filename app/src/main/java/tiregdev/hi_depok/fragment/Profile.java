@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +31,21 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import android.widget.TextView;
 
+import net.alhazmy13.wordcloud.WordCloud;
+import net.alhazmy13.wordcloud.WordCloudView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Random;
 
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.ChatActivity;
@@ -46,9 +58,10 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
  * Created by Muhammad63 on 8/3/2017.
  */
 
-public class Profile extends Fragment {
+public class Profile extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
-    View v;
+    private View v;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public static Profile newInstance(){
         Profile fragment = new Profile();
@@ -88,6 +101,9 @@ public class Profile extends Fragment {
     private ImageView calender;
     private TextView ttl;
     private SQLiteHandler db;
+    private static String today;
+    private List<WordCloud> list;
+    private String wordCloud;
 
     /**
      * Find the Views in the layout<br />
@@ -97,7 +113,6 @@ public class Profile extends Fragment {
      */
     private void findViews() {
         menu = (ImageView)v.findViewById( R.id.menu );
-        pesan = (RippleView)v.findViewById( R.id.pesan );
         avatar = (ImageView)v.findViewById( R.id.avatar );
         user = (TextView)v.findViewById( R.id.user );
         jointxt = (TextView)v.findViewById( R.id.jointxt );
@@ -112,7 +127,8 @@ public class Profile extends Fragment {
         tlp = (TextView)v.findViewById( R.id.tlp );
         calender = (ImageView)v.findViewById( R.id.calender );
         ttl = (TextView)v.findViewById( R.id.ttl );
-
+        swipeRefreshLayout = v.findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshLayout.setOnRefreshListener(this);
         db = new SQLiteHandler(getContext());
 
         btnEdtProfile.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
@@ -138,12 +154,34 @@ public class Profile extends Fragment {
         tlp.setText(db.getUserDetails().get("no_telp"));
         ttl.setText(db.getUserDetails().get("tanggal_lahir"));
         bio.setText(db.getUserDetails().get("bio"));
-        jointgl.setText(db.getUserDetails().get("created_at"));
+        jointgl.setText(getTimeStamp(db.getUserDetails().get("created_at")));
 
         Glide.with(getContext()).load(db.getUserDetails().get("foto")).placeholder(R.drawable.no_image).into(avatar);
     }
+    public static String getTimeStamp(String dateStr) {
+        Calendar calendar = Calendar.getInstance();
+        today = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timestamp = "";
+
+        today = today.length() < 2 ? "0" + today : today;
+
+        try {
+            Date date = format.parse(dateStr);
+            SimpleDateFormat todayFormat = new SimpleDateFormat("dd");
+            String dateToday = todayFormat.format(date);
+            format = new SimpleDateFormat("dd LLL yyyy");
+            String date1 = format.format(date);
+            timestamp = date1.toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return timestamp;
+    }
 
     private void setStatistik(){
+        swipeRefreshLayout.setRefreshing(true);
         int maxMessage = 0;
         BarChart hBarChart = v.findViewById(R.id.horbarchart);
         List<BarEntry> hEntries = new ArrayList<>();
@@ -213,6 +251,32 @@ public class Profile extends Fragment {
         pieChart.setData(data);
         pieChart.animateXY(1400, 1400);
         pieChart.invalidate();
+
+        wordCloud = removeDup(TextUtils.join(" ", db.getAllMessages(db.getUserDetails().get("uid")).get("message")));
+        generateRandomText();
+        WordCloudView wordCloud = (WordCloudView) v.findViewById(R.id.wordCloud);
+        wordCloud.setSize(300,300);
+        wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
+        wordCloud.setDataSet(list);
+        wordCloud.notifyDataSetChanged();
+
+        swipeRefreshLayout.setRefreshing(false);
+    }
+    private void generateRandomText() {
+        String[] data = wordCloud.split(",");
+        list = new ArrayList<>();
+        Random random = new Random();
+        for (String s : data) {
+            list.add(new WordCloud(s, random.nextInt(200)));
+        }
     }
 
+    public String removeDup(String s) {
+        return new LinkedHashSet<String>(Arrays.asList(s.split(" "))).toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ");
+    }
+
+    @Override
+    public void onRefresh() {
+        setStatistik();
+    }
 }

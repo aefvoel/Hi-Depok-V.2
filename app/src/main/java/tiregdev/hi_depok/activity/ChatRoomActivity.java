@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -52,7 +53,7 @@ import tiregdev.hi_depok.utils.GCMConfig;
 import tiregdev.hi_depok.utils.NotificationUtils;
 import tiregdev.hi_depok.utils.SQLiteHandler;
 
-public class ChatRoomActivity extends AppCompatActivity {
+public class ChatRoomActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private String TAG = ChatRoomActivity.class.getSimpleName();
 
@@ -65,6 +66,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     private Button btnSend;
     private Map<String, ArrayList<String>> statistik;
     private SQLiteHandler db;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,8 @@ public class ChatRoomActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_recycler_list);
+        swipeRefreshLayout.setOnRefreshListener(this);
         inputMessage = (EditText) findViewById(R.id.message);
         btnSend = (Button) findViewById(R.id.btn_send);
 
@@ -288,6 +291,7 @@ public class ChatRoomActivity extends AppCompatActivity {
      * */
     private void fetchChatThread() {
 
+        swipeRefreshLayout.setRefreshing(true);
         String endPoint = AppConfig.CHAT_THREAD.replace("_ID_", chatRoomId);
         Log.e(TAG, "endPoint: " + endPoint);
 
@@ -297,7 +301,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.e(TAG, "response: " + response);
-
+                swipeRefreshLayout.setRefreshing(false);
                 try {
                     JSONObject obj = new JSONObject(response);
 
@@ -335,7 +339,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                             message.setCreatedAt(createdAt);
                             message.setUser(user);
 
-                            db.insertMessage(commentId, chatRoomId, userId, commentText, createdAt, analysis);
+//                            db.insertMessage(commentId, chatRoomId, userId, commentText, createdAt, analysis);
 
                             messageArrayList.add(message);
 
@@ -370,6 +374,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
+                swipeRefreshLayout.setRefreshing(false);
                 NetworkResponse networkResponse = error.networkResponse;
                 Log.e(TAG, "Volley error: " + error.getMessage() + ", code: " + networkResponse);
                 Toast.makeText(getApplicationContext(), "Volley error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -404,5 +409,15 @@ public class ChatRoomActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        mAdapter.notifyDataSetChanged();
+        if (mAdapter.getItemCount() > 1) {
+            // scrolling to bottom of the recycler view
+            recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount() - 1);
+        }
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

@@ -74,11 +74,7 @@ import tiregdev.hi_depok.utils.SessionManager;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button login;
     private SignInButton btnGoogle;
-    private TwitterLoginButton btnTwitter;
-    private TextView forgot;
-    private EditText emailFrm, passFrm;
     private GoogleApiClient mGoogleApiClient;
     private ProgressDialog pDialog;
     private SessionManager session;
@@ -93,7 +89,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         TwitterConfig config = new TwitterConfig.Builder(this)
                 .logger(new DefaultLogger(Log.DEBUG))
                 .twitterAuthConfig(new TwitterAuthConfig("EcXjy4S0dDcPfcSfq8cloDDps", "D2b77118vTt4n1kH3m1QTgfrwbZcPEY3IDgKyJ25y5FcXWmFey"))
@@ -109,17 +104,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void setInit() {
 
-        emailFrm = (EditText) findViewById(R.id.email);
-        passFrm = (EditText) findViewById(R.id.pass);
-
-        login = (Button) findViewById(R.id.btnLogin);
         btnGoogle = (SignInButton) findViewById(R.id.btnLoginGoogle);
-        btnTwitter = (TwitterLoginButton) findViewById(R.id.btnLoginTwitter);
-        forgot = (TextView) findViewById(R.id.lupaPass);
-        login.setOnClickListener(this);
         btnGoogle.setOnClickListener(this);
         btnGoogle.setSize(SignInButton.SIZE_WIDE);
-        forgot.setOnClickListener(this);
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -137,52 +124,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
             finish();
         }
-
-
-//        checkForInstagramData();
-
-        // The private key that follows should never be public
-        // (consider this when deploying the application)
-
-
-        btnTwitter.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                // Do something with result, which provides a TwitterSession for making API calls
-                TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
-                TwitterAuthToken authToken = session.getAuthToken();
-                String token = authToken.token;
-                String secret = authToken.secret;
-
-                TwitterAuthClient authClient = new TwitterAuthClient();
-                authClient.requestEmail(session, new Callback<String>() {
-                    @Override
-                    public void success(Result<String> result) {
-                        // Do something with the result, which provides the email address
-                        // the email is saved in the result variable 'result.data'
-                        email_id = result.data;
-                        handleSignInResult(new Callable<Void>() {
-                            @Override
-                            public Void call() throws Exception {
-                                return null;
-                            }
-                        }, full_name, email_id, photo_url);
-                    }
-
-                    @Override
-                    public void failure(TwitterException exception) {
-                        // Do something on failure
-                    }
-                });
-            }
-
-            @Override
-            public void failure(TwitterException exception) {
-                // Do something on failure
-                Log.d(LoginActivity.class.getCanonicalName(), exception.getMessage());
-                handleSignInResult(null, null, null, null);
-            }
-        });
 
     }
 
@@ -222,7 +163,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(uri != null){
                     photo_url = uri.toString();
                 }else{
-                    photo_url = "http://hi.depok.go.id/storage/default/no%20image.jpg";
+                    photo_url = "http://hidepok.id/api/hidepok/image/default.png";
                 }
 
                 handleSignInResult(new Callable<Void>() {
@@ -251,8 +192,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } else {
                 handleSignInResult(null, null, null, null);
             }
-        } else if (TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE == requestCode) {
-            btnTwitter.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -264,29 +203,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             /* Login success */
 
             Application.getInstance().setLogoutCallable(logout);
-            Intent toRegister = new Intent(LoginActivity.this, SignUpActivity.class);
-            toRegister.putExtra("getNama", fullname);
-            toRegister.putExtra("getEmail", email);
-            toRegister.putExtra("getPhoto", photo);
-            startActivity(toRegister);
+            registerUser(fullname, email, photo);
         }
     }
 
 
-    private void onLogInUser() {
-        String emailUser = emailFrm.getText().toString().trim();
-        String passUser = passFrm.getText().toString().trim();
-        // Check for empty data in the form
-        if (!emailUser.isEmpty() && !passUser.isEmpty()) {
-            // login user
-            checkLogin(emailUser, passUser);
-        } else {
-            // Prompt user to enter credentials
-            Toast.makeText(getApplicationContext(),
-                    "Please enter the credentials!", Toast.LENGTH_LONG)
-                    .show();
-        }
-    }
 
     private void checkLogin(final String email, final String password) {
         // Tag used to cancel the request
@@ -296,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         showDialog();
 
         StringRequest strReq = new StringRequest(Method.POST,
-                AppConfig.URL_LOGIN, new Response.Listener<String>() {
+                AppConfig.LOGIN, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -402,15 +323,113 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
+    private void registerUser(final String name, final String email, final String fotoUser) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_register";
+
+        pDialog.setMessage("Retrieving Data ...");
+        showDialog();
+
+        StringRequest strReq = new StringRequest(Method.POST,
+                AppConfig.REGISTER, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Register Response: " + response.toString());
+                hideDialog();
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        session.setLogin(true);
+                        // User successfully stored in MySQL
+                        // Now store the user in sqlite
+                        String uid = jObj.getString("uid");
+
+                        JSONObject user = jObj.getJSONObject("user");
+                        String name = user.getString("name");
+                        String email = user.getString("email");
+                        String alamat = user.getString("alamat");
+                        String jenis_kel = user.getString("jenis_kelamin");
+                        String no_telp = user.getString("no_telp");
+                        String tanggal_lahir = user.getString("tanggal_lahir");
+                        String bio = user.getString("bio");
+                        String created_at = user.getString("created_at");
+                        String updated_at = user.getString("updated_at");
+                        String foto_user = user.getString("foto");
+
+                        // Inserting row in users table
+                        db.addUser(name, email, uid, alamat, no_telp, tanggal_lahir, bio, foto_user, jenis_kel, created_at, updated_at);
+
+                        tiregdev.hi_depok.model.User gcmUser = new tiregdev.hi_depok.model.User(jObj.getString("uid"),
+                                user.getString("name"),
+                                user.getString("email"));
+
+                        // storing user in shared preferences
+                        AppController.getInstance().getPrefManager().storeUser(gcmUser);
+                        Toast.makeText(getApplicationContext(), "Logged in successfully!", Toast.LENGTH_LONG).show();
+
+                        // Launch login activity
+                        Intent intent = new Intent(
+                                LoginActivity.this,
+                                MenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d(TAG, "Failed with error msg:\t" + error.getMessage());
+                Log.d(TAG, "Error StackTrace: \t" + error.getStackTrace());
+                // edited here
+                try {
+                    byte[] htmlBodyBytes = error.networkResponse.data;
+                    Log.e(TAG, new String(htmlBodyBytes), error);
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+                hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("name", name);
+                params.put("email", email);
+                params.put("foto", fotoUser);
+
+                return params;
+            }
+
+        };
+
+// Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
     @Override
     public void onClick(View view) {
-        if (view == login) {
-            onLogInUser();
-        } else if (view == btnGoogle) {
+        if (view == btnGoogle) {
             signInWithGoogle();
-        } else if (view == forgot) {
-            Intent intent = new Intent(LoginActivity.this, ForgotPassActivity.class);
-            startActivity(intent);
         }
     }
 

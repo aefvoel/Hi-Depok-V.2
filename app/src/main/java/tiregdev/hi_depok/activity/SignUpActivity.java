@@ -194,7 +194,7 @@ public class SignUpActivity extends AppCompatActivity {
         showDialog();
 
         StringRequest strReq = new StringRequest(Method.POST,
-                AppConfig.URL_REGISTER, new Response.Listener<String>() {
+                AppConfig.REGISTER, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {

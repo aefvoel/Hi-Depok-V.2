@@ -28,10 +28,6 @@ public class TwitterTimeline extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final SearchTimeline searchTimeline = new SearchTimeline.Builder()
-                .query("#depok")
-                .maxItemsPerRequest(50)
-                .build();
         final UserTimeline userTimeline = new UserTimeline.Builder()
                 .screenName("depokita")
                 .build();

@@ -6,16 +6,32 @@ package tiregdev.hi_depok.model;
 
 public class Notifikasi {
 
+    private String id;
     private String user;
-    private String notifTxt;
+    private String text;
     private String time;
-    private int picNotif;
+    private String foto;
+    private String type;
+    private String goToId;
+    private String name;
 
-    public Notifikasi(String user, String notifTxt, String time, int picNotif){
+    public Notifikasi(String id, String user, String text, String time, String foto, String type, String goToId, String name) {
+        this.id = id;
         this.user = user;
-        this.notifTxt = notifTxt;
+        this.text = text;
         this.time = time;
-        this.picNotif = picNotif;
+        this.foto = foto;
+        this.type = type;
+        this.goToId = goToId;
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUser() {
@@ -26,12 +42,12 @@ public class Notifikasi {
         this.user = user;
     }
 
-    public String getNotifTxt() {
-        return notifTxt;
+    public String getText() {
+        return text;
     }
 
-    public void setNotifTxt(String notifTxt) {
-        this.notifTxt = notifTxt;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getTime() {
@@ -42,12 +58,35 @@ public class Notifikasi {
         this.time = time;
     }
 
-    public int getPicNotif() {
-        return picNotif;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setPicNotif(int picNotif) {
-        this.picNotif = picNotif;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getGoToId() {
+        return goToId;
+    }
+
+    public void setGoToId(String goToId) {
+        this.goToId = goToId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

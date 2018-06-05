@@ -17,10 +17,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
+            android:fontFamily="@string/fontReguler"
             android:text="@string/forHeader"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp"
-            android:fontFamily="@string/fontReguler" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/menu"
@@ -32,25 +32,6 @@
             android:contentDescription="@string/ImgDesc"
             android:src="@drawable/menu" />
 
-        <com.andexert.library.RippleView
-            android:id="@+id/pesan"
-            rv_centered="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="15dp"
-            android:layout_toStartOf="@id/menu"
-            app:rv_centered="true"
-            app:rv_color="@color/colorRipple"
-            app:rv_rippleDuration="10">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/ImgDesc"
-                android:src="@drawable/massege_icon" />
-
-        </com.andexert.library.RippleView>
 
     </RelativeLayout>
 
@@ -65,7 +46,6 @@
             android:layout_height="match_parent"
             android:background="@color/colorWhite"
             android:scrollbars="vertical" />
-
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

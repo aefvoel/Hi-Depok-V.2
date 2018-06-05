@@ -54,11 +54,11 @@ public class DataKesehatanFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "rs"),"RUMAH SAKIT");
-        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "apotek"), "APOTEK");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "rss"),"RUMAH SAKIT");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "apoteks"), "APOTEK");
         adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "puskesmas"), "PUSKESMAS");
         adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "pantipijat"), "PANTI PIJAT");
-        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "bidan"), "BIDAN");
+        adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "bidans"), "BIDAN");
         adapter.addFragment(ListCariDataFragment.newInstance(getTitle(), "ambulans"), "AMBULANCE");
         viewPager.setAdapter(adapter);
 

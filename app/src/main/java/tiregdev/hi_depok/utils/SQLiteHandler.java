@@ -320,6 +320,37 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return stats;
     }
 
+    public HashMap<String, ArrayList<String>> getAllMessages(String id_user) {
+        HashMap<String, ArrayList<String>> stats = new HashMap<>();
+
+        ArrayList<String> sentimentName = new ArrayList<>();
+        ArrayList<String> totalPost = new ArrayList<>();
+        String query = "SELECT " + FK_ID_USER + ", GROUP_CONCAT(" + MESSAGE
+                +") AS message FROM " + TABLE_MESSAGE +  " WHERE " + FK_ID_USER + " = '" + id_user
+                + "' GROUP BY " + FK_ID_USER;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if (c != null ) {
+            if  (c.moveToFirst()) {
+                do {
+                    String rName = c.getString(c.getColumnIndex("user_id"));
+                    String tPost = c.getString(c.getColumnIndex("message"));
+                    sentimentName.add(rName);
+                    totalPost.add(tPost);
+                }while (c.moveToNext());
+            }
+        }
+        c.close();
+        db.close();
+
+        stats.put("user_id", sentimentName);
+        stats.put("message", totalPost);
+
+        return stats;
+    }
+
     public HashMap<String, ArrayList<String>> getBroadcastMessages() {
         HashMap<String, ArrayList<String>> stats = new HashMap<>();
 
@@ -360,6 +391,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Delete All Rows
         db.delete(TABLE_USER, null, null);
         db.delete(TABLE_BROADCAST, null, null);
+        db.delete(TABLE_MESSAGE, null, null);
+        db.delete(TABLE_ROOM, null, null);
         db.close();
 
         Log.d(TAG, "Deleted all user info from sqlite");

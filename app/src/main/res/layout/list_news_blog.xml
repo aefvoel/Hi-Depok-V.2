@@ -5,21 +5,18 @@
     android:padding="5dp"
     android:layout_height="match_parent">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_height="70dp"
-        android:layout_width="120dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/imageTitle"
-        android:scaleType="center"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/report_banjir"
-        app:riv_corner_radius="10dip"
-        app:riv_border_color="@android:color/transparent"/>
+        android:src="@drawable/report_banjir" />
 
     <TextView
         android:id="@+id/titleNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="130dp"
+        android:layout_marginEnd="80dp"
         android:padding="5dp"
         android:ellipsize="end"
         android:maxLines="2"
@@ -56,15 +53,5 @@
         android:text="@string/time1"
         android:textSize="12sp"
         android:fontFamily="@string/fontReguler" />
-
-    <ImageView
-        android:id="@+id/forward"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:contentDescription="@string/ImgDesc"
-        android:src="@drawable/forward_gray"
-        android:layout_below="@id/titleNews"
-        android:layout_toStartOf="@id/imageTitle"
-        android:layout_marginEnd="20dp"/>
 
 </RelativeLayout>

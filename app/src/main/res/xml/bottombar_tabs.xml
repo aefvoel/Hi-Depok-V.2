@@ -5,17 +5,17 @@
         title="News"/>
     <!--barColorWhenSelected='#5B5A5A'-->
     <tab
-        id="@+id/tab_lapor"
-        icon="@drawable/trophy"
-        title="Masterpiece"/>
+        id="@+id/tab_discussion"
+        icon="@drawable/chat"
+        title="Discussion"/>
     <tab
         id="@+id/tab_home"
         icon="@drawable/home"
         title="Home"/>
     <tab
-        id="@+id/tab_diskusi"
-        icon="@drawable/chat"
-        title="Diskusi"/>
+        id="@+id/tab_notification"
+        icon="@drawable/alarm"
+        title="Notification"/>
     <tab
         id="@+id/tab_profile"
         icon="@drawable/user"

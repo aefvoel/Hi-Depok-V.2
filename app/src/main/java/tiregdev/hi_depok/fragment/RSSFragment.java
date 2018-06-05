@@ -12,6 +12,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,36 +104,41 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
             final List<RssItem> items = (List<RssItem>) intent.getSerializableExtra(RssService.ITEMS);
 
             if (items != null) {
-                titleNews.setText(items.get(0).getTitle());
-                sourceNews.setText(items.get(0).getPortal());
-                dateNews.setText(items.get(0).getPubDate().substring(0, 16));
-                hotNews.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getContext(), DetailNewsActivity.class);
-                        intent.putExtra("url", items.get(0).getLink());
-                        startActivity(intent);
-                    }
-                });
-                Collections.sort(items, new Comparator<RssItem>() {
-                    @Override
-                    public int compare(RssItem data1, RssItem data2) {
-                        SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
-                        try {
-                            Date date1 = formatter.parse(data1.getPubDate());
-                            Date date2 = formatter.parse(data2.getPubDate());
-                            return date2.compareTo(date1);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
+                try{
+                    titleNews.setText(items.get(0).getTitle());
+                    sourceNews.setText(items.get(0).getPortal());
+                    dateNews.setText(items.get(0).getPubDate().substring(0, 16));
+                    hotNews.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getContext(), DetailNewsActivity.class);
+                            intent.putExtra("url", items.get(0).getLink());
+                            startActivity(intent);
                         }
-                        return 0;
-                    }
-                });
-                RSSAdapter adapter = new RSSAdapter(getActivity(), items);
-                adapter.setDisplayCount(20);
-                rView.setAdapter(adapter);
+                    });
+                    Collections.sort(items, new Comparator<RssItem>() {
+                        @Override
+                        public int compare(RssItem data1, RssItem data2) {
+                            SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
+                            try {
+                                Date date1 = formatter.parse(data1.getPubDate());
+                                Date date2 = formatter.parse(data2.getPubDate());
+                                return date2.compareTo(date1);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            return 0;
+                        }
+                    });
+                    RSSAdapter adapter = new RSSAdapter(getActivity(), items);
+                    adapter.setDisplayCount(20);
+                    rView.setAdapter(adapter);
 
-                swipeRefreshRecyclerList.setRefreshing(false);
+                    swipeRefreshRecyclerList.setRefreshing(false);
+                }catch (IndexOutOfBoundsException e){
+                    Log.w(e.getMessage(), e);
+                }
+
             } else {
                 Toast.makeText(getActivity(), "An error occurred while downloading the rss feed.",
                         Toast.LENGTH_LONG).show();

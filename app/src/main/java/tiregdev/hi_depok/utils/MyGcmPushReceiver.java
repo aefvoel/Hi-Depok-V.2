@@ -31,6 +31,7 @@ import org.json.JSONObject;
 
 import tiregdev.hi_depok.activity.ChatActivity;
 import tiregdev.hi_depok.activity.ChatRoomActivity;
+import tiregdev.hi_depok.activity.MenuActivity;
 import tiregdev.hi_depok.model.Message;
 import tiregdev.hi_depok.model.User;
 
@@ -51,7 +52,7 @@ public class MyGcmPushReceiver extends GcmListenerService {
 
     @Override
     public void onMessageReceived(String from, Bundle bundle) {
-        String title = "Hi-Depok";
+        String title = bundle.getString("title");
         Boolean isBackground = Boolean.valueOf(bundle.getString("is_background"));
         String flag = bundle.getString("flag");
         String data = bundle.getString("data");
@@ -106,6 +107,7 @@ public class MyGcmPushReceiver extends GcmListenerService {
                 message.setId(mObj.getString("message_id"));
                 message.setCreatedAt(mObj.getString("created_at"));
 
+                String chatRoomName = mObj.getString("name");
                 JSONObject uObj = datObj.getJSONObject("user");
 
                 // skip the message if the message belongs to same user as
@@ -140,6 +142,7 @@ public class MyGcmPushReceiver extends GcmListenerService {
                     // app is in background. show the message in notification try
                     Intent resultIntent = new Intent(getApplicationContext(), ChatRoomActivity.class);
                     resultIntent.putExtra("chat_room_id", chatRoomId);
+                    resultIntent.putExtra("name", chatRoomName);
                     showNotificationMessage(getApplicationContext(), title, user.getNama() + " : " + message.getMessage(), message.getCreatedAt(), resultIntent);
                 }
 
@@ -194,7 +197,7 @@ public class MyGcmPushReceiver extends GcmListenerService {
                 } else {
 
                     // app is in background. show the message in notification try
-                    Intent resultIntent = new Intent(getApplicationContext(), ChatActivity.class);
+                    Intent resultIntent = new Intent(getApplicationContext(), MenuActivity.class);
 
                     // check for push notification image attachment
                     if (TextUtils.isEmpty(imageUrl)) {
