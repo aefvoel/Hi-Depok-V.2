@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,20 +63,22 @@ import tiregdev.hi_depok.utils.AppController;
 import tiregdev.hi_depok.utils.RssService;
 
 
-public class Home extends BaseFragment implements LocationListener {
+public class Home extends BaseFragment implements LocationListener{
 
-    RecyclerView rView, rViewData;
-    LinearLayoutManager lLayout, dataLayout;
-    double latitudeA, longitudeA, latitudeB, longitudeB;
-    LocationManager locationManager;
-    String provider;
-    Location location;
-    List<CariData> dataAdapter;
-    CariDataAdapter rvAdapter;
-    CariData mPost;
-    JSONObject jsonObject;
+    private RecyclerView rView, rViewData;
+    private LinearLayoutManager lLayout, dataLayout;
+    private double latitudeA, longitudeA, latitudeB, longitudeB;
+    private LocationManager locationManager;
+    private String provider;
+    private Location location;
+    private List<CariData> dataAdapter;
+    private CariDataAdapter rvAdapter;
+    private RSSAdapter adapter;
+    private CariData mPost;
+    private JSONObject jsonObject;
     private String TAG = "HomeFragment";
-    String sentimentResult;
+    private AVLoadingIndicatorView avLoadingIndicatorView, avLoadingIndicatorView2;
+    private Button btnNews, btnData;
 
     public static Home newInstance(){
         Home fragment = new Home();
@@ -124,7 +128,22 @@ public class Home extends BaseFragment implements LocationListener {
         rView = (RecyclerView)view.findViewById(R.id.view_news);
         rView.setLayoutManager(lLayout);
         rView.setNestedScrollingEnabled(false);
-
+        avLoadingIndicatorView = view.findViewById(R.id.avi);
+        avLoadingIndicatorView2 = view.findViewById(R.id.avi2);
+        btnData = view.findViewById(R.id.btnLoadData);
+        btnNews = view.findViewById(R.id.btnLoadNews);
+        btnData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rvAdapter.setDisplayCount(rvAdapter.getItemCount() + 5);
+            }
+        });
+        btnNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.setDisplayCount(adapter.getItemCount() + 5);
+            }
+        });
         dataLayout = new LinearLayoutManager(getActivity());
         rViewData = (RecyclerView)view.findViewById(R.id.view_data);
         rViewData.setLayoutManager(dataLayout);
@@ -155,9 +174,11 @@ public class Home extends BaseFragment implements LocationListener {
     }
 
     private void displayData(String namaTempat){
+        avLoadingIndicatorView2.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.CARI_DATA + namaTempat + "s", new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                avLoadingIndicatorView2.setVisibility(View.GONE);
                 for (int i = 0; i < response.length(); i++){
                     mPost = new CariData();
                     jsonObject = null;
@@ -208,14 +229,14 @@ public class Home extends BaseFragment implements LocationListener {
                 });
                 rvAdapter = new CariDataAdapter(getContext(), dataAdapter);
                 rvAdapter.notifyDataSetChanged();
-                rvAdapter.setDisplayCount(10);
+                rvAdapter.setDisplayCount(5);
                 rViewData.setAdapter(rvAdapter);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                avLoadingIndicatorView2.setVisibility(View.GONE);
             }
         });
 
@@ -265,16 +286,72 @@ public class Home extends BaseFragment implements LocationListener {
     private BroadcastReceiver resultReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            avLoadingIndicatorView.setVisibility(View.VISIBLE);
             final List<RssItem> items = (List<RssItem>) intent.getSerializableExtra(RssService.ITEMS);
             final List<RssItem> positifItems = new ArrayList<>();
             if (items != null) {
                 for(int i=0;i<items.size();i++){
-                    String title = items.get(i).getTitle();
-                    if(title != null){
-                        if(getAnalysis(title).equals("positif") || getAnalysis(title).equals("netral")){
-                            positifItems.add(items.get(i));
+                    int finalI = i;
+                    StringRequest strReq = new StringRequest(Request.Method.POST,
+                            AppConfig.SENTIMENT, new Response.Listener<String>() {
+
+                        @Override
+                        public void onResponse(String response) {
+                            Log.d(TAG, "Response: " + response.toString());
+
+                            try {
+                                JSONObject jObj = new JSONObject(response);
+                                boolean error = jObj.getBoolean("error");
+                                if (!error) {
+                                    String result = jObj.getString("result");
+                                    if(result.equals("positif") || result.equals("netral")){
+                                        positifItems.add(items.get(finalI));
+                                    }
+
+                                } else {
+
+                                    // Error occurred in registration. Get the error
+                                    // message
+                                    String errorMsg = jObj.getString("error_msg");
+                                    Toast.makeText(getActivity(),
+                                            errorMsg, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                         }
-                    }
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Toast.makeText(getActivity(),
+                                    error.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.d(TAG, "Failed with error msg:\t" + error.getMessage());
+                            Log.d(TAG, "Error StackTrace: \t" + error.getStackTrace());
+                            // edited here
+                            try {
+                                byte[] htmlBodyBytes = error.networkResponse.data;
+                                Log.e(TAG, new String(htmlBodyBytes), error);
+                            } catch (NullPointerException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }) {
+
+                        @Override
+                        protected Map<String, String> getParams() {
+                            // Posting params to register url
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("text", items.get(finalI).getTitle());
+
+                            return params;
+                        }
+
+                    };
+                    AppController.getInstance().addToRequestQueue(strReq);
+
 
                 }
                 try{
@@ -292,7 +369,8 @@ public class Home extends BaseFragment implements LocationListener {
                             return 0;
                         }
                     });
-                    RSSAdapter adapter = new RSSAdapter(getActivity(), positifItems);
+                    avLoadingIndicatorView.setVisibility(View.GONE);
+                    adapter = new RSSAdapter(getActivity(), positifItems);
                     adapter.setDisplayCount(5);
                     rView.setAdapter(adapter);
 
@@ -308,71 +386,6 @@ public class Home extends BaseFragment implements LocationListener {
         }
     };
 
-    private String getAnalysis(String text){
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.SENTIMENT, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Response: " + response.toString());
-
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
-                    if (!error) {
-                        sentimentResult = jObj.getString("result");
-
-
-                    } else {
-
-                        // Error occurred in registration. Get the error
-                        // message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getActivity(),
-                                errorMsg, Toast.LENGTH_LONG).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getActivity(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                Log.d(TAG, "Failed with error msg:\t" + error.getMessage());
-                Log.d(TAG, "Error StackTrace: \t" + error.getStackTrace());
-                // edited here
-                try {
-                    byte[] htmlBodyBytes = error.networkResponse.data;
-                    Log.e(TAG, new String(htmlBodyBytes), error);
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
-            }
-        }) {
-
-            @Override
-            protected java.util.Map<String, String> getParams() {
-                // Posting params to register url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("text", text);
-
-                return params;
-            }
-
-        };
-
-// Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq);
-
-        String result = "positif";
-
-        return result;
-    }
     @Override
     public void onStart() {
         super.onStart();
@@ -424,5 +437,6 @@ public class Home extends BaseFragment implements LocationListener {
     public void onProviderDisabled(String s) {
 
     }
+
 }
 

@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,9 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     ImageView hotNews;
     LinearLayoutManager lLayout;
     DividerItemDecoration dividerItemDecoration;
+    Button btnNews;
+    RSSAdapter adapter;
+
 
 
     @Override
@@ -67,6 +71,13 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.line_view));
         rView.addItemDecoration(dividerItemDecoration);
         rView.setNestedScrollingEnabled(false);
+        btnNews = view.findViewById(R.id.btnLoadNews);
+        btnNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.setDisplayCount(adapter.getItemCount() + 5);
+            }
+        });
 
     }
 
@@ -130,8 +141,8 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
                             return 0;
                         }
                     });
-                    RSSAdapter adapter = new RSSAdapter(getActivity(), items);
-                    adapter.setDisplayCount(20);
+                    adapter = new RSSAdapter(getActivity(), items);
+                    adapter.setDisplayCount(10);
                     rView.setAdapter(adapter);
 
                     swipeRefreshRecyclerList.setRefreshing(false);

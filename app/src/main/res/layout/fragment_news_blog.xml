@@ -104,6 +104,17 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite" />
 
+            <Button
+                android:id="@+id/btnLoadNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Load More"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="10sp"
+                android:fontFamily="@string/fontBold" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>

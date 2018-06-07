@@ -44,7 +44,7 @@ public class AppConfig {
     public static String IMG_MASTERPIECE = "http://hi.depok.go.id/storage/img_masterpiece/";
 
     // GCM URL -
-    public static final String BASE_URL = "http://hidepok.id/api/hidepok/v1";
+    public static final String BASE_URL = "http://si-pemandu.com/hidepok/v1";
     public static final String LOGIN = BASE_URL + "/user/login";
     public static final String REGISTER = BASE_URL + "/user/register";
     public static final String UPDATE = BASE_URL + "/user/update";
@@ -57,4 +57,5 @@ public class AppConfig {
     public static final String NOTIF = BASE_URL + "/notifications/_ID_";
     public static final String CARI_DATA = BASE_URL + "/caridata/";
     public static final String SENTIMENT = BASE_URL + "/sentiment";
+    public static final String KRITIK_SARAN = BASE_URL + "/kritik_saran/new";
 }

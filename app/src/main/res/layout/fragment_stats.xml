@@ -34,6 +34,7 @@
 
             </RelativeLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,6 +44,7 @@
                 android:background="@color/colorWhite"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,6 +63,12 @@
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
                     android:fontFamily="@string/fontReguler" />
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/avi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:indicator="BallPulse"
+                    app:indicator_color="@color/colorPrimary" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/view_news"
@@ -68,6 +76,17 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorWhite"
                     />
+                <Button
+                    android:id="@+id/btnLoadNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="Load More"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textSize="10sp"
+                    android:fontFamily="@string/fontBold" />
+
 
             </LinearLayout>
             <LinearLayout
@@ -104,6 +123,13 @@
                     android:layout_height="match_parent">
 
                 </com.jaredrummler.materialspinner.MaterialSpinner>
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/avi2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:indicator="BallPulse"
+                    app:indicator_color="@color/colorPrimary" />
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/view_data"
                     android:layout_width="match_parent"
@@ -111,6 +137,16 @@
                     android:background="@color/colorWhite">
 
                 </android.support.v7.widget.RecyclerView>
+                <Button
+                    android:id="@+id/btnLoadData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="Load More"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textSize="10sp"
+                    android:fontFamily="@string/fontBold" />
 
             </LinearLayout>
 

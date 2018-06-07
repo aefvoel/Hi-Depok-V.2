@@ -36,6 +36,7 @@ public class DetailCariDataActivity extends AppCompatActivity implements View.On
     private TextView namaTempat;
     private TextView alamat;
     private FloatingActionButton direct;
+    private FloatingActionButton share;
     private TextView desc;
     private TextView jadwal;
     private TextView more;
@@ -48,6 +49,7 @@ public class DetailCariDataActivity extends AppCompatActivity implements View.On
         namaTempat = (TextView)findViewById( R.id.namaTempat );
         alamat = (TextView)findViewById( R.id.alamat );
         direct = (FloatingActionButton) findViewById( R.id.direct );
+        share = findViewById(R.id.share);
         desc = (TextView)findViewById( R.id.desc );
         jadwal = (TextView)findViewById( R.id.jadwal );
         more = (TextView)findViewById( R.id.more );
@@ -66,6 +68,7 @@ public class DetailCariDataActivity extends AppCompatActivity implements View.On
         more.setText(getIntent().getExtras().getString("WEBSITE"));
 
         direct.setOnClickListener( this );
+        share.setOnClickListener(this);
         call.setOnClickListener( this );
     }
 
@@ -73,7 +76,19 @@ public class DetailCariDataActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         if ( v == direct ) {
-            // Handle clicks for direct
+            Uri gmmIntentUri = Uri.parse("google.navigation:q=" + getIntent().getExtras().getString("KOORDINAT"));
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            }
+        } else if ( v == share ) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = getIntent().getExtras().getString("NAMA_TEMPAT") + " : " + getIntent().getExtras().getString("ALAMAT");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share Via"));
         } else if ( v == call ) {
             Intent dial = new Intent();
             dial.setAction("android.intent.action.DIAL");

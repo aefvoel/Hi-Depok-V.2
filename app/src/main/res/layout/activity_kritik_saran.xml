@@ -33,43 +33,6 @@
                 android:text="@string/descKS"
                 android:fontFamily="@string/fontReguler" />
 
-            <EditText
-                android:id="@+id/nama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/rectangle_white_without_radius"
-                android:hint="@string/formSS_1"
-                android:padding="10dp"
-                android:textColor="@color/colorGray"
-                android:textColorHint="@color/colorGray"
-                android:fontFamily="@string/fontReguler" />
-
-            <EditText
-                android:id="@+id/nik"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_white_without_radius"
-                android:hint="@string/nik"
-                android:padding="10dp"
-                android:textColor="@color/colorGray"
-                android:textColorHint="@color/colorGray"
-                android:fontFamily="@string/fontReguler" />
-
-            <Button
-                android:id="@+id/tgl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_white_without_radius"
-                android:text="@string/almt"
-                android:gravity="start|center_vertical"
-                android:textAllCaps="false"
-                android:textSize="14sp"
-                android:padding="10dp"
-                android:textColor="@color/colorGray"
-                android:fontFamily="@string/fontReguler" />
 
             <EditText
                 android:id="@+id/keperluan"

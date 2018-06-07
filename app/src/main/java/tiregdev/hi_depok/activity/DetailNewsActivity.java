@@ -60,7 +60,7 @@ public class DetailNewsActivity extends AppCompatActivity {
             case R.id.share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "Lihat konten ini pada Aplikasi Hi-Depok";
+                String shareBody = "News from Hi-Depok! Check it out: " + link;
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Share Via"));

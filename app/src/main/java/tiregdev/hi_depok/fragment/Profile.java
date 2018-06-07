@@ -58,10 +58,9 @@ import static tiregdev.hi_depok.activity.MenuActivity.results;
  * Created by Muhammad63 on 8/3/2017.
  */
 
-public class Profile extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class Profile extends Fragment{
 
     private View v;
-    private SwipeRefreshLayout swipeRefreshLayout;
 
     public static Profile newInstance(){
         Profile fragment = new Profile();
@@ -127,8 +126,6 @@ public class Profile extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         tlp = (TextView)v.findViewById( R.id.tlp );
         calender = (ImageView)v.findViewById( R.id.calender );
         ttl = (TextView)v.findViewById( R.id.ttl );
-        swipeRefreshLayout = v.findViewById(R.id.swipe_refresh_recycler_list);
-        swipeRefreshLayout.setOnRefreshListener(this);
         db = new SQLiteHandler(getContext());
 
         btnEdtProfile.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
@@ -181,7 +178,6 @@ public class Profile extends Fragment implements SwipeRefreshLayout.OnRefreshLis
     }
 
     private void setStatistik(){
-        swipeRefreshLayout.setRefreshing(true);
         int maxMessage = 0;
         BarChart hBarChart = v.findViewById(R.id.horbarchart);
         List<BarEntry> hEntries = new ArrayList<>();
@@ -260,7 +256,6 @@ public class Profile extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         wordCloud.setDataSet(list);
         wordCloud.notifyDataSetChanged();
 
-        swipeRefreshLayout.setRefreshing(false);
     }
     private void generateRandomText() {
         String[] data = wordCloud.split(",");
@@ -275,8 +270,4 @@ public class Profile extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         return new LinkedHashSet<String>(Arrays.asList(s.split(" "))).toString().replaceAll("(^\\[|\\]$)", "").replace(", ", " ");
     }
 
-    @Override
-    public void onRefresh() {
-        setStatistik();
-    }
 }
