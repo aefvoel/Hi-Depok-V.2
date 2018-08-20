@@ -104,16 +104,30 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite" />
 
-            <Button
+            <TextView
+                android:id="@+id/txtLoadNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:text="Load More"
+                android:textColor="@color/colorGray"
+                android:textSize="14sp"
+                android:fontFamily="@string/fontReguler" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/btnLoadNews"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:text="Load More"
+                android:visibility="gone"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:textSize="10sp"
-                android:fontFamily="@string/fontBold" />
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ms__arrow"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

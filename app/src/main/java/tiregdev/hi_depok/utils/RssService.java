@@ -35,7 +35,7 @@ public class RssService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.d(ExtraString.TAG, "Service started");
-        List<RssItem> rssItems = null;
+        List<RssItem> rssItems;
         List<RssItem> listNews = new ArrayList<>();
         for(int i=0;i<RSS_LINK.length;i++){
             try {
@@ -48,7 +48,6 @@ public class RssService extends IntentService {
             } catch (IllegalArgumentException e){
                 Log.w(e.getMessage(), e);
             }
-
             // Send result
         }
 

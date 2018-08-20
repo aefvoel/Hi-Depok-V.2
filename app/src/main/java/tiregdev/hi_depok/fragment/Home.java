@@ -11,7 +11,9 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -32,6 +34,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -52,6 +58,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.DetailNewsActivity;
 import tiregdev.hi_depok.adapter.CariDataAdapter;
@@ -78,7 +85,17 @@ public class Home extends BaseFragment implements LocationListener{
     private JSONObject jsonObject;
     private String TAG = "HomeFragment";
     private AVLoadingIndicatorView avLoadingIndicatorView, avLoadingIndicatorView2;
-    private Button btnNews, btnData;
+    private CircleImageView btnData, btnLoadNews;
+    private TextView txtLoad, txtLoadNews;
+
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private Boolean mLocationPermissionsGranted = false;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    public double deviceLat, deviceLng;
+
+    RssReceiver resultReceiver = null;
 
     public static Home newInstance(){
         Home fragment = new Home();
@@ -87,38 +104,17 @@ public class Home extends BaseFragment implements LocationListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_stats, container, false);
-
-        // Getting LocationManager object
-        locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
-
-        // Creating an empty criteria object
-        Criteria criteria = new Criteria();
-
-        // Getting the name of the provider that meets the criteria
-        provider = locationManager.getBestProvider(criteria, false);
-
-        if(provider!=null && !provider.equals("")){
-
-            if (ContextCompat.checkSelfPermission(getActivity(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                location = locationManager.getLastKnownLocation(provider);
-
-                locationManager.requestLocationUpdates(provider, 20000, 1, this);
-                if(location!=null)
-                    onLocationChanged(location);
-                else
-                    Toast.makeText(getActivity(), "Location can't be retrieved", Toast.LENGTH_SHORT).show();
-            }
-            // Get the location from the given provider
-
-
-        }else{
-            Toast.makeText(getActivity(), "No Provider Found", Toast.LENGTH_SHORT).show();
-        }
+        startService();
+        getLocationPermission();
+        getDeviceLocation();
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     @Override
@@ -131,19 +127,21 @@ public class Home extends BaseFragment implements LocationListener{
         avLoadingIndicatorView = view.findViewById(R.id.avi);
         avLoadingIndicatorView2 = view.findViewById(R.id.avi2);
         btnData = view.findViewById(R.id.btnLoadData);
-        btnNews = view.findViewById(R.id.btnLoadNews);
+        btnLoadNews = view.findViewById(R.id.btnLoadNews);
         btnData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 rvAdapter.setDisplayCount(rvAdapter.getItemCount() + 5);
             }
         });
-        btnNews.setOnClickListener(new View.OnClickListener() {
+        btnLoadNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 adapter.setDisplayCount(adapter.getItemCount() + 5);
             }
         });
+        txtLoadNews = view.findViewById(R.id.txtLoadNews);
+        txtLoad = view.findViewById(R.id.txtLoadMore);
         dataLayout = new LinearLayoutManager(getActivity());
         rViewData = (RecyclerView)view.findViewById(R.id.view_data);
         rViewData.setLayoutManager(dataLayout);
@@ -154,15 +152,17 @@ public class Home extends BaseFragment implements LocationListener{
         dataAdapter = new ArrayList<>();
 
         MaterialSpinner spinner = (MaterialSpinner) view.findViewById(R.id.spinner);
-        spinner.setItems("Cari...", "apotek", "bank", "bidan", "damkar", "industri", "jasa_pengiriman",
+        spinner.setItems("Filter by...", "apotek", "bank", "bidan", "damkar", "industri", "jasa_pengiriman",
                 "klinik", "mall", "olahraga", "pdam", "perkantoran", "pln", "pos_polisi", "spbu",
                 "supermarket", "taman", "tni", "tpu", "universitas");
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
             @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                if(item.equals("Cari...")){
+                if(item.equals("Filter by...")){
                     dataAdapter.clear();
                     rViewData.removeAllViews();
+                    txtLoad.setVisibility(View.GONE);
+                    btnData.setVisibility(View.GONE);
                 }else {
                     dataAdapter.clear();
                     displayData(item);
@@ -173,12 +173,85 @@ public class Home extends BaseFragment implements LocationListener{
 
     }
 
+    private void getLocationPermission(){
+        Log.d(TAG, "getLocationPermission: getting location permissions");
+        String[] permissions = {android.Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION};
+
+        if(ContextCompat.checkSelfPermission(this.getActivity(),
+                FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(this.getActivity(),
+                    COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                mLocationPermissionsGranted = true;
+            }else{
+                ActivityCompat.requestPermissions(this.getActivity(),
+                        permissions,
+                        LOCATION_PERMISSION_REQUEST_CODE);
+            }
+        }else{
+            ActivityCompat.requestPermissions(this.getActivity(),
+                    permissions,
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult: called.");
+        mLocationPermissionsGranted = false;
+
+        switch(requestCode){
+            case LOCATION_PERMISSION_REQUEST_CODE:{
+                if(grantResults.length > 0){
+                    for(int i = 0; i < grantResults.length; i++){
+                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                            mLocationPermissionsGranted = false;
+                            Log.d(TAG, "onRequestPermissionsResult: permission failed");
+                            return;
+                        }
+                    }
+                    Log.d(TAG, "onRequestPermissionsResult: permission granted");
+                    mLocationPermissionsGranted = true;
+                }
+            }
+        }
+    }
+
+
+    private void getDeviceLocation(){
+        Log.d(TAG, "getDeviceLocation: getting the devices current location");
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        try{
+            if(mLocationPermissionsGranted){
+                final Task location = mFusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "onComplete: found location!");
+                            Location currentLocation = (Location) task.getResult();
+                            Log.d(TAG, "origin latlng" + currentLocation.getLatitude() + "," + currentLocation.getLongitude() );
+                            deviceLat = currentLocation.getLatitude();
+                            deviceLng = currentLocation.getLongitude();
+                        }else{
+                            Log.d(TAG, "onComplete: current location is null");
+                            Toast.makeText(getActivity(), "unable to get current location", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        }catch (SecurityException e){
+            Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
+        }
+    }
+
     private void displayData(String namaTempat){
         avLoadingIndicatorView2.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.CARI_DATA + namaTempat + "s", new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 avLoadingIndicatorView2.setVisibility(View.GONE);
+                txtLoad.setVisibility(View.VISIBLE);
+                btnData.setVisibility(View.VISIBLE);
                 for (int i = 0; i < response.length(); i++){
                     mPost = new CariData();
                     jsonObject = null;
@@ -204,8 +277,8 @@ public class Home extends BaseFragment implements LocationListener{
                             longitudeA = 0.0;
                         }
 
-                        latitudeB = location.getLatitude();
-                        longitudeB = location.getLongitude();
+                        latitudeB = deviceLat;
+                        longitudeB = deviceLng;
 
                         Double jarak = BigDecimal.valueOf(CalculationByDistance(latitudeB, longitudeB, latitudeA, longitudeA))
                                 .setScale(3, RoundingMode.HALF_UP)
@@ -265,25 +338,18 @@ public class Home extends BaseFragment implements LocationListener{
     }
 
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-
-        super.onActivityCreated(savedInstanceState);
-        startService();
-
-
-    }
 
     private void startService() {
 
         Intent intent = new Intent(getActivity(), RssService.class);
-        getActivity().startService(intent);
+        getContext().startService(intent);
+
     }
 
     /**
      * Once the {@link RssService} finishes its task, the result is sent to this BroadcastReceiver
      */
-    private BroadcastReceiver resultReceiver = new BroadcastReceiver() {
+    private class RssReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             avLoadingIndicatorView.setVisibility(View.VISIBLE);
@@ -304,7 +370,7 @@ public class Home extends BaseFragment implements LocationListener{
                                 boolean error = jObj.getBoolean("error");
                                 if (!error) {
                                     String result = jObj.getString("result");
-                                    if(result.equals("positif") || result.equals("netral")){
+                                    if(result.equals("positif")){
                                         positifItems.add(items.get(finalI));
                                     }
 
@@ -354,43 +420,45 @@ public class Home extends BaseFragment implements LocationListener{
 
 
                 }
-                try{
-                    Collections.sort(positifItems, new Comparator<RssItem>() {
-                        @Override
-                        public int compare(RssItem data1, RssItem data2) {
-                            SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
-                            try {
-                                Date date1 = formatter.parse(data1.getPubDate());
-                                Date date2 = formatter.parse(data2.getPubDate());
-                                return date2.compareTo(date1);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            return 0;
-                        }
-                    });
-                    avLoadingIndicatorView.setVisibility(View.GONE);
-                    adapter = new RSSAdapter(getActivity(), positifItems);
-                    adapter.setDisplayCount(5);
-                    rView.setAdapter(adapter);
 
-                }catch (IndexOutOfBoundsException e){
-                    Log.w(e.getMessage(), e);
-                }
+                Collections.sort(positifItems, new Comparator<RssItem>() {
+                    @Override
+                    public int compare(RssItem data1, RssItem data2) {
+                        SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
+                        try {
+                            Date date1 = formatter.parse(data1.getPubDate());
+                            Date date2 = formatter.parse(data2.getPubDate());
+                            return date2.compareTo(date1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        return 0;
+                    }
+                });
+
+                adapter = new RSSAdapter(getActivity(), positifItems);
+                adapter.setDisplayCount(5);
+                rView.setAdapter(adapter);
+                avLoadingIndicatorView.setVisibility(View.GONE);
+                txtLoadNews.setVisibility(View.VISIBLE);
+                btnLoadNews.setVisibility(View.VISIBLE);
 
             } else {
                 Toast.makeText(getActivity(), "An error occurred while downloading the rss feed.",
                         Toast.LENGTH_LONG).show();
+                avLoadingIndicatorView.setVisibility(View.GONE);
+
 
             }
         }
-    };
+    }
 
     @Override
     public void onStart() {
         super.onStart();
+        resultReceiver = new RssReceiver();
         IntentFilter intentFilter = new IntentFilter(RssService.ACTION_RSS_PARSED);
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(resultReceiver, intentFilter);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(resultReceiver, intentFilter);
 
     }
 

@@ -37,15 +37,14 @@
             <EditText
                 android:id="@+id/keperluan"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-                android:inputType="textImeMultiLine"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle_gray"
                 android:gravity="top"
-                android:background="@drawable/rectangle_white_without_radius"
-                android:hint="Kritik dan Saran"
-                android:padding="10dp"
+                android:inputType="textMultiLine"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
                 android:textColor="@color/colorGray"
-                android:textColorHint="@color/colorGray"
                 android:fontFamily="@string/fontReguler" />
 
             <Button

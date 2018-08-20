@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "657283490375-jtbk52908i231g8cce9dc5v450r7um3a.apps.googleusercontent.com",
+          "client_id": "657283490375-afjg3mf13qg6s1p8pab46e8l59upcc0o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "tiregdev.hi_depok",
             "certificate_hash": "b627832bce86f1fc68c8f9a82f44698db0bf9cc8"
+          }
+        },
+        {
+          "client_id": "657283490375-q5lffe4u32i6gq692qdb4p7tmec77294.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tiregdev.hi_depok",
+            "certificate_hash": "a83855f13d09af763ca588c7804c0365df2e2f10"
           }
         },
         {

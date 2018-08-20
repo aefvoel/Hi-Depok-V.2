@@ -8,7 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="Berita Positif Dari Portal Berita Di Depok"
+                    android:text="Positive News from Depok News Portals"
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
                     android:fontFamily="@string/fontReguler" />
@@ -76,16 +76,24 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorWhite"
                     />
-                <Button
+                <TextView
+                    android:id="@+id/txtLoadNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Load More"
+                    android:visibility="gone"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    android:fontFamily="@string/fontReguler" />
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/btnLoadNews"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
-                    android:text="Load More"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:fontFamily="@string/fontBold" />
+                    android:src="@drawable/ms__arrow"
+                    android:visibility="gone"/>
 
 
             </LinearLayout>
@@ -102,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="Cari Data"
+                    android:text="Explore Depok"
                     android:textColor="@color/colorGrayOld"
                     android:textSize="18sp"
                     android:fontFamily="@string/fontBold" />
@@ -112,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:text="Data Terdekat Berdasarkan Lokasi Anda"
+                    android:text="Nearby Places Based on Your Location"
                     android:textColor="@color/colorGray"
                     android:textSize="14sp"
                     android:fontFamily="@string/fontReguler" />
@@ -137,16 +145,24 @@
                     android:background="@color/colorWhite">
 
                 </android.support.v7.widget.RecyclerView>
-                <Button
+                <TextView
+                    android:id="@+id/txtLoadMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Load More"
+                    android:visibility="gone"
+                    android:textColor="@color/colorGray"
+                    android:textSize="14sp"
+                    android:fontFamily="@string/fontReguler" />
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/btnLoadData"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
-                    android:text="Load More"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:fontFamily="@string/fontBold" />
+                    android:visibility="gone"
+                    android:src="@drawable/ms__arrow"/>
 
             </LinearLayout>
 

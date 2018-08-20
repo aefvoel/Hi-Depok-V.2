@@ -128,10 +128,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signInWithGoogle() {
-        if(mGoogleApiClient != null) {
-            mGoogleApiClient.disconnect();
+        if (mGoogleApiClient != null)
+        {
+            if (mGoogleApiClient.isConnected())
+            {
+                mGoogleApiClient.disconnect();
+            }
         }
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -141,7 +144,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         final Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
-
     }
 
 
@@ -163,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(uri != null){
                     photo_url = uri.toString();
                 }else{
-                    photo_url = "http://hidepok.id/api/hidepok/image/default.png";
+                    photo_url = "http://hidepok.id/api/image/default.png";
                 }
 
                 handleSignInResult(new Callable<Void>() {
@@ -198,118 +200,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void handleSignInResult(Callable<Void> logout, String fullname, String email, String photo) {
         if (logout == null) {
             /* Login error */
-            Toast.makeText(getApplicationContext(), "Login gagal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
         } else {
             /* Login success */
 
             Application.getInstance().setLogoutCallable(logout);
             registerUser(fullname, email, photo);
         }
-    }
-
-
-
-    private void checkLogin(final String email, final String password) {
-        // Tag used to cancel the request
-        String tag_string_req = "req_login";
-
-        pDialog.setMessage("Logging in ...");
-        showDialog();
-
-        StringRequest strReq = new StringRequest(Method.POST,
-                AppConfig.LOGIN, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
-                hideDialog();
-
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
-
-                    // Check for error node in json
-                    if (!error) {
-                        // user successfully logged in
-                        // Create login session
-                        session.setLogin(true);
-
-                        // Now store the user in SQLite
-                        String uid = jObj.getString("uid");
-
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.getString("name");
-                        String email = user.getString("email");
-                        String alamat = user.getString("alamat");
-                        String jenis_kel = user.getString("jenis_kelamin");
-                        String no_telp = user.getString("no_telp");
-                        String tanggal_lahir = user.getString("tanggal_lahir");
-                        String bio = user.getString("bio");
-                        String created_at = user.getString("created_at");
-                        String updated_at = user.getString("updated_at");
-                        String foto_user = user.getString("foto");
-
-                        // Inserting row in users table
-                        db.addUser(name, email, uid, alamat, no_telp, tanggal_lahir, bio, foto_user, jenis_kel, created_at, updated_at);
-
-                        tiregdev.hi_depok.model.User gcmUser = new tiregdev.hi_depok.model.User(jObj.getString("uid"),
-                                user.getString("name"),
-                                user.getString("email"));
-
-                        // storing user in shared preferences
-                        AppController.getInstance().getPrefManager().storeUser(gcmUser);
-
-                        // Launch main activity
-                        Intent intent = new Intent(LoginActivity.this,
-                                MenuActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        // Error in login. Get the error message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
-                    }
-                } catch (JSONException e) {
-                    // JSON error
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                Log.d(TAG, "Failed with error msg:\t" + error.getMessage());
-                Log.d(TAG, "Error StackTrace: \t" + error.getStackTrace());
-                // edited here
-                try {
-                    byte[] htmlBodyBytes = error.networkResponse.data;
-                    Log.e(TAG, new String(htmlBodyBytes), error);
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
-                hideDialog();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting parameters to login url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("password", password);
-
-                return params;
-            }
-
-        };
-
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
     private void showDialog() {

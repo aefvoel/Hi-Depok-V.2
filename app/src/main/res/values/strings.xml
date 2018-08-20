@@ -36,15 +36,15 @@
     <string name="emailJAR">fsandjujar@gmail.com</string>
     <string name="nama">JAR</string>
     <string name="isibio">IT Project Manager</string>
-    <string name="username">Username</string>
+    <string name="username">Full Name</string>
     <string name="confirm_pass">Confirm Password</string>
     <string name="pass">Password</string>
     <string name="login">LOGIN</string>
     <string name="signup">SIGN UP</string>
     <string name="ttl">Tanggal Lahir</string>
     <string name="bio">Bio</string>
-    <string name="jk">Jenis Kelamin</string>
-    <string name="nmrTlp">Nomor Telepon</string>
+    <string name="jk">Sex</string>
+    <string name="nmrTlp">Phone</string>
     <string name="verify">
         Kami telah mengirimkan Anda SMS dengan kode verifikasi,
         silahkan masukkan 6 digit kode verifikasi yang dikirimkan ke nomor telepon anda</string>
@@ -91,16 +91,16 @@
     <string name="comment">menanggapi postingan Anda</string>
     <string name="uname">Uname</string>
     <string name="mail">Email</string>
-    <string name="almt">Alamat</string>
+    <string name="almt">Address</string>
     <string name="noTlp">No. Tlp</string>
     <string name="tlp">087777139373</string>
-    <string name="TglLahir">Tanggal Lahir</string>
+    <string name="TglLahir">Birth of Date</string>
     <string name="bio2">Bio</string>
     <string name="mail2">fsandjujar@gmail.com</string>
     <string name="close">CLOSE</string>
     <string name="save">SAVE</string>
     <string name="post">KIRIMAN</string>
-    <string name="tropy">STATISTIK</string>
+    <string name="tropy">STATISTIC</string>
     <string name="tropyKet">Anda belum mempunyai riwayat penghargaan</string>
     <string name="karya">KARYA</string>
     <string name="modul">MODUL</string>

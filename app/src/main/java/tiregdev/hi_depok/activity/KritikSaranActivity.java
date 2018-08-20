@@ -75,7 +75,7 @@ public class KritikSaranActivity extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        Toast.makeText(getApplicationContext(), "Terimakasih telah mnengirimkan kritik dan saran!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Thank you for your feedback!", Toast.LENGTH_LONG).show();
 
                         // Launch login activity
                         Intent intent = new Intent(

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -248,22 +249,21 @@ public class Profile extends Fragment{
         pieChart.animateXY(1400, 1400);
         pieChart.invalidate();
 
+
         wordCloud = removeDup(TextUtils.join(" ", db.getAllMessages(db.getUserDetails().get("uid")).get("message")));
-        generateRandomText();
+        Log.d("Profil wordcloud", wordCloud);
+        String[] datas = wordCloud.split(" ");
+        list = new ArrayList<>();
+        Random random = new Random();
+        for (String s : datas) {
+            list.add(new WordCloud(s, random.nextInt(200)));
+        }
         WordCloudView wordCloud = (WordCloudView) v.findViewById(R.id.wordCloud);
         wordCloud.setSize(300,300);
         wordCloud.setColors(ColorTemplate.MATERIAL_COLORS);
         wordCloud.setDataSet(list);
         wordCloud.notifyDataSetChanged();
 
-    }
-    private void generateRandomText() {
-        String[] data = wordCloud.split(",");
-        list = new ArrayList<>();
-        Random random = new Random();
-        for (String s : data) {
-            list.add(new WordCloud(s, random.nextInt(200)));
-        }
     }
 
     public String removeDup(String s) {

@@ -280,8 +280,8 @@ public class MenuActivity extends AppCompatActivity {
                                 .withDisabledTextColor(Color.parseColor("#50aacd")),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem()
-                                .withName("Kritik dan Saran")
-                                .withDescription("Memberikan kritik atau saran untuk Kota Depok atau untuk pengembangan aplikasi ini")
+                                .withName("Suggestion")
+                                .withDescription("Send Your Feedback")
                                 .withIcon(R.drawable.ic_format_quote_grey_600_24dp)
                                 .withIdentifier(8),
                         new PrimaryDrawerItem()
@@ -291,12 +291,12 @@ public class MenuActivity extends AppCompatActivity {
                                 .withIdentifier(5),
                         new PrimaryDrawerItem()
                                 .withName("About")
-                                .withDescription("Tentang aplikasi")
+                                .withDescription("About This Application")
                                 .withIcon(R.drawable.ic_info_grey_600_24dp)
                                 .withIdentifier(6),
                         new PrimaryDrawerItem()
                                 .withName("Logout")
-                                .withDescription("Keluar akun")
+                                .withDescription("Exit Application")
                                 .withIcon(R.drawable.ic_exit_to_app_grey_600_24dp)
                                 .withIdentifier(7)
                 )
@@ -336,7 +336,7 @@ public class MenuActivity extends AppCompatActivity {
                                 startActivity(i);
                             } else if (drawerItem.getIdentifier() == 7){
                                 logoutUser();
-                                Toast.makeText(MenuActivity.this, "Logout Berhasil!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MenuActivity.this, "Logout Successfully!", Toast.LENGTH_SHORT).show();
                             } else if (drawerItem.getIdentifier() == 8) {
                                 Intent i = new Intent(MenuActivity.this, KritikSaranActivity.class);
                                 startActivity(i);

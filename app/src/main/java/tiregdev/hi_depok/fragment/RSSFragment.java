@@ -28,6 +28,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import tiregdev.hi_depok.R;
 import tiregdev.hi_depok.activity.DetailNewsActivity;
 import tiregdev.hi_depok.adapter.RSSAdapter;
@@ -43,16 +44,25 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     ImageView hotNews;
     LinearLayoutManager lLayout;
     DividerItemDecoration dividerItemDecoration;
-    Button btnNews;
+    CircleImageView btnLoadNews;
+    TextView txtLoadNews;
     RSSAdapter adapter;
+    RssReceiver resultReceiver = null;
+
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        startService();
         View view = inflater.inflate(R.layout.fragment_news_blog, container, false);
-
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     @Override
@@ -71,8 +81,9 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.line_view));
         rView.addItemDecoration(dividerItemDecoration);
         rView.setNestedScrollingEnabled(false);
-        btnNews = view.findViewById(R.id.btnLoadNews);
-        btnNews.setOnClickListener(new View.OnClickListener() {
+        txtLoadNews = view.findViewById(R.id.txtLoadNews);
+        btnLoadNews = view.findViewById(R.id.btnLoadNews);
+        btnLoadNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 adapter.setDisplayCount(adapter.getItemCount() + 5);
@@ -91,9 +102,7 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     public void onActivityCreated(Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-
         swipeRefreshRecyclerList.setRefreshing(true);
-        startService();
 
 
     }
@@ -101,13 +110,14 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     private void startService() {
 
         Intent intent = new Intent(getActivity(), RssService.class);
-        getActivity().startService(intent);
+        getContext().startService(intent);
+
     }
 
     /**
      * Once the {@link RssService} finishes its task, the result is sent to this BroadcastReceiver
      */
-    private BroadcastReceiver resultReceiver = new BroadcastReceiver() {
+    private class RssReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -127,28 +137,31 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
                             startActivity(intent);
                         }
                     });
-                    Collections.sort(items, new Comparator<RssItem>() {
-                        @Override
-                        public int compare(RssItem data1, RssItem data2) {
-                            SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
-                            try {
-                                Date date1 = formatter.parse(data1.getPubDate());
-                                Date date2 = formatter.parse(data2.getPubDate());
-                                return date2.compareTo(date1);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            return 0;
-                        }
-                    });
-                    adapter = new RSSAdapter(getActivity(), items);
-                    adapter.setDisplayCount(10);
-                    rView.setAdapter(adapter);
 
-                    swipeRefreshRecyclerList.setRefreshing(false);
                 }catch (IndexOutOfBoundsException e){
                     Log.w(e.getMessage(), e);
                 }
+
+                Collections.sort(items, new Comparator<RssItem>() {
+                    @Override
+                    public int compare(RssItem data1, RssItem data2) {
+                        SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
+                        try {
+                            Date date1 = formatter.parse(data1.getPubDate());
+                            Date date2 = formatter.parse(data2.getPubDate());
+                            return date2.compareTo(date1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        return 0;
+                    }
+                });
+                adapter = new RSSAdapter(getActivity(), items);
+                adapter.setDisplayCount(10);
+                rView.setAdapter(adapter);
+                txtLoadNews.setVisibility(View.VISIBLE);
+                btnLoadNews.setVisibility(View.VISIBLE);
+                swipeRefreshRecyclerList.setRefreshing(false);
 
             } else {
                 Toast.makeText(getActivity(), "An error occurred while downloading the rss feed.",
@@ -157,13 +170,15 @@ public class RSSFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
                 swipeRefreshRecyclerList.setRefreshing(false);
             }
         }
-    };
+    }
+
 
     @Override
     public void onStart() {
         super.onStart();
+        resultReceiver = new RssReceiver();
         IntentFilter intentFilter = new IntentFilter(RssService.ACTION_RSS_PARSED);
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(resultReceiver, intentFilter);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(resultReceiver, intentFilter);
 
     }
 

@@ -55,10 +55,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String TGL_MESSAGE = "created_at";
     private static final String ANALYSIS = "analysis";
 
-    private static final String TABLE_BROADCAST = "broadcasts";
-    private static final String ID_BROADCAST = "id";
-    private static final String MESSAGE_BROADCAST = "message";
-    private static final String TGL_BRROADCAST = "created_at";
 
 
     public SQLiteHandler(Context context) {
@@ -70,7 +66,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
+                + KEY_EMAIL + " TEXT," + KEY_UID + " TEXT,"
                 + KEY_ALAMAT + " TEXT," + KEY_NO_TELP + " TEXT,"
                 + KEY_TANGGAL_LAHIR + " TEXT," + KEY_BIO + " TEXT,"
                 + KEY_FOTO_USER + " TEXT," + KEY_JENIS_KELAMIN + " TEXT,"
@@ -85,9 +81,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + FK_ID_USER + " TEXT," + MESSAGE + " TEXT," + TGL_MESSAGE+ " TEXT,"
                 + ANALYSIS + " TEXT" + ")";
 
-        String CREATE_BROADCAST = "CREATE TABLE IF NOT EXISTS " + TABLE_BROADCAST + "("
-                + ID_BROADCAST + " INTEGER PRIMARY KEY," + MESSAGE_BROADCAST + " TEXT,"
-                + TGL_BRROADCAST + " TEXT" + ")";
 
         db.execSQL(CREATE_ROOM_TABLE);
 
@@ -95,7 +88,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_LOGIN_TABLE);
 
-        db.execSQL(CREATE_BROADCAST);
 
         Log.d(TAG, "Database tables created");
     }
@@ -138,18 +130,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "New user inserted into sqlite: " + id);
     }
 
-    public void insertBroadcast(String message, String created){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(MESSAGE_BROADCAST, message);
-        values.put(TGL_BRROADCAST, created);
-
-        long id = db.insert(TABLE_BROADCAST, null, values);
-        db.close(); // Closing database connection
-        Log.d(TAG, "New Broadcast inserted into sqlite: " + id);
-
-    }
 
     public void insertRoom(String id_room, String name, String created){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -390,7 +370,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_USER, null, null);
-        db.delete(TABLE_BROADCAST, null, null);
         db.delete(TABLE_MESSAGE, null, null);
         db.delete(TABLE_ROOM, null, null);
         db.close();

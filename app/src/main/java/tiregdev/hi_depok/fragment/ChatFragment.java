@@ -182,7 +182,6 @@ public class ChatFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         };
 
         db = new SQLiteHandler(getActivity());
-        db.insertBroadcast("Halo Selamat Datang di Aplikasi Hi-Depok! :)", "2018-04-14 09:44:16");
         chatRoomArrayList = new ArrayList<>();
         mAdapter = new ChatRoomsAdapter(getActivity(), chatRoomArrayList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -239,7 +238,6 @@ public class ChatFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             // push belongs to user alone
             // just showing the message in a toast
             Message message = (Message) intent.getSerializableExtra("message");
-            db.insertBroadcast(message.getMessage(), message.getCreatedAt());
         }
 
 
